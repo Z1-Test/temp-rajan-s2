@@ -1,4 +1,4 @@
-₹# 📘 Product Requirements Document (PRD)
+# 📘 Product Requirements Document (PRD)
 
 **Version:** `1.0.0` | **Status:** `Draft`
 
@@ -33,14 +33,14 @@
 
 ## 1. Document Information
 
-| Field              | Details                                 |
-| ------------------ | --------------------------------------- |
-| **Document Title** | `F1 Car Platform Strategic PRD`         |
-| **File Location**  | `docs/product/PRD.md`                   |
-| **Version**        | `1.0.0`                                 |
-| **Date**           | `2025-12-30`                            |
-| **Author(s)**      | `Product Team`                          |
-| **Stakeholders**   | `Engineering, Product, Racing Strategy` |
+| Field              | Details                                |
+| ------------------ | -------------------------------------- |
+| **Document Title** | `Agentic AI Platform Strategic PRD`    |
+| **File Location**  | `docs/product/PRD.md`                  |
+| **Version**        | `1.0.0`                                |
+| **Date**           | `2025-12-30`                           |
+| **Author(s)**      | `Product Team`                         |
+| **Stakeholders**   | `Engineering, Product, AI Operations`  |
 
 ---
 
@@ -62,81 +62,76 @@ Execution may be human-driven, agent-driven, or hybrid.
 
 ## 3. Feature Index (Living Blueprints)
 
-| Feature ID | Title | GitHub Issue | Blueprint Path | Status |
-| ---------- | ----- | ------------ | -------------- | ------ |
-| TBD        | TBD   | TBD          | TBD            | TBD    |
-
-*Will be populated during roadmap decomposition phase.*
+| Feature ID | Title                          | GitHub Issue | Blueprint Path                          | Status |
+| ---------- | ------------------------------ | ------------ | --------------------------------------- | ------ |
+| TBD        | Agent Orchestration Engine     | TBD          | `docs/features/orchestration/TBD.md`    | Draft  |
+| TBD        | Real-time Agent Monitoring     | TBD          | `docs/features/monitoring/TBD.md`       | Draft  |
+| TBD        | Multi-Agent Collaboration      | TBD          | `docs/features/collaboration/TBD.md`    | Draft  |
+| TBD        | Agent Knowledge Management     | TBD          | `docs/features/knowledge/TBD.md`        | Draft  |
+| TBD        | Agent Simulation & Testing     | TBD          | `docs/features/simulation/TBD.md`       | Draft  |
 
 ---
 
 ## 4. Product Vision
 
-The **F1 Car Platform** is a comprehensive digital ecosystem designed to provide Formula 1 racing teams with integrated tools for real-time vehicle management, performance optimization, and strategic decision-making. 
+The **Agentic AI Platform** enables enterprises to build, deploy, and manage fleets of autonomous AI agents that collaborate to solve complex business problems. The platform provides the orchestration layer, observability tooling, and collaboration infrastructure needed to operate AI agents at scale in production environments.
 
-The platform empowers racing teams to make data-driven decisions by unifying telemetry, analytics, collaboration, and simulation capabilities into a single, coherent platform that operates seamlessly during practice, qualifying, and race conditions.
-
-**Long-term Goal:** Become the industry-standard platform for F1 team operations, reducing reaction time to track conditions, optimizing vehicle performance through predictive analytics, and enabling seamless collaboration between drivers, engineers, and strategists.
+**Long-term vision:** Become the operating system for autonomous AI agent workloads, enabling seamless deployment, monitoring, and coordination of thousands of specialized agents working together.
 
 ---
 
 ## 5. Core Business Problem
 
-Formula 1 teams currently operate with fragmented systems across telemetry monitoring, performance analysis, team communication, and race simulation. This fragmentation creates:
+Organizations are building increasingly sophisticated AI agents but lack enterprise-grade infrastructure to:
 
-**Primary Problems:**
+1. **Orchestrate multi-agent workflows** — coordinate complex tasks across multiple specialized agents
+2. **Monitor agent behavior in real-time** — understand agent decision-making, performance, and failure modes
+3. **Enable secure agent collaboration** — allow agents to communicate, share context, and distribute work
+4. **Manage agent memory and learning** — provide persistent state, knowledge bases, and learning capabilities
+5. **Validate agent behavior pre-deployment** — test and simulate agent interactions before production
 
-1. **Data Silos** — Telemetry data, historical performance data, and team communication exist in separate systems, making correlation and real-time decision-making difficult
-2. **Delayed Insights** — Lack of real-time integration between live telemetry and predictive analytics prevents proactive strategy adjustments
-3. **Coordination Overhead** — Engineers, strategists, and drivers struggle to maintain shared context during high-pressure race conditions
-4. **Limited Simulation Fidelity** — Pre-race scenario modeling is disconnected from actual vehicle configuration and historical performance data
-
-**Business Impact:**
-
-- Lost competitive advantage due to slower decision-making
-- Increased operational complexity and training overhead
-- Suboptimal race strategies due to incomplete information
-- Risk of vehicle failures from inadequate monitoring
+Without a unified platform, teams build fragmented point solutions, leading to:
+- Duplicated infrastructure work
+- Inconsistent observability and debugging
+- Security and compliance gaps
+- Inability to scale agent deployments
+- Lack of agent reusability across teams
 
 ---
 
 ## 6. Target Personas & Primary Use Cases
 
-| Persona                  | Description                                          | Goals                                                            | Key Use Cases                                                              |
-| ------------------------ | ---------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| **Race Engineer**        | Technical lead managing vehicle performance          | Optimize car setup, monitor real-time telemetry, diagnose issues | Monitor live telemetry, analyze lap times, adjust strategy                 |
-| **Race Strategist**      | Plans pit stops and race tactics                     | Maximize race position through optimal timing and decisions      | Simulate race scenarios, monitor competitor data, recommend pit strategies |
-| **Driver**               | Operates the vehicle during practice/qualifying/race | Understand vehicle performance, receive clear guidance           | View real-time feedback, communicate issues, review performance data       |
-| **Team Principal**       | Oversees team operations and decision-making         | Maintain strategic oversight, coordinate team resources          | Monitor overall team performance, review analytics dashboards              |
-| **Vehicle Technician**   | Maintains and configures vehicle systems (certified technicians only authorized to create official maintenance records) | Ensure vehicle reliability, track maintenance schedules          | Log maintenance events, access vehicle configuration history               |
-| **Data Analyst**         | Analyzes historical performance data                 | Identify trends, optimize setups, predict failures               | Query historical data, build predictive models, generate reports           |
-| **Team Communications**  | Manages communications between driver and team       | Enable clear, timely information exchange                        | Coordinate radio communications, log critical events                       |
+| Persona                | Description                                  | Goals                                      | Key Use Cases                              |
+| ---------------------- | -------------------------------------------- | ------------------------------------------ | ------------------------------------------ |
+| **AI Engineer**        | Builds and deploys AI agents                 | Deploy agents quickly, debug failures      | Agent deployment, testing, monitoring      |
+| **Platform Engineer**  | Manages infrastructure for AI workloads      | Scale agent fleets, ensure reliability     | Infrastructure management, orchestration   |
+| **Data Scientist**     | Develops agent intelligence and capabilities | Improve agent performance, analyze data    | Knowledge management, analytics            |
+| **Product Manager**    | Defines agent capabilities and priorities    | Track agent value, plan roadmap            | Performance tracking, capability planning  |
+| **Security Engineer**  | Ensures agent compliance and safety          | Audit agent behavior, enforce policies     | Access control, compliance monitoring      |
 
 ---
 
 ## 7. Business Value & Expected Outcomes
 
-| Outcome                                | Description                                                       | KPI Alignment | Priority |
-| -------------------------------------- | ----------------------------------------------------------------- | ------------- | -------- |
-| **Faster Decision-Making**             | Reduce time from data observation to strategic action by 40%      | KPI-001       | High     |
-| **Improved Race Performance**          | Increase average finishing position through optimized strategy    | KPI-002       | High     |
-| **Reduced Vehicle Failures**           | Decrease DNFs (Did Not Finish) through predictive maintenance     | KPI-003       | High     |
-| **Enhanced Team Coordination**         | Reduce miscommunication incidents during races                    | KPI-004       | Medium   |
-| **Increased Simulation Accuracy**      | Improve race strategy prediction accuracy by 30%                  | KPI-005       | Medium   |
-| **Streamlined Operations**             | Reduce operational overhead and training time for new team members| KPI-006       | Low      |
+| Outcome                        | Description                                  | KPI Alignment | Priority |
+| ------------------------------ | -------------------------------------------- | ------------- | -------- |
+| Faster agent deployment        | Reduce time to deploy new agents by 70%      | KPI-001       | High     |
+| Improved agent reliability     | Increase agent uptime to 99.9%               | KPI-002       | High     |
+| Enhanced collaboration         | Enable 10+ agents to collaborate on tasks    | KPI-003       | High     |
+| Reduced infrastructure costs   | Lower operational costs by 40%               | KPI-004       | Medium   |
+| Better agent observability     | 100% visibility into agent decisions         | KPI-005       | High     |
 
 ---
 
 ## 8. Success Metrics / KPIs
 
-| KPI ID  | Name                           | Definition                                                          | Baseline | Target  | Source            |
-| ------- | ------------------------------ | ------------------------------------------------------------------- | -------- | ------- | ----------------- |
-| KPI-001 | Decision Reaction Time         | Average time from telemetry anomaly to strategic decision           | 45s      | 27s     | OTEL + Platform   |
-| KPI-002 | Average Finishing Position     | Mean race position across season                                    | 4.2      | 3.0     | Race Results DB   |
-| KPI-003 | DNF Rate                       | Percentage of races ending in mechanical failure                    | 8%       | 3%      | Race Results DB   |
-| KPI-004 | Communication Clarity Score    | Team-reported clarity rating (1-10)                                 | 6.5      | 8.5     | Post-race surveys |
-| KPI-005 | Strategy Prediction Accuracy   | % of simulated scenarios matching actual race outcomes (simulations automatically invalidated and flagged for manual strategist input when conditions deviate significantly) | 62%      | 80%     | Simulation Engine |
-| KPI-006 | Onboarding Time                | Days to full competency for new team members                        | 21       | 10      | HR Systems        |
+| KPI ID  | Name                      | Definition                                  | Baseline | Target  | Source               |
+| ------- | ------------------------- | ------------------------------------------- | -------- | ------- | -------------------- |
+| KPI-001 | Agent Deployment Time     | Time from commit to production deployment   | 4 hours  | 1 hour  | OTEL, CI/CD metrics  |
+| KPI-002 | Agent Uptime              | Percentage of time agents are operational   | 95%      | 99.9%   | OTEL, monitoring     |
+| KPI-003 | Multi-Agent Task Success  | % of multi-agent tasks completed successfully | 60%     | 90%     | Application metrics  |
+| KPI-004 | Infrastructure Cost/Agent | Monthly cost per active agent               | $50      | $30     | Cloud billing        |
+| KPI-005 | Observability Coverage    | % of agent decisions traced and logged      | 40%      | 100%    | OTEL, logging        |
 
 ---
 
@@ -144,20 +139,18 @@ Formula 1 teams currently operate with fragmented systems across telemetry monit
 
 All domain terms **must be defined once and reused consistently**.
 
-* **Telemetry** — Real-time sensor data from the vehicle including speed, tire temperature, fuel level, engine performance, and other metrics
-  * **Data Authority:** FIA systems are authoritative for compliance reporting; vehicle-direct data is authoritative for team operations
-* **Session** — A distinct on-track period (Practice 1-3, Qualifying, Race)
-* **Lap** — A single circuit of the track
-* **Sector** — A segment of the track (typically divided into three sectors)
-* **Pit Stop** — A planned or unplanned visit to the pit lane for tire changes, repairs, or adjustments
-* **DNF (Did Not Finish)** — A race result where the vehicle was unable to complete the race
-* **Setup** — Vehicle configuration including suspension, aerodynamics, tire pressure, and other adjustable parameters
-* **Stint** — A continuous period of running between pit stops
-* **Undercut/Overcut** — Race strategy involving pit timing relative to competitors
-* **Delta** — Time difference relative to a reference (previous lap, competitor, theoretical best)
-* **Aggregate** — In DDD context, a cluster of domain objects treated as a single unit
-* **Bounded Context** — A logical boundary within which a domain model is defined and applicable
-* **Event** — A domain occurrence that represents a state change in the system
+* **Agent** — An autonomous AI entity that performs tasks, makes decisions, and can interact with other agents or systems
+* **Orchestration** — The coordination of multiple agents to accomplish complex workflows
+* **Agent Fleet** — A collection of deployed agents managed as a group
+* **Agent Memory** — Persistent state and knowledge storage for an agent across sessions; platform persists all agent memory and restores it on agent restart
+* **Agent Skill** — A discrete capability or function an agent can perform
+* **Collaboration Protocol** — Rules governing how agents communicate and coordinate; all inter-agent communication is encrypted end-to-end
+* **Agent Simulation** — Pre-deployment testing environment for agent behavior validation using dedicated test/staging environments
+* **Agent Registry** — Central catalog of available agents and their capabilities
+* **Execution Context** — The runtime environment and state in which an agent operates
+* **Agent Lifecycle** — The stages an agent progresses through: creation, deployment, operation, retirement
+* **Idempotency** — Agent operations must be safely retryable; at-least-once execution guarantees require idempotent task handlers
+* **Tenant Isolation** — Strict boundary enforcement preventing agents from different organizations from interacting or sharing knowledge
 
 ---
 
@@ -165,44 +158,30 @@ All domain terms **must be defined once and reused consistently**.
 
 ### Bounded Contexts
 
-| Context                    | Purpose                                                     | Core Aggregate    | Entities                               | Value Objects                      |
-| -------------------------- | ----------------------------------------------------------- | ----------------- | -------------------------------------- | ---------------------------------- |
-| **Telemetry**              | Capture, process, and distribute real-time sensor data      | TelemetryStream   | Sensor, DataPoint, TelemetrySession    | MetricValue, Timestamp, SensorType |
-| **Analytics**              | Store, query, and analyze historical performance data (lap/sector data mutable with full audit trail) | PerformanceData   | Lap, Sector, Session, AnalysisReport   | LapTime, SectorTime, Delta         |
-| **Team Collaboration**     | Enable secure communication and shared context              | Conversation      | Message, Channel, Participant          | MessageContent, Priority           |
-| **Vehicle Management**     | Track vehicle configuration, maintenance, and history       | Vehicle           | Component, MaintenanceEvent, Setup     | Configuration, ComponentStatus     |
-| **Race Simulation**        | Model race scenarios and predict outcomes                   | Simulation        | Scenario, SimulationRun, Prediction    | WeatherCondition, StrategyOption   |
-| **Driver Profile**         | Manage driver information, preferences, and performance     | DriverProfile     | Driver, PerformanceMetric              | DriverPreference, SkillRating      |
-| **User Interface**         | Provide accessible, responsive UI components                | ComponentLibrary  | Button, Dashboard, Widget              | StyleToken, Variant                |
-
-### Context Map
-
-```
-[Telemetry] --publishes--> [Analytics]
-[Telemetry] --publishes--> [Team Collaboration]
-[Analytics] --informs--> [Race Simulation]
-[Vehicle Management] --informs--> [Race Simulation]
-[Race Simulation] --recommends--> [Team Collaboration]
-[Driver Profile] --configures--> [User Interface]
-[Team Collaboration] --displays-in--> [User Interface]
-```
+| Context              | Purpose                                      | Core Aggregate     | Entities                      | Value Objects                |
+| -------------------- | -------------------------------------------- | ------------------ | ----------------------------- | ---------------------------- |
+| **Orchestration**    | Coordinate multi-agent workflows             | Workflow           | Agent, Task, Workflow         | WorkflowState, TaskPriority  |
+| **Monitoring**       | Track agent performance and health           | AgentMetrics       | Metric, Trace, Log            | MetricValue, TraceSpan       |
+| **Collaboration**    | Enable agent-to-agent communication          | Conversation       | Message, Channel, Agent       | MessagePayload, ChannelType  |
+| **Knowledge**        | Manage agent memory and learning             | KnowledgeBase      | Memory, Document, Embedding   | MemoryType, EmbeddingVector  |
+| **Simulation**       | Test and validate agent behavior             | Simulation         | Scenario, Agent, TestCase     | SimulationConfig, TestResult |
+| **Registry**         | Catalog of agents and capabilities           | AgentDefinition    | Agent, Skill, Capability      | SkillDescriptor, Version     |
+| **Platform**         | Core infrastructure and authentication       | Platform           | User, Organization, Resource  | Permission, Role             |
 
 ---
 
 ## 11. Event Taxonomy Summary
 
-| Event Name                     | Producer Context     | Consumers                          | Trigger Aggregate    |
-| ------------------------------ | -------------------- | ---------------------------------- | -------------------- |
-| `TelemetryDataReceived`        | Telemetry            | Analytics, Team Collaboration      | TelemetryStream      |
-| `AnomalyDetected`              | Telemetry            | Team Collaboration                 | TelemetryStream      |
-| `LapCompleted`                 | Analytics            | Team Collaboration, Race Simulation| PerformanceData      |
-| `SessionStarted`               | Analytics            | Telemetry, Team Collaboration      | PerformanceData      |
-| `SessionEnded`                 | Analytics            | Analytics, Race Simulation         | PerformanceData      |
-| `MessageSent`                  | Team Collaboration   | User Interface                     | Conversation         |
-| `StrategyRecommended`          | Race Simulation      | Team Collaboration                 | Simulation           |
-| `MaintenanceScheduled`         | Vehicle Management   | Team Collaboration                 | Vehicle              |
-| `ComponentReplaced`            | Vehicle Management   | Analytics, Telemetry               | Vehicle              |
-| `DriverPreferenceUpdated`      | Driver Profile       | User Interface, Vehicle Management | DriverProfile        |
+| Event Name                  | Producer Context  | Consumers                      | Trigger Aggregate |
+| --------------------------- | ----------------- | ------------------------------ | ----------------- |
+| `AgentDeployed`             | Registry          | Orchestration, Monitoring      | AgentDefinition   |
+| `WorkflowStarted`           | Orchestration     | Monitoring, Collaboration      | Workflow          |
+| `AgentMessageSent`          | Collaboration     | Orchestration, Knowledge       | Message           |
+| `MemoryCreated`             | Knowledge         | Orchestration, Simulation      | Memory            |
+| `SimulationCompleted`       | Simulation        | Registry, Monitoring           | Simulation        |
+| `MetricRecorded`            | Monitoring        | Platform, Orchestration        | AgentMetrics      |
+| `WorkflowCompleted`         | Orchestration     | Monitoring, Knowledge          | Workflow          |
+| `AgentFailed`               | Orchestration     | Monitoring, Platform           | Agent             |
 
 ---
 
@@ -210,18 +189,13 @@ All domain terms **must be defined once and reused consistently**.
 
 All UI must use a **design system delivered via MCP**.
 
-| Parameter               | Value                                              |
-| ----------------------- | -------------------------------------------------- |
-| **MCP Server**          | `@modelcontextprotocol/design-system`              |
-| **Design System**       | `F1 Platform Design System`                        |
-| **Component Library**   | React + TypeScript + Styled Components             |
-| **Accessibility**       | WCAG 2.1 AA compliance (mandatory)                 |
-| **Design Tokens**       | Centralized in `docs/ui/design-tokens.md`          |
-| **Component Specs**     | Located in `docs/ui/specs/`                        |
+| Parameter         | Value                         |
+| ----------------- | ----------------------------- |
+| **MCP Server**    | `design-system-mcp`           |
+| **Design System** | `Agentic Platform Design`     |
+| **Compliance**    | WCAG 2.1 AA                   |
 
-**Policy:** Raw HTML/CSS is prohibited unless explicitly approved in a Feature Blueprint.
-
-**Component Inventory:** Maintained in `docs/ui/component-inventory.md`
+Raw HTML/CSS is prohibited unless explicitly approved in a Feature Blueprint.
 
 ---
 
@@ -230,9 +204,9 @@ All UI must use a **design system delivered via MCP**.
 **Diagram Required**
 
 * Format: **Mermaid**
-* Location: `docs/diagrams/execution-flow.mmd`
+* Location: `docs/diagrams/execution-flow.md`
 
-*Will be generated during roadmap decomposition phase based on feature dependencies and bounded context relationships.*
+Execution flow will be defined after roadmap approval and documented during Epic planning.
 
 ---
 
@@ -255,16 +229,14 @@ Source of truth is **GitHub**.
 │   └── ui/                  # UI specifications and design system docs
 ├── src/
 │   ├── components/          # React components
-│   ├── telemetry/           # Telemetry context
-│   ├── analytics/           # Analytics context
-│   ├── collaboration/       # Team collaboration context
-│   ├── vehicle/             # Vehicle management context
-│   ├── simulation/          # Race simulation context
-│   └── shared/              # Shared utilities
-└── tests/
-    ├── unit/
-    ├── integration/
-    └── e2e/
+│   ├── orchestration/       # Orchestration context
+│   ├── monitoring/          # Monitoring context
+│   ├── collaboration/       # Collaboration context
+│   ├── knowledge/           # Knowledge context
+│   ├── simulation/          # Simulation context
+│   └── platform/            # Platform context
+├── tests/                   # Test suites
+└── infrastructure/          # IaC and deployment configs
 ```
 
 ---
@@ -292,46 +264,45 @@ Feature: <Feature Name>
 **Example:**
 
 ```gherkin
-Feature: Real-time Telemetry Monitoring
+Feature: Multi-Agent Workflow Execution
 
-  Scenario: Display live tire temperature
-    Given the race session is active
-    And the vehicle is on track
-    When telemetry data is received from tire sensors
-    Then the dashboard displays current tire temperatures for all four tires
-    And temperature values update within 100ms of data receipt
+  Scenario: Coordinate three agents to complete a task
+    Given three agents are registered with complementary skills
+    And a workflow is defined requiring all three skills
+    When the workflow is triggered
+    Then the orchestrator assigns tasks to appropriate agents
+    And agents execute tasks in the correct sequence
+    And the workflow completes successfully within 5 seconds
 ```
 
 ---
 
 ## 16. Traceability & Compliance Matrix
 
-| Feature ID | Flag ID | Flag Key | Bounded Context | Status |
-| ---------- | ------- | -------- | --------------- | ------ |
-| TBD        | TBD     | TBD      | TBD             | TBD    |
-
-*Will be populated during feature specification phase.*
+| Feature ID | Flag ID | Flag Key                                          | Bounded Context  | Status |
+| ---------- | ------- | ------------------------------------------------- | ---------------- | ------ |
+| TBD        | TBD     | `feature_fe_[ID]_fl_[ID]_orchestration_enabled`   | Orchestration    | Draft  |
+| TBD        | TBD     | `feature_fe_[ID]_fl_[ID]_monitoring_enabled`      | Monitoring       | Draft  |
+| TBD        | TBD     | `feature_fe_[ID]_fl_[ID]_collaboration_enabled`   | Collaboration    | Draft  |
+| TBD        | TBD     | `feature_fe_[ID]_fl_[ID]_knowledge_enabled`       | Knowledge        | Draft  |
+| TBD        | TBD     | `feature_fe_[ID]_fl_[ID]_simulation_enabled`      | Simulation       | Draft  |
 
 ---
 
 ## 17. Non-Functional Requirements (NFRs)
 
-| Category        | Metric ID | Requirement                                     | Target         | Tool/Measurement          |
-| --------------- | --------- | ----------------------------------------------- | -------------- | ------------------------- |
-| Performance     | NFR-001   | Telemetry data latency (sensor to UI)           | < 100ms (p95)  | OTEL traces               |
-| Performance     | NFR-002   | Analytics query response time (all time ranges) | < 2s (p95)     | Database monitoring       |
-| Performance     | NFR-003   | UI initial load time                            | < 3s           | Lighthouse, RUM           |
-| Scalability     | NFR-004   | Concurrent users supported                      | 100+           | Load testing              |
-| Scalability     | NFR-005   | Telemetry data ingestion rate                   | 10,000 pts/sec | Telemetry service metrics |
-| Reliability     | NFR-006   | System uptime during race sessions              | 99.9%          | Uptime monitoring         |
-| Reliability     | NFR-007   | Data loss tolerance                             | 0%             | Data validation           |
-| Security        | NFR-008   | Authentication mechanism                        | OAuth 2.0 + MFA| Identity provider         |
-| Security        | NFR-009   | Data encryption (in transit)                    | TLS 1.3        | Infrastructure config     |
-| Security        | NFR-010   | Data encryption (at rest)                       | AES-256        | Database config           |
-| Accessibility   | NFR-011   | WCAG compliance level (100% critical paths: telemetry, race ops; 80% admin features) | AA             | Automated + manual audit  |
-| Accessibility   | NFR-012   | Keyboard navigation support                     | 100%           | Manual testing            |
-| Usability       | NFR-013   | Task completion success rate                    | > 95%          | Usability testing         |
-| Compatibility   | NFR-014   | Browser support                                 | Chrome, Firefox, Safari (latest 2 versions) | Cross-browser testing |
+| Metric                | ID      | Target          | Tool                  |
+| --------------------- | ------- | --------------- | --------------------- |
+| API Response Time     | NFR-001 | < 100ms (p95)   | OTEL, Prometheus      |
+| Agent Deployment Time | NFR-002 | < 60s           | CI/CD metrics         |
+| System Uptime         | NFR-003 | 99.9%           | Kubernetes, OTEL      |
+| Concurrent Agents     | NFR-004 | 10,000          | Load testing          |
+| Data Encryption       | NFR-005 | AES-256         | Security scanning     |
+| Accessibility         | NFR-006 | WCAG 2.1 AA     | axe-core, manual      |
+| Browser Support       | NFR-007 | Last 2 versions | BrowserStack          |
+| Agent Retry Attempts  | NFR-008 | Max 3 retries   | Orchestrator config   |
+| Memory Retention      | NFR-009 | 90 days default | Database policy       |
+| Tenant Isolation      | NFR-010 | 100%            | Integration tests     |
 
 ---
 
@@ -339,21 +310,15 @@ Feature: Real-time Telemetry Monitoring
 
 Mandatory tooling (parameterized):
 
-* **Analytics:** `Google Analytics 4 (GA4)`
-* **Telemetry/Tracing:** `OpenTelemetry (OTEL)`
-* **Logging:** `Structured JSON logs with correlation IDs`
-* **Metrics:** `Prometheus + Grafana`
-* **Error Tracking:** `Sentry`
+* **Analytics:** `GA4` for user behavior tracking
+* **Telemetry:** `OpenTelemetry` for distributed tracing and metrics
+* **Logging:** Structured JSON logs with correlation IDs
+* **Alerting:** Prometheus + Alertmanager
 
-**Requirements:**
-
-- All user interactions must emit analytics events
-- All API calls must generate traces
-- All errors must be logged with context
-- All performance-critical paths must emit metrics
-- Correlation IDs must flow through all system layers
-
-**Event Schema:** Defined per bounded context in feature specifications.
+All agent actions must emit:
+- Structured logs (JSON)
+- Metrics (counters, gauges, histograms)
+- Distributed traces (spans with context propagation)
 
 ---
 
@@ -365,140 +330,99 @@ Mandatory tooling (parameterized):
 feature_fe_[feature_issue]_fl_[flag_issue]_[context]_enabled
 ```
 
-**Example:**
-
-```
-feature_fe_123_fl_456_telemetry_dashboard_enabled
-```
+Example: `feature_fe_123_fl_456_orchestration_enabled`
 
 ### Lifecycle
 
-1. **Creation:** Flag defined during feature specification
-2. **Development:** Flag defaults to `false` in production
-3. **Testing:** Flag enabled for internal testing environments
-4. **Rollout:** Progressive enablement (0% → 10% → 50% → 100%)
-5. **Validation:** Monitor metrics for 7 days at 100%
-6. **Removal:** Remove flag code after validation period
-
-**Provider:** Selection deferred to engineering team with budget constraints (LaunchDarkly or equivalent feature flag service)
-
-**Policy:**
-- All features MUST be behind feature flags
-- Flags MUST be removed after 100% rollout and validation
-- No orphaned flags permitted
+* Flags required for all features
+* Flags must be toggled via configuration (no code deployment)
+* Progressive rollout: 1% → 10% → 50% → 100%
+* Flags removed after 30 days at 100% rollout and validation
+* Emergency kill-switch capability required
 
 ---
 
 ## 20. Security & Compliance
 
 ### Authentication & Authorization
-
-- **Authentication:** 
-  * **User Authentication:** OAuth 2.0 with Multi-Factor Authentication (MFA)
-  * **Machine-to-Machine:** Service accounts with OAuth 2.0 client credentials flow for external system integrations
-- **Authorization:** Role-Based Access Control (RBAC)
-  - Roles: Driver, Engineer, Strategist, Team Principal, Analyst, Technician, Admin
-  - Permissions defined per bounded context
+- OAuth 2.0 / OIDC for user authentication
+- RBAC for agent and resource access control
+- API keys with rotation for inter-agent communication
+- **Deployment Approval:** Security review required for agents accessing sensitive data/systems before production deployment
 
 ### Data Protection
+- Encryption in transit (TLS 1.3)
+- Encryption at rest (AES-256)
+- **Inter-Agent Communication:** End-to-end encryption mandatory; agents cannot access each other's credentials
+- PII handling and GDPR compliance for agent data
+- **Agent Memory:** Platform persists all agent memory; 90-day default retention with configurable policies
 
-- **PII Handling:** No personally identifiable information stored without explicit consent
-- **Data Retention:** Telemetry and analytics data retained for 5 years; collaboration messages retained for current season only
-- **Data Residency:** All data stored in compliant regions per team requirements
-- **Encryption:** TLS 1.3 in transit, AES-256 at rest
-- **Multi-Tenant Isolation:** Shared infrastructure with database-level tenant isolation per team
+### Multi-Tenancy & Isolation
+- **Strict Tenant Isolation:** Agents from different organizations cannot see or communicate across tenant boundaries
+- Network-level isolation enforced
+- Data segregation at database and storage layers
+- No cross-tenant agent marketplace or knowledge sharing
 
 ### Compliance Requirements
-
-- **GDPR:** If operating in EU (team-dependent)
-  * **Driver Data Ownership:** Drivers own personal profile data; teams retain vehicle and session performance data
-- **SOC 2:** Required for platform certification
-- **Industry Standards:** FIA technical regulations compliance where applicable
+- SOC 2 Type II compliance
+- GDPR compliance for EU users (data ownership resides with organization/tenant)
+- Audit logging of all agent actions
 
 ### Input Validation
-
-- All user inputs sanitized
-- API inputs validated against schemas
-- File uploads scanned for malware
-- SQL injection prevention through parameterized queries
+- All agent inputs validated and sanitized
+- Rate limiting on agent API calls
+- Protection against injection attacks
 
 ### Audit Logging
-
-- All authentication events logged
-- All data access logged with user context
-- All administrative actions logged
-- Logs retained for 1 year minimum
+- All agent deployments logged (including security approval status)
+- All workflow executions logged
+- All access control changes logged
+- All cross-tenant access attempts logged and blocked
 
 ---
 
 ## 21. Risks / Assumptions / Constraints
 
-| Type       | Description                                                                 | Mitigation                                                    |
-| ---------- | --------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| Risk       | Real-time telemetry data loss during network instability                    | Implement local buffering (indefinite with disk space limits) and retry mechanisms |
-| Risk       | System downtime during critical race sessions                                | Deploy redundant infrastructure with automatic failover       |
-| Risk       | Data overload from high-frequency sensor readings                           | Implement data sampling and aggregation strategies            |
-| Risk       | User adoption resistance due to workflow changes                            | Conduct extensive training and provide gradual rollout        |
-| Risk       | Integration complexity with existing team systems                           | Define clear API contracts and provide adapter layers         |
-| Assumption | Teams have reliable network connectivity in pit/garage areas                | Validate with pilot deployments                               |
-| Assumption | Users have modern browsers supporting ES2020+ JavaScript                    | Define minimum browser requirements and communicate clearly   |
-| Assumption | Vehicle sensor data conforms to standardized telemetry formats              | Work with hardware teams to establish data contracts          |
-| Constraint | Must operate within FIA technical regulations                               | Regular compliance reviews with legal/technical teams         |
-| Constraint | Limited engineering resources for parallel feature development              | Prioritize features via roadmap, execute sequentially         |
-| Constraint | Cloud infrastructure budget constraints                                     | Optimize resource usage, implement auto-scaling               |
-| Constraint | Must support offline access for historical data analysis                    | Implement progressive web app with offline capabilities       |
+| Type       | Description                                              | Mitigation                                     |
+| ---------- | -------------------------------------------------------- | ---------------------------------------------- |
+| Risk       | Agent behavior unpredictability in production            | Comprehensive simulation and canary deployments |
+| Risk       | Scalability limits with 1000+ concurrent agents          | Load testing, horizontal scaling design        |
+| Risk       | Agent collaboration complexity                           | Clear protocols, extensive integration testing |
+| Risk       | Simulation using staging environments may affect test data | Implement safeguards and monitoring for test environments |
+| Assumption | Agents will use standard REST/gRPC protocols             | Document protocol requirements early           |
+| Assumption | Users have basic understanding of AI agent concepts      | Provide comprehensive documentation            |
+| Assumption | Agents can be designed to be idempotent                  | Provide clear guidance on idempotent design patterns |
+| Constraint | Must support TypeScript/React frontend                   | Design APIs with TypeScript-first approach     |
+| Constraint | Must use PostgreSQL as primary database                  | Design data models for relational storage      |
+| Constraint | WCAG 2.1 AA compliance required                          | Accessibility built into design system         |
+| Constraint | At-least-once execution guarantees (not exactly-once)    | Agents must implement idempotent task handlers |
+| Constraint | Agent failure retry limit: max 3 attempts                | Orchestrator enforces retry policy             |
+| Constraint | Knowledge data owned by organization/tenant              | Agent deletion does not delete knowledge; separate cleanup process required |
 
 ---
 
 ## 22. Out of Scope
 
-The following capabilities are **explicitly excluded** from this PRD:
-
-* **Vehicle Hardware Design** — Platform consumes telemetry but does not specify sensor hardware
-* **FIA Regulation Compliance Tooling** — Platform assumes teams manage regulatory compliance separately
-* **Third-Party Data Integration** — Initial version does not integrate external weather, track condition, or competitor data sources
-* **Mobile Native Applications** — Initial release is web-only; mobile apps are future consideration
-* **Multi-Team Platform** — Platform is single-tenant per team; multi-team support is out of scope
-* **Financial Management** — Budget tracking, payroll, and financial operations are not included
-* **Marketing & Fan Engagement** — Public-facing content and fan interactions are separate systems
-* **Automated Vehicle Control** — Platform provides information; does not control vehicle systems
-* **Machine Learning Model Training Infrastructure** — ML capabilities consume pre-trained models; training infrastructure is external
+* **Agent Training/Fine-tuning** — Platform orchestrates pre-trained agents; training is external
+* **LLM Hosting** — Platform integrates with external LLM providers (OpenAI, Anthropic, etc.)
+* **Data Pipelines** — ETL and data processing happen outside the platform
+* **Business Intelligence** — Advanced BI/reporting tools are separate; platform provides raw metrics
+* **Agent Development IDE** — Code editors and development tools are external; platform provides runtime
+* **Custom Hardware Support** — Focus on cloud infrastructure (Kubernetes/AWS); specialized hardware out of scope
 
 ---
 
 ## 23. Rollout & Progressive Delivery
 
-### Phase 1: Internal Alpha (Weeks 1-4)
+1. **Internal Alpha** — Engineering team, 5 test agents (Week 1-2)
+2. **Limited Beta** — Selected partner teams, 50 agents (Week 3-6)
+3. **General Availability** — All teams, 1000+ agents (Week 7+)
 
-- **Audience:** Engineering team (5-10 users)
-- **Scope:** Core telemetry dashboard and basic analytics
-- **Goal:** Validate technical foundation and identify critical bugs
-- **Feature Flags:** All features at 0% for production, 100% for internal environment
-
-### Phase 2: Limited Beta (Weeks 5-8)
-
-- **Audience:** Single race team (20-30 users across roles)
-- **Scope:** Full telemetry, analytics, basic collaboration features
-- **Goal:** Validate workflows and gather user feedback
-- **Feature Flags:** Progressive rollout: 0% → 25% → 50% → 100%
-- **Success Criteria:** 
-  - Zero critical incidents during beta period
-  - User satisfaction score > 7/10
-  - All P1 bugs resolved
-
-### Phase 3: General Availability (Week 9+)
-
-- **Audience:** All contracted F1 teams
-- **Scope:** Full platform capabilities
-- **Goal:** Production readiness and ongoing iteration
-- **Feature Flags:** 100% rollout after validation period
-- **Support:** 24/7 support during race weekends
-
-### Rollback Plan
-
-- All features behind feature flags for immediate disable
-- Database migrations reversible
-- Blue/green deployment for zero-downtime rollbacks
+Each phase requires:
+- Successful execution of previous phase
+- Metrics meeting targets
+- Security review completion
+- Stakeholder approval
 
 ---
 
@@ -518,9 +442,9 @@ The following capabilities are **explicitly excluded** from this PRD:
 
 ### Revision History
 
-| Version | Date       | Author       | Changes                |
-| ------- | ---------- | ------------ | ---------------------- |
-| 1.0.0   | 2025-12-30 | Product Team | Initial PRD creation   |
+| Version | Date       | Author       | Changes              |
+| ------- | ---------- | ------------ | -------------------- |
+| 1.0.0   | 2025-12-30 | Product Team | Initial PRD creation |
 
 ---
 
