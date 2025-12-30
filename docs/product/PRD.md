@@ -64,9 +64,43 @@ Execution may be human-driven, agent-driven, or hybrid.
 
 | Feature ID | Title | GitHub Issue | Blueprint Path | Status |
 | ---------- | ----- | ------------ | -------------- | ------ |
-| TBD        | TBD   | TBD          | TBD            | TBD    |
+| **Foundation Layer** |
+| FE-001 | User Authentication & Authorization | TBD | `docs/features/user-interface/feature-user-authentication-authorization.md` | Draft |
+| FE-002 | Design System Component Library | TBD | `docs/features/user-interface/feature-design-system-component-library.md` | Draft |
+| FE-003 | Vehicle Configuration Management | TBD | `docs/features/vehicle-management/feature-vehicle-configuration-management.md` | Draft |
+| FE-004 | Driver Profile Management | TBD | `docs/features/driver-profile/feature-driver-profile-management.md` | Draft |
+| FE-005 | Multi-Tenant Data Isolation | TBD | `docs/features/cross-cutting/feature-multi-tenant-data-isolation.md` | Draft |
+| **Telemetry Layer** |
+| FE-006 | Real-Time Telemetry Data Ingestion | TBD | `docs/features/telemetry/feature-real-time-telemetry-data-ingestion.md` | Draft |
+| FE-007 | Telemetry Data Authority Resolution | TBD | `docs/features/telemetry/feature-telemetry-data-authority-resolution.md` | Draft |
+| FE-008 | Telemetry Dashboard Visualization | TBD | `docs/features/user-interface/feature-telemetry-dashboard-visualization.md` | Draft |
+| FE-009 | Telemetry Anomaly Detection | TBD | `docs/features/telemetry/feature-telemetry-anomaly-detection.md` | Draft |
+| FE-010 | Network Resilience & Local Buffering | TBD | `docs/features/telemetry/feature-network-resilience-local-buffering.md` | Draft |
+| **Analytics Layer** |
+| FE-011 | Session Data Recording | TBD | `docs/features/analytics/feature-session-data-recording.md` | Draft |
+| FE-012 | Historical Performance Query | TBD | `docs/features/analytics/feature-historical-performance-query.md` | Draft |
+| FE-013 | Lap Time Analysis | TBD | `docs/features/analytics/feature-lap-time-analysis.md` | Draft |
+| FE-014 | Performance Analytics Dashboard | TBD | `docs/features/user-interface/feature-performance-analytics-dashboard.md` | Draft |
+| **Collaboration Layer** |
+| FE-015 | Team Messaging & Communication | TBD | `docs/features/team-collaboration/feature-team-messaging-communication.md` | Draft |
+| FE-016 | Race Radio Integration | TBD | `docs/features/team-collaboration/feature-race-radio-integration.md` | Draft |
+| FE-017 | Real-Time Data Sharing | TBD | `docs/features/team-collaboration/feature-real-time-data-sharing.md` | Draft |
+| **Simulation Layer** |
+| FE-018 | Race Scenario Modeling | TBD | `docs/features/race-simulation/feature-race-scenario-modeling.md` | Draft |
+| FE-019 | Race Simulation Engine | TBD | `docs/features/race-simulation/feature-race-simulation-engine.md` | Draft |
+| FE-020 | Simulation Divergence Handling | TBD | `docs/features/race-simulation/feature-simulation-divergence-handling.md` | Draft |
+| FE-021 | Strategy Recommendation Dashboard | TBD | `docs/features/user-interface/feature-strategy-recommendation-dashboard.md` | Draft |
+| **Vehicle Management Layer** |
+| FE-022 | Component Tracking | TBD | `docs/features/vehicle-management/feature-component-tracking.md` | Draft |
+| FE-023 | Maintenance Event Recording | TBD | `docs/features/vehicle-management/feature-maintenance-event-recording.md` | Draft |
+| FE-024 | Predictive Maintenance Alerts | TBD | `docs/features/vehicle-management/feature-predictive-maintenance-alerts.md` | Draft |
+| **Cross-Cutting Features** |
+| FE-025 | External System API Access | TBD | `docs/features/cross-cutting/feature-external-system-api-access.md` | Draft |
+| FE-026 | Observability & Monitoring | TBD | `docs/features/cross-cutting/feature-observability-monitoring.md` | Draft |
+| FE-027 | Feature Flag Management | TBD | `docs/features/cross-cutting/feature-flag-management.md` | Draft |
 
-*Will be populated during roadmap decomposition phase.*
+**Total Features**: 27  
+**Last Updated**: 2025-12-30
 
 ---
 
