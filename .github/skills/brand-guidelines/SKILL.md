@@ -1,73 +1,76 @@
 ---
 name: brand-guidelines
-description: Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.
+description: Applies Staytuned brand colors and typography to artifacts that should match Staytuned’s look-and-feel (docs, UI mockups, slides, marketing assets, and internal tooling).
 license: Complete terms in LICENSE.txt
 ---
 
-# Anthropic Brand Styling
+# Staytuned Brand Guidelines (Black & White)
 
 ## Overview
 
-To access Anthropic's official brand identity and style resources, use this skill.
+Use these guidelines to keep Staytuned artifacts visually consistent, minimal, and high-contrast.
 
-**Keywords**: branding, corporate identity, visual identity, post-processing, styling, brand colors, typography, Anthropic brand, visual formatting, visual design
+Keywords: branding, corporate identity, visual identity, styling, brand colors, typography, visual formatting, visual design
 
 ## Brand Guidelines
 
-### Colors
+### Color Palette (Monochrome)
 
-**Main Colors:**
+Main colors:
 
-- Dark: `#141413` - Primary text and dark backgrounds
-- Light: `#faf9f5` - Light backgrounds and text on dark
-- Mid Gray: `#b0aea5` - Secondary elements
-- Light Gray: `#e8e6dc` - Subtle backgrounds
+- Black: `#000000` — primary text, primary surfaces in dark mode
+- White: `#FFFFFF` — primary backgrounds, text on dark surfaces
 
-**Accent Colors:**
+Supporting grays:
 
-- Orange: `#d97757` - Primary accent
-- Blue: `#6a9bcc` - Secondary accent
-- Green: `#788c5d` - Tertiary accent
+- Gray 900: `#111111` — elevated dark surfaces, dividers on dark
+- Gray 700: `#333333` — secondary text on light backgrounds
+- Gray 400: `#999999` — tertiary text, disabled states
+- Gray 100: `#F5F5F5` — subtle backgrounds, panels, table stripes
+- Gray 050: `#FAFAFA` — page background alternative (light mode)
+
+Usage rules:
+
+- Default to white backgrounds with black text.
+- Use grays only for hierarchy (secondary/tertiary text, borders, subtle fills).
+- Avoid color accents unless explicitly required by the artifact (e.g., status states in a product UI).
 
 ### Typography
 
-- **Headings**: Poppins (with Arial fallback)
-- **Body Text**: Lora (with Georgia fallback)
-- **Note**: Fonts should be pre-installed in your environment for best results
+- Headings: Poppins (fallback: Arial)
+- Body text: Lora (fallback: Georgia)
+- Note: Fonts should be pre-installed in your environment for best results.
 
 ## Features
 
 ### Smart Font Application
 
-- Applies Poppins font to headings (24pt and larger)
-- Applies Lora font to body text
-- Automatically falls back to Arial/Georgia if custom fonts unavailable
-- Preserves readability across all systems
+- Use Poppins for headings (24pt and larger).
+- Use Lora for body text.
+- Fall back to Arial/Georgia if the preferred fonts are unavailable.
+- Preserve legibility across platforms.
 
 ### Text Styling
 
-- Headings (24pt+): Poppins font
-- Body text: Lora font
-- Smart color selection based on background
-- Preserves text hierarchy and formatting
+- Use size and weight (not color) as the primary hierarchy mechanism.
+- Keep contrast high: black text on white, or white text on black.
+- Use gray text sparingly and only for secondary/tertiary content.
 
-### Shape and Accent Colors
+### Shapes, Borders, and Dividers
 
-- Non-text shapes use accent colors
-- Cycles through orange, blue, and green accents
-- Maintains visual interest while staying on-brand
+- Use monochrome fills (black/white/grays).
+- Prefer 1px dividers in Gray 900 (dark) or Gray 100/700 (light, depending on background).
+- Avoid drop shadows where possible; prefer solid separation and spacing.
 
 ## Technical Details
 
 ### Font Management
 
-- Uses system-installed Poppins and Lora fonts when available
-- Provides automatic fallback to Arial (headings) and Georgia (body)
-- No font installation required - works with existing system fonts
-- For best results, pre-install Poppins and Lora fonts in your environment
+- Uses system-installed fonts when available.
+- Provides fallback to Arial (headings) and Georgia (body).
+- No font installation required, but pre-installing the preferred fonts improves consistency.
 
 ### Color Application
 
-- Uses RGB color values for precise brand matching
-- Applied via python-pptx's RGBColor class
-- Maintains color fidelity across different systems
+- Use RGB/hex values exactly as specified to avoid drift.
+- If tooling supports tokens, map the palette to semantic tokens (e.g., background, text, border, muted).
