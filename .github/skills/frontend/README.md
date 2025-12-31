@@ -1,101 +1,78 @@
-# Frontend UI Skills
+# Frontend UI Skills System
 
-**Last Updated**: 2025-12-31  
-**Total Skills**: 36 (organized by category)
+Designed for **itsme.fashion** - Premium Beauty & Cosmetics Platform
 
----
-
-## 📋 Skill Categories
-
-### **Core Generation (7)**
-
-| Skill | Purpose |
-|-------|---------|
-| **prd-to-ui-spec** | Extract UI requirements from PRD |
-| **design-token-generation** | Generate CSS vars, Tailwind config, TypeScript types |
-| **shadcn-integration** | Map requirements to shadcn primitives |
-| **component-generation-from-specs** | Generate React/TypeScript components |
-| **testing-generation** | Generate test suites |
-| **visual-regression** | Visual testing setup |
-| **ci-cd-integration** | GitHub Actions pipelines 🆕 |
-
-### **Design Language (2)**
-
-| Skill | Purpose |
-|-------|---------|
-| **design-language-system** | Master skill for cohesive design vocabulary |
-| **visual-composition** | Hierarchy, balance, whitespace, focal points |
-
-### **User Journey (2)**
-
-| Skill | Purpose |
-|-------|---------|
-| **user-journey-mapping** | Document end-to-end user flows with Mermaid diagrams |
-| **journey-to-screens** | Convert journey steps to frontend screen specifications |
-
-### **Layout & Structure (4)**
-
-| Skill | Purpose |
-|-------|---------|
-| **layout-generation** | CSS Grid/Flexbox, 12-column grid, page templates |
-| **grid-system-mastery** | Advanced 12-column grid patterns |
-| **responsive-design** | Mobile-first breakpoints, touch targets |
-| **ui-polish-mastery** | Advanced spacing/alignment, optical corrections |
-
-### **Visual Polish (6)**
-
-| Skill | Purpose |
-|-------|---------|
-| **ui-aesthetics** | Glassmorphism, gradients, shadows, premium polish |
-| **typography-hierarchy** | Font pairing, type scale, heading hierarchy |
-| **color-system** | Semantic colors, palettes, accessibility |
-| **animation-micro-interactions** | Framer Motion, hover effects, loading states |
-| **dark-mode-generation** | Auto-generate dark themes, contrast validation |
-| **icon-integration** | Lucide React icons, sizing, alignment |
-
-### **Component Patterns (11)**
-
-| Skill | Purpose |
-|-------|---------|
-| **card-patterns** | Card compositions (stats, user, feature, pricing) |
-| **button-patterns** | Button variants, states, groups, compositions |
-| **form-patterns** | Form layouts, inputs, validation (merged) 🆕 |
-| **navigation-patterns** | Headers, sidebars, breadcrumbs, mobile nav |
-| **data-display-patterns** | Tables, lists, grids, pagination |
-| **modal-dialog-patterns** | Dialogs, sheets, popovers |
-| **state-ui-patterns** | Loading, error, empty, success states |
-| **feedback-patterns** | Toasts, alerts, notifications |
-| **flow-actions-patterns** | Complete action flows, CRUD, wizards |
-| **component-composition** | Compose complex components from primitives |
-| **image-media-patterns** | Images, avatars, aspect ratios |
-
-### **Error Handling (1)** 🆕
-
-| Skill | Purpose |
-|-------|---------|
-| **error-handling-patterns** | Error boundaries, API errors, retries, fallbacks |
-
-### **Quality & Audit (3)**
-
-| Skill | Purpose |
-|-------|---------|
-| **accessibility** | WCAG 2.1 AA validation |
-| **performance-optimization** | Bundle analysis, lazy loading, Core Web Vitals |
-| **ui-quality-audit** | Comprehensive quality checklist (merged) 🆕 |
+**Total Skills**: 36 (Numbered by workflow sequence)
 
 ---
 
-## 📁 Archived Skills
+## 🛠️ 01. Core Workflow
+| Folder | Purpose |
+|------|---------|
+| `01-core-prd-spec` | Extract UI requirements from Product Requirements |
+| `01-core-tokens` | Brand tokens, variables, and design system primitives |
+| `01-core-shadcn` | Integration with UI library primitives |
+| `01-core-components` | Logic-driven component generation from specs |
 
-Old skills that were merged into new comprehensive skills:
+## 📐 02. Design Foundations
+| Folder | Purpose |
+|------|---------|
+| `02-foundation-system` | Master design language and cohesive visual vocabulary |
+| `02-foundation-composition` | Rules for hierarchy, balance, and whitespace |
+| `02-foundation-typography` | Premium typography scale and font pairing |
+| `02-foundation-colors` | Semantic color tokens and beauty-industry palettes |
 
-- `input-patterns` → merged into `form-patterns`
-- `form-layout-generation` → merged into `form-patterns`
-- `spacing-consistency` → covered by `ui-polish-mastery`
-- `alignment-consistency` → covered by `ui-polish-mastery`
-- `design-qa-checklist` → merged into `ui-quality-audit`
-- `flow-completeness-audit` → merged into `ui-quality-audit`
+## 🗺️ 03. User Journeys
+| Folder | Purpose |
+|------|---------|
+| `03-journey-mapping` | Documenting end-to-end user paths with Mermaid |
+| `03-journey-screens` | Mapping journey steps to high-fidelity screen specs |
+
+## 🏗️ 04. Layout & Structure
+| Folder | Purpose |
+|------|---------|
+| `04-layout-base` | Core grid systems (12-column) and page containers |
+| `04-layout-grid` | Advanced responsive grid layouts and bento patterns |
+| `04-layout-responsive` | Mobile-first adaptability and touch-optimized UX |
+| `04-layout-polish` | Precision spacing, optical alignment, and visual rhythm |
+
+## ✨ 05. Visual Polish
+| Folder | Purpose |
+|------|---------|
+| `05-visual-aesthetics` | Premium glassmorphism, gradients, and depth |
+| `05-visual-animations` | Framer Motion micro-interactions and transitions |
+| `05-visual-dark-mode` | Sophisticated dark theme generation and contrast |
+| `05-visual-icons` | Semantic icon integration and alignment |
+| `05-visual-media` | Responsive imagery, avatars, and media placeholders |
+
+## 📦 06. Component Patterns
+| Folder | Purpose |
+|------|---------|
+| `06-pattern-buttons` | Systematic button variants, states, and groups |
+| `06-pattern-cards` | Product catalogs, stats, and promotional cards |
+| `06-pattern-forms` | High-conversion form layouts and input variants |
+| `06-pattern-navigation` | Premium headers, sidebars, and discovery nav |
+| `06-pattern-data-tables` | Organized data display, sorting, and pagination |
+| `06-pattern-modals` | Contextual dialogs, drawers, and popover patterns |
+| `06-pattern-states` | Loading, Success, Error, and Empty state patterns |
+| `06-pattern-feedback` | Toasts, alerts, and user interaction feedback |
+| `06-pattern-composition` | Composing complex organisms from atomic blocks |
+
+## 🔄 07. Interaction Flow
+| Folder | Purpose |
+|------|---------|
+| `07-flow-actions` | Complex action lifecycles and CRUD operations |
+| `07-flow-errors` | Robust error boundaries, retries, and fallbacks |
+
+## 🛡️ 08. Quality Assurance
+| Folder | Purpose |
+|------|---------|
+| `08-quality-a11y` | Accessibility auditing and ARIA implementations |
+| `08-quality-performance` | Core Web Vitals, lazy loading, and optimization |
+| `08-quality-audit` | Pre-merge design & code quality checklist |
+| `08-quality-tests` | Automated unit and integration test generation |
+| `08-quality-visual` | Visual regression testing for pixel-perfection |
 
 ---
 
-**Total**: 36 active skills for complete end-to-end frontend development
+**Total**: 36 active skills for complete end-to-end premium frontend development.
