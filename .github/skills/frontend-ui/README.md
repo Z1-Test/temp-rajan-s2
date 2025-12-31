@@ -1,7 +1,7 @@
 # Frontend UI Skills
 
 **Last Updated**: 2025-12-31  
-**Total Skills**: 34 (organized by category)
+**Total Skills**: 36 (organized by category)
 
 ---
 
@@ -26,6 +26,13 @@
 | **design-language-system** | Master skill for cohesive design vocabulary |
 | **visual-composition** | Hierarchy, balance, whitespace, focal points |
 | **design-qa-checklist** | Pre-merge quality assurance checklist |
+
+### **User Journey (2)** 🆕
+
+| Skill | Purpose |
+|-------|---------|
+| **user-journey-mapping** | Document end-to-end user flows with Mermaid diagrams |
+| **journey-to-screens** | Convert journey steps to frontend screen specifications |
 
 ### **Layout & Structure (6)**
 

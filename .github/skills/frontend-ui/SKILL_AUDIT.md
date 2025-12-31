@@ -1,7 +1,7 @@
 # Frontend Skills Audit & Recommendations
 
 **Date**: 2025-12-31  
-**Status**: ✅ COMPLETE - All skills now implemented including Design Language System
+**Status**: ✅ COMPLETE - All skills including Design Language and User Journey
 
 ---
 
@@ -86,22 +86,25 @@
 | Category | Count | Status |
 |----------|-------|--------|
 | Core Generation | 7 | ✅ Complete |
-| Design Language | 3 | ✅ NEW - Complete |
+| Design Language | 3 | ✅ Complete |
+| User Journey | 2 | ✅ NEW - Complete |
 | Layout & Structure | 6 | ✅ Complete |
 | Visual Polish | 6 | ✅ Complete |
 | Component Patterns | 10 | ✅ Complete |
 | Quality | 2 | ✅ Complete |
-| **TOTAL** | **34** | ✅ All Active |
+| **TOTAL** | **36** | ✅ All Active |
 
 ---
 
-## 🆕 New Skills Added (8 Total)
+## 🆕 New Skills Added (10 Total)
 
 | Skill | Category | Purpose |
 |-------|----------|---------|
 | **design-language-system** | Design Language | Master skill tying all patterns together |
 | **visual-composition** | Design Language | Hierarchy, balance, whitespace, focal points |
 | **design-qa-checklist** | Design Language | Pre-merge quality checklist |
+| **user-journey-mapping** | User Journey | End-to-end flows with Mermaid diagrams 🆕 |
+| **journey-to-screens** | User Journey | Convert journeys to screen specs 🆕 |
 | **grid-system-mastery** | Layout | Advanced 12-column grid patterns |
 | **color-system** | Visual Polish | Semantic colors with accessibility |
 | **button-patterns** | Components | Button variants, states, groups |
