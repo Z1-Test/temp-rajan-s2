@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Outlet, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 
 // Layouts
 import { RootLayout } from '@/layouts/RootLayout';
@@ -15,6 +15,7 @@ import { RegisterScreen } from '@/screens/identity/RegisterScreen';
 import { ProfileScreen } from '@/screens/identity/ProfileScreen';
 import { AddressesScreen } from '@/screens/identity/AddressesScreen';
 import { ForgotPasswordScreen } from '@/screens/identity/ForgotPasswordScreen';
+import { AdminLoginScreen } from '@/screens/admin/AdminLoginScreen';
 
 // Catalog Screens
 import { HomeScreen } from '@/screens/catalog/HomeScreen';
@@ -37,6 +38,13 @@ import { OrderManagement } from '@/screens/admin/OrderManagement';
 
 // Common Screens
 import { NotFoundScreen } from '@/screens/common/NotFoundScreen';
+import { AboutScreen } from '@/screens/common/AboutScreen/AboutScreen';
+import { ContactScreen } from '@/screens/common/ContactScreen/ContactScreen';
+import { FAQScreen } from '@/screens/common/FAQScreen/FAQScreen';
+import { ShippingScreen } from '@/screens/common/ShippingScreen/ShippingScreen';
+import { ReturnsScreen } from '@/screens/common/ReturnsScreen/ReturnsScreen';
+import { PrivacyScreen } from '@/screens/common/PrivacyScreen/PrivacyScreen';
+import { TermsScreen } from '@/screens/common/TermsScreen/TermsScreen';
 
 // Define routes
 const router = createBrowserRouter([
@@ -58,6 +66,7 @@ const router = createBrowserRouter([
         children: [
           { path: 'products', element: <ProductListingScreen /> },
           { path: 'products/:category', element: <ProductListingScreen /> },
+          { path: 'category/:slug', element: <ProductListingScreen /> },
           { path: 'product/:slug', element: <ProductDetailScreen /> },
         ],
       },
@@ -72,6 +81,42 @@ const router = createBrowserRouter([
         ],
       },
 
+      // Information routes
+      {
+        path: 'about',
+        element: <AboutScreen />,
+      },
+      {
+        path: 'contact',
+        element: <ContactScreen />,
+      },
+      {
+        path: 'faq',
+        element: <FAQScreen />,
+      },
+      {
+        path: 'shipping',
+        element: <ShippingScreen />,
+      },
+      {
+        path: 'returns',
+        element: <ReturnsScreen />,
+      },
+      {
+        path: 'privacy',
+        element: <PrivacyScreen />,
+      },
+      {
+        path: 'terms',
+        element: <TermsScreen />,
+      },
+
+      // Wishlist route (top level)
+      {
+        path: 'wishlist',
+        element: <WishlistScreen />,
+      },
+
       // Account routes (with account sidebar)
       {
         path: 'account',
@@ -82,7 +127,6 @@ const router = createBrowserRouter([
           { path: 'addresses', element: <AddressesScreen /> },
           { path: 'orders', element: <OrderHistoryScreen /> },
           { path: 'orders/:id', element: <OrderDetailScreen /> },
-          { path: 'wishlist', element: <WishlistScreen /> },
         ],
       },
 
@@ -121,12 +165,17 @@ const router = createBrowserRouter([
   // Admin routes (separate layout with admin sidebar)
   {
     path: '/admin',
-    element: <AdminLayout />,
     children: [
-      { index: true, element: <Navigate to="dashboard" replace /> },
-      { path: 'dashboard', element: <AdminDashboard /> },
-      { path: 'products', element: <ProductManagement /> },
-      { path: 'orders', element: <OrderManagement /> },
+      { path: 'login', element: <AdminLoginScreen /> },
+      {
+        element: <AdminLayout />,
+        children: [
+          { index: true, element: <Navigate to="dashboard" replace /> },
+          { path: 'dashboard', element: <AdminDashboard /> },
+          { path: 'products', element: <ProductManagement /> },
+          { path: 'orders', element: <OrderManagement /> },
+        ],
+      },
     ],
   },
 

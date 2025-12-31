@@ -3,18 +3,15 @@ import { Link } from 'react-router-dom';
 import {
   Plus,
   Search,
-  Filter,
   MoreHorizontal,
   Edit,
   Copy,
   Trash2,
   Eye,
-  ArrowUpDown,
-  Package,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
   Select,
@@ -96,7 +93,7 @@ const mockProducts = [
     stock: 89,
     status: 'active',
     image: 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=60&h=60&fit=crop',
-    ethical: ['cruelty-free', 'clean'] as const,
+    ethical: ['cruelty-free', 'paraben-free'] as const,
   },
   {
     id: 'PRD-006',
@@ -312,7 +309,7 @@ export function ProductManagement() {
                         <p className="font-medium">{product.name}</p>
                         <div className="flex gap-1 mt-1">
                           {product.ethical.slice(0, 2).map((badge) => (
-                            <EthicalBadge key={badge} type={badge} showLabel={false} />
+                            <EthicalBadge key={badge} type={badge} showIcon={false} />
                           ))}
                         </div>
                       </div>

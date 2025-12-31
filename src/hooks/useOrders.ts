@@ -119,12 +119,12 @@ export function useOrder(orderId: string) {
 }
 
 // Mock functions
-async function mockFetchOrders(userId: string): Promise<Order[]> {
+async function mockFetchOrders(_userId: string): Promise<Order[]> {
     await new Promise((resolve) => setTimeout(resolve, 500));
     return [];
 }
 
-async function mockFetchOrder(orderId: string): Promise<Order | null> {
+async function mockFetchOrder(_orderId: string): Promise<Order | null> {
     await new Promise((resolve) => setTimeout(resolve, 500));
     return null;
 }

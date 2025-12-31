@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 
 // Types
 interface User {
@@ -27,8 +26,8 @@ interface RegisterData {
 }
 
 interface AuthContextType extends AuthState {
-    login: (email: string, password: string) => Promise<void>;
-    register: (data: RegisterData) => Promise<void>;
+    login: (email: string, password: string) => Promise<User>;
+    register: (data: RegisterData) => Promise<User>;
     logout: () => void;
     resetPassword: (email: string) => Promise<void>;
     clearError: () => void;
@@ -89,7 +88,7 @@ async function registerAPI(data: RegisterData): Promise<{ user: User; token: str
     };
 }
 
-async function validateToken(token: string): Promise<User> {
+async function validateToken(_token: string): Promise<User> {
     await new Promise((resolve) => setTimeout(resolve, 500));
     const storedUser = localStorage.getItem('auth_user');
     if (storedUser) {
@@ -134,6 +133,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             localStorage.setItem('auth_token', token);
             localStorage.setItem('auth_user', JSON.stringify(user));
             setState({ user, isAuthenticated: true, isLoading: false, error: null });
+            return user;
         } catch (error) {
             setState((prev) => ({
                 ...prev,
@@ -151,6 +151,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             localStorage.setItem('auth_token', token);
             localStorage.setItem('auth_user', JSON.stringify(user));
             setState({ user, isAuthenticated: true, isLoading: false, error: null });
+            return user;
         } catch (error) {
             setState((prev) => ({
                 ...prev,
@@ -167,7 +168,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setState({ user: null, isAuthenticated: false, isLoading: false, error: null });
     };
 
-    const resetPassword = async (email: string) => {
+    const resetPassword = async (_email: string) => {
         setState((prev) => ({ ...prev, isLoading: true, error: null }));
         try {
             // Simulate API call

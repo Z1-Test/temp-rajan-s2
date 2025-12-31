@@ -139,7 +139,7 @@ export function useProduct(productId: string) {
 }
 
 // Mock functions - to be replaced with actual Firebase calls
-async function mockFetchProducts(options: UseProductsOptions & { offset?: number }) {
+async function mockFetchProducts(_options: UseProductsOptions & { offset?: number }) {
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     // Return mock data for now
@@ -149,7 +149,7 @@ async function mockFetchProducts(options: UseProductsOptions & { offset?: number
     };
 }
 
-async function mockFetchProduct(productId: string): Promise<Product | null> {
+async function mockFetchProduct(_productId: string): Promise<Product | null> {
     await new Promise((resolve) => setTimeout(resolve, 500));
     return null;
 }

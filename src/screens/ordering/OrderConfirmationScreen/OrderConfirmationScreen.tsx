@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { CheckCircle, Package, ArrowRight, Copy, Download, Printer } from 'lucide-react';
+import { CheckCircle, Package, ArrowRight, Copy, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -34,7 +34,7 @@ const mockOrder = {
 };
 
 export function OrderConfirmationScreen() {
-  const { id } = useParams();
+  const { id: _id } = useParams();
   const order = mockOrder;
 
   const copyOrderId = () => {

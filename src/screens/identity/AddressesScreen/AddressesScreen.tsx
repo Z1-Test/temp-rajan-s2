@@ -6,7 +6,7 @@ import { Plus, Pencil, Trash2, MapPin, Loader2, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -86,7 +86,7 @@ export function AddressesScreen() {
   const onSubmit = async (data: AddressFormData) => {
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    
+
     if (editingAddress) {
       setAddresses(addresses.map((addr) =>
         addr.id === editingAddress.id ? { ...data, id: addr.id } : addr
@@ -94,7 +94,7 @@ export function AddressesScreen() {
     } else {
       setAddresses([...addresses, { ...data, id: Date.now().toString() }]);
     }
-    
+
     setIsLoading(false);
     setIsDialogOpen(false);
     setEditingAddress(null);

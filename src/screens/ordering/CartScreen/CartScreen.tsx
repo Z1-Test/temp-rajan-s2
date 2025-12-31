@@ -1,73 +1,56 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ShoppingBag, ArrowRight, Truck, Tag, Info } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CartItem } from '@/components/app/CartItem';
-
-// Mock cart data
-const mockCartItems = [
-  { id: '1', name: 'Rose Glow Serum', price: 1299, quantity: 2, image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&h=200&fit=crop', variant: '30ml' },
-  { id: '3', name: 'Argan Hair Oil', price: 749, quantity: 1, image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=200&h=200&fit=crop', variant: '100ml' },
-  { id: '4', name: 'Matte Lipstick Set', price: 1499, quantity: 1, image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=200&h=200&fit=crop', variant: 'Berry Collection' },
-];
-
-interface CartItemData {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-  variant?: string;
-}
+import { useCart } from '@/contexts/CartContext';
+import { toast } from 'sonner';
+import { EmptyState } from '@/components/app/EmptyState/EmptyState';
 
 export function CartScreen() {
-  const [cartItems, setCartItems] = useState<CartItemData[]>(mockCartItems);
+  const navigate = useNavigate();
+  const { items, updateQuantity, removeItem, subtotal } = useCart();
   const [promoCode, setPromoCode] = useState('');
   const [promoApplied, setPromoApplied] = useState(false);
 
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = subtotal >= 999 ? 0 : 99;
   const discount = promoApplied ? Math.round(subtotal * 0.1) : 0;
   const total = subtotal + shipping - discount;
 
   const handleUpdateQuantity = (id: string, quantity: number) => {
-    setCartItems(cartItems.map((item) =>
-      item.id === id ? { ...item, quantity } : item
-    ));
+    updateQuantity(id, quantity);
   };
 
   const handleRemove = (id: string) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
+    removeItem(id);
+    toast.success('Item removed from cart');
   };
 
   const handleApplyPromo = () => {
     if (promoCode.toLowerCase() === 'beauty10') {
       setPromoApplied(true);
+      toast.success('Promo code applied!');
+    } else {
+      toast.error('Invalid promo code');
     }
   };
 
-  if (cartItems.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="container mx-auto px-4 py-16">
-        <div className="flex flex-col items-center justify-center text-center">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-muted">
-            <ShoppingBag className="h-10 w-10 text-muted-foreground" />
-          </div>
-          <h2 className="mt-6 text-2xl font-bold">Your cart is empty</h2>
-          <p className="mt-2 max-w-sm text-muted-foreground">
-            Looks like you haven't added any products to your cart yet.
-          </p>
-          <Button className="mt-6" asChild>
-            <Link to="/products">
-              Continue Shopping
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
+        <EmptyState
+          icon={ShoppingBag}
+          title="Your cart is empty"
+          description="Looks like you haven't added anything yet. Discover our latest beauty essentials."
+          action={{
+            label: "Start Shopping",
+            onClick: () => navigate("/products")
+          }}
+        />
       </div>
     );
   }
@@ -82,11 +65,11 @@ export function CartScreen() {
           <Card>
             <CardHeader className="border-b">
               <CardTitle className="text-lg">
-                {cartItems.length} {cartItems.length === 1 ? 'Item' : 'Items'}
+                {items.length} {items.length === 1 ? 'Item' : 'Items'}
               </CardTitle>
             </CardHeader>
             <CardContent className="divide-y p-0">
-              {cartItems.map((item) => (
+              {items.map((item) => (
                 <div key={item.id} className="px-6">
                   <CartItem
                     {...item}

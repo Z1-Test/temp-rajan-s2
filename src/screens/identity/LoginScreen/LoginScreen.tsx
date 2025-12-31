@@ -10,6 +10,9 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Separator } from '@/components/ui/separator';
+import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -21,7 +24,10 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 export function LoginScreen() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const { login, isLoading } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const {
     register,
@@ -37,11 +43,13 @@ export function LoginScreen() {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    setIsLoading(true);
-    // Simulate API call
-    console.log('Login data:', data);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsLoading(false);
+    try {
+      await login(data.email, data.password);
+      toast.success('Logged in successfully');
+      navigate(from, { replace: true });
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : 'Login failed');
+    }
   };
 
   return (

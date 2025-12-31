@@ -4,6 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { useCart } from '@/contexts/CartContext';
+import { useWishlist } from '@/contexts/WishlistContext';
+import { toast } from 'sonner';
 
 export interface ProductCardProps {
   id: string;
@@ -12,7 +15,7 @@ export interface ProductCardProps {
   originalPrice?: number;
   image: string;
   category: string;
-  badges?: Array<'cruelty-free' | 'vegan' | 'paraben-free' | 'organic'>;
+  badges?: ReadonlyArray<'cruelty-free' | 'vegan' | 'paraben-free' | 'organic'>;
   isOutOfStock?: boolean;
   onAddToCart?: () => void;
   onAddToWishlist?: () => void;
@@ -38,10 +41,51 @@ export function ProductCard({
   isOutOfStock = false,
   onAddToCart,
   onAddToWishlist,
-  isInWishlist = false,
+  isInWishlist: isInWishlistProp,
   className,
 }: ProductCardProps) {
+  const { addItem } = useCart();
+  const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist();
+
   const discount = originalPrice ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
+  const isSelectedInWishlist = isInWishlistProp ?? isInWishlist(id);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onAddToCart) {
+      onAddToCart();
+    } else {
+      addItem({
+        productId: id,
+        name,
+        price,
+        image,
+        quantity: 1,
+      });
+      toast.success('Added to cart');
+    }
+  };
+
+  const handleToggleWishlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onAddToWishlist) {
+      onAddToWishlist();
+    } else {
+      if (isSelectedInWishlist) {
+        removeFromWishlist(id);
+        toast.success('Removed from wishlist');
+      } else {
+        addToWishlist({
+          productId: id,
+          name,
+          price,
+          image,
+          category,
+        });
+        toast.success('Added to wishlist');
+      }
+    }
+  };
 
   return (
     <Card className={cn('group overflow-hidden transition-all duration-300 hover:shadow-lg', className)}>
@@ -73,15 +117,12 @@ export function ProductCard({
           size="icon"
           className={cn(
             'absolute right-2 top-2 h-8 w-8 rounded-full opacity-0 transition-all group-hover:opacity-100',
-            isInWishlist && 'opacity-100 bg-primary text-primary-foreground'
+            isSelectedInWishlist && 'opacity-100 bg-primary text-primary-foreground hover:bg-primary/90'
           )}
-          onClick={(e) => {
-            e.preventDefault();
-            onAddToWishlist?.();
-          }}
+          onClick={handleToggleWishlist}
         >
-          <Heart className={cn('h-4 w-4', isInWishlist && 'fill-current')} />
-          <span className="sr-only">Add to wishlist</span>
+          <Heart className={cn('h-4 w-4', isSelectedInWishlist && 'fill-current')} />
+          <span className="sr-only">Toggle wishlist</span>
         </Button>
 
         {/* Quick Add Button */}
@@ -90,10 +131,7 @@ export function ProductCard({
             <Button
               variant="secondary"
               className="w-full"
-              onClick={(e) => {
-                e.preventDefault();
-                onAddToCart?.();
-              }}
+              onClick={handleAddToCart}
             >
               <ShoppingBag className="mr-2 h-4 w-4" />
               Add to Cart

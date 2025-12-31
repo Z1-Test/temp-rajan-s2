@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Heart, ShoppingBag, Minus, Plus, Truck, RotateCcw, ShieldCheck, ChevronRight, Star } from 'lucide-react';
+import { useParams } from 'react-router-dom';
+import { Heart, ShoppingBag, Minus, Plus, Truck, RotateCcw, ShieldCheck, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -9,6 +9,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ProductCard } from '@/components/app/ProductCard';
 import { EthicalBadge } from '@/components/app/EthicalBadge';
 import { cn } from '@/lib/utils';
+import { useCart } from '@/contexts/CartContext';
+import { useWishlist } from '@/contexts/WishlistContext';
+import { toast } from 'sonner';
 
 // Mock product data
 const mockProduct = {
@@ -44,31 +47,21 @@ const relatedProducts = [
 ];
 
 export function ProductDetailScreen() {
-  const { id } = useParams();
+  const { id: _id } = useParams();
+  const { addItem } = useCart();
+  const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist();
+
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
 
   const product = mockProduct; // In real app, fetch by id
+  const isWishlisted = isInWishlist(product.id);
   const discount = product.originalPrice
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : 0;
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Breadcrumb */}
-      <nav className="mb-8 flex items-center gap-2 text-sm text-muted-foreground">
-        <Link to="/" className="hover:text-foreground">Home</Link>
-        <ChevronRight className="h-4 w-4" />
-        <Link to="/products" className="hover:text-foreground">Products</Link>
-        <ChevronRight className="h-4 w-4" />
-        <Link to={`/category/${product.category.toLowerCase().replace(' ', '-')}`} className="hover:text-foreground">
-          {product.category}
-        </Link>
-        <ChevronRight className="h-4 w-4" />
-        <span className="text-foreground">{product.name}</span>
-      </nav>
-
+    <div className="space-y-8">
       {/* Product Section */}
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
         {/* Images */}
@@ -189,14 +182,43 @@ export function ProductDetailScreen() {
             </div>
 
             <div className="flex gap-4">
-              <Button size="lg" className="flex-1" disabled={!product.inStock}>
+              <Button
+                size="lg"
+                className="flex-1 h-14 text-lg"
+                disabled={!product.inStock}
+                onClick={() => {
+                  addItem({
+                    productId: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.images[0],
+                    quantity,
+                  });
+                  toast.success('Added to cart');
+                }}
+              >
                 <ShoppingBag className="mr-2 h-5 w-5" />
                 Add to Cart
               </Button>
               <Button
                 size="lg"
                 variant={isWishlisted ? 'default' : 'outline'}
-                onClick={() => setIsWishlisted(!isWishlisted)}
+                className="h-14 w-14 p-0"
+                onClick={() => {
+                  if (isWishlisted) {
+                    removeFromWishlist(product.id);
+                    toast.success('Removed from wishlist');
+                  } else {
+                    addToWishlist({
+                      productId: product.id,
+                      name: product.name,
+                      price: product.price,
+                      image: product.images[0],
+                      category: product.category,
+                    });
+                    toast.success('Added to wishlist');
+                  }
+                }}
               >
                 <Heart className={cn('h-5 w-5', isWishlisted && 'fill-current')} />
               </Button>

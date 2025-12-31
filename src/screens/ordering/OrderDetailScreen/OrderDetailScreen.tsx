@@ -2,16 +2,15 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Package, Truck, MapPin, CheckCircle, Clock, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { OrderStatus } from '@/components/app/OrderStatus';
+import { OrderStatus, OrderStatusType } from '@/components/app/OrderStatus';
 import { toast } from 'sonner';
 
 // Mock order data
 const mockOrder = {
   id: 'ORD-2025-001234',
   date: '2025-12-31',
-  status: 'shipped' as const,
+  status: 'shipped' as OrderStatusType,
   total: 4361,
   subtotal: 4846,
   shipping: 0,
@@ -63,7 +62,7 @@ const mockOrder = {
 };
 
 export function OrderDetailScreen() {
-  const { id } = useParams();
+  const { id: _id } = useParams();
   const order = mockOrder;
 
   const copyOrderId = () => {
@@ -119,8 +118,8 @@ export function OrderDetailScreen() {
                     <div className="relative flex flex-col items-center">
                       <div
                         className={`flex h-8 w-8 items-center justify-center rounded-full border-2 ${step.completed
-                            ? 'border-green-500 bg-green-500 text-white'
-                            : 'border-muted bg-background'
+                          ? 'border-green-500 bg-green-500 text-white'
+                          : 'border-muted bg-background'
                           }`}
                       >
                         {step.completed ? (

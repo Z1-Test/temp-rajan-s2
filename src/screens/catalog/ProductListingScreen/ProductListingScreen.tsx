@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SlidersHorizontal, Grid3X3, LayoutGrid, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
@@ -41,7 +39,7 @@ const sortOptions = [
 ];
 
 export function ProductListingScreen() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [gridCols, setGridCols] = useState<3 | 4>(4);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -54,7 +52,7 @@ export function ProductListingScreen() {
   // Filter products
   const filteredProducts = allProducts.filter((product) => {
     if (selectedCategory !== 'All' && product.category !== selectedCategory) return false;
-    if (selectedEthical.length > 0 && !selectedEthical.some((e) => product.badges?.includes(e as any))) return false;
+    if (selectedEthical.length > 0 && !selectedEthical.some((e) => (product.badges as readonly string[])?.includes(e))) return false;
     if (product.price < priceRange[0] || product.price > priceRange[1]) return false;
     return true;
   });

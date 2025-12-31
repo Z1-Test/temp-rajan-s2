@@ -9,6 +9,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const registerSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
@@ -21,8 +24,8 @@ const registerSchema = z.object({
     .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
     .regex(/[0-9]/, 'Password must contain at least one number'),
   confirmPassword: z.string(),
-  acceptTerms: z.literal(true, {
-    errorMap: () => ({ message: 'You must accept the terms and conditions' }),
+  acceptTerms: z.boolean().refine((val) => val === true, {
+    message: 'You must accept the terms and conditions',
   }),
 }).refine((data) => data.password === data.confirmPassword, {
   message: 'Passwords do not match',
@@ -40,7 +43,8 @@ const passwordRequirements = [
 
 export function RegisterScreen() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const { register: registerUser, isLoading } = useAuth();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -62,10 +66,17 @@ export function RegisterScreen() {
   const password = watch('password');
 
   const onSubmit = async (data: RegisterFormData) => {
-    setIsLoading(true);
-    console.log('Register data:', data);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsLoading(false);
+    try {
+      await registerUser({
+        name: `${data.firstName} ${data.lastName}`,
+        email: data.email,
+        password: data.password,
+      });
+      toast.success('Account created successfully');
+      navigate('/');
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : 'Registration failed');
+    }
   };
 
   return (
@@ -157,9 +168,8 @@ export function RegisterScreen() {
                 return (
                   <div
                     key={req.label}
-                    className={`flex items-center gap-2 text-xs ${
-                      isValid ? 'text-green-600' : 'text-muted-foreground'
-                    }`}
+                    className={`flex items-center gap-2 text-xs ${isValid ? 'text-green-600' : 'text-muted-foreground'
+                      }`}
                   >
                     <Check className={`h-3 w-3 ${isValid ? 'opacity-100' : 'opacity-0'}`} />
                     {req.label}

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { LoadingSpinnerProps } from './LoadingSpinner.types';
@@ -17,7 +16,7 @@ export function LoadingSpinner({
     lg: 'h-12 w-12',
     xl: 'h-16 w-16',
   };
-  
+
   return (
     <div
       className={cn('flex flex-col items-center justify-center gap-3', className)}

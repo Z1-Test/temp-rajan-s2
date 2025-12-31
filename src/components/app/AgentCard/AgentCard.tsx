@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowRight, Zap } from 'lucide-react';
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -36,7 +35,7 @@ export function AgentCard({
   className,
 }: AgentCardProps) {
   const isCompact = variant === 'compact';
-  
+
   return (
     <Card
       className={cn(
@@ -64,7 +63,7 @@ export function AgentCard({
           <AgentStatusBadge status={status} size="sm" />
         </div>
       </CardHeader>
-      
+
       <CardContent className="flex-1 space-y-3">
         {description && (
           <p
@@ -77,7 +76,7 @@ export function AgentCard({
             {description}
           </p>
         )}
-        
+
         {!isCompact && (tasksCompleted !== undefined || uptime !== undefined) && (
           <div className="grid grid-cols-2 gap-2 text-sm">
             {tasksCompleted !== undefined && (
@@ -95,7 +94,7 @@ export function AgentCard({
             )}
           </div>
         )}
-        
+
         {capabilities.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {capabilities.slice(0, isCompact ? 3 : 5).map((capability, index) => (
@@ -111,7 +110,7 @@ export function AgentCard({
           </div>
         )}
       </CardContent>
-      
+
       <CardFooter className="flex gap-2">
         {status === 'active' && onViewDetails ? (
           <Button

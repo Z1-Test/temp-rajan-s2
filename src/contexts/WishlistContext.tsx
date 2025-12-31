@@ -144,20 +144,20 @@ export function useWishlist() {
 }
 
 // Helper functions
-async function fetchWishlistFromFirestore(userId: string): Promise<WishlistItem[]> {
+async function fetchWishlistFromFirestore(_userId: string): Promise<WishlistItem[]> {
     // TODO: Implement Firestore fetch
     return [];
 }
 
-async function syncWishlistToFirestore(userId: string, items: WishlistItem[]): Promise<void> {
+async function syncWishlistToFirestore(_userId: string, _items: WishlistItem[]): Promise<void> {
     // TODO: Implement Firestore sync
 }
 
-async function mergeWishlistItems(userId: string, guestItems: WishlistItem[]): Promise<void> {
+async function mergeWishlistItems(_userId: string, _guestItems: WishlistItem[]): Promise<void> {
     // TODO: Implement merge logic
 }
 
-async function clearWishlistInFirestore(userId: string): Promise<void> {
+async function clearWishlistInFirestore(_userId: string): Promise<void> {
     // TODO: Implement Firestore clear
 }
 

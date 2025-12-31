@@ -172,20 +172,20 @@ export function useCart() {
 }
 
 // Helper functions (to be implemented with actual Firebase calls)
-async function fetchCartFromFirestore(userId: string): Promise<CartItem[]> {
+async function fetchCartFromFirestore(_userId: string): Promise<CartItem[]> {
     // TODO: Implement Firestore fetch
     return [];
 }
 
-async function syncCartToFirestore(userId: string, items: CartItem[]): Promise<void> {
+async function syncCartToFirestore(_userId: string, _items: CartItem[]): Promise<void> {
     // TODO: Implement Firestore sync
 }
 
-async function mergeCartItems(userId: string, guestItems: CartItem[]): Promise<void> {
+async function mergeCartItems(_userId: string, _guestItems: CartItem[]): Promise<void> {
     // TODO: Implement cart merge logic
 }
 
-async function clearCartInFirestore(userId: string): Promise<void> {
+async function clearCartInFirestore(_userId: string): Promise<void> {
     // TODO: Implement Firestore clear
 }
 
