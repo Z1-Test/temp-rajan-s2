@@ -26,8 +26,9 @@
 20. Security & Compliance
 21. Risks / Assumptions / Constraints
 22. Out of Scope
-23. Rollout & Progressive Delivery
-24. Appendix
+23. Product Decisions (Resolved)
+24. Rollout & Progressive Delivery
+25. Appendix
 
 ---
 
