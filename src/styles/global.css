@@ -11,51 +11,51 @@
     --card-foreground: 0 0% 9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
-    
+
     /* Primary - Rose/Blush Pink (Beauty Brand) */
     --primary: 346 77% 50%;
     --primary-foreground: 0 0% 100%;
-    
+
     /* Secondary - Soft Neutral */
     --secondary: 30 20% 96%;
     --secondary-foreground: 0 0% 9%;
-    
+
     /* Muted - Warm Gray */
     --muted: 30 10% 96%;
     --muted-foreground: 0 0% 45%;
-    
+
     /* Accent - Gold/Champagne */
     --accent: 38 60% 90%;
     --accent-foreground: 0 0% 9%;
-    
+
     /* Destructive */
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    
+
     /* Success */
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
-    
+
     /* Warning */
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 9%;
-    
+
     /* Info */
     --info: 199 89% 48%;
     --info-foreground: 0 0% 100%;
-    
+
     --border: 30 15% 90%;
     --input: 30 15% 90%;
     --ring: 346 77% 50%;
     --radius: 0.75rem;
-    
+
     /* Chart Colors */
     --chart-1: 346 77% 50%;
     --chart-2: 38 60% 60%;
     --chart-3: 142 76% 36%;
     --chart-4: 199 89% 48%;
     --chart-5: 280 65% 60%;
-    
+
     /* Sidebar */
     --sidebar-background: 30 20% 98%;
     --sidebar-foreground: 0 0% 20%;
@@ -74,11 +74,11 @@
     --card-foreground: 0 0% 95%;
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 95%;
-    
+
     /* Primary - Rose Pink (Lighter for dark mode) */
     --primary: 346 77% 60%;
     --primary-foreground: 0 0% 100%;
-    
+
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 95%;
     --muted: 0 0% 15%;
@@ -92,13 +92,13 @@
     --border: 0 0% 18%;
     --input: 0 0% 18%;
     --ring: 346 77% 60%;
-    
+
     --chart-1: 346 77% 60%;
     --chart-2: 38 60% 55%;
     --chart-3: 142 70% 45%;
     --chart-4: 199 89% 55%;
     --chart-5: 280 65% 65%;
-    
+
     --sidebar-background: 0 0% 9%;
     --sidebar-foreground: 0 0% 90%;
     --sidebar-primary: 346 77% 60%;
@@ -114,6 +114,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

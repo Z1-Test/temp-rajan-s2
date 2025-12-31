@@ -1,0 +1,13 @@
+{
+    "errors": [],
+    "warnings": [],
+    "fixes": [],
+    "checks": {
+        "userFlows": "pass",
+        "authGuards": "pass",
+        "states": "pass",
+        "navigation": "pass",
+        "accessibility": "pass"
+    },
+    "timestamp": "2025-12-31T23:59:00Z"
+}
