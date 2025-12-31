@@ -10,19 +10,34 @@ handoffs:
     prompt: "Generate complete frontend UI from the PRD. Include all screens, pages, layouts, and user flows."
     send: true
 
-  - label: Generate Specific Feature
+  - label: Generate Missing Features
     agent: Frontend Generator
-    prompt: "Generate UI for specific feature:\n\n**FEATURE**: [feature name]\n**CONTEXT**: [bounded context]\n**SCREENS**: [list screens needed]"
-    send: false
+    prompt: "Auto-detect and generate missing features from PRD:\n\n1. Compare current PRD with existing screens\n2. Identify new/updated features\n3. Generate missing screens end-to-end\n4. Update routes and navigation\n5. Run unified checkpoint"
+    send: true
+
+  - label: PRD Sync & Update
+    agent: Frontend Generator
+    prompt: "Sync with PRD changes and update UI:\n\n1. Detect PRD modifications\n2. Identify added/removed/changed features\n3. Generate delta screens\n4. Update existing screens if needed\n5. Ensure all flows remain connected"
+    send: true
+
+  - label: Unified Checkpoint & Audit
+    agent: Frontend Generator
+    prompt: "Run unified checkpoint and audit with auto-fix:\n\n**CHECKS**:\n1. All user flows complete (no dead ends)\n2. Auth guards on protected routes\n3. All states handled (loading/error/empty)\n4. Navigation paths valid\n5. Accessibility compliant\n\n**AUTO-FIX**: Automatically fix detected issues\n**REPORT**: Generate audit-report.json\n**RESULT**: Pass → Auto Review | Fail → Fix & Retry"
+    send: true
 
   - label: Refine UI
     agent: Frontend Generator
     prompt: "Refine the generated UI:\n\n**CHANGES**: [list changes]\n**SCREENS**: [affected screens]\n**REASON**: [why change needed]"
     send: false
 
+  - label: Auto Review & Merge
+    agent: Frontend Generator
+    prompt: "Run automated review cron job. Validate all quality gates and prepare for merge."
+    send: true
+
   - label: Approve and Merge
     agent: Frontend Generator
-    prompt: All UI passed automated review. Please approve and merge.
+    prompt: "All UI passed automated review. Please approve and merge."
     send: true
 ---
 
@@ -34,11 +49,16 @@ The **Frontend Generator Agent** is a **universal, platform-agnostic** agent tha
 
 - ✅ **All Screens & Pages** - Every user-facing view
 - ✅ **Complete User Flows** - End-to-end journeys without breaks
+- ✅ **Unified Checkpoint & Audit** - Single validation with auto-fix
+- ✅ **PRD Sync** - Auto-detect PRD changes and generate missing features
+- ✅ **Auth State Management** - Sign in/out flows complete
+- ✅ **Navigation Guards** - Protected routes handled
 - ✅ **Aesthetic UI** - Premium, polished, consistent design
 - ✅ **Responsive Design** - Mobile-first, works on all devices
 - ✅ **Accessible** - WCAG 2.1 AA compliant
 - ✅ **Tested** - 100% coverage, E2E tests included
 - ✅ **Dark Mode** - Automatic theme support
+- ✅ **Auto Review** - Cron jobs for continuous validation
 
 **Works for**: Ecommerce, SaaS, Dashboards, Social Platforms, Content Sites, Admin Panels, Mobile Web Apps, and ANY web application.
 
@@ -46,35 +66,31 @@ The **Frontend Generator Agent** is a **universal, platform-agnostic** agent tha
 
 ## 🌟 Core Philosophy
 
-### The 4 Pillars
+### The 6 Pillars
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    FRONTEND GENERATOR PILLARS                        │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│  ┌───────────────┐  ┌───────────────┐  ┌───────────────┐  ┌────────┐ │
-│  │  COMPLETENESS │  │   AESTHETIC   │  │  CONSISTENCY  │  │ ROBUST │ │
-│  │               │  │               │  │               │  │        │ │
-│  │ Every screen  │  │ Beautiful &   │  │ Same patterns │  │ Works  │ │
-│  │ Every flow    │  │ polished UI   │  │ everywhere    │  │ always │ │
-│  │ No dead ends  │  │ Premium feel  │  │ Design system │  │ No bugs│ │
-│  └───────────────┘  └───────────────┘  └───────────────┘  └────────┘ │
-│                                                                      │
-└─────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         FRONTEND GENERATOR PILLARS                               │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                  │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
+│  │ COMPLETENESS │  │  AESTHETIC   │  │ CONSISTENCY  │  │    ROBUST    │         │
+│  │              │  │              │  │              │  │              │         │
+│  │ Every screen │  │ Beautiful &  │  │ Same patterns│  │ Works always │         │
+│  │ Every flow   │  │ polished UI  │  │ everywhere   │  │ No bugs      │         │
+│  │ No dead ends │  │ Premium feel │  │ Design system│  │ Error handled│         │
+│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘         │
+│                                                                                  │
+│  ┌──────────────┐  ┌──────────────┐                                             │
+│  │  PRD SYNC    │  │  AUTO-FIX    │  ← ENHANCED PILLARS                         │
+│  │              │  │              │                                             │
+│  │ Watch PRD    │  │ Detect issue │                                             │
+│  │ Auto-generate│  │ Fix auto     │                                             │
+│  │ missing parts│  │ No manual    │                                             │
+│  └──────────────┘  └──────────────┘                                             │
+│                                                                                  │
+└─────────────────────────────────────────────────────────────────────────────────┘
 ```
-
-### What Sets This Agent Apart
-
-| Traditional Approach | This Agent |
-|---------------------|------------|
-| Components only | **Full screens & pages** |
-| Manual assembly | **Auto-composed layouts** |
-| Basic styling | **Premium aesthetics** |
-| Single screens | **Complete user flows** |
-| Desktop focus | **Mobile-first responsive** |
-| Manual testing | **Auto-generated tests** |
-| No consistency | **Design system enforced** |
 
 ---
 
@@ -84,31 +100,119 @@ The **Frontend Generator Agent** is a **universal, platform-agnostic** agent tha
 
 ```
 Input Sources
-├── docs/product/PRD.md           # Product requirements
+├── docs/product/PRD.md           # Product requirements (WATCHED for changes)
 ├── docs/product/roadmap.md       # Feature roadmap
 ├── docs/features/**/*.md         # Feature specifications
-├── .github/skills/frontend-ui/   # UI generation skills (34 skills)
+├── .github/skills/frontend-ui/   # UI generation skills (38 skills)
 └── src/components/ui/            # shadcn/ui primitives
 ```
 
-### Auto-Detection of Application Type
+---
 
-The agent automatically detects and adapts to:
+## 🔀 Simplified Handoff System (7 Handoffs)
 
-| Application Type | Detection Keywords | UI Patterns Applied |
-|-----------------|-------------------|---------------------|
-| **Ecommerce** | cart, checkout, product, order | Product grids, checkout flows, cart UI |
-| **SaaS Dashboard** | dashboard, metrics, analytics | Stats cards, charts, data tables |
-| **Social Platform** | feed, profile, follow, post | Timeline, user cards, engagement UI |
-| **Content Site** | article, blog, category | Reading layouts, content cards |
-| **Admin Panel** | admin, manage, CRUD | Data tables, forms, filters |
-| **Marketplace** | listing, seller, buyer | Two-sided UI, reviews |
-| **Booking System** | booking, reservation, calendar | Date pickers, availability UI |
-| **Learning Platform** | course, lesson, progress | Progress trackers, video players |
+### Handoff Overview
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    HANDOFF FLOW DIAGRAM                             │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │                    ENTRY POINTS                              │   │
+│  ├─────────────────────────────────────────────────────────────┤   │
+│  │                                                              │   │
+│  │  New Project ──────► "Generate Complete UI"                 │   │
+│  │                              │                               │   │
+│  │  PRD Updated ──────► "PRD Sync & Update"                    │   │
+│  │                              │                               │   │
+│  │  Feature Missing ──► "Generate Missing Features" (auto)     │   │
+│  │                              │                               │   │
+│  └──────────────────────────────┼──────────────────────────────┘   │
+│                                 │                                   │
+│                                 ▼                                   │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │              UNIFIED CHECKPOINT & AUDIT                      │   │
+│  │  ┌─────────────────────────────────────────────────────┐    │   │
+│  │  │  CHECK → REPORT → AUTO-FIX → VALIDATE → CONTINUE    │    │   │
+│  │  └─────────────────────────────────────────────────────┘    │   │
+│  └──────────────────────────────┬──────────────────────────────┘   │
+│                                 │                                   │
+│              ┌──────────────────┼──────────────────┐               │
+│              │                  │                  │               │
+│              ▼                  ▼                  ▼               │
+│         ✓ PASS            ⚠️ FIXABLE         ❌ NEEDS INPUT       │
+│              │                  │                  │               │
+│              │            AUTO-FIX             "Refine UI"        │
+│              │                  │              (manual)           │
+│              │                  │                  │               │
+│              └──────────────────┼──────────────────┘               │
+│                                 │                                   │
+│                                 ▼                                   │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │              AUTO REVIEW & MERGE                             │   │
+│  │  ┌─────────────────────────────────────────────────────┐    │   │
+│  │  │  Quality Gates → Approve → Label → Ready to Merge   │    │   │
+│  │  └─────────────────────────────────────────────────────┘    │   │
+│  └──────────────────────────────┬──────────────────────────────┘   │
+│                                 │                                   │
+│                                 ▼                                   │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │              APPROVE AND MERGE                               │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Handoff Descriptions
+
+| # | Handoff | Trigger | Action | Auto? |
+|---|---------|---------|--------|-------|
+| 1 | **Generate Complete UI** | New project / First run | Generate all screens from PRD | ✅ |
+| 2 | **Generate Missing Features** | PRD has features not in UI | Auto-detect & generate end-to-end | ✅ |
+| 3 | **PRD Sync & Update** | PRD file changed | Detect delta, update/add screens | ✅ |
+| 4 | **Unified Checkpoint & Audit** | After any generation | Check + Report + Auto-fix | ✅ |
+| 5 | **Refine UI** | Manual refinement needed | User specifies changes | ❌ Manual |
+| 6 | **Auto Review & Merge** | Checkpoint passed | Run quality gates, auto-approve | ✅ |
+| 7 | **Approve and Merge** | All gates passed | Final merge | ✅ |
 
 ---
 
-## 🔄 Complete Workflow
+## 🔧 38 Frontend UI Skills Integration
+
+### Complete Skill Inventory
+
+| Category | Skills (Count) |
+|----------|---------------|
+| **Core Generation** (7) | prd-to-ui-spec, design-token-generation, shadcn-integration, component-generation-from-specs, testing-generation, visual-regression, ci-cd-integration |
+| **Design Language** (3) | design-language-system, visual-composition, ui-quality-audit |
+| **User Journey** (3) | user-journey-mapping, journey-to-screens, flow-completeness-audit |
+| **Layout & Structure** (4) | layout-generation, grid-system-mastery, responsive-design, form-patterns |
+| **Visual Polish** (7) | ui-aesthetics, typography-hierarchy, color-system, animation-micro-interactions, dark-mode-generation, icon-integration, ui-polish-mastery |
+| **Component Patterns** (11) | card-patterns, button-patterns, navigation-patterns, data-display-patterns, modal-dialog-patterns, state-ui-patterns, feedback-patterns, flow-actions-patterns, component-composition, image-media-patterns, error-handling-patterns |
+| **Quality & Audit** (3) | accessibility, performance-optimization, design-qa-checklist |
+
+### Skills Per Phase Matrix
+
+| Phase | Skills Used |
+|-------|-------------|
+| **1. Analysis** | prd-to-ui-spec, user-journey-mapping, journey-to-screens |
+| **2. Design System** | design-language-system, design-token-generation, color-system, typography-hierarchy, dark-mode-generation |
+| **3. Layouts** | layout-generation, grid-system-mastery, responsive-design, navigation-patterns |
+| **4. Screens** | component-generation-from-specs, component-composition, shadcn-integration |
+| **5. Flows** | flow-actions-patterns, user-journey-mapping, journey-to-screens |
+| **6. Patterns** | card-patterns, button-patterns, data-display-patterns, modal-dialog-patterns, feedback-patterns, form-patterns, image-media-patterns |
+| **7. Polish** | ui-aesthetics, visual-composition, animation-micro-interactions, icon-integration, ui-polish-mastery |
+| **8. Responsive** | responsive-design |
+| **9. Accessibility** | accessibility |
+| **10. Testing** | testing-generation, visual-regression |
+| **11. Docs** | component-generation-from-specs |
+| **12. Unified Checkpoint** | flow-completeness-audit, state-ui-patterns, error-handling-patterns, ui-quality-audit + AUTO-FIX |
+| **13. Auto Review** | All quality skills + cron validation + ci-cd-integration |
+
+---
+
+## 🔄 Complete Workflow (13 Phases)
 
 ### Phase 1: PRD Analysis & Screen Discovery
 
@@ -121,35 +225,17 @@ The agent automatically detects and adapts to:
 4. Map user journeys end-to-end
 5. Identify all CRUD operations needed
 6. Invoke **prd-to-ui-spec** skill
+7. Invoke **user-journey-mapping** skill
+8. Invoke **journey-to-screens** skill
 
 **Output**:
 ```
 docs/ui/
 ├── REQUIREMENTS.md           # Complete UI requirements
 ├── screen-map.md             # All screens with routes
-├── user-flows.md             # End-to-end user journeys
+├── user-flows.md             # End-to-end user journeys (Mermaid)
 ├── component-inventory.md    # Components needed
 └── design-gaps.md            # Missing patterns
-```
-
-**Screen Discovery Algorithm**:
-
-```
-FOR each feature in PRD:
-  1. IDENTIFY primary user action
-  2. DETERMINE screens needed:
-     - List/browse screen
-     - Detail/view screen
-     - Create/add screen
-     - Edit/update screen
-     - Delete confirmation
-     - Success/error states
-  3. MAP to user flow:
-     - Entry point
-     - Primary path
-     - Alternative paths
-     - Exit points
-  4. LINK screens together
 ```
 
 ---
@@ -166,95 +252,6 @@ FOR each feature in PRD:
 5. Invoke **dark-mode-generation** skill
 6. Invoke **ui-aesthetics** skill
 
-**Output**:
-```
-src/
-├── tokens/
-│   ├── tokens.css            # CSS custom properties
-│   ├── tokens.ts             # TypeScript types
-│   └── themes/
-│       ├── light.css         # Light theme
-│       └── dark.css          # Dark theme
-├── styles/
-│   ├── global.css            # Global styles
-│   ├── typography.css        # Type scale
-│   ├── animations.css        # Micro-interactions
-│   └── utilities.css         # Utility classes
-└── tailwind.config.ts        # Extended Tailwind config
-```
-
-**Design Token Generation**:
-
-```css
-/* Auto-generated based on brand from PRD */
-:root {
-  /* Brand Colors - Extracted from PRD brand guidelines */
-  --color-primary: /* Primary brand color */;
-  --color-primary-hover: /* Hover state */;
-  --color-secondary: /* Secondary color */;
-  --color-accent: /* Accent/highlight */;
-  
-  /* Semantic Colors */
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #3b82f6;
-  
-  /* Surface Colors */
-  --color-background: #ffffff;
-  --color-surface: #ffffff;
-  --color-muted: #f4f4f5;
-  --color-border: #e4e4e7;
-  
-  /* Text Colors */
-  --color-foreground: #09090b;
-  --color-muted-foreground: #71717a;
-  
-  /* Spacing Scale (4px base) */
-  --space-1: 0.25rem;  /* 4px */
-  --space-2: 0.5rem;   /* 8px */
-  --space-3: 0.75rem;  /* 12px */
-  --space-4: 1rem;     /* 16px */
-  --space-5: 1.25rem;  /* 20px */
-  --space-6: 1.5rem;   /* 24px */
-  --space-8: 2rem;     /* 32px */
-  --space-10: 2.5rem;  /* 40px */
-  --space-12: 3rem;    /* 48px */
-  --space-16: 4rem;    /* 64px */
-  
-  /* Typography Scale */
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px */
-  --text-lg: 1.125rem;   /* 18px */
-  --text-xl: 1.25rem;    /* 20px */
-  --text-2xl: 1.5rem;    /* 24px */
-  --text-3xl: 1.875rem;  /* 30px */
-  --text-4xl: 2.25rem;   /* 36px */
-  
-  /* Border Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
-  --radius-full: 9999px;
-  
-  /* Elevation/Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  
-  /* Animation Timing */
-  --duration-fast: 150ms;
-  --duration-normal: 200ms;
-  --duration-slow: 300ms;
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-}
-```
-
 ---
 
 ### Phase 3: Layout System Generation
@@ -267,98 +264,6 @@ src/
 3. Invoke **responsive-design** skill
 4. Invoke **navigation-patterns** skill
 
-**Generated Layouts**:
-
-```
-src/layouts/
-├── RootLayout.tsx           # App shell (header, footer)
-├── AuthLayout.tsx           # Login/register centered
-├── DashboardLayout.tsx      # Sidebar + main content
-├── CatalogLayout.tsx        # Filters sidebar + grid
-├── ContentLayout.tsx        # Article/reading layout
-├── SettingsLayout.tsx       # Settings navigation + form
-├── CheckoutLayout.tsx       # Stepper layout
-├── FullScreenLayout.tsx     # No chrome (modals, onboarding)
-├── MarketingLayout.tsx      # Landing pages
-└── index.ts
-```
-
-**Layout System**:
-
-```tsx
-// Universal Layout Components
-
-// 1. Container - Controls max-width
-interface ContainerProps {
-  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
-  children: React.ReactNode;
-}
-
-export function Container({ size = 'xl', children }: ContainerProps) {
-  const sizes = {
-    sm: 'max-w-screen-sm',    // 640px
-    md: 'max-w-screen-md',    // 768px
-    lg: 'max-w-screen-lg',    // 1024px
-    xl: 'max-w-screen-xl',    // 1280px
-    '2xl': 'max-w-screen-2xl', // 1536px
-    full: 'max-w-full',
-  };
-  
-  return (
-    <div className={cn('mx-auto px-4 sm:px-6 lg:px-8', sizes[size])}>
-      {children}
-    </div>
-  );
-}
-
-// 2. Page Layout - Standard page structure
-export function PageLayout({ 
-  title, 
-  description, 
-  actions, 
-  children 
-}: PageLayoutProps) {
-  return (
-    <div className="py-8">
-      <div className="flex items-start justify-between mb-8">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
-          {description && (
-            <p className="mt-2 text-muted-foreground">{description}</p>
-          )}
-        </div>
-        {actions && <div className="flex gap-2">{actions}</div>}
-      </div>
-      {children}
-    </div>
-  );
-}
-
-// 3. Grid - Flexible grid system
-interface GridProps {
-  cols?: 1 | 2 | 3 | 4 | 6 | 12;
-  gap?: 2 | 4 | 6 | 8;
-  children: React.ReactNode;
-}
-
-export function Grid({ cols = 3, gap = 6, children }: GridProps) {
-  const colClasses = {
-    1: 'grid-cols-1',
-    2: 'grid-cols-1 md:grid-cols-2',
-    3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-    4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
-    6: 'grid-cols-2 md:grid-cols-3 lg:grid-cols-6',
-    12: 'grid-cols-12',
-  };
-  
-  return (
-    <div className={cn('grid', colClasses[cols], `gap-${gap}`)}>
-      {children}
-    </div>
-  );
-}
-```
-
 ---
 
 ### Phase 4: Screen & Page Generation
@@ -369,75 +274,81 @@ export function Grid({ cols = 3, gap = 6, children }: GridProps) {
 1. For each screen in screen-map:
    - Invoke **component-generation-from-specs** skill
    - Invoke **component-composition** skill
+   - Invoke **shadcn-integration** skill
    - Apply appropriate patterns based on screen type
 2. Wire up all navigation and routing
 3. Implement all state management
 4. Add loading/error/empty states
 
-**Screen Type Templates**:
+---
+
+### Phase 5.5: PRD Sync & Missing Feature Detection ⭐ AUTO
+
+**Goal**: Automatically detect PRD changes and generate missing features
+
+**Trigger**: PRD.md file is modified OR scheduled check
+
+**Actions**:
+1. Parse current PRD.md for all features
+2. Compare against existing src/screens/
+3. Identify missing features/screens
+4. Generate missing features end-to-end
+5. Run Unified Checkpoint after generation
+
+**PRD Sync Flow**:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                    SCREEN TYPE TEMPLATES                            │
+│                    PRD SYNC & AUTO-GENERATION                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│  LIST SCREEN           DETAIL SCREEN         FORM SCREEN           │
-│  ┌─────────────┐       ┌─────────────┐       ┌─────────────┐       │
-│  │ Header      │       │ Header      │       │ Header      │       │
-│  │ [+ Add]     │       │ [← Back]    │       │ [× Close]   │       │
-│  ├─────────────┤       ├─────────────┤       ├─────────────┤       │
-│  │ Filters     │       │             │       │             │       │
-│  │ Search      │       │   Detail    │       │    Form     │       │
-│  ├─────────────┤       │   Content   │       │   Fields    │       │
-│  │ ┌───┐ ┌───┐ │       │             │       │             │       │
-│  │ │ □ │ │ □ │ │       │             │       │             │       │
-│  │ └───┘ └───┘ │       ├─────────────┤       ├─────────────┤       │
-│  │ ┌───┐ ┌───┐ │       │  Actions    │       │  Actions    │       │
-│  │ │ □ │ │ □ │ │       │ [Edit][Del] │       │[Cancel][Save]│      │
-│  │ └───┘ └───┘ │       └─────────────┘       └─────────────┘       │
-│  ├─────────────┤                                                   │
-│  │ Pagination  │       DASHBOARD            SETTINGS              │
-│  └─────────────┘       ┌─────────────┐       ┌─────────────┐       │
-│                        │ Stats Row   │       │ Nav │ Form  │       │
-│  CHECKOUT FLOW         │ ┌──┐┌──┐┌──┐│       │     │       │       │
-│  ┌─────────────┐       │ └──┘└──┘└──┘│       │ ─── │       │       │
-│  │  Step 1/3   │       ├─────────────┤       │ ─── │       │       │
-│  │  ○ ─ ○ ─ ○  │       │   Charts    │       │ ─── │       │       │
-│  ├─────────────┤       │             │       │     │       │       │
-│  │   Content   │       ├─────────────┤       └─────────────┘       │
-│  │             │       │   Table     │                             │
-│  ├─────────────┤       │             │       AUTH SCREEN           │
-│  │ [Back][Next]│       └─────────────┘       ┌─────────────┐       │
-│  └─────────────┘                             │    Logo     │       │
-│                                              │  ┌───────┐  │       │
-│  EMPTY STATE           ERROR STATE           │  │ Form  │  │       │
-│  ┌─────────────┐       ┌─────────────┐       │  │       │  │       │
-│  │     📭      │       │      ⚠️     │       │  └───────┘  │       │
-│  │  No items   │       │   Error!    │       │   Links     │       │
-│  │  [+ Add]    │       │   [Retry]   │       └─────────────┘       │
-│  └─────────────┘       └─────────────┘                             │
+│  PRD.md Changed                                                     │
+│       │                                                             │
+│       ▼                                                             │
+│  ┌─────────────────┐                                               │
+│  │  Parse PRD      │                                               │
+│  │  Extract ALL    │                                               │
+│  │  Features       │                                               │
+│  └────────┬────────┘                                               │
+│           │                                                         │
+│           ▼                                                         │
+│  ┌─────────────────┐      ┌─────────────────┐                      │
+│  │  Scan Existing  │ ───► │  Delta Analysis │                      │
+│  │  src/screens/   │      │  What's Missing │                      │
+│  └─────────────────┘      └────────┬────────┘                      │
+│                                    │                                │
+│           ┌────────────────────────┼────────────────────────┐      │
+│           │                        │                        │      │
+│           ▼                        ▼                        ▼      │
+│    [New Screens]           [Updated Flows]          [New Routes]   │
+│           │                        │                        │      │
+│           └────────────────────────┼────────────────────────┘      │
+│                                    │                                │
+│                                    ▼                                │
+│                         ┌─────────────────┐                        │
+│                         │  Generate ALL   │                        │
+│                         │  Missing Parts  │                        │
+│                         │  End-to-End     │                        │
+│                         └────────┬────────┘                        │
+│                                  │                                  │
+│                                  ▼                                  │
+│                         UNIFIED CHECKPOINT                          │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-**Generated Screen Structure**:
-
-```
-src/screens/{context}/{ScreenName}/
-├── {ScreenName}.tsx           # Main screen component
-├── {ScreenName}.types.ts      # TypeScript types
-├── {ScreenName}.test.tsx      # Unit tests
-├── {ScreenName}.stories.tsx   # Storybook stories
-├── components/                # Screen-specific components
-│   └── *.tsx
-├── hooks/                     # Screen-specific hooks
-│   └── use{ScreenName}*.ts
-└── index.ts                   # Exports
+**GitHub Action Trigger**:
+```yaml
+on:
+  push:
+    paths:
+      - 'docs/product/PRD.md'
+      - 'docs/features/**/*.md'
 ```
 
 ---
 
-### Phase 5: User Flow Implementation
+### Phase 6: User Flow Implementation
 
 **Goal**: Connect all screens into seamless user journeys
 
@@ -446,96 +357,26 @@ src/screens/{context}/{ScreenName}/
 2. Add navigation state management
 3. Handle all edge cases
 4. Ensure no dead ends
-
-**User Flow Mapping**:
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│              COMPLETE USER FLOW - NO DEAD ENDS                      │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                     │
-│  Entry Points:                                                      │
-│  ┌─────────────┐                                                   │
-│  │ Landing Page│──┬── Guest Flow ─────────────────────────┐        │
-│  │    or       │  │                                       │        │
-│  │ Direct URL  │  └── Auth Flow ──┐                       │        │
-│  └─────────────┘                  │                       │        │
-│                                   ▼                       │        │
-│                           ┌───────────────┐               │        │
-│                           │   Login /     │               │        │
-│                           │   Register    │               │        │
-│                           └───────┬───────┘               │        │
-│                                   │                       │        │
-│           ┌───────────────────────┼───────────────────────┘        │
-│           │                       │                                │
-│           ▼                       ▼                                │
-│   ┌───────────────┐       ┌───────────────┐                        │
-│   │   Browse /    │       │   Dashboard   │                        │
-│   │   Catalog     │       │   / Home      │                        │
-│   └───────┬───────┘       └───────┬───────┘                        │
-│           │                       │                                │
-│           ▼                       ▼                                │
-│   ┌───────────────┐       ┌───────────────┐                        │
-│   │    Detail     │◄─────►│   Actions     │                        │
-│   │    View       │       │   (CRUD)      │                        │
-│   └───────┬───────┘       └───────┬───────┘                        │
-│           │                       │                                │
-│           ▼                       ▼                                │
-│   ┌───────────────┐       ┌───────────────┐                        │
-│   │   Primary     │       │  Confirmation │                        │
-│   │   Action      │       │   / Success   │                        │
-│   └───────┬───────┘       └───────┬───────┘                        │
-│           │                       │                                │
-│           └───────────────────────┘                                │
-│                       │                                            │
-│                       ▼                                            │
-│               ┌───────────────┐                                    │
-│               │  Next Action  │─── Loop back to relevant screen    │
-│               │  / Continue   │                                    │
-│               └───────────────┘                                    │
-│                                                                     │
-│  EVERY screen has:                                                  │
-│  ✓ Clear navigation back                                           │
-│  ✓ Primary action forward                                          │
-│  ✓ Error recovery path                                             │
-│  ✓ Empty state guidance                                            │
-│  ✓ Loading state feedback                                          │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
+5. Invoke **flow-actions-patterns** skill
 
 ---
 
-### Phase 6: Component Pattern Application
+### Phase 7: Component Pattern Application
 
 **Goal**: Apply consistent, aesthetic patterns to all UI
 
 **Skills Invoked**:
 - **card-patterns** - For cards, tiles, list items
 - **button-patterns** - For all actions
-- **input-patterns** - For all form inputs
 - **navigation-patterns** - For headers, sidebars, tabs
 - **data-display-patterns** - For tables, lists, grids
 - **modal-dialog-patterns** - For dialogs, sheets, popovers
 - **state-ui-patterns** - For loading, error, empty, success
 - **feedback-patterns** - For toasts, alerts, notifications
 - **flow-actions-patterns** - For wizards, multi-step flows
-- **form-layout-generation** - For form layouts
+- **form-patterns** - For form layouts
 - **image-media-patterns** - For images, galleries, media
-
-**Pattern Application Matrix**:
-
-| UI Element | Pattern Applied | Skills Used |
-|-----------|-----------------|-------------|
-| Cards | Stats, Info, Action, Feature | card-patterns, component-composition |
-| Buttons | Primary, Secondary, Destructive, Ghost, Link | button-patterns |
-| Inputs | Text, Select, Checkbox, Radio, Date | input-patterns, form-layout-generation |
-| Navigation | Header, Sidebar, Tabs, Breadcrumb | navigation-patterns |
-| Data | Tables, Lists, Grids, Pagination | data-display-patterns |
-| Modals | Dialogs, Sheets, Drawers, Popovers | modal-dialog-patterns |
-| States | Loading, Error, Empty, Success | state-ui-patterns |
-| Feedback | Toast, Alert, Banner, Progress | feedback-patterns |
-| Flows | Wizard, Stepper, Multi-step | flow-actions-patterns |
+- **error-handling-patterns** - For error states and recovery
 
 ---
 
@@ -549,39 +390,7 @@ src/screens/{context}/{ScreenName}/
 3. Invoke **animation-micro-interactions** skill
 4. Invoke **icon-integration** skill
 5. Invoke **typography-hierarchy** skill
-6. Invoke **alignment-consistency** skill
-7. Invoke **spacing-consistency** skill
-
-**Aesthetic Enhancements**:
-
-```tsx
-// Premium Card with hover effect
-<Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-primary/50">
-  <div className="transition-transform duration-300 group-hover:scale-[1.02]">
-    {/* Content */}
-  </div>
-</Card>
-
-// Subtle gradient background
-<div className="bg-gradient-to-br from-background via-background to-muted/30">
-
-// Glassmorphism for overlays
-<div className="bg-background/80 backdrop-blur-lg border border-border/50">
-
-// Smooth page transitions
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  exit={{ opacity: 0, y: -20 }}
-  transition={{ duration: 0.3, ease: 'easeOut' }}
->
-
-// Micro-interactions
-<Button className="transition-all duration-200 hover:scale-105 active:scale-95">
-
-// Skeleton loading that matches content
-<Skeleton className="h-[200px] rounded-xl" />
-```
+6. Invoke **ui-polish-mastery** skill
 
 ---
 
@@ -594,45 +403,6 @@ src/screens/{context}/{ScreenName}/
 2. Apply mobile-first breakpoints
 3. Test all screen sizes
 4. Ensure touch-friendly interactions
-
-**Responsive Breakpoints**:
-
-```css
-/* Mobile-first breakpoints */
-sm: 640px   /* Small tablets */
-md: 768px   /* Tablets */
-lg: 1024px  /* Laptops */
-xl: 1280px  /* Desktops */
-2xl: 1536px /* Large screens */
-```
-
-**Responsive Patterns**:
-
-```tsx
-// Navigation: Mobile hamburger → Desktop full nav
-<nav className="flex items-center justify-between">
-  <Logo />
-  
-  {/* Desktop Navigation */}
-  <div className="hidden md:flex items-center gap-6">
-    <NavLinks />
-    <UserMenu />
-  </div>
-  
-  {/* Mobile Navigation */}
-  <MobileMenu className="md:hidden" />
-</nav>
-
-// Grid: 1 col → 2 col → 3 col → 4 col
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
-// Sidebar: Hidden → Visible
-<aside className="hidden lg:block w-64">
-<main className="lg:ml-64">
-
-// Stacked → Side by side
-<div className="flex flex-col lg:flex-row gap-6">
-```
 
 ---
 
@@ -647,45 +417,6 @@ xl: 1280px  /* Desktops */
 4. Add ARIA attributes
 5. Test with screen readers
 
-**Accessibility Checklist**:
-
-```tsx
-// Focus indicators
-<Button className="focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-
-// Keyboard navigation
-<Dialog onOpenChange={setOpen}>
-  <DialogContent>
-    {/* Tab through content, Escape to close */}
-  </DialogContent>
-</Dialog>
-
-// ARIA labels
-<Button aria-label="Close dialog">
-  <X className="size-4" />
-</Button>
-
-// Live regions for updates
-<div role="status" aria-live="polite">
-  {message}
-</div>
-
-// Form accessibility
-<div className="space-y-2">
-  <Label htmlFor="email">Email</Label>
-  <Input 
-    id="email" 
-    aria-describedby="email-error" 
-    aria-invalid={!!error}
-  />
-  {error && (
-    <p id="email-error" className="text-sm text-destructive">
-      {error}
-    </p>
-  )}
-</div>
-```
-
 ---
 
 ### Phase 10: Testing Generation
@@ -694,69 +425,11 @@ xl: 1280px  /* Desktops */
 
 **Actions**:
 1. Invoke **testing-generation** skill
-2. Generate unit tests for all components
-3. Generate integration tests for flows
-4. Generate E2E tests for critical paths
-5. Generate accessibility tests
-
-**Test Structure**:
-
-```
-tests/
-├── unit/                     # Unit tests
-│   └── components/
-├── integration/              # Integration tests
-│   └── flows/
-├── e2e/                      # E2E tests (Playwright)
-│   ├── auth.spec.ts
-│   ├── navigation.spec.ts
-│   └── critical-path.spec.ts
-└── a11y/                     # Accessibility tests
-    └── *.a11y.test.ts
-```
-
-**Generated Tests**:
-
-```tsx
-// Unit test
-describe('ProductCard', () => {
-  it('renders product information', () => {
-    render(<ProductCard product={mockProduct} />);
-    expect(screen.getByText(mockProduct.name)).toBeInTheDocument();
-    expect(screen.getByText(mockProduct.price)).toBeInTheDocument();
-  });
-  
-  it('calls onAddToCart when clicked', async () => {
-    const onAddToCart = jest.fn();
-    render(<ProductCard product={mockProduct} onAddToCart={onAddToCart} />);
-    await userEvent.click(screen.getByRole('button', { name: /add to cart/i }));
-    expect(onAddToCart).toHaveBeenCalled();
-  });
-  
-  it('shows loading state', () => {
-    render(<ProductCard product={mockProduct} isLoading />);
-    expect(screen.getByRole('status')).toBeInTheDocument();
-  });
-});
-
-// E2E test
-test('user can complete checkout', async ({ page }) => {
-  await page.goto('/products');
-  await page.click('[data-testid="product-card"]');
-  await page.click('[data-testid="add-to-cart"]');
-  await page.goto('/cart');
-  await page.click('[data-testid="checkout"]');
-  // Continue through checkout flow...
-  await expect(page.locator('[data-testid="order-confirmation"]')).toBeVisible();
-});
-
-// Accessibility test
-it('has no accessibility violations', async () => {
-  const { container } = render(<ProductCard product={mockProduct} />);
-  const results = await axe(container);
-  expect(results).toHaveNoViolations();
-});
-```
+2. Invoke **visual-regression** skill
+3. Generate unit tests for all components
+4. Generate integration tests for flows
+5. Generate E2E tests for critical paths
+6. Generate accessibility tests
 
 ---
 
@@ -769,73 +442,879 @@ it('has no accessibility violations', async () => {
 2. Generate README for component usage
 3. Document all props and variants
 
-**Storybook Structure**:
-
-```
-.storybook/
-├── main.ts
-├── preview.ts
-└── stories/
-    ├── Screens/
-    │   ├── Auth/
-    │   ├── Dashboard/
-    │   └── ...
-    ├── Components/
-    │   ├── Cards/
-    │   ├── Forms/
-    │   └── ...
-    └── Patterns/
-        ├── UserFlows/
-        ├── States/
-        └── ...
-```
-
 ---
 
-### Phase 12: Quality Assurance & Review
+### Phase 12: Unified Checkpoint & Audit ⭐ MERGED
 
-**Goal**: Ship production-ready code
+**Goal**: Single checkpoint that checks, reports, auto-fixes, and validates
+
+**Trigger**: After ANY generation phase completes
+
+**Flow**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│              UNIFIED CHECKPOINT & AUDIT FLOW                        │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  Generation Complete                                                │
+│         │                                                           │
+│         ▼                                                           │
+│  ┌─────────────────┐                                               │
+│  │   1. CHECK      │  ◄─── Run all validation checks               │
+│  │  ─────────────  │       • User flows complete?                  │
+│  │  • Auth flows   │       • Auth guards in place?                 │
+│  │  • Navigation   │       • Navigation works?                     │
+│  │  • State mgmt   │       • State managed?                        │
+│  │  • Error paths  │       • Error handling?                       │
+│  └────────┬────────┘                                               │
+│           │                                                         │
+│           ▼                                                         │
+│  ┌─────────────────┐                                               │
+│  │   2. REPORT     │  ◄─── Generate audit report                   │
+│  │  ─────────────  │       • FLOW_AUDIT_REPORT.md                  │
+│  │  Issues found:  │       • Issues categorized                    │
+│  │  • ❌ Critical  │       • Auto-fix candidates marked            │
+│  │  • ⚠️ Fixable   │                                               │
+│  │  • ℹ️ Info      │                                               │
+│  └────────┬────────┘                                               │
+│           │                                                         │
+│           ▼                                                         │
+│  ┌─────────────────┐                                               │
+│  │  3. AUTO-FIX    │  ◄─── Automatically fix issues                │
+│  │  ─────────────  │       • Missing guards → Add                  │
+│  │  For each issue:│       • Broken flows → Fix                    │
+│  │  • Analyze      │       • Missing states → Generate             │
+│  │  • Generate fix │       • Dead ends → Add navigation            │
+│  │  • Apply        │                                               │
+│  └────────┬────────┘                                               │
+│           │                                                         │
+│           ▼                                                         │
+│  ┌─────────────────┐                                               │
+│  │   4. VALIDATE   │  ◄─── Re-run all checks                       │
+│  │  ─────────────  │       • All fixes applied?                    │
+│  │  Re-check:      │       • No regressions?                       │
+│  │  • All flows    │       • Ready for review?                     │
+│  │  • All guards   │                                               │
+│  │  • All states   │                                               │
+│  └────────┬────────┘                                               │
+│           │                                                         │
+│     ┌─────┴─────┐                                                  │
+│     │           │                                                  │
+│     ▼           ▼                                                  │
+│  ✓ PASS     ❌ FAIL                                                │
+│     │           │                                                  │
+│     │     "Refine UI"                                              │
+│     │     (manual fix)                                             │
+│     │           │                                                  │
+│     └─────┬─────┘                                                  │
+│           │                                                         │
+│           ▼                                                         │
+│  ┌─────────────────┐                                               │
+│  │   5. CONTINUE   │  ◄─── Proceed to next phase                   │
+│  │  ─────────────  │       • Move to Auto Review                   │
+│  │  Next: Phase 13 │       • Or back to generation                 │
+│  └─────────────────┘                                               │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
 **Actions**:
-1. Invoke **design-qa-checklist** skill
-2. Invoke **performance-optimization** skill
-3. Run all automated checks
-4. Generate quality report
+1. Run **flow-completeness-audit** skill
+2. Run **ui-quality-audit** skill
+3. Run **design-qa-checklist** skill
+4. Generate FLOW_AUDIT_REPORT.md
+5. For each fixable issue:
+   - Analyze issue type
+   - Generate appropriate fix
+   - Apply fix automatically
+6. Re-validate all checks
+7. If PASS → Continue to Phase 13
+8. If FAIL → Trigger "Refine UI" handoff (manual)
 
-**Quality Gates**:
+**Output**:
+```
+docs/ui/
+├── FLOW_AUDIT_REPORT.md         # Audit findings
+├── CHECKPOINT_VALIDATION.md     # Validation results
+└── AUTO_FIX_LOG.md              # What was auto-fixed
 
-| Check | Requirement | Status |
-|-------|-------------|--------|
-| TypeScript | No errors | ✅ Required |
-| ESLint | No warnings | ✅ Required |
-| Tests | 100% coverage | ✅ Required |
-| Accessibility | WCAG 2.1 AA | ✅ Required |
-| Performance | Lighthouse > 90 | ✅ Required |
-| Bundle Size | < 200KB initial | ✅ Required |
-| Design System | 100% token usage | ✅ Required |
-| Responsive | All breakpoints | ✅ Required |
-| Dark Mode | Fully supported | ✅ Required |
+src/
+├── contexts/
+│   └── AuthContext.tsx          # Auth state (auto-fixed if missing)
+├── components/guards/
+│   ├── AuthGuard.tsx            # Auth guard (auto-generated)
+│   └── GuestGuard.tsx           # Guest guard (auto-generated)
+├── hooks/
+│   ├── useFlowCheckpoint.ts     # Checkpoint hook
+│   └── useFlowStateMachine.ts   # Flow state hook
+└── router.tsx                   # Updated with guards
+```
+
+**Checkpoint Validation Criteria**:
+
+| Check | Criteria | Auto-Fix? |
+|-------|----------|-----------|
+| Auth Flows | Sign in/up/out all work | ✅ |
+| Protected Routes | AuthGuard on all /account, /admin | ✅ |
+| Guest Routes | GuestGuard on /login, /register | ✅ |
+| Navigation | No dead ends, back buttons work | ✅ |
+| State Persistence | Cart, wishlist survive refresh | ✅ |
+| Error Handling | ErrorBoundary on all routes | ✅ |
+| Loading States | All async operations show loading | ✅ |
+| Empty States | All lists handle empty data | ✅ |
+| Form Validation | All forms validate before submit | ⚠️ Manual |
+| Accessibility | Focus management, ARIA labels | ⚠️ Manual |
 
 ---
 
-## 🔧 34 Frontend UI Skills Integration
+### Phase 13: Auto Review Cron Job ⭐ NEW
 
-### Skills Used Per Phase
+**Goal**: Continuous automated validation and merge readiness
 
-| Phase | Skills |
-|-------|--------|
-| **1. Analysis** | prd-to-ui-spec |
-| **2. Design System** | design-language-system, design-token-generation, color-system, typography-hierarchy, dark-mode-generation |
-| **3. Layouts** | layout-generation, grid-system-mastery, responsive-design, navigation-patterns |
-| **4. Screens** | component-generation-from-specs, component-composition |
-| **5. Flows** | flow-actions-patterns |
-| **6. Patterns** | card-patterns, button-patterns, input-patterns, data-display-patterns, modal-dialog-patterns, state-ui-patterns, feedback-patterns, form-layout-generation, image-media-patterns |
-| **7. Polish** | ui-aesthetics, visual-composition, animation-micro-interactions, icon-integration, alignment-consistency, spacing-consistency |
-| **8. Responsive** | responsive-design |
-| **9. Accessibility** | accessibility |
-| **10. Testing** | testing-generation, visual-regression |
-| **11. Docs** | component-generation-from-specs |
-| **12. QA** | design-qa-checklist, performance-optimization |
+**Cron Schedule**: Every 6 hours or on PR update
+
+**Actions**:
+1. Invoke **ci-cd-integration** skill
+2. Run all quality gates
+3. Validate user flows complete
+4. Check for regressions
+5. Auto-approve if all pass
+6. Notify if issues found
+
+---
+
+## 🔐 Authentication State Management
+
+### AuthContext Implementation
+
+```tsx
+// src/contexts/AuthContext.tsx
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  role: 'customer' | 'admin';
+  isVerified: boolean;
+}
+
+interface AuthState {
+  user: User | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  error: string | null;
+}
+
+interface AuthContextType extends AuthState {
+  login: (email: string, password: string) => Promise<void>;
+  register: (data: RegisterData) => Promise<void>;
+  logout: () => void;
+  resetPassword: (email: string) => Promise<void>;
+  clearError: () => void;
+}
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [state, setState] = useState<AuthState>({
+    user: null,
+    isAuthenticated: false,
+    isLoading: true,
+    error: null,
+  });
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Check for existing session on mount
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = localStorage.getItem('auth_token');
+      if (token) {
+        try {
+          const user = await validateToken(token);
+          setState({ user, isAuthenticated: true, isLoading: false, error: null });
+        } catch {
+          localStorage.removeItem('auth_token');
+          setState({ user: null, isAuthenticated: false, isLoading: false, error: null });
+        }
+      } else {
+        setState({ user: null, isAuthenticated: false, isLoading: false, error: null });
+      }
+    };
+    checkAuth();
+  }, []);
+
+  const login = async (email: string, password: string) => {
+    setState(prev => ({ ...prev, isLoading: true, error: null }));
+    try {
+      const { user, token } = await loginAPI(email, password);
+      localStorage.setItem('auth_token', token);
+      setState({ user, isAuthenticated: true, isLoading: false, error: null });
+      
+      // Redirect to intended destination or default
+      const from = (location.state as any)?.from?.pathname || '/';
+      navigate(from, { replace: true });
+    } catch (error) {
+      setState(prev => ({ 
+        ...prev, 
+        isLoading: false, 
+        error: error instanceof Error ? error.message : 'Login failed' 
+      }));
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem('auth_token');
+    setState({ user: null, isAuthenticated: false, isLoading: false, error: null });
+    navigate('/login');
+  };
+
+  return (
+    <AuthContext.Provider value={{ ...state, login, logout, register, resetPassword, clearError }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function useAuth() {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within AuthProvider');
+  }
+  return context;
+}
+```
+
+---
+
+## 🛡️ Navigation Guards
+
+### AuthGuard & GuestGuard
+
+```tsx
+// src/components/guards/AuthGuard.tsx
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { Loader2 } from 'lucide-react';
+
+interface AuthGuardProps {
+  children: React.ReactNode;
+  requiredRole?: 'customer' | 'admin';
+  redirectTo?: string;
+}
+
+export function AuthGuard({ 
+  children, 
+  requiredRole,
+  redirectTo = '/login' 
+}: AuthGuardProps) {
+  const { isAuthenticated, isLoading, user } = useAuth();
+  const location = useLocation();
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to={redirectTo} state={{ from: location }} replace />;
+  }
+
+  if (requiredRole && user?.role !== requiredRole) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  return <>{children}</>;
+}
+
+export function GuestGuard({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
+
+  return <>{children}</>;
+}
+```
+
+---
+
+## ✅ Flow Checkpoint Hooks
+
+### useFlowCheckpoint
+
+```tsx
+// src/hooks/useFlowCheckpoint.ts
+import { useEffect, useCallback } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { toast } from 'sonner';
+
+interface CheckpointConfig {
+  name: string;
+  validate: () => boolean | Promise<boolean>;
+  failureRedirect: string;
+  failureMessage?: string;
+}
+
+interface UseFlowCheckpointOptions {
+  checkpoints: CheckpointConfig[];
+  onAllPassed?: () => void;
+  onCheckpointFailed?: (checkpoint: string) => void;
+}
+
+export function useFlowCheckpoint({
+  checkpoints,
+  onAllPassed,
+  onCheckpointFailed,
+}: UseFlowCheckpointOptions) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const validateCheckpoints = useCallback(async () => {
+    for (const checkpoint of checkpoints) {
+      const isValid = await checkpoint.validate();
+      
+      if (!isValid) {
+        if (checkpoint.failureMessage) {
+          toast.error(checkpoint.failureMessage);
+        }
+        
+        onCheckpointFailed?.(checkpoint.name);
+        navigate(checkpoint.failureRedirect, {
+          state: { from: location, failedCheckpoint: checkpoint.name },
+        });
+        return false;
+      }
+    }
+    
+    onAllPassed?.();
+    return true;
+  }, [checkpoints, navigate, location, onAllPassed, onCheckpointFailed]);
+
+  useEffect(() => {
+    validateCheckpoints();
+  }, [validateCheckpoints]);
+
+  return { validateCheckpoints };
+}
+```
+
+### useFlowStateMachine
+
+```tsx
+// src/hooks/useFlowStateMachine.ts
+import { useState, useCallback } from 'react';
+
+type FlowState = 'idle' | 'in_progress' | 'completed' | 'failed' | 'cancelled';
+
+interface FlowStep {
+  id: string;
+  label: string;
+  status: 'pending' | 'active' | 'completed' | 'skipped' | 'error';
+  data?: Record<string, any>;
+  error?: string;
+}
+
+interface FlowConfig {
+  id: string;
+  steps: string[];
+  onComplete: (data: Record<string, any>) => void | Promise<void>;
+  onCancel?: () => void;
+  onError?: (error: Error, step: string) => void;
+}
+
+export function useFlowStateMachine(config: FlowConfig) {
+  const [flowState, setFlowState] = useState<FlowState>('idle');
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [steps, setSteps] = useState<FlowStep[]>(
+    config.steps.map((id, index) => ({
+      id,
+      label: id,
+      status: index === 0 ? 'active' : 'pending',
+    }))
+  );
+  const [flowData, setFlowData] = useState<Record<string, any>>({});
+
+  const currentStep = steps[currentStepIndex];
+
+  const completeStep = useCallback(async (stepData?: Record<string, any>) => {
+    const newFlowData = { ...flowData, [currentStep.id]: stepData };
+    setFlowData(newFlowData);
+
+    setSteps(prev => prev.map((step, index) => {
+      if (index === currentStepIndex) {
+        return { ...step, status: 'completed', data: stepData };
+      }
+      if (index === currentStepIndex + 1) {
+        return { ...step, status: 'active' };
+      }
+      return step;
+    }));
+
+    if (currentStepIndex === steps.length - 1) {
+      setFlowState('completed');
+      await config.onComplete(newFlowData);
+    } else {
+      setCurrentStepIndex(prev => prev + 1);
+    }
+  }, [currentStepIndex, currentStep, flowData, steps.length, config]);
+
+  const goToPreviousStep = useCallback(() => {
+    if (currentStepIndex > 0) {
+      setSteps(prev => prev.map((step, index) => {
+        if (index === currentStepIndex) {
+          return { ...step, status: 'pending' };
+        }
+        if (index === currentStepIndex - 1) {
+          return { ...step, status: 'active' };
+        }
+        return step;
+      }));
+      setCurrentStepIndex(prev => prev - 1);
+    }
+  }, [currentStepIndex]);
+
+  return {
+    flowState,
+    currentStep,
+    currentStepIndex,
+    steps,
+    flowData,
+    isFirstStep: currentStepIndex === 0,
+    isLastStep: currentStepIndex === steps.length - 1,
+    canGoBack: currentStepIndex > 0,
+    progress: ((currentStepIndex + 1) / steps.length) * 100,
+    completeStep,
+    goToPreviousStep,
+  };
+}
+```
+
+---
+
+## 🔄 Error Boundary & Recovery
+
+```tsx
+// src/components/app/ErrorBoundary.tsx
+import { Component, ErrorInfo, ReactNode } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { AlertCircle, Home, RefreshCw, ArrowLeft } from 'lucide-react';
+
+interface Props {
+  children: ReactNode;
+  fallback?: ReactNode;
+}
+
+interface State {
+  hasError: boolean;
+  error: Error | null;
+}
+
+export class ErrorBoundary extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error: Error): Partial<State> {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="flex min-h-screen items-center justify-center p-4">
+          <Card className="w-full max-w-md">
+            <CardHeader className="text-center">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
+                <AlertCircle className="h-8 w-8 text-destructive" />
+              </div>
+              <CardTitle>Something went wrong</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-muted-foreground">
+                We encountered an unexpected error. Don't worry, your data is safe.
+              </p>
+            </CardContent>
+            <CardFooter className="flex flex-col gap-2">
+              <Button onClick={() => window.location.reload()} className="w-full">
+                <RefreshCw className="mr-2 h-4 w-4" />
+                Try Again
+              </Button>
+              <div className="flex w-full gap-2">
+                <Button variant="outline" onClick={() => window.history.back()} className="flex-1">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Go Back
+                </Button>
+                <Button variant="outline" asChild className="flex-1">
+                  <Link to="/">
+                    <Home className="mr-2 h-4 w-4" />
+                    Home
+                  </Link>
+                </Button>
+              </div>
+            </CardFooter>
+          </Card>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+```
+
+---
+
+## ⏰ Auto Review Cron Jobs
+
+### GitHub Actions Workflow
+
+```yaml
+# .github/workflows/auto-review.yml
+name: Auto Review & Quality Gates
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  quality-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install Dependencies
+        run: npm ci
+      
+      - name: TypeScript Check
+        run: npm run type-check
+      
+      - name: Lint Check
+        run: npm run lint
+      
+      - name: Run Tests
+        run: npm run test -- --coverage
+      
+      - name: Build Check
+        run: npm run build
+      
+      - name: Validate User Flows
+        run: npm run validate:flows
+      
+      - name: Check Bundle Size
+        run: npm run analyze:bundle
+      
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          configPath: './lighthouserc.js'
+
+  flow-completeness-audit:
+    runs-on: ubuntu-latest
+    needs: quality-gates
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install Dependencies
+        run: npm ci
+      
+      - name: Run Flow Audit
+        run: npm run audit:flows
+      
+      - name: Check Missing States
+        run: npm run check:states
+      
+      - name: Validate Auth Guards
+        run: npm run check:guards
+      
+      - name: Report Results
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('./audit-report.json', 'utf8');
+            const data = JSON.parse(report);
+            
+            if (data.errors.length > 0) {
+              core.setFailed(`Flow audit found ${data.errors.length} issues`);
+              if (context.payload.pull_request) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.payload.pull_request.number,
+                  body: `## ❌ Flow Audit Failed\n\n${data.errors.map(e => `- ${e}`).join('\n')}`
+                });
+              }
+            }
+
+  auto-approve:
+    runs-on: ubuntu-latest
+    needs: [quality-gates, flow-completeness-audit]
+    if: success()
+    steps:
+      - name: Auto Approve PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            if (context.payload.pull_request) {
+              await github.rest.pulls.createReview({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
+                event: 'APPROVE',
+                body: '✅ All quality gates passed! Auto-approved by Frontend Generator.'
+              });
+              
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                labels: ['auto-approved', 'ready-to-merge']
+              });
+            }
+```
+
+### Flow Validation Script
+
+```typescript
+// scripts/validate-user-flows.ts
+interface FlowValidation {
+  flow: string;
+  startRoute: string;
+  endRoute: string;
+  requiredCheckpoints: string[];
+}
+
+const CRITICAL_FLOWS: FlowValidation[] = [
+  {
+    flow: 'Guest Checkout Redirect',
+    startRoute: '/checkout',
+    endRoute: '/login',
+    requiredCheckpoints: ['auth_check', 'redirect_param'],
+  },
+  {
+    flow: 'Login Success',
+    startRoute: '/login',
+    endRoute: '/',
+    requiredCheckpoints: ['credentials_valid', 'session_created', 'redirect_handled'],
+  },
+  {
+    flow: 'Register Success',
+    startRoute: '/register',
+    endRoute: '/',
+    requiredCheckpoints: ['data_valid', 'account_created', 'auto_login'],
+  },
+  {
+    flow: 'Password Reset',
+    startRoute: '/forgot-password',
+    endRoute: '/login',
+    requiredCheckpoints: ['email_sent', 'token_valid', 'password_updated'],
+  },
+  {
+    flow: 'Purchase Complete',
+    startRoute: '/cart',
+    endRoute: '/order/:id',
+    requiredCheckpoints: ['cart_not_empty', 'address_selected', 'payment_processed'],
+  },
+  {
+    flow: 'Profile Update',
+    startRoute: '/account/profile',
+    endRoute: '/account/profile',
+    requiredCheckpoints: ['auth_required', 'data_valid', 'save_success'],
+  },
+  {
+    flow: 'Sign Out',
+    startRoute: '/account',
+    endRoute: '/login',
+    requiredCheckpoints: ['confirm_dialog', 'session_cleared', 'redirect'],
+  },
+  {
+    flow: 'Admin Access',
+    startRoute: '/admin',
+    endRoute: '/admin/dashboard',
+    requiredCheckpoints: ['auth_required', 'role_check', 'admin_only'],
+  },
+];
+
+async function validateFlows() {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  
+  for (const flow of CRITICAL_FLOWS) {
+    console.log(`Validating: ${flow.flow}...`);
+    
+    if (!routeExists(flow.startRoute)) {
+      errors.push(`[${flow.flow}] Start route ${flow.startRoute} not found`);
+    }
+    
+    if (!routeExists(flow.endRoute)) {
+      errors.push(`[${flow.flow}] End route ${flow.endRoute} not found`);
+    }
+    
+    for (const checkpoint of flow.requiredCheckpoints) {
+      if (!checkpointImplemented(flow.startRoute, checkpoint)) {
+        errors.push(`[${flow.flow}] Checkpoint "${checkpoint}" not implemented`);
+      }
+    }
+    
+    const deadEnds = findDeadEnds(flow.startRoute);
+    if (deadEnds.length > 0) {
+      warnings.push(`[${flow.flow}] Potential dead ends: ${deadEnds.join(', ')}`);
+    }
+  }
+  
+  const report = { errors, warnings, timestamp: new Date().toISOString() };
+  fs.writeFileSync('./audit-report.json', JSON.stringify(report, null, 2));
+  
+  if (errors.length > 0) {
+    console.error('❌ Flow validation failed:');
+    errors.forEach(e => console.error(`  - ${e}`));
+    process.exit(1);
+  }
+  
+  if (warnings.length > 0) {
+    console.warn('⚠️ Warnings:');
+    warnings.forEach(w => console.warn(`  - ${w}`));
+  }
+  
+  console.log('✅ All user flows validated successfully');
+}
+
+validateFlows();
+```
+
+---
+
+## 🔀 Handoff Triggers & Recovery
+
+### When to Trigger Handoffs
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    HANDOFF TRIGGER MATRIX (7 Handoffs)              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  SITUATION                         → HANDOFF                        │
+│  ─────────────────────────────────────────────────────────────────  │
+│                                                                     │
+│  New project start                 → "Generate Complete UI"        │
+│  PRD file changed                  → "PRD Sync & Update"           │
+│  Missing features detected         → "Generate Missing Features"   │
+│  After any generation phase        → "Unified Checkpoint & Audit"  │
+│  Manual refinement needed          → "Refine UI"                   │
+│  Checkpoint passed                 → "Auto Review & Merge"         │
+│  All gates passed                  → "Approve and Merge"           │
+│                                                                     │
+│  AUTO-FIX FLOW (within Unified Checkpoint):                        │
+│  ─────────────────────────────────────────────────────────────────  │
+│  Missing auth context              → AUTO-FIX: Generate AuthContext│
+│  Dead end navigation               → AUTO-FIX: Add navigation      │
+│  Missing guards                    → AUTO-FIX: Generate guards     │
+│  Missing states                    → AUTO-FIX: Add loading/error   │
+│                                                                     │
+│  MANUAL FIX (via "Refine UI" handoff):                             │
+│  ─────────────────────────────────────────────────────────────────  │
+│  Complex UI changes                → "Refine UI"                   │
+│  Design decisions needed           → "Refine UI"                   │
+│  Accessibility issues              → "Refine UI"                   │
+│  Form validation logic             → "Refine UI"                   │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Recovery Actions
+
+| Issue Detected | Recovery Action | Auto? |
+|----------------|-----------------|-------|
+| Missing auth guards | Generate AuthContext + Guards | ✅ AUTO |
+| Dead end navigation | Add navigation links + redirects | ✅ AUTO |
+| Missing loading states | Add loading skeletons | ✅ AUTO |
+| Missing error states | Add error boundaries + alerts | ✅ AUTO |
+| Missing empty states | Add empty state components | ✅ AUTO |
+| Form without validation | Add form validation | ⚠️ MANUAL |
+| Inaccessible component | Add ARIA + keyboard nav | ⚠️ MANUAL |
+| Not responsive | Apply breakpoints | ✅ AUTO |
+| Missing tests | Generate tests | ✅ AUTO |
+
+### Mid-Generation Recovery
+
+When something is missing during generation:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│              MID-GENERATION RECOVERY PROTOCOL                       │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  1. DETECT missing dependency/component/state                       │
+│     │                                                               │
+│     ▼                                                               │
+│  2. PAUSE current generation phase                                  │
+│     │                                                               │
+│     ▼                                                               │
+│  3. CHECK if auto-fixable                                          │
+│     │                                                               │
+│     ├── ✓ Yes → 4. AUTO-FIX and continue                           │
+│     │                                                               │
+│     └── ✗ No → TRIGGER "Refine UI" handoff (manual)                │
+│                                                                     │
+│  4. INVOKE skill to generate missing piece                          │
+│     │                                                               │
+│     ▼                                                               │
+│  5. VALIDATE generated output                                       │
+│     │                                                               │
+│     ├── ✓ Pass → RESUME from paused point                          │
+│     │                                                               │
+│     └── ✗ Fail → TRIGGER "Refine UI" handoff                       │
+│                                                                     │
+│  EXAMPLE:                                                           │
+│  ─────────────────────────────────────────────────────────────────  │
+│  Generating CheckoutScreen...                                       │
+│  ⚠️ DETECTED: AuthContext not found                                │
+│  🔧 AUTO-FIX: flow-completeness-audit skill                        │
+│  📦 GENERATING: src/contexts/AuthContext.tsx                       │
+│  ✓ VALIDATED: AuthContext exports useAuth hook                     │
+│  ▶️ RESUMING: CheckoutScreen generation                             │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -843,143 +1322,111 @@ it('has no accessibility violations', async () => {
 
 ```
 src/
+├── contexts/                   # React contexts
+│   ├── AuthContext.tsx
+│   ├── CartContext.tsx
+│   └── ThemeContext.tsx
+├── components/
+│   ├── ui/                     # shadcn/ui primitives
+│   ├── guards/                 # Route guards
+│   │   ├── AuthGuard.tsx
+│   │   └── GuestGuard.tsx
+│   └── app/                    # Application components
+│       ├── shared/
+│       ├── ErrorBoundary.tsx
+│       └── SignOutButton.tsx
+├── hooks/                      # Custom hooks
+│   ├── useFlowCheckpoint.ts
+│   ├── useFlowStateMachine.ts
+│   ├── useNavigationAction.ts
+│   └── useFlowTracking.ts
 ├── layouts/                    # Page layouts
 │   ├── RootLayout.tsx
 │   ├── AuthLayout.tsx
-│   ├── DashboardLayout.tsx
 │   └── ...
 ├── screens/                    # Feature screens
 │   └── {context}/
 │       └── {ScreenName}/
 │           ├── {ScreenName}.tsx
 │           ├── {ScreenName}.test.tsx
-│           ├── {ScreenName}.stories.tsx
 │           └── components/
-├── components/
-│   ├── ui/                     # shadcn/ui primitives
-│   └── app/                    # Application components
-│       ├── shared/             # Shared components
-│       └── {feature}/          # Feature components
-├── flows/                      # Multi-step flows
-│   └── {FlowName}/
-│       ├── {FlowName}.tsx
-│       ├── steps/
-│       └── hooks/
-├── hooks/                      # Global hooks
 ├── lib/                        # Utilities
 ├── tokens/                     # Design tokens
 ├── styles/                     # Global styles
-└── types/                      # TypeScript types
+├── types/                      # TypeScript types
+└── router.tsx                  # App router with guards
 
-docs/ui/
-├── REQUIREMENTS.md
-├── screen-map.md
-├── user-flows.md
-├── component-inventory.md
-└── design-system.md
+scripts/
+├── validate-user-flows.ts      # Flow validation
+├── check-states.ts             # State coverage check
+└── check-guards.ts             # Guard validation
 
-tests/
-├── unit/
-├── integration/
-├── e2e/
-└── a11y/
+.github/
+├── workflows/
+│   └── auto-review.yml         # Auto review cron job
+└── agents/
+    └── frontend-generator.agent.md
 ```
 
 ---
 
-## ✅ Success Criteria
-
-The Frontend Generator succeeds when:
+## ✅ Complete Success Criteria
 
 ```
+GENERATION COMPLETE CHECKLIST:
+
+SCREENS & PAGES
 ✅ ALL screens from PRD generated
+✅ ALL routes defined in router
+✅ ALL layouts implemented
+✅ NO 404 on any internal link
+
+USER FLOWS
 ✅ ALL user flows connected (no dead ends)
+✅ Flow checkpoints implemented
+✅ Multi-step flows have state machine
+✅ Flow tracking for analytics
+
+AUTHENTICATION
+✅ AuthContext with full state management
+✅ AuthGuard on all protected routes
+✅ GuestGuard on auth pages (login/register)
+✅ Login preserves redirect destination
+✅ Sign out with confirmation dialog
+✅ Session persistence (remember me)
+
+NAVIGATION
+✅ Every action has clear destination
+✅ Back navigation always works
+✅ Breadcrumbs on nested pages
+✅ Mobile navigation implemented
+
+ERROR HANDLING
+✅ ErrorBoundary on all route segments
+✅ All API calls have error states
+✅ Form validation with inline errors
+✅ Toast notifications for actions
+✅ Recovery paths from all errors
+
+UI QUALITY
 ✅ 100% design token usage (no hardcoded values)
-✅ 100% test coverage
-✅ WCAG 2.1 AA accessibility
 ✅ Mobile-first responsive
 ✅ Dark mode support
+✅ WCAG 2.1 AA accessibility
 ✅ Lighthouse score > 90
-✅ TypeScript strict mode
+
+CODE QUALITY
+✅ TypeScript strict mode (no errors)
 ✅ ESLint zero warnings
+✅ 100% test coverage
 ✅ Storybook documentation complete
+
+AUTOMATION
 ✅ CI/CD pipelines configured
+✅ Auto-review cron job running
+✅ Flow validation script passing
+✅ All quality gates green
 ✅ PR ready for merge
-```
-
----
-
-## 🚀 Example Execution
-
-### Input
-```
-PRD: docs/product/PRD.md
-Roadmap: docs/product/roadmap.md
-Bounded Contexts: 7
-Total Features: 26
-```
-
-### Output
-```
-Phase 1: Analyzing PRD...
-  ✓ Found 7 bounded contexts
-  ✓ Identified 26 features
-  ✓ Mapped 35 screens
-  ✓ Documented 12 user flows
-
-Phase 2: Generating design system...
-  ✓ Generated 60+ design tokens
-  ✓ Created light/dark themes
-  ✓ Extended Tailwind config
-
-Phase 3: Creating layouts...
-  ✓ 8 layout templates
-  ✓ Responsive breakpoints
-  ✓ Navigation patterns
-
-Phase 4: Generating screens...
-  ✓ 35/35 screens generated
-  ✓ All CRUD operations
-  ✓ All state handlers
-
-Phase 5: Connecting flows...
-  ✓ 12 user flows connected
-  ✓ No dead ends
-  ✓ All edge cases handled
-
-Phase 6-7: Applying patterns & polish...
-  ✓ Premium aesthetics
-  ✓ Micro-interactions
-  ✓ Visual consistency
-
-Phase 8-9: Responsive & accessibility...
-  ✓ All breakpoints tested
-  ✓ WCAG 2.1 AA compliant
-  ✓ Keyboard navigable
-
-Phase 10: Generating tests...
-  ✓ 100% coverage
-  ✓ E2E critical paths
-  ✓ A11y tests passing
-
-Phase 11-12: Documentation & QA...
-  ✓ Storybook complete
-  ✓ All quality gates passed
-  ✓ PR created
-
-╔═══════════════════════════════════════════╗
-║  🎉 FRONTEND GENERATION COMPLETE!         ║
-║                                           ║
-║  📊 Screens: 35                           ║
-║  🧩 Components: 120+                      ║
-║  🎨 Design Tokens: 60+                    ║
-║  🧪 Tests: 100% coverage                  ║
-║  ♿ Accessibility: WCAG 2.1 AA            ║
-║  📱 Responsive: All breakpoints           ║
-║  🌙 Dark Mode: Supported                  ║
-║                                           ║
-║  ✅ Ready to merge!                       ║
-╚═══════════════════════════════════════════╝
 ```
 
 ---
@@ -989,10 +1436,13 @@ Phase 11-12: Documentation & QA...
 | Situation | Action |
 |-----------|--------|
 | Design tokens missing | ❌ Stop, generate tokens first |
+| AuthContext missing | 🔧 Generate AuthContext, resume |
 | TypeScript errors | ❌ Stop, fix errors, regenerate |
+| Flow checkpoint fails | 🔧 Fix missing flow, resume |
 | Accessibility violations | ❌ Stop, remediate, validate again |
 | Test coverage <100% | ❌ Stop, add missing tests |
 | Linting errors | ❌ Stop, fix errors |
+| Dead end navigation | 🔧 Add navigation, resume |
 | Unknown design pattern | 🛑 Stop, request human designer input |
 | Novel interaction | 🛑 Stop, request product clarification |
 | Build failure | 🔄 Retry with fixes |
@@ -1000,21 +1450,48 @@ Phase 11-12: Documentation & QA...
 
 ---
 
-## 🔗 Integration Points
+## 🚀 Execution Summary
 
-### Upstream (Inputs)
-- **Planner Agent** → Provides feature specifications
-- **Product Team** → Provides PRD and roadmap
-- **Design Team** → Provides design system and tokens
-
-### Downstream (Outputs)
-- **Frontend Review Agent** → Receives generated UI for review
-- **Implementation Team** → Uses generated screens and components
-- **CI/CD System** → Runs quality gates
-- **QA Team** → Uses Storybook for visual testing
+```
+╔═══════════════════════════════════════════════════════════════════╗
+║              FRONTEND GENERATOR EXECUTION FLOW                     ║
+╠═══════════════════════════════════════════════════════════════════╣
+║                                                                    ║
+║  PRD.md → [13 PHASES] → Production-Ready UI                       ║
+║                                                                    ║
+║  Phase 1:   PRD Analysis          (prd-to-ui-spec, journey-map)   ║
+║  Phase 2:   Design System         (design-language-system, tokens)║
+║  Phase 3:   Layouts               (layout-generation, grid)       ║
+║  Phase 4:   Screens               (component-generation, shadcn)  ║
+║  Phase 5:   User Flows            (flow-actions-patterns)         ║
+║  Phase 5.5: PRD Sync ⭐           (auto-detect missing features)  ║
+║  Phase 6:   User Flow Impl        (routing, navigation, guards)   ║
+║  Phase 7:   Component Patterns    (card, button, input patterns)  ║
+║  Phase 8:   Visual Polish         (ui-aesthetics, animations)     ║
+║  Phase 9:   Responsive            (responsive-design)             ║
+║  Phase 10:  Accessibility         (accessibility)                 ║
+║  Phase 11:  Testing               (testing-generation)            ║
+║  Phase 12:  UNIFIED CHECKPOINT ⭐ (check+report+auto-fix+validate)║
+║  Phase 13:  AUTO REVIEW ⭐        (cron job, auto-approve)        ║
+║                                                                    ║
+║  📊 38 Skills │ 13 Phases │ 7 Handoffs │ Continuous Validation    ║
+║                                                                    ║
+║  🔀 SIMPLIFIED HANDOFFS:                                          ║
+║     1. Generate Complete UI       (new projects)                  ║
+║     2. Generate Missing Features  (auto-detect from PRD)          ║
+║     3. PRD Sync & Update          (watch PRD changes)             ║
+║     4. Unified Checkpoint & Audit (check + auto-fix)              ║
+║     5. Refine UI                  (manual only)                   ║
+║     6. Auto Review & Merge        (quality gates)                 ║
+║     7. Approve and Merge          (final merge)                   ║
+║                                                                    ║
+║  ✅ ZERO MANUAL INTERVENTION REQUIRED (except "Refine UI")        ║
+║                                                                    ║
+╚═══════════════════════════════════════════════════════════════════╝
+```
 
 ---
 
 ## One-Line Summary
 
-> **The Frontend Generator is a universal agent that transforms ANY PRD into a complete, production-ready, aesthetic frontend with all screens, seamless user flows, 100% test coverage, and zero manual intervention—just provide a PRD and get a fully functional, beautiful application.**
+> **The Frontend Generator is a universal agent that transforms ANY PRD into a complete, production-ready frontend with 38 skills, 13 phases, 7 simplified handoffs, unified checkpoint & audit (with auto-fix), PRD sync, and minimal manual intervention—just provide a PRD and get a fully functional, beautiful, tested, and deployed application.**
