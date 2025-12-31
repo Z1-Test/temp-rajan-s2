@@ -1,192 +1,182 @@
 # Frontend UI Skills
 
 **Last Updated**: 2025-12-31  
-**Status**: ✅ Complete - 18 Active Skills
+**Total Skills**: 26 (organized by category)
 
 ---
 
-## 📋 Active Skills (18)
+## 📋 Skill Categories
 
-All skills actively used by the Frontend Generator Agent for end-to-end frontend development.
+### **Core Generation (7)**
 
-### **Core Generation Skills (8)**
+| Skill | Purpose |
+|-------|---------|
+| **prd-to-ui-spec** | Extract UI requirements from PRD |
+| **design-token-generation** | Generate CSS vars, Tailwind config, TypeScript types, colors, spacing, shadows |
+| **shadcn-integration** | Map requirements to shadcn primitives, component composition |
+| **component-generation-from-specs** | Generate React/TypeScript components |
+| **testing-generation** | Generate test suites |
+| **visual-regression** | Visual testing setup |
+| **ci-cd-integration** | GitHub Actions pipelines |
 
-| # | Skill | Purpose |
-|---|-------|---------|
-| 1 | **prd-to-ui-spec** | Extract UI requirements from PRD |
-| 2 | **design-token-generation** | Generate CSS vars, Tailwind config, TypeScript types |
-| 3 | **shadcn-integration** | Map requirements to shadcn primitives |
-| 4 | **component-generation-from-specs** | Generate React/TypeScript components |
-| 5 | **accessibility** | WCAG 2.1 AA validation |
-| 6 | **testing-generation** | Generate test suites |
-| 7 | **visual-regression** | Visual testing setup |
-| 8 | **ci-cd-integration** | GitHub Actions pipelines |
+### **Layout & Structure (5)**
 
-### **UI & Layout Skills (10)** 🆕
+| Skill | Purpose |
+|-------|---------|
+| **layout-generation** | CSS Grid/Flexbox, 12-column grid, page templates |
+| **alignment-consistency** | Pixel-perfect alignment, visual rhythm |
+| **spacing-consistency** | 4px grid enforcement, token-based spacing |
+| **responsive-design** | Mobile-first breakpoints, touch targets |
+| **form-layout-generation** | Form layouts, label positioning, validation UI |
 
-| # | Skill | Purpose |
-|---|-------|---------|
-| 9 | **layout-generation** | CSS Grid/Flexbox layouts, 12-column grid |
-| 10 | **alignment-consistency** | Pixel-perfect alignment, visual rhythm |
-| 11 | **ui-aesthetics** | Glassmorphism, gradients, shadows, visual polish |
-| 12 | **responsive-design** | Mobile-first strategies, breakpoints |
-| 13 | **dark-mode-generation** | Auto-generate dark themes, contrast validation |
-| 14 | **animation-micro-interactions** | Framer Motion, hover effects, loading states |
-| 15 | **typography-hierarchy** | Font pairing, type scale, heading hierarchy |
-| 16 | **spacing-consistency** | 4px grid enforcement, token-based spacing |
-| 17 | **performance-optimization** | Bundle analysis, lazy loading, Core Web Vitals |
-| 18 | **form-layout-generation** | Form layouts, label positioning, validation UI |
+### **Visual Polish (5)**
+
+| Skill | Purpose |
+|-------|---------|
+| **ui-aesthetics** | Glassmorphism, gradients, shadows, premium polish |
+| **typography-hierarchy** | Font pairing, type scale, heading hierarchy |
+| **animation-micro-interactions** | Framer Motion, hover effects, loading states |
+| **dark-mode-generation** | Auto-generate dark themes, contrast validation |
+| **icon-integration** | Lucide React icons, sizing, alignment |
+
+### **Component Patterns (7)**
+
+| Skill | Purpose |
+|-------|---------|
+| **card-patterns** | Card compositions (stats, user, feature, pricing) |
+| **input-patterns** | Form inputs, validation states, input groups |
+| **navigation-patterns** | Headers, sidebars, breadcrumbs, mobile nav |
+| **data-display-patterns** | Tables, lists, grids, pagination |
+| **modal-dialog-patterns** | Dialogs, sheets, popovers |
+| **state-ui-patterns** | Loading, error, empty, success states |
+| **feedback-patterns** | Toasts, alerts, notifications |
+
+### **Quality (2)**
+
+| Skill | Purpose |
+|-------|---------|
+| **accessibility** | WCAG 2.1 AA validation |
+| **performance-optimization** | Bundle analysis, lazy loading, Core Web Vitals |
 
 ---
 
-## 🔄 Complete Workflow
+## 🎯 Complete Workflow
 
 ```
 PRD.md
    ↓
-[1. prd-to-ui-spec] ─────────────────┐
-   Extract requirements              │
-   ↓                                 │
-[2. design-token-generation]         │
-   Generate CSS vars, Tailwind       │
-   ↓                                 │
-[3. shadcn-integration]              │ Core
-   Map to shadcn primitives          │ Generation
-   ↓                                 │ Phase
-[4. accessibility]                   │
-   Pre-validate WCAG 2.1 AA          │
-   ↓                                 │
-[5. component-generation-from-specs] │
-   + layout-generation               │ ← NEW
-   + alignment-consistency           │ ← NEW
-   + ui-aesthetics                   │ ← NEW
-   + typography-hierarchy            │ ← NEW
-   + spacing-consistency             │ ← NEW
-   + form-layout-generation          │ ← NEW
-   Generate React components         │
-   ↓                                 ┘
-[6. testing-generation]
-   Generate tests (100% coverage)
+[prd-to-ui-spec] → Extract UI requirements
    ↓
-[7. responsive-design] ← NEW
-   Apply breakpoints
+[design-token-generation] → Colors, spacing, typography tokens
    ↓
-[8. dark-mode-generation] ← NEW
-   Generate dark theme
+[shadcn-integration] → Map to shadcn primitives
    ↓
-[9. animation-micro-interactions] ← NEW
-   Add hover/focus effects
+[component-generation-from-specs]
+   + layout-generation
+   + alignment-consistency
+   + spacing-consistency
+   + typography-hierarchy
+   + ui-aesthetics
+   + form-layout-generation
+   + card-patterns
+   + input-patterns
+   + navigation-patterns
+   + data-display-patterns
+   + modal-dialog-patterns
+   + state-ui-patterns
+   + feedback-patterns
+   + icon-integration
    ↓
-[10. performance-optimization] ← NEW
-   Lazy load, code split
+[responsive-design] → Apply breakpoints
    ↓
-[11. visual-regression]
-   Setup Chromatic/Playwright
+[dark-mode-generation] → Generate dark theme
    ↓
-[12. ci-cd-integration]
-   Create GitHub Actions
+[animation-micro-interactions] → Add hover/focus effects
    ↓
-[13. github-pr-flow]
-   Create Pull Request
+[accessibility] → WCAG validation
    ↓
-[14. Automated Review]
-   Quality gates
+[performance-optimization] → Lazy load, code split
+   ↓
+[testing-generation] → Generate tests
+   ↓
+[visual-regression] → Setup visual tests
+   ↓
+[ci-cd-integration] → Create pipelines
    ↓
 ✅ READY TO MERGE
 ```
 
 ---
 
-## 📊 Skill Categories
+## 📊 Coverage
 
-### **By Phase**:
-- **Planning**: prd-to-ui-spec
-- **Design Tokens**: design-token-generation, dark-mode-generation
-- **Component Mapping**: shadcn-integration
-- **Generation**: component-generation-from-specs, form-layout-generation
-- **Layout & Alignment**: layout-generation, alignment-consistency, spacing-consistency
-- **Visual Polish**: ui-aesthetics, typography-hierarchy, animation-micro-interactions
-- **Responsiveness**: responsive-design
-- **Quality**: accessibility, testing-generation, performance-optimization
-- **CI/CD**: visual-regression, ci-cd-integration
-
-### **By Coverage**:
-| Area | Skills | Coverage |
-|------|--------|----------|
-| Layouts | layout-generation, responsive-design, form-layout-generation | ✅ |
+| Area | Skills | Status |
+|------|--------|--------|
+| Layouts | layout-generation, form-layout-generation | ✅ |
 | Alignment | alignment-consistency, spacing-consistency | ✅ |
-| Aesthetics | ui-aesthetics, typography-hierarchy | ✅ |
-| Theming | dark-mode-generation, design-token-generation | ✅ |
-| Interactivity | animation-micro-interactions | ✅ |
+| Typography | typography-hierarchy | ✅ |
+| Colors | design-token-generation | ✅ |
+| Aesthetics | ui-aesthetics | ✅ |
+| Responsive | responsive-design | ✅ |
+| Dark Mode | dark-mode-generation | ✅ |
+| Animation | animation-micro-interactions | ✅ |
+| Icons | icon-integration | ✅ |
+| Cards | card-patterns | ✅ |
+| Inputs | input-patterns | ✅ |
+| Navigation | navigation-patterns | ✅ |
+| Data Display | data-display-patterns | ✅ |
+| Modals | modal-dialog-patterns | ✅ |
+| States | state-ui-patterns | ✅ |
+| Feedback | feedback-patterns | ✅ |
+| Accessibility | accessibility | ✅ |
 | Performance | performance-optimization | ✅ |
-| Quality | accessibility, testing-generation, visual-regression | ✅ |
 
 ---
 
-## ⚡ Performance Metrics
+## 🗂️ Directory Structure
 
-- **Time**: PRD → Production-ready PR in **20 minutes**
-- **Quality**: 100% test coverage, WCAG 2.1 AA compliant
-- **Automation**: 95% automated (only human approval needed)
-- **Skills**: 18 specialized skills for complete coverage
-
----
-
-## 🎯 Success Criteria
-
-Frontend Generator succeeds when:
-
-✅ All components generated from specifications  
-✅ Layouts using CSS Grid/Flexbox correctly  
-✅ Pixel-perfect alignment throughout  
-✅ Premium visual aesthetics applied  
-✅ Mobile-first responsive design  
-✅ Dark mode properly generated  
-✅ Smooth animations and micro-interactions  
-✅ Clear typography hierarchy  
-✅ Consistent spacing (4px grid)  
-✅ Performance optimized (Core Web Vitals)  
-✅ Forms accessible and well-laid out  
-✅ shadcn/ui primitives composed correctly  
-✅ Design tokens generated and validated  
-✅ 100% test coverage achieved  
-✅ WCAG 2.1 AA compliance validated  
-✅ Storybook documentation complete  
-✅ CI/CD pipelines configured  
-✅ Pull Request passing all checks  
-✅ Ready to merge to production  
-
----
-
-## 📚 Documentation
-
-- **Skill Audit**: [SKILL_AUDIT.md](SKILL_AUDIT.md)
-- **Agent**: [frontend-generator.agent.md](../../agents/frontend-generator.agent.md)
-
----
-
-## 🔧 Maintenance
-
-### Adding a New Skill
-
-1. Create skill directory: `.github/skills/frontend-ui/{skill-name}/`
-2. Add `SKILL.md` with:
-   - Frontmatter (title, description, tags, name)
-   - "What is it?" section
-   - "Why use it?" section
-   - How-to examples with code
-   - Best practices (DO/DON'T)
-3. Update this README
-4. Update SKILL_AUDIT.md
-5. Reference in Frontend Generator agent if needed
-
-### Archiving a Skill
-
-1. Move to `.github/skills/_archived/{skill-name}/`
-2. Update this README
-3. Remove references from Frontend Generator agent
-4. Document in SKILL_AUDIT.md
+```
+frontend-ui/
+├── Core Generation
+│   ├── prd-to-ui-spec/
+│   ├── design-token-generation/
+│   ├── shadcn-integration/
+│   ├── component-generation-from-specs/
+│   ├── testing-generation/
+│   ├── visual-regression/
+│   └── ci-cd-integration/
+│
+├── Layout & Structure
+│   ├── layout-generation/
+│   ├── alignment-consistency/
+│   ├── spacing-consistency/
+│   ├── responsive-design/
+│   └── form-layout-generation/
+│
+├── Visual Polish
+│   ├── ui-aesthetics/
+│   ├── typography-hierarchy/
+│   ├── animation-micro-interactions/
+│   ├── dark-mode-generation/
+│   └── icon-integration/
+│
+├── Component Patterns
+│   ├── card-patterns/
+│   ├── input-patterns/
+│   ├── navigation-patterns/
+│   ├── data-display-patterns/
+│   ├── modal-dialog-patterns/
+│   ├── state-ui-patterns/
+│   └── feedback-patterns/
+│
+├── Quality
+│   ├── accessibility/
+│   └── performance-optimization/
+│
+├── README.md
+└── SKILL_AUDIT.md
+```
 
 ---
 
-**Total Skills**: 18 (8 core + 10 new UI/layout skills)
+**Total**: 26 skills for complete end-to-end frontend development
