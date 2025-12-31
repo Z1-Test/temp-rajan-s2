@@ -1,53 +1,41 @@
 # Frontend UI Skills
 
 **Last Updated**: 2025-12-31  
-**Status**: ✅ Clean and optimized
+**Status**: ✅ Complete - 18 Active Skills
 
 ---
 
-## 📋 Active Skills (8)
+## 📋 Active Skills (18)
 
-All skills actively used by the Frontend Generator Agent in the 12-phase workflow.
+All skills actively used by the Frontend Generator Agent for end-to-end frontend development.
 
-### **1. prd-to-ui-spec**
-- **Phase**: 1 (Requirements Analysis), 3 (Specification)
-- **Purpose**: Extracts UI requirements from PRD and generates component specifications
-- **Output**: Component inventory, specs, PRD coverage matrix
+### **Core Generation Skills (8)**
 
-### **2. design-token-generation** 🆕
-- **Phase**: 2 (Design Token Generation)
-- **Purpose**: Auto-generates CSS vars, Tailwind config, TypeScript types from brand guidelines
-- **Output**: tokens.css, tailwind.config.ts, tokens.ts, tokens.json, dark mode variants
+| # | Skill | Purpose |
+|---|-------|---------|
+| 1 | **prd-to-ui-spec** | Extract UI requirements from PRD |
+| 2 | **design-token-generation** | Generate CSS vars, Tailwind config, TypeScript types |
+| 3 | **shadcn-integration** | Map requirements to shadcn primitives |
+| 4 | **component-generation-from-specs** | Generate React/TypeScript components |
+| 5 | **accessibility** | WCAG 2.1 AA validation |
+| 6 | **testing-generation** | Generate test suites |
+| 7 | **visual-regression** | Visual testing setup |
+| 8 | **ci-cd-integration** | GitHub Actions pipelines |
 
-### **3. shadcn-integration** 🆕
-- **Phase**: 3 (shadcn Mapping), 5 (Component Generation)
-- **Purpose**: Maps requirements to shadcn primitives and generates composed components
-- **Output**: shadcn-composed React components using 25 primitives
+### **UI & Layout Skills (10)** 🆕
 
-### **4. component-generation-from-specs**
-- **Phase**: 5 (Component Code Generation)
-- **Purpose**: Generates production-ready React/TypeScript components from specs
-- **Output**: .tsx, .types.ts, .test.tsx, .stories.tsx, README.md, index.ts
-
-### **5. accessibility**
-- **Phase**: 4 (Pre-validation), 11 (Automated Review)
-- **Purpose**: WCAG 2.1 AA validation and remediation
-- **Output**: Accessibility checklist, violation reports, fix recommendations
-
-### **6. testing-generation**
-- **Phase**: 6 (Testing Generation & Execution)
-- **Purpose**: Generates unit, integration, and E2E tests
-- **Output**: Complete test suites with 100% coverage
-
-### **7. visual-regression**
-- **Phase**: 8 (Visual Regression Setup)
-- **Purpose**: Setup Chromatic and Playwright visual tests
-- **Output**: Visual test baselines, Chromatic config, Playwright specs
-
-### **8. ci-cd-integration**
-- **Phase**: 9 (CI/CD Pipeline Setup)
-- **Purpose**: Creates GitHub Actions workflows with quality gates
-- **Output**: .github/workflows/*.yml (lint, test, build, deploy)
+| # | Skill | Purpose |
+|---|-------|---------|
+| 9 | **layout-generation** | CSS Grid/Flexbox layouts, 12-column grid |
+| 10 | **alignment-consistency** | Pixel-perfect alignment, visual rhythm |
+| 11 | **ui-aesthetics** | Glassmorphism, gradients, shadows, visual polish |
+| 12 | **responsive-design** | Mobile-first strategies, breakpoints |
+| 13 | **dark-mode-generation** | Auto-generate dark themes, contrast validation |
+| 14 | **animation-micro-interactions** | Framer Motion, hover effects, loading states |
+| 15 | **typography-hierarchy** | Font pairing, type scale, heading hierarchy |
+| 16 | **spacing-consistency** | 4px grid enforcement, token-based spacing |
+| 17 | **performance-optimization** | Bundle analysis, lazy loading, Core Web Vitals |
+| 18 | **form-layout-generation** | Form layouts, label positioning, validation UI |
 
 ---
 
@@ -56,89 +44,91 @@ All skills actively used by the Frontend Generator Agent in the 12-phase workflo
 ```
 PRD.md
    ↓
-[1. prd-to-ui-spec]
-   Extract requirements, create component inventory
-   ↓
-[2. design-token-generation] ← brand-guidelines
-   Generate CSS vars, Tailwind config, TypeScript types
-   ↓
-[3. shadcn-integration] ← design-system
-   Map to shadcn primitives, define compositions
-   ↓
-[3. prd-to-ui-spec]
-   Generate detailed component specs
-   ↓
-[4. accessibility]
-   Pre-validate WCAG 2.1 AA compliance
-   ↓
-[5. shadcn-integration + component-generation-from-specs]
-   Generate shadcn-composed React components
-   ↓
+[1. prd-to-ui-spec] ─────────────────┐
+   Extract requirements              │
+   ↓                                 │
+[2. design-token-generation]         │
+   Generate CSS vars, Tailwind       │
+   ↓                                 │
+[3. shadcn-integration]              │ Core
+   Map to shadcn primitives          │ Generation
+   ↓                                 │ Phase
+[4. accessibility]                   │
+   Pre-validate WCAG 2.1 AA          │
+   ↓                                 │
+[5. component-generation-from-specs] │
+   + layout-generation               │ ← NEW
+   + alignment-consistency           │ ← NEW
+   + ui-aesthetics                   │ ← NEW
+   + typography-hierarchy            │ ← NEW
+   + spacing-consistency             │ ← NEW
+   + form-layout-generation          │ ← NEW
+   Generate React components         │
+   ↓                                 ┘
 [6. testing-generation]
-   Generate tests (unit, integration, E2E)
+   Generate tests (100% coverage)
    ↓
-[7. accessibility + testing-generation]
-   Run accessibility tests (jest-axe)
+[7. responsive-design] ← NEW
+   Apply breakpoints
    ↓
-[8. visual-regression]
-   Setup Chromatic and Playwright visual tests
+[8. dark-mode-generation] ← NEW
+   Generate dark theme
    ↓
-[9. ci-cd-integration]
-   Create GitHub Actions pipelines
+[9. animation-micro-interactions] ← NEW
+   Add hover/focus effects
    ↓
-[10. github-pr-flow]
+[10. performance-optimization] ← NEW
+   Lazy load, code split
+   ↓
+[11. visual-regression]
+   Setup Chromatic/Playwright
+   ↓
+[12. ci-cd-integration]
+   Create GitHub Actions
+   ↓
+[13. github-pr-flow]
    Create Pull Request
    ↓
-[11. Automated Review]
-   Code quality, A11y, design system, testing, docs
+[14. Automated Review]
+   Quality gates
    ↓
-[12. Iteration or Merge]
-   Fix issues or merge to production
+✅ READY TO MERGE
 ```
 
 ---
 
-## 📊 Supporting Skills (Referenced)
+## 📊 Skill Categories
 
-These skills are referenced by the Frontend Generator but live in other directories:
+### **By Phase**:
+- **Planning**: prd-to-ui-spec
+- **Design Tokens**: design-token-generation, dark-mode-generation
+- **Component Mapping**: shadcn-integration
+- **Generation**: component-generation-from-specs, form-layout-generation
+- **Layout & Alignment**: layout-generation, alignment-consistency, spacing-consistency
+- **Visual Polish**: ui-aesthetics, typography-hierarchy, animation-micro-interactions
+- **Responsiveness**: responsive-design
+- **Quality**: accessibility, testing-generation, performance-optimization
+- **CI/CD**: visual-regression, ci-cd-integration
 
-### **design-system**
-- **Location**: `.github/skills/deisgn/design-system/SKILL.md`
-- **Purpose**: Design system rules, tokens, component patterns
-- **Used**: Throughout workflow as reference
-
-### **brand-guidelines**
-- **Location**: `.github/skills/deisgn/brand-guidelines/SKILL.md`
-- **Purpose**: Staytuned brand colors, typography, identity
-- **Used**: Phase 2 (input for token generation)
-
-### **github-pr-flow**
-- **Location**: `.github/skills/github/github-pr-flow/SKILL.md`
-- **Purpose**: Branch creation, PR management, merging
-- **Used**: Phase 10 (Pull Request Creation)
-
-### **impl-code-review**
-- **Location**: `.github/skills/implementation/impl-code-review/SKILL.md`
-- **Purpose**: Code review patterns and checklist
-- **Used**: Phase 11 (reference for review criteria)
-
----
-
-## 🗑️ Archived Skills
-
-Moved to `.github/skills/_archived/` (redundant functionality):
-
-- **design-consistency** - Redundant with design-system + automated review
-- **frontend-design** - Functionality covered by shadcn-integration + brand-guidelines
+### **By Coverage**:
+| Area | Skills | Coverage |
+|------|--------|----------|
+| Layouts | layout-generation, responsive-design, form-layout-generation | ✅ |
+| Alignment | alignment-consistency, spacing-consistency | ✅ |
+| Aesthetics | ui-aesthetics, typography-hierarchy | ✅ |
+| Theming | dark-mode-generation, design-token-generation | ✅ |
+| Interactivity | animation-micro-interactions | ✅ |
+| Performance | performance-optimization | ✅ |
+| Quality | accessibility, testing-generation, visual-regression | ✅ |
 
 ---
 
 ## ⚡ Performance Metrics
 
 - **Time**: PRD → Production-ready PR in **20 minutes**
-- **Quality**: 100% test coverage, WCAG 2.1 AA compliant, design system aligned
+- **Quality**: 100% test coverage, WCAG 2.1 AA compliant
 - **Automation**: 95% automated (only human approval needed)
-- **Speed Increase**: 100x faster than manual development (2-3 weeks → 20 minutes)
+- **Skills**: 18 specialized skills for complete coverage
 
 ---
 
@@ -147,24 +137,31 @@ Moved to `.github/skills/_archived/` (redundant functionality):
 Frontend Generator succeeds when:
 
 ✅ All components generated from specifications  
+✅ Layouts using CSS Grid/Flexbox correctly  
+✅ Pixel-perfect alignment throughout  
+✅ Premium visual aesthetics applied  
+✅ Mobile-first responsive design  
+✅ Dark mode properly generated  
+✅ Smooth animations and micro-interactions  
+✅ Clear typography hierarchy  
+✅ Consistent spacing (4px grid)  
+✅ Performance optimized (Core Web Vitals)  
+✅ Forms accessible and well-laid out  
 ✅ shadcn/ui primitives composed correctly  
 ✅ Design tokens generated and validated  
 ✅ 100% test coverage achieved  
 ✅ WCAG 2.1 AA compliance validated  
-✅ Design system fully aligned  
 ✅ Storybook documentation complete  
 ✅ CI/CD pipelines configured  
-✅ Pull Request created and passing all checks  
-✅ Automated review completed  
-✅ Review approved (no blocking issues)  
+✅ Pull Request passing all checks  
 ✅ Ready to merge to production  
 
 ---
 
 ## 📚 Documentation
 
-- **Skill Audit**: [SKILL_AUDIT.md](SKILL_AUDIT.md) - Complete analysis and cleanup report
-- **Agent**: [frontend-generator.agent.md](../../agents/frontend-generator.agent.md) - Unified agent (generation + review)
+- **Skill Audit**: [SKILL_AUDIT.md](SKILL_AUDIT.md)
+- **Agent**: [frontend-generator.agent.md](../../agents/frontend-generator.agent.md)
 
 ---
 
@@ -174,12 +171,14 @@ Frontend Generator succeeds when:
 
 1. Create skill directory: `.github/skills/frontend-ui/{skill-name}/`
 2. Add `SKILL.md` with:
-   - Description
-   - Input/Output
-   - Examples
-   - Integration points
+   - Frontmatter (title, description, tags, name)
+   - "What is it?" section
+   - "Why use it?" section
+   - How-to examples with code
+   - Best practices (DO/DON'T)
 3. Update this README
-4. Update Frontend Generator agent to reference it
+4. Update SKILL_AUDIT.md
+5. Reference in Frontend Generator agent if needed
 
 ### Archiving a Skill
 
@@ -190,4 +189,4 @@ Frontend Generator succeeds when:
 
 ---
 
-**Questions?** Check [SKILL_AUDIT.md](SKILL_AUDIT.md) for detailed analysis.
+**Total Skills**: 18 (8 core + 10 new UI/layout skills)
