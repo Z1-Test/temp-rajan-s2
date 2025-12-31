@@ -1,164 +1,108 @@
-# Frontend Skills Audit & Recommendations
+# Frontend Skills Audit
 
 **Date**: 2025-12-31  
-**Status**: ✅ COMPLETE - All skills including Design Language and User Journey
-
----
-
-## ✅ Core Generation Skills (7)
-
-| # | Skill | Purpose |
-|---|-------|---------|
-| 1 | **prd-to-ui-spec** | Extract UI requirements from PRD |
-| 2 | **design-token-generation** | Auto-generate CSS vars, Tailwind config |
-| 3 | **shadcn-integration** | Map requirements to shadcn primitives |
-| 4 | **component-generation-from-specs** | Generate React/TypeScript components |
-| 5 | **testing-generation** | Generate test suites |
-| 6 | **visual-regression** | Visual testing setup |
-| 7 | **ci-cd-integration** | GitHub Actions pipelines |
-
----
-
-## ✅ NEW: Design Language Skills (3) 🆕
-
-| # | Skill | Purpose |
-|---|-------|---------|
-| 8 | **design-language-system** | Master skill for cohesive design vocabulary |
-| 9 | **visual-composition** | Hierarchy, balance, whitespace, focal points |
-| 10 | **design-qa-checklist** | Pre-merge quality assurance checklist |
-
----
-
-## ✅ Layout & Structure Skills (6)
-
-| # | Skill | Purpose |
-|---|-------|---------|
-| 11 | **layout-generation** | CSS Grid/Flexbox patterns, 12-column grid |
-| 12 | **grid-system-mastery** | Advanced 12-column grid patterns 🆕 |
-| 13 | **alignment-consistency** | Pixel-perfect alignment, visual rhythm |
-| 14 | **spacing-consistency** | 4px grid enforcement |
-| 15 | **responsive-design** | Mobile-first breakpoints, touch targets |
-| 16 | **form-layout-generation** | Form layouts, validation UI |
-
----
-
-## ✅ Visual Polish Skills (6)
-
-| # | Skill | Purpose |
-|---|-------|---------|
-| 17 | **ui-aesthetics** | Glassmorphism, gradients, shadows |
-| 18 | **typography-hierarchy** | Font pairing, type scale |
-| 19 | **color-system** | Semantic colors, palettes, accessibility 🆕 |
-| 20 | **animation-micro-interactions** | Framer Motion, hover effects |
-| 21 | **dark-mode-generation** | Auto-generate dark themes |
-| 22 | **icon-integration** | Lucide React icons, sizing, alignment |
-
----
-
-## ✅ Component Pattern Skills (10)
-
-| # | Skill | Purpose |
-|---|-------|---------|
-| 23 | **card-patterns** | Card compositions (stats, user, feature) |
-| 24 | **button-patterns** | Button variants, states, groups 🆕 |
-| 25 | **input-patterns** | Form inputs, validation states |
-| 26 | **navigation-patterns** | Headers, sidebars, breadcrumbs |
-| 27 | **data-display-patterns** | Tables, lists, grids, pagination |
-| 28 | **modal-dialog-patterns** | Dialogs, sheets, popovers |
-| 29 | **state-ui-patterns** | Loading, error, empty, success states |
-| 30 | **feedback-patterns** | Toasts, alerts, notifications |
-| 31 | **flow-actions-patterns** | Complete action flows, CRUD, wizards 🆕 |
-| 32 | **component-composition** | Compose complex components from primitives 🆕 |
-
----
-
-## ✅ Quality Skills (2)
-
-| # | Skill | Purpose |
-|---|-------|---------|
-| 33 | **accessibility** | WCAG 2.1 AA validation |
-| 34 | **performance-optimization** | Bundle analysis, Core Web Vitals |
+**Status**: ✅ Reorganized - 36 active skills, 6 archived
 
 ---
 
 ## 📊 Summary
 
-| Category | Count | Status |
-|----------|-------|--------|
-| Core Generation | 7 | ✅ Complete |
-| Design Language | 3 | ✅ Complete |
-| User Journey | 2 | ✅ Complete |
-| Layout & Structure | 6 | ✅ Complete |
-| Visual Polish | 6 | ✅ Complete |
-| Component Patterns | 10 | ✅ Complete |
-| Quality & Audit | 4 | ✅ Complete |
-| **TOTAL** | **38** | ✅ All Active |
+| Category | Count |
+|----------|-------|
+| Core Generation | 7 |
+| Design Language | 2 |
+| User Journey | 2 |
+| Layout & Structure | 4 |
+| Visual Polish | 6 |
+| Component Patterns | 11 |
+| Error Handling | 1 |
+| Quality & Audit | 3 |
+| **TOTAL** | **36** |
 
 ---
 
-## 🆕 New Skills Added (12 Total)
+## Recent Changes
 
-| Skill | Category | Purpose |
-|-------|----------|---------|
-| **design-language-system** | Design Language | Master skill tying all patterns together |
-| **visual-composition** | Design Language | Hierarchy, balance, whitespace, focal points |
-| **design-qa-checklist** | Design Language | Pre-merge quality checklist |
-| **user-journey-mapping** | User Journey | End-to-end flows with Mermaid diagrams |
-| **journey-to-screens** | User Journey | Convert journeys to screen specs |
-| **grid-system-mastery** | Layout | Advanced 12-column grid patterns |
-| **color-system** | Visual Polish | Semantic colors with accessibility |
-| **button-patterns** | Components | Button variants, states, groups |
-| **flow-actions-patterns** | Components | Complete CRUD flows, wizards |
-| **component-composition** | Components | Compose complex from primitives |
-| **ui-polish-mastery** | Quality & Audit | Advanced spacing/alignment mastery 🆕 |
-| **flow-completeness-audit** | Quality & Audit | Missing flows/states audit 🆕 |
+### ✅ New Skills Added (4)
 
----
+| Skill | Purpose |
+|-------|---------|
+| **form-patterns** | Merged input-patterns + form-layout-generation |
+| **ui-quality-audit** | Merged design-qa-checklist + flow-completeness-audit |
+| **ci-cd-integration** | GitHub Actions pipelines (was missing) |
+| **error-handling-patterns** | Error boundaries, retries, fallbacks |
 
-## ✅ Coverage Analysis
+### 📁 Archived Skills (6)
 
-| Area | Before | After |
-|------|--------|-------|
-| Design Language System | ❌ | ✅ design-language-system |
-| Visual Composition | ❌ | ✅ visual-composition |
-| Grid Mastery | ❌ | ✅ grid-system-mastery |
-| Color System | ❌ | ✅ color-system |
-| Button Patterns | ❌ | ✅ button-patterns |
-| Flow/Actions | ❌ | ✅ flow-actions-patterns |
-| Component Composition | ❌ | ✅ component-composition |
-| QA Checklist | ❌ | ✅ design-qa-checklist |
-| Layouts | ✅ | ✅ Enhanced |
-| Alignment | ✅ | ✅ Complete |
-| Aesthetics | ✅ | ✅ Complete |
-| Responsive | ✅ | ✅ Complete |
-| Theming | ✅ | ✅ Complete |
-| Animation | ✅ | ✅ Complete |
-| States | ✅ | ✅ Complete |
-| Accessibility | ✅ | ✅ Complete |
-| Performance | ✅ | ✅ Complete |
-
-**Result**: Complete end-to-end frontend coverage with Design Language Understanding! 🎉
+| Archived | Reason |
+|----------|--------|
+| `input-patterns` | Merged into `form-patterns` |
+| `form-layout-generation` | Merged into `form-patterns` |
+| `spacing-consistency` | Covered by `ui-polish-mastery` |
+| `alignment-consistency` | Covered by `ui-polish-mastery` |
+| `design-qa-checklist` | Merged into `ui-quality-audit` |
+| `flow-completeness-audit` | Merged into `ui-quality-audit` |
 
 ---
 
-## 🎯 Key Improvements
+## Active Skills (36)
 
-### 1. Design Language System
-- Unified vocabulary for all UI elements
-- Consistent elevation, interaction states
-- Visual weight and density guidelines
+### Core Generation (7)
+- prd-to-ui-spec
+- design-token-generation
+- shadcn-integration
+- component-generation-from-specs
+- testing-generation
+- visual-regression
+- ci-cd-integration ✨
 
-### 2. Complete Action Flows
-- CRUD operations with all states
-- Multi-step wizards
-- Confirmation patterns
+### Design Language (2)
+- design-language-system
+- visual-composition
 
-### 3. Visual Composition
-- Hierarchy pyramid
-- Balance patterns
-- Reading flow optimization
+### User Journey (2)
+- user-journey-mapping
+- journey-to-screens
 
-### 4. Quality Assurance
-- Pre-merge checklist
-- Common issues guide
-- Sign-off requirements
+### Layout & Structure (4)
+- layout-generation
+- grid-system-mastery
+- responsive-design
+- ui-polish-mastery
+
+### Visual Polish (6)
+- ui-aesthetics
+- typography-hierarchy
+- color-system
+- animation-micro-interactions
+- dark-mode-generation
+- icon-integration
+
+### Component Patterns (11)
+- card-patterns
+- button-patterns
+- form-patterns ✨
+- navigation-patterns
+- data-display-patterns
+- modal-dialog-patterns
+- state-ui-patterns
+- feedback-patterns
+- flow-actions-patterns
+- component-composition
+- image-media-patterns
+
+### Error Handling (1)
+- error-handling-patterns ✨
+
+### Quality & Audit (3)
+- accessibility
+- performance-optimization
+- ui-quality-audit ✨
+
+---
+
+## Result
+
+- **Before**: 38 skills with overlaps
+- **After**: 36 cleaner skills, no redundancy
+- **Archived**: 6 skills moved to `_archived/`

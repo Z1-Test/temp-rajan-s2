@@ -118,11 +118,10 @@ export function OrderDetailScreen() {
                     {/* Timeline line */}
                     <div className="relative flex flex-col items-center">
                       <div
-                        className={`flex h-8 w-8 items-center justify-center rounded-full border-2 ${
-                          step.completed
+                        className={`flex h-8 w-8 items-center justify-center rounded-full border-2 ${step.completed
                             ? 'border-green-500 bg-green-500 text-white'
                             : 'border-muted bg-background'
-                        }`}
+                          }`}
                       >
                         {step.completed ? (
                           <CheckCircle className="h-4 w-4" />
@@ -132,9 +131,8 @@ export function OrderDetailScreen() {
                       </div>
                       {index < order.timeline.length - 1 && (
                         <div
-                          className={`absolute top-8 h-full w-0.5 ${
-                            step.completed ? 'bg-green-500' : 'bg-muted'
-                          }`}
+                          className={`absolute top-8 h-full w-0.5 ${step.completed ? 'bg-green-500' : 'bg-muted'
+                            }`}
                         />
                       )}
                     </div>

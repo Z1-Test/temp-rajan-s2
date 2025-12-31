@@ -1,7 +1,7 @@
 # Frontend UI Skills
 
 **Last Updated**: 2025-12-31  
-**Total Skills**: 38 (organized by category)
+**Total Skills**: 36 (organized by category)
 
 ---
 
@@ -17,33 +17,30 @@
 | **component-generation-from-specs** | Generate React/TypeScript components |
 | **testing-generation** | Generate test suites |
 | **visual-regression** | Visual testing setup |
-| **ci-cd-integration** | GitHub Actions pipelines |
+| **ci-cd-integration** | GitHub Actions pipelines 🆕 |
 
-### **Design Language (3)** 🆕
+### **Design Language (2)**
 
 | Skill | Purpose |
 |-------|---------|
 | **design-language-system** | Master skill for cohesive design vocabulary |
 | **visual-composition** | Hierarchy, balance, whitespace, focal points |
-| **design-qa-checklist** | Pre-merge quality assurance checklist |
 
-### **User Journey (2)** 🆕
+### **User Journey (2)**
 
 | Skill | Purpose |
 |-------|---------|
 | **user-journey-mapping** | Document end-to-end user flows with Mermaid diagrams |
 | **journey-to-screens** | Convert journey steps to frontend screen specifications |
 
-### **Layout & Structure (6)**
+### **Layout & Structure (4)**
 
 | Skill | Purpose |
 |-------|---------|
 | **layout-generation** | CSS Grid/Flexbox, 12-column grid, page templates |
 | **grid-system-mastery** | Advanced 12-column grid patterns |
-| **alignment-consistency** | Pixel-perfect alignment, visual rhythm |
-| **spacing-consistency** | 4px grid enforcement, token-based spacing |
 | **responsive-design** | Mobile-first breakpoints, touch targets |
-| **form-layout-generation** | Form layouts, label positioning, validation UI |
+| **ui-polish-mastery** | Advanced spacing/alignment, optical corrections |
 
 ### **Visual Polish (6)**
 
@@ -56,13 +53,13 @@
 | **dark-mode-generation** | Auto-generate dark themes, contrast validation |
 | **icon-integration** | Lucide React icons, sizing, alignment |
 
-### **Component Patterns (10)**
+### **Component Patterns (11)**
 
 | Skill | Purpose |
 |-------|---------|
 | **card-patterns** | Card compositions (stats, user, feature, pricing) |
 | **button-patterns** | Button variants, states, groups, compositions |
-| **input-patterns** | Form inputs, validation states, input groups |
+| **form-patterns** | Form layouts, inputs, validation (merged) 🆕 |
 | **navigation-patterns** | Headers, sidebars, breadcrumbs, mobile nav |
 | **data-display-patterns** | Tables, lists, grids, pagination |
 | **modal-dialog-patterns** | Dialogs, sheets, popovers |
@@ -70,160 +67,35 @@
 | **feedback-patterns** | Toasts, alerts, notifications |
 | **flow-actions-patterns** | Complete action flows, CRUD, wizards |
 | **component-composition** | Compose complex components from primitives |
+| **image-media-patterns** | Images, avatars, aspect ratios |
 
-### **Quality & Audit (4)**
+### **Error Handling (1)** 🆕
+
+| Skill | Purpose |
+|-------|---------|
+| **error-handling-patterns** | Error boundaries, API errors, retries, fallbacks |
+
+### **Quality & Audit (3)**
 
 | Skill | Purpose |
 |-------|---------|
 | **accessibility** | WCAG 2.1 AA validation |
 | **performance-optimization** | Bundle analysis, lazy loading, Core Web Vitals |
-| **ui-polish-mastery** | Advanced spacing/alignment with common mistakes & fixes 🆕 |
-| **flow-completeness-audit** | Find missing micro-level flows/states/interactions 🆕 |
+| **ui-quality-audit** | Comprehensive quality checklist (merged) 🆕 |
 
 ---
 
-## 🎯 Complete Workflow
+## 📁 Archived Skills
 
-```
-PRD.md
-   ↓
-[prd-to-ui-spec] → Extract UI requirements
-   ↓
-[design-language-system] → Establish design vocabulary ← NEW
-   ↓
-[design-token-generation] → Colors, spacing, typography tokens
-   ↓
-[color-system] → Semantic color palette ← NEW
-   ↓
-[shadcn-integration] → Map to shadcn primitives
-   ↓
-[component-generation-from-specs]
-   + layout-generation
-   + grid-system-mastery ← NEW
-   + alignment-consistency
-   + spacing-consistency
-   + typography-hierarchy
-   + ui-aesthetics
-   + visual-composition ← NEW
-   + form-layout-generation
-   + card-patterns
-   + button-patterns ← NEW
-   + input-patterns
-   + navigation-patterns
-   + data-display-patterns
-   + modal-dialog-patterns
-   + state-ui-patterns
-   + feedback-patterns
-   + flow-actions-patterns ← NEW
-   + component-composition ← NEW
-   + icon-integration
-   ↓
-[responsive-design] → Apply breakpoints
-   ↓
-[dark-mode-generation] → Generate dark theme
-   ↓
-[animation-micro-interactions] → Add hover/focus effects
-   ↓
-[accessibility] → WCAG validation
-   ↓
-[performance-optimization] → Lazy load, code split
-   ↓
-[design-qa-checklist] → Quality assurance ← NEW
-   ↓
-[testing-generation] → Generate tests
-   ↓
-[visual-regression] → Setup visual tests
-   ↓
-[ci-cd-integration] → Create pipelines
-   ↓
-✅ READY TO MERGE
-```
+Old skills that were merged into new comprehensive skills:
+
+- `input-patterns` → merged into `form-patterns`
+- `form-layout-generation` → merged into `form-patterns`
+- `spacing-consistency` → covered by `ui-polish-mastery`
+- `alignment-consistency` → covered by `ui-polish-mastery`
+- `design-qa-checklist` → merged into `ui-quality-audit`
+- `flow-completeness-audit` → merged into `ui-quality-audit`
 
 ---
 
-## 📊 Coverage
-
-| Area | Skills | Status |
-|------|--------|--------|
-| Design Language | design-language-system, visual-composition | ✅ NEW |
-| Layouts | layout-generation, grid-system-mastery, form-layout-generation | ✅ |
-| Alignment | alignment-consistency, spacing-consistency | ✅ |
-| Typography | typography-hierarchy | ✅ |
-| Colors | design-token-generation, color-system | ✅ |
-| Aesthetics | ui-aesthetics | ✅ |
-| Responsive | responsive-design | ✅ |
-| Dark Mode | dark-mode-generation | ✅ |
-| Animation | animation-micro-interactions | ✅ |
-| Icons | icon-integration | ✅ |
-| Cards | card-patterns | ✅ |
-| Buttons | button-patterns | ✅ NEW |
-| Inputs | input-patterns | ✅ |
-| Navigation | navigation-patterns | ✅ |
-| Data Display | data-display-patterns | ✅ |
-| Modals | modal-dialog-patterns | ✅ |
-| States | state-ui-patterns | ✅ |
-| Feedback | feedback-patterns | ✅ |
-| Flow Actions | flow-actions-patterns | ✅ NEW |
-| Composition | component-composition | ✅ NEW |
-| Quality | design-qa-checklist, accessibility | ✅ |
-| Performance | performance-optimization | ✅ |
-
----
-
-## 🗂️ Directory Structure
-
-```
-frontend-ui/
-├── Core Generation
-│   ├── prd-to-ui-spec/
-│   ├── design-token-generation/
-│   ├── shadcn-integration/
-│   ├── component-generation-from-specs/
-│   ├── testing-generation/
-│   ├── visual-regression/
-│   └── ci-cd-integration/
-│
-├── Design Language (NEW)
-│   ├── design-language-system/
-│   ├── visual-composition/
-│   └── design-qa-checklist/
-│
-├── Layout & Structure
-│   ├── layout-generation/
-│   ├── grid-system-mastery/
-│   ├── alignment-consistency/
-│   ├── spacing-consistency/
-│   ├── responsive-design/
-│   └── form-layout-generation/
-│
-├── Visual Polish
-│   ├── ui-aesthetics/
-│   ├── typography-hierarchy/
-│   ├── color-system/
-│   ├── animation-micro-interactions/
-│   ├── dark-mode-generation/
-│   └── icon-integration/
-│
-├── Component Patterns
-│   ├── card-patterns/
-│   ├── button-patterns/
-│   ├── input-patterns/
-│   ├── navigation-patterns/
-│   ├── data-display-patterns/
-│   ├── modal-dialog-patterns/
-│   ├── state-ui-patterns/
-│   ├── feedback-patterns/
-│   ├── flow-actions-patterns/
-│   └── component-composition/
-│
-├── Quality
-│   ├── accessibility/
-│   └── performance-optimization/
-│
-├── README.md
-└── SKILL_AUDIT.md
-```
-
----
-
-**Total**: 34 skills for complete end-to-end frontend development with design language understanding
+**Total**: 36 active skills for complete end-to-end frontend development
