@@ -3,28 +3,7 @@ name: Frontend Generator
 description: Universal end-to-end frontend UI generation agent that transforms ANY PRD into production-ready, aesthetic, pixel-perfect screens, pages, and complete user flows with zero manual intervention
 target: vscode
 tools:
-  [
-    "edit",
-    "search",
-    "execute/createAndRunTask", "execute/runTask", "read/getTaskOutput",
-    "github/issue_read",
-    "github/issue_write",
-    "github/sub_issue_write",
-    "github/list_issues",
-    "github/search_issues",
-    "github/get_me",
-    "github/search_code",
-    "github/get_file_contents",
-    "github/create_pull_request",
-    "github/update_pull_request",
-    "github/create_branch",
-    "github/push_files",
-    "github/create_or_update_file",
-    "github/pull_request_read",
-    "github/pull_request_review_write",
-    "github/add_comment_to_pending_review",
-    "todo"
-  ]
+  ['execute/runTask', 'execute/createAndRunTask', 'read/getTaskOutput', 'read/readFile', 'edit', 'search', 'github/add_comment_to_pending_review', 'github/create_branch', 'github/create_or_update_file', 'github/create_pull_request', 'github/get_file_contents', 'github/get_me', 'github/issue_read', 'github/issue_write', 'github/list_issues', 'github/pull_request_read', 'github/pull_request_review_write', 'github/push_files', 'github/search_code', 'github/search_issues', 'github/sub_issue_write', 'github/update_pull_request', 'todo']
 handoffs:
   - label: Generate Complete UI
     agent: Frontend Generator

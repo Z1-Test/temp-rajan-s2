@@ -14,23 +14,29 @@ import { LoginScreen } from '@/screens/identity/LoginScreen';
 import { RegisterScreen } from '@/screens/identity/RegisterScreen';
 import { ProfileScreen } from '@/screens/identity/ProfileScreen';
 import { AddressesScreen } from '@/screens/identity/AddressesScreen';
+import { ForgotPasswordScreen } from '@/screens/identity/ForgotPasswordScreen';
 
 // Catalog Screens
 import { HomeScreen } from '@/screens/catalog/HomeScreen';
 import { ProductListingScreen } from '@/screens/catalog/ProductListingScreen';
 import { ProductDetailScreen } from '@/screens/catalog/ProductDetailScreen';
 import { WishlistScreen } from '@/screens/catalog/WishlistScreen';
+import { SearchResultsScreen } from '@/screens/catalog/SearchResultsScreen';
 
 // Ordering Screens
 import { CartScreen } from '@/screens/ordering/CartScreen';
 import { CheckoutScreen } from '@/screens/ordering/CheckoutScreen';
 import { OrderConfirmationScreen } from '@/screens/ordering/OrderConfirmationScreen';
 import { OrderHistoryScreen } from '@/screens/ordering/OrderHistoryScreen';
+import { OrderDetailScreen } from '@/screens/ordering/OrderDetailScreen';
 
 // Admin Screens
 import { AdminDashboard } from '@/screens/admin/AdminDashboard';
 import { ProductManagement } from '@/screens/admin/ProductManagement';
 import { OrderManagement } from '@/screens/admin/OrderManagement';
+
+// Common Screens
+import { NotFoundScreen } from '@/screens/common/NotFoundScreen';
 
 // Define routes
 const router = createBrowserRouter([
@@ -62,6 +68,7 @@ const router = createBrowserRouter([
         children: [
           { path: 'login', element: <LoginScreen /> },
           { path: 'register', element: <RegisterScreen /> },
+          { path: 'forgot-password', element: <ForgotPasswordScreen /> },
         ],
       },
 
@@ -74,6 +81,7 @@ const router = createBrowserRouter([
           { path: 'profile', element: <ProfileScreen /> },
           { path: 'addresses', element: <AddressesScreen /> },
           { path: 'orders', element: <OrderHistoryScreen /> },
+          { path: 'orders/:id', element: <OrderDetailScreen /> },
           { path: 'wishlist', element: <WishlistScreen /> },
         ],
       },
@@ -82,6 +90,12 @@ const router = createBrowserRouter([
       {
         path: 'cart',
         element: <CartScreen />,
+      },
+
+      // Search results
+      {
+        path: 'search',
+        element: <SearchResultsScreen />,
       },
 
       // Order routes (standard layout)
@@ -120,15 +134,9 @@ const router = createBrowserRouter([
   {
     path: '*',
     element: (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold">404</h1>
-          <p className="mt-2 text-muted-foreground">Page not found</p>
-          <a href="/" className="mt-4 inline-block text-primary hover:underline">
-            Go back home
-          </a>
-        </div>
-      </div>
+      <RootLayout>
+        <NotFoundScreen />
+      </RootLayout>
     ),
   },
 ]);

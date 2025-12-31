@@ -87,29 +87,31 @@
 |----------|-------|--------|
 | Core Generation | 7 | ✅ Complete |
 | Design Language | 3 | ✅ Complete |
-| User Journey | 2 | ✅ NEW - Complete |
+| User Journey | 2 | ✅ Complete |
 | Layout & Structure | 6 | ✅ Complete |
 | Visual Polish | 6 | ✅ Complete |
 | Component Patterns | 10 | ✅ Complete |
-| Quality | 2 | ✅ Complete |
-| **TOTAL** | **36** | ✅ All Active |
+| Quality & Audit | 4 | ✅ Complete |
+| **TOTAL** | **38** | ✅ All Active |
 
 ---
 
-## 🆕 New Skills Added (10 Total)
+## 🆕 New Skills Added (12 Total)
 
 | Skill | Category | Purpose |
 |-------|----------|---------|
 | **design-language-system** | Design Language | Master skill tying all patterns together |
 | **visual-composition** | Design Language | Hierarchy, balance, whitespace, focal points |
 | **design-qa-checklist** | Design Language | Pre-merge quality checklist |
-| **user-journey-mapping** | User Journey | End-to-end flows with Mermaid diagrams 🆕 |
-| **journey-to-screens** | User Journey | Convert journeys to screen specs 🆕 |
+| **user-journey-mapping** | User Journey | End-to-end flows with Mermaid diagrams |
+| **journey-to-screens** | User Journey | Convert journeys to screen specs |
 | **grid-system-mastery** | Layout | Advanced 12-column grid patterns |
 | **color-system** | Visual Polish | Semantic colors with accessibility |
 | **button-patterns** | Components | Button variants, states, groups |
 | **flow-actions-patterns** | Components | Complete CRUD flows, wizards |
 | **component-composition** | Components | Compose complex from primitives |
+| **ui-polish-mastery** | Quality & Audit | Advanced spacing/alignment mastery 🆕 |
+| **flow-completeness-audit** | Quality & Audit | Missing flows/states audit 🆕 |
 
 ---
 

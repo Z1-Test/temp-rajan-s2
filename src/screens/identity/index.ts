@@ -2,3 +2,4 @@ export { LoginScreen } from './LoginScreen';
 export { RegisterScreen } from './RegisterScreen';
 export { ProfileScreen } from './ProfileScreen';
 export { AddressesScreen } from './AddressesScreen';
+export { ForgotPasswordScreen } from './ForgotPasswordScreen';

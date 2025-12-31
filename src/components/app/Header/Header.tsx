@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Search, ShoppingBag, Heart, User, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,17 +14,27 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 const categories = [
-  { href: '/category/skincare', label: 'Skin Care' },
-  { href: '/category/haircare', label: 'Hair Care' },
-  { href: '/category/cosmetics', label: 'Cosmetics' },
+  { href: '/products/skincare', label: 'Skin Care' },
+  { href: '/products/haircare', label: 'Hair Care' },
+  { href: '/products/makeup', label: 'Makeup' },
 ];
 
 export function Header() {
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   
   // Mock cart count - would come from state/context in real app
   const cartCount = 3;
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchOpen(false);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -73,16 +83,18 @@ export function Header() {
           </nav>
 
           {/* Search Bar (Desktop) */}
-          <div className="hidden flex-1 max-w-md lg:block">
+          <form onSubmit={handleSearch} className="hidden flex-1 max-w-md lg:block">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type="search"
                 placeholder="Search products..."
                 className="pl-10 pr-4"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-          </div>
+          </form>
 
           {/* Actions */}
           <div className="flex items-center gap-2">
@@ -157,14 +169,18 @@ export function Header() {
             searchOpen ? 'max-h-16 pb-4' : 'max-h-0'
           )}
         >
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Search products..."
-              className="pl-10 pr-4"
-            />
-          </div>
+          <form onSubmit={handleSearch}>
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                type="search"
+                placeholder="Search products..."
+                className="pl-10 pr-4"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+          </form>
         </div>
       </div>
 

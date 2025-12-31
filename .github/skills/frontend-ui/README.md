@@ -1,7 +1,7 @@
 # Frontend UI Skills
 
 **Last Updated**: 2025-12-31  
-**Total Skills**: 36 (organized by category)
+**Total Skills**: 38 (organized by category)
 
 ---
 
@@ -71,12 +71,14 @@
 | **flow-actions-patterns** | Complete action flows, CRUD, wizards |
 | **component-composition** | Compose complex components from primitives |
 
-### **Quality (2)**
+### **Quality & Audit (4)**
 
 | Skill | Purpose |
 |-------|---------|
 | **accessibility** | WCAG 2.1 AA validation |
 | **performance-optimization** | Bundle analysis, lazy loading, Core Web Vitals |
+| **ui-polish-mastery** | Advanced spacing/alignment with common mistakes & fixes 🆕 |
+| **flow-completeness-audit** | Find missing micro-level flows/states/interactions 🆕 |
 
 ---
 
