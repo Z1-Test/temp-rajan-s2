@@ -13,7 +13,7 @@
 ## 🌟 Overview
 
 **itsme.fashion** is a user-friendly ecommerce platform offering **premium beauty
-products**—including cosmetics, skin care, and hair care—that emphasize natural ingredients, ethical
+products**—including cosmetics, skin care, and hair care—that emphasize natural ingredients, ethicalx₹
 manufacturing, and a bold, empowering brand tone.
 
 ### Product Vision
