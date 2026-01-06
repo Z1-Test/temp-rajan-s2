@@ -25,8 +25,8 @@
 | Ink (`#1A1A1A`) | Muted (`#FFFFFF`) | **12.63:1** | ✅ AAA |
 | Ink (`#1A1A1A`) | Calm (`#FAFAFA`) | **11.98:1** | ✅ AAA |
 | Ink (`#1A1A1A`) | Vibrant (`#F0F0F0`) | **10.98:1** | ✅ AAA |
-| Ink Soft (`#4A4A4A`) | Base (`#FFFFFF`) | **7.02:1** | ✅ AAA |
-| Ink Soft (`#4A4A4A`) | Calm (`#FAFAFA`) | **6.63:1** | ✅ AAA |
+| `--sl-standard-soft` (`#4A4A4A`) | Base (`#FFFFFF`) | **7.02:1** | ✅ AAA |
+| `--sl-standard-soft` (`#4A4A4A`) | Calm (`#FAFAFA`) | **6.63:1** | ✅ AAA |
 | Ink Muted (`#9E9E9E`) | Base (`#FFFFFF`) | **2.92:1** | ⚠️ Large only |
 | Accent (`#3373CC`) | Base (`#FFFFFF`) | **4.58:1** | ✅ AA |
 
@@ -58,7 +58,7 @@
 | Ink (`#FFFFFF`) | Muted (`#1A1A1A`) | **12.63:1** | ✅ AAA |
 | Ink (`#FFFFFF`) | Calm (`#242424`) | **10.42:1** | ✅ AAA |
 | Ink (`#FFFFFF`) | Vibrant (`#2E2E2E`) | **8.59:1** | ✅ AAA |
-| Ink Soft (`#B8B8B8`) | Muted (`#1A1A1A`) | **6.54:1** | ✅ AAA |
+| `--sl-standard-soft` (`#B8B8B8`) | Muted (`#1A1A1A`) | **6.54:1** | ✅ AAA |
 | Ink Muted (`#6A6A6A`) | Muted (`#1A1A1A`) | **2.71:1** | ⚠️ Large only |
 | Accent (`#5C9FFF`) | Muted (`#1A1A1A`) | **6.12:1** | ✅ AAA |
 
@@ -144,7 +144,7 @@
 | Icon Color | Background | Contrast | Pass? |
 |------------|------------|----------|-------|
 | Ink (`#1A1A1A`) | Base (`#FFFFFF`) | **12.63:1** | ✅ AAA |
-| Ink Soft (`#4A4A4A`) | Base (`#FFFFFF`) | **7.02:1** | ✅ AAA |
+| `--sl-standard-soft` (`#4A4A4A`) | Base (`#FFFFFF`) | **7.02:1** | ✅ AAA |
 | Ink Muted (`#9E9E9E`) | Base (`#FFFFFF`) | **2.92:1** | ⚠️ Decorative only |
 | Accent (`#3373CC`) | Base (`#FFFFFF`) | **4.58:1** | ✅ AA |
 
@@ -174,7 +174,7 @@
 ### Safe Text Combinations
 ```
 Ink on Base/Muted/Calm/Vibrant — Always safe
-Ink Soft on Base/Muted/Calm — Always safe
+`--sl-standard-soft` on Base/Muted/Calm — Always safe
 Accent on Base — Safe for links and highlights
 White on Accent — Safe for Expressive buttons
 ```

@@ -96,7 +96,7 @@ The "One Highlight" rule is the Von Restorff Effect in action:
 
 **Implementation**:
 - Use Expressive (accent) for exactly 1 element per screen
-- All other elements use Standard (ink) color
+- All other elements use Standard (`--color-text`) color
 - The highlight element captures attention first
 - Don't rely on color alone—combine with size/shape
 

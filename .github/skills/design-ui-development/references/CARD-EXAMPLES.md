@@ -37,17 +37,17 @@
 .card-title {
   font-size: var(--text-lg);
   font-weight: 600;
-  color: var(--color-ink);
+  color: var(--sl-standard);
 }
 
 .card-description {
   font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+  color: var(--sl-standard-secondary);
   margin-top: 4px;
 }
 
 .card-content {
-  color: var(--color-ink-soft);
+  color: var(--sl-standard-secondary);
 }
 
 .card-footer {
@@ -98,7 +98,7 @@
 
 /* Focus */
 .card-interactive:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--sl-expressive);
   outline-offset: 2px;
 }
 ```
@@ -155,8 +155,8 @@
 
 ```css
 .card-expressive {
-  background: var(--color-accent-light);
-  border: 1px solid var(--color-accent);
+  background: var(--sl-expressive-light);
+  border: 1px solid var(--sl-expressive);
   border-radius: var(--radius-card);
   padding: 20px;
 }
@@ -238,13 +238,13 @@
 .product-name {
   font-size: var(--text-base);
   font-weight: 600;
-  color: var(--color-ink);
+  color: var(--sl-standard);
 }
 
 .product-price {
   font-size: var(--text-lg);
   font-weight: 700;
-  color: var(--color-ink);
+  color: var(--sl-standard);
   margin-top: 4px;
 }
 ```
@@ -281,18 +281,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-ink);
+  color: var(--sl-standard);
 }
 
 .stat-label {
   font-size: var(--text-sm);
-  color: var(--color-ink-muted);
+  color: var(--sl-standard-muted);
 }
 
 .stat-value {
   font-size: var(--text-2xl);
   font-weight: 700;
-  color: var(--color-ink);
+  color: var(--sl-standard);
 }
 
 .stat-change {

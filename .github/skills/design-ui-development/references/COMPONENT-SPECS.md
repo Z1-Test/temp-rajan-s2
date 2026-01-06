@@ -145,7 +145,7 @@
 | Variant | Background | Text | Border | Use Case |
 |---------|------------|------|--------|----------|
 | Muted | Vibrant surface | Ink Muted | — | Low priority |
-| Calm | Calm surface | Ink Soft | Calm | Standard |
+| Calm | Calm surface | `--sl-standard-soft` | Calm | Standard |
 | Vibrant | Ink | Base (white) | — | High priority |
 | Expressive | Accent | Base (white) | — | THE highlight |
 | Expressive Light | Accent Light | Accent Dark | — | Accent info |
@@ -179,8 +179,8 @@
 | Section | Specification |
 |---------|---------------|
 | Header | margin-bottom space-4 |
-| Title | text-xl, weight 700, Ink color |
-| Body | Ink Soft color, leading-relaxed |
+| Title | text-xl, weight 700, `--sl-standard` |
+| Body | `--sl-standard-soft` color, leading-relaxed |
 | Footer | flex, gap space-3, justify-end, margin-top space-6 |
 
 ### Modal Button Pattern

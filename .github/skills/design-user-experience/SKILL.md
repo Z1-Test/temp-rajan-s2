@@ -47,7 +47,7 @@ Design every screen with a clear focal point:
 
 **Level 2: SUPPORTING ACTIONS (Standard)**
 - Purpose: All other necessary buttons and actions
-- Color: Standard (ink/black)
+- Color: Standard (`--color-text`)
 - Priority: Medium
 - Budget: Unlimited
 - Examples: "Cancel", "Save Draft", "Back", "Continue"
@@ -55,7 +55,7 @@ Design every screen with a clear focal point:
 
 **Level 3: TERTIARY ACTIONS (Ghost)**
 - Purpose: Optional or dismissive actions
-- Color: Standard Ink Soft, transparent background
+- Color: `--sl-standard-soft`, transparent background
 - Priority: Low
 - Budget: Unlimited
 - Examples: "Skip", "Maybe Later", "Dismiss", "Not Now"
@@ -210,7 +210,7 @@ Structure forms for usability:
 
 ### Helper Text
 - **Placement**: Below input with space-2 gap
-- **Color**: Standard Ink Muted
+- **Color**: `--sl-standard-muted`
 - **Content**: Provide guidance before errors occur
 
 ### Error Messages
@@ -291,7 +291,7 @@ Structure the delete flow:
 ### Entry Point
 - **Trigger**: Ghost button or small icon
 - **Icon**: Trash icon
-- **Color**: Standard Ink Muted (subtle)
+- **Color**: `--sl-standard-muted` (subtle)
 - **Placement**: Usually in overflow menu or card actions
 
 ### Confirmation Required
@@ -361,7 +361,7 @@ Design step-by-step processes:
 Design toast messages:
 
 ### Standard Feedback Toast
-- **Color**: Standard (black/ink)
+- **Color**: Standard (`--color-text`)
 - **Icon**: Appropriate icon (check, info, etc.)
 - **Duration**: 3-5 seconds
 - **Position**: Bottom center or top right
@@ -396,7 +396,7 @@ Display contextual alerts:
 ### Information Alert (Muted)
 - **Background**: Calm surface
 - **Border**: Muted border
-- **Icon**: Info icon in Standard Ink Soft
+- **Icon**: Info icon in `--sl-standard-soft`
 - **Use**: General information, low priority
 
 ### Important Alert (Calm)
@@ -452,13 +452,13 @@ Show progress for actions:
 ### Page Loading
 - **Position**: Center of container
 - **Size**: Medium to large
-- **Color**: Standard Ink or Expressive Accent
+- **Color**: `--sl-standard` or `--sl-expressive`
 - **Text**: Optional loading message below spinner
 
 ### Progress Indicators
 - **Use**: When load time is known
 - **Type**: Progress bar showing completion percentage
-- **Color**: Expressive Accent for progress
+- **Color**: `--sl-expressive` for progress
 - **Background**: Calm or Muted surface
 
 ---
@@ -472,7 +472,7 @@ Design helpful empty states:
 ### Structure
 - **Icon**: Large, relevant icon (48-64px)
 - **Background**: Calm surface, circular container
-- **Color**: Standard Ink Muted
+- **Color**: `--sl-standard-muted`
 - **Title**: Clear heading explaining state
 - **Description**: Brief explanation of why empty
 - **Action**: Call to action to populate
@@ -480,17 +480,17 @@ Design helpful empty states:
 ### Icon Design
 - **Size**: 64px recommended
 - **Container**: Circular background with Calm surface
-- **Color**: Standard Ink Muted
+- **Color**: `--sl-standard-muted`
 - **Type**: Related to content type (Inbox for messages, etc.)
 
 ### Title Text
-- **Color**: Standard Ink
+- **Color**: `--sl-standard`
 - **Weight**: Semibold (600)
 - **Message**: "No items yet" or similar
 - **Tone**: Friendly, not alarming
 
 ### Description Text
-- **Color**: Standard Ink Soft
+- **Color**: `--sl-standard-soft`
 - **Size**: text-sm
 - **Content**: Brief explanation or guidance
 - **Tone**: Helpful and encouraging

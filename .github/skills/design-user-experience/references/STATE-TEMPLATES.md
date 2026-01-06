@@ -80,7 +80,7 @@
 .spinner-icon {
   width: 32px;
   height: 32px;
-  color: var(--color-ink-muted);
+  color: var(--sl-standard-muted);
   animation: spin 1s linear infinite;
 }
 
@@ -91,7 +91,7 @@
 
 .spinner-text {
   font-size: var(--text-sm);
-  color: var(--color-ink-muted);
+  color: var(--sl-standard-muted);
 }
 ```
 
@@ -150,19 +150,19 @@
 .empty-icon .icon {
   width: 40px;
   height: 40px;
-  color: var(--color-ink-muted);
+  color: var(--sl-standard-muted);
 }
 
 .empty-title {
   font-size: var(--text-xl);
   font-weight: 600;
-  color: var(--color-ink);
+  color: var(--sl-standard);
   margin: 0;
 }
 
 .empty-description {
   font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+  color: var(--sl-standard-secondary);
   max-width: 300px;
   margin: 0;
 }
@@ -264,13 +264,13 @@
 
 .toast-title {
   font-weight: 600;
-  color: var(--color-ink);
+  color: var(--sl-standard);
   margin: 0;
 }
 
 .toast-message {
   font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+  color: var(--sl-standard-secondary);
   margin: 4px 0 0;
 }
 
@@ -279,7 +279,7 @@
   border: none;
   padding: 4px;
   cursor: pointer;
-  color: var(--color-ink-muted);
+  color: var(--sl-standard-muted);
 }
 ```
 
@@ -332,13 +332,13 @@
 .success-title {
   font-size: var(--text-3xl);
   font-weight: 700;
-  color: var(--color-ink);
+  color: var(--sl-standard);
   margin: 0;
 }
 
 .success-message {
   font-size: var(--text-base);
-  color: var(--color-ink-soft);
+  color: var(--sl-standard-secondary);
   margin: 8px 0 32px;
 }
 
@@ -416,13 +416,13 @@
 
 .alert-title {
   font-weight: 600;
-  color: var(--color-ink);
+  color: var(--sl-standard);
   margin: 0;
 }
 
 .alert-message {
   font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+  color: var(--sl-standard-secondary);
   margin: 4px 0 0;
 }
 ```

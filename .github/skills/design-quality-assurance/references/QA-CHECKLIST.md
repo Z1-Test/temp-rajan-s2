@@ -15,7 +15,7 @@
 - [ ] Intensity scale applied correctly
 
 #### Token Naming
-- [ ] Uses `--color-ink` not `--color-primary`
+- [ ] Uses `--color-text` not `--color-primary`
 - [ ] Uses `--color-accent` for expressive
 - [ ] Uses `--surface-muted/calm/vibrant`
 - [ ] Uses `--outline-muted/calm/vibrant`
@@ -56,10 +56,10 @@
 - [ ] Weights from token scale
 
 #### Color Compliance
-- [ ] Headings: Standard Ink
-- [ ] Body: Standard Ink Soft
-- [ ] Captions: Standard Ink Muted
-- [ ] Links: Expressive Accent
+- [ ] Headings: `--sl-standard`
+- [ ] Body: `--sl-standard-soft`
+- [ ] Captions: `--sl-standard-muted`
+- [ ] Links: `--sl-expressive`
 
 ### 5. Spacing
 
@@ -75,9 +75,9 @@
 ### Contrast Ratios
 
 #### Text Contrast (4.5:1 minimum)
-- [ ] Standard Ink on Base: ✓
-- [ ] Standard Ink Soft on Base: ✓
-- [ ] Expressive Accent on Base: ✓
+- [ ] `--sl-standard` on Base: ✓
+- [ ] `--sl-standard-soft` on Base: ✓
+- [ ] `--sl-expressive` on Base: ✓
 - [ ] All text/background combinations verified
 
 #### UI Component Contrast (3:1 minimum)

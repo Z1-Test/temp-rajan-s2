@@ -36,7 +36,7 @@ Implement automated checks for:
 
 ### Color Token Compliance
 - **Verify**: No hardcoded hex color values in component files
-- **Check**: All colors use semantic token variables (--color-ink, --color-accent, etc.)
+- **Check**: All colors use semantic token variables (--color-text, --color-accent, etc.)
 - **Detect**: Usage of old token names (primary, secondary) and flag for update
 - **Validate**: Proper use of intensity scale tokens (muted, calm, vibrant)
 
@@ -89,15 +89,15 @@ Implement strict checking:
 Test color combinations:
 
 ### Staylook Color Contrast
-- **Test**: Standard Ink on Base (white) meets 4.5:1 ratio
-- **Verify**: Standard Ink Soft on Base meets 4.5:1 ratio
-- **Check**: Expressive Accent on Base meets 4.5:1 ratio
+- **Test**: `--sl-standard` on Base (white) meets 4.5:1 ratio
+- **Verify**: `--sl-standard-soft` on Base meets 4.5:1 ratio
+- **Check**: `--sl-expressive` on Base meets 4.5:1 ratio
 - **Validate**: All text colors on all background colors
 
 ### Button Text Contrast
 - **Expressive buttons**: Verify accent background with base text meets 4.5:1
-- **Standard buttons**: Verify ink text on muted surface meets 4.5:1
-- **Ghost buttons**: Verify ink soft text on background meets 4.5:1
+- **Standard buttons**: Verify text color on muted surface meets 4.5:1
+- **Ghost buttons**: Verify text secondary color on background meets 4.5:1
 
 ### Interactive Element Contrast
 - **Borders**: Ensure visible against backgrounds (3:1 minimum)
@@ -246,7 +246,7 @@ Verify before deployment:
 ### Typography Validation
 - [ ] Font is Plus Jakarta Sans
 - [ ] Type scale used (no arbitrary font sizes)
-- [ ] Semantic colors applied (Ink for headings, Ink Soft for body, etc.)
+- [ ] Semantic colors applied (Ink for headings, `--sl-standard-soft` for body, etc.)
 - [ ] Expressive highlights used sparingly
 
 ### Spacing Validation

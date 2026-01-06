@@ -7,10 +7,10 @@
 ## Color Usage Checklist
 
 ### Standard Color (90% of UI)
-- [ ] All regular buttons use Standard (ink) color
-- [ ] All text uses Standard color tokens
+- [ ] All regular buttons use `--sl-standard` color
+- [ ] All text uses `--sl-standard` / `--sl-standard-soft` / `--sl-standard-muted`
 - [ ] All icons use Standard colors
-- [ ] All borders use Standard outline tokens
+- [ ] All borders use `--sl-outline-*` tokens
 - [ ] Navigation elements use Standard color
 
 ### Expressive Color (10% of UI)
@@ -30,14 +30,14 @@
 ## Radius Hierarchy Checklist
 
 ### Nesting Compliance
-- [ ] Section containers use 32px radius
-- [ ] Content containers use 24px radius
-- [ ] Cards use 16px radius
-- [ ] Inputs use 16px radius
-- [ ] Badges use 8px radius
+- [ ] Section containers use `--sl-radius-section` (32px)
+- [ ] Content containers use `--sl-radius-container` (24px)
+- [ ] Cards use `--sl-radius-card` (16px)
+- [ ] Inputs use `--sl-radius-input` (16px)
+- [ ] Badges use `--sl-radius-badge` (8px)
 
 ### Button Compliance
-- [ ] ALL buttons are pill-shaped (9999px)
+- [ ] ALL buttons are pill-shaped (`--sl-radius-button`)
 - [ ] No square or slightly-rounded buttons
 - [ ] Button radius consistent across all sizes
 
@@ -51,16 +51,16 @@
 ## Typography Checklist
 
 ### Font Usage
-- [ ] Font family is Plus Jakarta Sans
+- [ ] Font family is Plus Jakarta Sans (`--sl-font-sans`)
 - [ ] Type scale tokens used (no arbitrary sizes)
 - [ ] Weight tokens used correctly
 
 ### Semantic Typography Colors
-- [ ] Headings use Standard Ink color
-- [ ] Body text uses Standard Ink Soft
-- [ ] Captions use Standard Ink Muted
-- [ ] Links use Expressive Accent
-- [ ] Highlights use Expressive Accent (sparingly)
+- [ ] Headings use `--sl-standard`
+- [ ] Body text uses `--sl-standard-soft`
+- [ ] Captions use `--sl-standard-muted`
+- [ ] Links use `--sl-expressive`
+- [ ] Highlights use `--sl-expressive` (sparingly)
 
 ---
 
@@ -68,13 +68,13 @@
 
 ### 4px Grid
 - [ ] All spacing uses 4px increments
-- [ ] Spacing tokens used (--space-X)
+- [ ] Spacing tokens used (`--sl-space-*`)
 - [ ] No magic numbers or arbitrary values
 
 ### Contextual Spacing
-- [ ] Between sections: 48-64px
-- [ ] Between cards: 16-24px
-- [ ] Card internal: 16-24px
+- [ ] Between sections: `--sl-space-12` to `--sl-space-16`
+- [ ] Between cards: `--sl-space-4` to `--sl-space-6`
+- [ ] Card internal: `--sl-space-4` to `--sl-space-6`
 - [ ] Button padding: 12px × 24px
 - [ ] Input padding: 12px × 16px
 
@@ -83,16 +83,17 @@
 ## Semantic Token Checklist
 
 ### Naming Compliance
-- [ ] Uses "Standard" not "primary"
-- [ ] Uses "Expressive" not "secondary"
-- [ ] Uses intensity names (Muted, Calm, Vibrant)
+- [ ] Uses `--sl-standard` not `--color-primary`
+- [ ] Uses `--sl-expressive` not `--color-accent`
+- [ ] Uses intensity names (muted, calm, vibrant)
 - [ ] No hardcoded hex values
 
-### Token Usage
-- [ ] All colors from design tokens
-- [ ] All radii from design tokens
-- [ ] All spacing from design tokens
-- [ ] All animations from design tokens
+### Token Categories
+- [ ] Container tokens: `--sl-container-*`
+- [ ] On tokens: `--sl-on-*`
+- [ ] Outline tokens: `--sl-outline-*`
+- [ ] All spacing from `--sl-space-*`
+- [ ] All animations from `--sl-duration-*`
 
 ---
 
@@ -114,10 +115,11 @@
 
 ### Colors
 ```
-Standard: #1A1A1A (ink), #4A4A4A (soft), #9E9E9E (muted)
-Expressive: #3373CC (accent)
-Base: #FFFFFF
-Surfaces: #FFFFFF (muted) → #FAFAFA (calm) → #F0F0F0 (vibrant)
+Standard:   --sl-standard, --sl-standard-soft, --sl-standard-muted
+Expressive: --sl-expressive, --sl-expressive-soft, --sl-expressive-muted
+Container:  --sl-container-muted, --sl-container-calm, --sl-container-vibrant
+On:         --sl-on-standard, --sl-on-expressive, --sl-on-error, etc.
+Outline:    --sl-outline-muted, --sl-outline-calm, --sl-outline-vibrant
 ```
 
 ### Radius
@@ -127,7 +129,7 @@ Section: 32px → Container: 24px → Card: 16px → Button: pill
 
 ### Spacing
 ```
-4px base: 4, 8, 12, 16, 20, 24, 32, 48, 64, 80, 96
+4px base: 4, 8, 12, 16, 20, 24, 32, 48, 64
 ```
 
 ### Animation

@@ -113,7 +113,7 @@
 ### Empty States
 - [ ] Icon (64px, muted)
 - [ ] Title (Ink, semibold)
-- [ ] Description (Ink Soft)
+- [ ] Description (`--sl-standard-soft`)
 - [ ] CTA button if applicable
 
 ---

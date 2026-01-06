@@ -61,21 +61,21 @@ Establish three distinct color roles with clear purposes:
 - **Purpose**: The primary UI color used for structure and readability
 - **Usage**: 90% of all interface elements
 - **Elements**: All buttons (except special highlights), text, icons, borders, navigation
-- **Variables**: Define as `--color-ink`, `--color-ink-soft`, `--color-ink-muted`
-- **Value**: Black or very dark gray (#1A1A1A)
+- **Variables**: `--sl-standard`, `--sl-standard-soft`, `--sl-standard-muted`
+- **Value**: Black or very dark gray (#000000)
 
 ### 2. Expressive (The Highlight Color)
 - **Purpose**: Strategic highlight for special product moments
 - **Usage**: 10% of interface, maximum 1 element per screen
 - **Elements**: FAB buttons, special CTAs, active selected states, success confirmations
-- **Variables**: Define as `--color-accent`, `--color-accent-light`, `--color-accent-dark`
+- **Variables**: `--sl-expressive`, `--sl-expressive-soft`, `--sl-expressive-muted`
 - **Value**: Blue (#3373CC)
 - **Critical Rule**: NEVER use as default button color
 
 ### 3. Base (The Canvas)
 - **Purpose**: Foundational color that creates breathing room
 - **Usage**: Backgrounds, contrast zones
-- **Variable**: Define as `--color-base`
+- **Variables**: `--sl-container-muted`, `--sl-container-calm`, `--sl-container-vibrant`
 - **Value**: White (#FFFFFF)
 
 ## The "One Highlight" Rule (STRICT)
@@ -205,12 +205,12 @@ Define a harmonious scale (in rem):
 
 Apply color based on text role:
 
-- **Headings (H1-H3)**: Use Standard Ink color
-- **Body Paragraphs**: Use Standard Ink Soft color
-- **Captions/Hints**: Use Standard Ink Muted color
-- **Links**: Use Expressive Accent color
-- **Highlights**: Use Expressive Accent color (sparingly!)
-- **Inverse Text**: Use Base color (on dark backgrounds)
+- **Headings (H1-H3)**: Use `--sl-standard` (primary text)
+- **Body Paragraphs**: Use `--sl-standard-soft` (secondary text)
+- **Captions/Hints**: Use `--sl-standard-muted` (muted text)
+- **Links**: Use `--sl-expressive` (accent color)
+- **Highlights**: Use `--sl-expressive` (sparingly!)
+- **Inverse Text**: Use `--sl-on-container-vibrant` (on dark backgrounds)
 
 ## Expressive Typography Guidelines
 
@@ -297,9 +297,9 @@ Apply these inversions:
 - Vibrant: #F0F0F0 → #2E2E2E (inverts to lightest)
 
 **Text**:
-- Ink: #1A1A1A → #FFFFFF (inverts)
-- Ink Soft: #4A4A4A → #B8B8B8 (inverts)
-- Ink Muted: #9E9E9E → #6A6A6A (inverts)
+- Text: #1A1A1A → #FFFFFF (inverts)
+- Text Secondary: #4A4A4A → #B8B8B8 (inverts)
+- Text Muted: #9E9E9E → #6A6A6A (inverts)
 
 **Expressive**: Keep similar, slightly adjust for dark backgrounds (#5C9FFF)
 
@@ -346,7 +346,7 @@ Before using in production, verify:
 ## Quick Rules Summary
 
 **Colors**:
-- Standard (ink/black) for 90% of UI
+- Standard (text/black) for 90% of UI
 - Expressive (accent/blue) for 10% of UI, max 1 per screen
 - Intensity scale: Muted → Calm → Vibrant
 
@@ -356,10 +356,10 @@ Before using in production, verify:
 
 **Typography**:
 - Font: Plus Jakarta Sans
-- Headings: Standard Ink
-- Body: Standard Ink Soft
-- Captions: Standard Ink Muted
-- Highlights: Expressive Accent (sparingly)
+- Headings: `--sl-standard`
+- Body: `--sl-standard-soft`
+- Captions: `--sl-standard-muted`
+- Highlights: `--sl-expressive` (sparingly)
 
 **Spacing**:
 - Use 4px base grid

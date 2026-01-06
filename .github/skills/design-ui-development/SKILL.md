@@ -46,7 +46,7 @@ Implement a clear three-tier button system:
 
 ### Priority 2: Standard Button (Secondary Actions)
 - **Purpose**: Supporting actions, default choice
-- **Color**: Use Standard (ink) color with outline
+- **Color**: Use Standard (`--color-text`) color with outline
 - **Budget**: Unlimited usage
 - **Examples**: "Cancel", "Save Draft", "Continue", "Back"
 - **Shape**: ALWAYS pill-shaped (border-radius: 9999px)
@@ -55,7 +55,7 @@ Implement a clear three-tier button system:
 
 ### Priority 3: Ghost Button (Tertiary Actions)
 - **Purpose**: Optional or dismissive actions
-- **Color**: Use Standard (ink soft) color, transparent background
+- **Color**: Use Standard (`--color-text-secondary`) color, transparent background
 - **Budget**: Unlimited usage
 - **Examples**: "Skip", "Maybe Later", "Dismiss", "Learn More"
 - **Shape**: ALWAYS pill-shaped (border-radius: 9999px)
@@ -216,7 +216,7 @@ Always include labels:
 
 - Font weight: 600 (semibold)
 - Font size: text-sm
-- Color: Standard Ink
+- Color: `--sl-standard`
 - Position: Above input with space-2 gap
 - Required fields: Add asterisk in Accent color
 
@@ -225,7 +225,7 @@ Always include labels:
 Provide guidance with:
 
 - Font size: text-sm
-- Color: Standard Ink Muted
+- Color: `--sl-standard-muted`
 - Position: Below input with space-2 gap
 - Error messages: Use red color, include icon
 
@@ -329,17 +329,17 @@ Create badges using intensity levels:
 
 **Calm Badge** (Standard):
 - Background: Calm surface
-- Text: Ink Soft
+- Text: `--sl-standard-soft`
 - Border: 1px Calm border
 - Use for: Standard labels
 
 **Vibrant Badge** (Strongest):
-- Background: Standard Ink
+- Background: `--sl-standard`
 - Text: Base (white)
 - Use for: High-priority labels
 
 **Expressive Badge** (Highlight):
-- Background: Expressive Accent
+- Background: `--sl-expressive`
 - Text: Base (white)
 - Use when: Badge IS the "One Highlight"
 
@@ -382,8 +382,8 @@ Build modals with:
 
 **Modal Sections**:
 - Header: Title area, margin-bottom space-4
-- Title: text-xl, weight 700, Ink color
-- Body: Main content, Ink Soft color, relaxed line height
+- Title: text-xl, weight 700, `--sl-standard`
+- Body: Main content, `--sl-standard-soft` color, relaxed line height
 - Footer: Button area, flexbox, gap space-3, justify-end, margin-top space-6
 
 ## Modal Button Pattern
@@ -404,26 +404,26 @@ In modal footers:
 Apply semantic colors to headings:
 
 **Primary Headings**:
-- Color: Standard Ink
+- Color: `--sl-standard`
 - Weight: 700 (bold)
 - Line height: Tight (1.25)
 - Letter spacing: -0.02em
 - Use for: H1, H2, H3
 
 **Secondary Headings**:
-- Color: Standard Ink Soft
+- Color: `--sl-standard-soft`
 - Weight: 600 (semibold)
 - Line height: Tight (1.25)
 - Use for: H4, H5, H6
 
 **Expressive Headings** (Rare):
-- Color: Expressive Accent
+- Color: `--sl-expressive`
 - Weight: 700 (bold)
 - Use sparingly: Only when heading IS the highlight
 
 **Headings with Highlight**:
-- Base: Standard Ink
-- Highlight word: Expressive Accent
+- Base: `--sl-standard`
+- Highlight word: `--sl-expressive`
 - Use to: Emphasize one key word
 
 ## Body Text Styles
@@ -431,18 +431,18 @@ Apply semantic colors to headings:
 Apply appropriate colors:
 
 **Standard Body**:
-- Color: Standard Ink Soft
+- Color: `--sl-standard-soft`
 - Size: text-base
 - Line height: Relaxed (1.75)
 - Use for: Paragraphs, descriptions
 
 **Muted Text**:
-- Color: Standard Ink Muted
+- Color: `--sl-standard-muted`
 - Size: text-sm
 - Use for: Captions, hints, metadata
 
 **Expressive Text** (Rare):
-- Color: Expressive Accent
+- Color: `--sl-expressive`
 - Weight: 500 (medium)
 - Use for: Links, important highlighted words
 

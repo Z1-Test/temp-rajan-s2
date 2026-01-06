@@ -31,11 +31,11 @@
 .input-label {
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--color-ink);
+  color: var(--sl-standard);
 }
 
 .input-label .required {
-  color: var(--color-accent);
+  color: var(--sl-expressive);
 }
 
 .input {
@@ -46,12 +46,12 @@
   border-radius: var(--radius-input); /* 16px */
   font-size: var(--text-base);
   font-family: var(--font-sans);
-  color: var(--color-ink);
+  color: var(--sl-standard);
   transition: all var(--duration-fast) var(--ease-default);
 }
 
 .input::placeholder {
-  color: var(--color-ink-muted);
+  color: var(--sl-standard-muted);
 }
 
 /* Hover */
@@ -70,14 +70,14 @@
 /* Disabled */
 .input:disabled {
   background: var(--surface-calm);
-  color: var(--color-ink-muted);
+  color: var(--sl-standard-muted);
   opacity: 0.7;
   cursor: not-allowed;
 }
 
 .input-helper {
   font-size: var(--text-sm);
-  color: var(--color-ink-muted);
+  color: var(--sl-standard-muted);
 }
 ```
 
@@ -106,7 +106,7 @@
   border-radius: var(--radius-input);
   font-size: var(--text-base);
   font-family: var(--font-sans);
-  color: var(--color-ink);
+  color: var(--sl-standard);
   resize: vertical;
   transition: all var(--duration-fast) var(--ease-default);
 }
@@ -150,7 +150,7 @@
   border: 1px solid var(--outline-muted);
   border-radius: var(--radius-input);
   font-size: var(--text-base);
-  color: var(--color-ink);
+  color: var(--sl-standard);
   cursor: pointer;
   appearance: none;
 }
@@ -161,7 +161,7 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  color: var(--color-ink-muted);
+  color: var(--sl-standard-muted);
 }
 
 .select:focus {
@@ -212,8 +212,8 @@
 }
 
 .checkbox:checked + .checkbox-custom {
-  background: var(--color-ink);
-  border-color: var(--color-ink);
+  background: var(--sl-standard);
+  border-color: var(--sl-standard);
 }
 
 .checkbox:checked + .checkbox-custom::after {
@@ -228,7 +228,7 @@
 
 .checkbox-text {
   font-size: var(--text-sm);
-  color: var(--color-ink-soft);
+  color: var(--sl-standard-secondary);
 }
 ```
 
@@ -280,7 +280,7 @@
 }
 
 .radio:checked + .radio-custom {
-  border-color: var(--color-ink);
+  border-color: var(--sl-standard);
   border-width: 6px;
 }
 
@@ -352,7 +352,7 @@
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--color-ink-muted);
+  color: var(--sl-standard-muted);
   width: 20px;
   height: 20px;
 }

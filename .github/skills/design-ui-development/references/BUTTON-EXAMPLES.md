@@ -17,7 +17,7 @@
 
 ```css
 .button-expressive {
-  background: var(--color-accent);
+  background: var(--sl-expressive);
   color: var(--color-base);
   border: none;
   border-radius: 9999px; /* ALWAYS pill */
@@ -28,7 +28,7 @@
 }
 
 .button-expressive:hover {
-  background: var(--color-accent-dark);
+  background: var(--sl-expressive-dark);
 }
 
 .button-expressive:active {
@@ -36,7 +36,7 @@
 }
 
 .button-expressive:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--sl-expressive);
   outline-offset: 2px;
   box-shadow: 0 0 0 4px rgba(51, 115, 204, 0.2);
 }
@@ -61,7 +61,7 @@
 ```css
 .button-standard {
   background: transparent;
-  color: var(--color-ink);
+  color: var(--sl-standard);
   border: 1px solid var(--outline-calm);
   border-radius: 9999px; /* ALWAYS pill */
   padding: 12px 24px;
@@ -79,7 +79,7 @@
 }
 
 .button-standard:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--sl-expressive);
   outline-offset: 2px;
 }
 
@@ -103,7 +103,7 @@
 ```css
 .button-ghost {
   background: transparent;
-  color: var(--color-ink-soft);
+  color: var(--sl-standard-secondary);
   border: none;
   border-radius: 9999px; /* ALWAYS pill */
   padding: 12px 24px;
@@ -114,7 +114,7 @@
 
 .button-ghost:hover {
   background: var(--surface-calm);
-  color: var(--color-ink);
+  color: var(--sl-standard);
 }
 
 .button-ghost:active {
@@ -122,7 +122,7 @@
 }
 
 .button-ghost:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--sl-expressive);
   outline-offset: 2px;
 }
 ```

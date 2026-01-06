@@ -1,76 +1,165 @@
 # Staylook Design Tokens Reference
 
-> Complete token values for the Staylook Design System
+> Hierarchical semantic token system for the Staylook Design System
 
 ---
 
-## Color Tokens
+## Token Architecture
 
-### Standard Colors (90% of UI)
-
-| Token | Light Mode | Dark Mode | Usage |
-|-------|------------|-----------|-------|
-| `--color-ink` | `#1A1A1A` | `#FFFFFF` | Primary text, headings, icons |
-| `--color-ink-soft` | `#4A4A4A` | `#B8B8B8` | Body text, descriptions |
-| `--color-ink-muted` | `#9E9E9E` | `#6A6A6A` | Captions, hints, placeholders |
-
-### Expressive Colors (10% of UI, max 1 per screen)
-
-| Token | Light Mode | Dark Mode | Usage |
-|-------|------------|-----------|-------|
-| `--color-accent` | `#3373CC` | `#5C9FFF` | THE highlight button, links |
-| `--color-accent-light` | `#E8F0FA` | `#1E3A5F` | Accent backgrounds |
-| `--color-accent-dark` | `#264D99` | `#7BB5FF` | Accent hover states |
-
-### Base Color
-
-| Token | Light Mode | Dark Mode | Usage |
-|-------|------------|-----------|-------|
-| `--color-base` | `#FFFFFF` | `#121212` | Page canvas, inverse text |
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        SEMANTIC TOKENS                          │
+├─────────────────────────────────────────────────────────────────┤
+│  container/     │  on/           │  outline/      │  other      │
+│  ├── muted      │  ├── standard  │  ├── standard  │  ├── scrim  │
+│  ├── calm       │  ├── expressive│  ├── expressive│  ├── shadow │
+│  └── vibrant    │  ├── error     │  ├── error     │  └── ...    │
+│                 │  ├── success   │  ├── success   │             │
+│                 │  ├── warning   │  ├── warning   │             │
+│                 │  └── info      │  └── info      │             │
+├─────────────────────────────────────────────────────────────────┤
+│                        BASE PALETTE                              │
+│  palette/standard/0-100  │  palette/expressive/0-100            │
+│  palette/custom/red      │  palette/custom/green                │
+│  palette/custom/yellow   │  palette/custom/blue                 │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-## Intensity Scale
+## 1. Standard Color (Primary Color - 90% of UI)
 
-### Surfaces (Backgrounds)
-
-| Token | Light Mode | Dark Mode | Usage |
-|-------|------------|-----------|-------|
-| `--surface-muted` | `#FFFFFF` | `#1A1A1A` | Cards, modals, elevated content |
-| `--surface-calm` | `#FAFAFA` | `#242424` | Page backgrounds, sections |
-| `--surface-vibrant` | `#F0F0F0` | `#2E2E2E` | Inputs, active states, hovers |
-
-### Outlines (Borders)
+The standard color is used for most UI elements - text, icons, borders, buttons.
 
 | Token | Light Mode | Dark Mode | Usage |
 |-------|------------|-----------|-------|
-| `--outline-muted` | `#F2F2F2` | `#2A2A2A` | Subtle dividers, ghost elements |
-| `--outline-calm` | `#E0E0E0` | `#3A3A3A` | Card borders, input borders |
-| `--outline-vibrant` | `#1A1A1A` | `#FFFFFF` | Focus states, active elements |
-
-### Shadows (Elevation)
-
-| Token | Light Mode | Usage |
-|-------|------------|-------|
-| `--shadow-muted` | `0 1px 2px rgba(0,0,0,0.04)` | Subtle lift, resting cards |
-| `--shadow-calm` | `0 4px 8px rgba(0,0,0,0.08)` | Standard elevation, dropdowns |
-| `--shadow-vibrant` | `0 8px 24px rgba(0,0,0,0.12)` | Modals, popovers, focused |
+| `--sl-standard` | `#000000` | `#FFFFFF` | Primary color/text |
+| `--sl-standard-soft` | `#4D4D4D` | `#CCCCCC` | Secondary text |
+| `--sl-standard-muted` | `#9E9E9E` | `#6A6A6A` | Muted/disabled text |
 
 ---
 
-## Radius Tokens (Strict Nesting)
+## 2. Expressive Color (Accent - 10% of UI, max 1 per screen)
+
+The expressive color is THE highlight - used sparingly for the single most important element.
+
+| Token | Light Mode | Dark Mode | Usage |
+|-------|------------|-----------|-------|
+| `--sl-expressive` | `#3373CC` | `#5C9FFF` | THE highlight element |
+| `--sl-expressive-soft` | `#5C9FFF` | `#7EB8FF` | Hover state |
+| `--sl-expressive-muted` | `#BBDEFB` | `#1E3A5F` | Background tint |
+
+---
+
+## 3. Container Tokens (Surface/Background)
+
+Background colors for surfaces and containers.
+
+| Token | Light Mode | Dark Mode | Usage |
+|-------|------------|-----------|-------|
+| `--sl-container-muted` | `#EBEBEB` | `#333333` | Cards, modals, elevated content |
+| `--sl-container-calm` | `#F5F5F5` | `#292929` | Page backgrounds, sections |
+| `--sl-container-vibrant` | `#FFFFFF` | `#1A1A1A` | Inputs, active states, hovers |
+
+### Container Usage
+- **Muted**: Subtle backgrounds, secondary cards
+- **Calm**: Default page backgrounds
+- **Vibrant**: Primary cards, prominent surfaces
+
+---
+
+## 4. On Tokens (Content ON Surfaces)
+
+Colors for text, icons, and elements that appear ON container surfaces.
+
+| Token | Light Mode | Dark Mode | Usage |
+|-------|------------|-----------|-------|
+| `--sl-on-standard` | `#000000` | `#FFFFFF` | Primary text, icons |
+| `--sl-on-expressive` | `#3373CC` | `#7EB8FF` | Links, accent text |
+| `--sl-on-error` | `#D32F2F` | `#FF8A80` | Error text, destructive |
+| `--sl-on-success` | `#388E3C` | `#81C784` | Success text |
+| `--sl-on-warning` | `#F57C00` | `#FFB74D` | Warning text |
+| `--sl-on-info` | `#1976D2` | `#64B5F6` | Info text |
+
+### On Token Usage
+- **Standard**: Default text and icons (most content)
+- **Expressive**: THE highlight (max 1 per screen)
+- **Error/Success/Warning/Info**: Semantic feedback states
+
+---
+
+## 5. On/Container Tokens (Content ON Specific Containers)
+
+Secondary/muted text colors for content on specific container types.
+
+| Token | Light Mode | Dark Mode | Usage |
+|-------|------------|-----------|-------|
+| `--sl-on-container-muted` | `#666666` | `#808080` | Secondary text on muted bg |
+| `--sl-on-container-calm` | `#4D4D4D` | `#CCCCCC` | Secondary text on calm bg |
+| `--sl-on-container-vibrant` | `#1A1A1A` | `#F5F5F5` | Secondary text on vibrant bg |
+| `--sl-on-container-error` | `#B71C1C` | `#FFCDD2` | Text on error backgrounds |
+| `--sl-on-container-success` | `#1B5E20` | `#C8E6C9` | Text on success backgrounds |
+| `--sl-on-container-warning` | `#E65100` | `#FFECB3` | Text on warning backgrounds |
+| `--sl-on-container-info` | `#0D47A1` | `#BBDEFB` | Text on info backgrounds |
+
+---
+
+## 6. Outline Tokens (Borders)
+
+Border and divider colors.
+
+| Token | Light Mode | Dark Mode | Usage |
+|-------|------------|-----------|-------|
+| `--sl-outline-standard` | `#000000` | `#FFFFFF` | Default borders |
+| `--sl-outline-muted` | `#E0E0E0` | `#424242` | Subtle dividers |
+| `--sl-outline-calm` | `#BDBDBD` | `#616161` | Card borders |
+| `--sl-outline-vibrant` | `#1A1A1A` | `#FAFAFA` | Focus states |
+| `--sl-outline-expressive` | `#5C9FFF` | `#BBDEFB` | Accent borders |
+| `--sl-outline-error` | `#EF9A9A` | `#D32F2F` | Error borders |
+| `--sl-outline-success` | `#A5D6A7` | `#388E3C` | Success borders |
+| `--sl-outline-warning` | `#FFE082` | `#F57C00` | Warning borders |
+| `--sl-outline-info` | `#90CAF9` | `#1976D2` | Info borders |
+
+---
+
+## 7. Scrim & Overlay Tokens
+
+Overlay and backdrop colors.
+
+| Token | Light Mode | Dark Mode | Usage |
+|-------|------------|-----------|-------|
+| `--sl-scrim` | `rgba(0,0,0,0.3)` | `rgba(0,0,0,0.3)` | Light overlay |
+| `--sl-scrim-modal` | `rgba(77,77,77,0.7)` | `rgba(77,77,77,0.7)` | Modal backdrop |
+| `--sl-shadow` | `rgba(0,0,0,1)` | `rgba(0,0,0,1)` | Shadow base |
+| `--sl-transparent` | `rgba(255,255,255,0)` | `rgba(255,255,255,0)` | Transparent |
+| `--sl-on-standard-transparent` | `rgba(255,255,255,0.3)` | `rgba(255,255,255,0.3)` | Semi-transparent white |
+
+---
+
+## 8. Shadow Tokens
+
+Elevation and depth shadows.
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--radius-section` | `32px` | Outermost content areas |
-| `--radius-container` | `24px` | Major content wrappers, modals |
-| `--radius-card` | `16px` | Information containers |
-| `--radius-input` | `16px` | Form fields |
-| `--radius-badge` | `8px` | Small indicators, tags |
-| `--radius-button` | `9999px` | ALL buttons (pill shape) |
+| `--sl-shadow-muted` | `0 1px 2px var(--sl-shadow, rgba(0,0,0,0.04))` | Subtle lift |
+| `--sl-shadow-calm` | `0 4px 8px var(--sl-shadow, rgba(0,0,0,0.08))` | Standard elevation |
+| `--sl-shadow-vibrant` | `0 8px 24px var(--sl-shadow, rgba(0,0,0,0.12))` | Modal elevation |
+
+---
+
+## 9. Radius Tokens (Strict Nesting)
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--sl-radius-section` | `32px` | Outermost content areas |
+| `--sl-radius-container` | `24px` | Major content wrappers, modals |
+| `--sl-radius-card` | `16px` | Information containers |
+| `--sl-radius-input` | `16px` | Form fields |
+| `--sl-radius-badge` | `8px` | Small indicators, tags |
+| `--sl-radius-button` | `9999px` | ALL buttons (pill shape) |
 
 ### Nesting Hierarchy
-
 ```
 Section (32px)
   └── Container (24px)
@@ -82,121 +171,78 @@ Section (32px)
 
 ---
 
-## Typography Tokens
+## 10. Typography Tokens
 
 ### Font Families
-
 | Token | Value |
 |-------|-------|
-| `--font-sans` | `'Plus Jakarta Sans', system-ui, -apple-system, sans-serif` |
-| `--font-mono` | `'SF Mono', Monaco, 'Fira Code', monospace` |
+| `--sl-font-sans` | `'Plus Jakarta Sans', system-ui, sans-serif` |
+| `--sl-font-mono` | `'SF Mono', Monaco, monospace` |
 
 ### Type Scale
-
-| Token | Size (rem) | Size (px) | Usage |
-|-------|------------|-----------|-------|
-| `--text-xs` | `0.75rem` | 12px | Captions, labels |
-| `--text-sm` | `0.875rem` | 14px | Secondary text, metadata |
-| `--text-base` | `1rem` | 16px | Body text |
-| `--text-lg` | `1.125rem` | 18px | Emphasized body |
-| `--text-xl` | `1.25rem` | 20px | Subheadings |
-| `--text-2xl` | `1.5rem` | 24px | Section titles |
-| `--text-3xl` | `2rem` | 32px | Page titles |
-| `--text-4xl` | `2.5rem` | 40px | Hero titles |
-| `--text-5xl` | `3rem` | 48px | Display text |
+| Token | Size | Usage |
+|-------|------|-------|
+| `--sl-text-xs` | `0.75rem` (12px) | Captions, labels |
+| `--sl-text-sm` | `0.875rem` (14px) | Secondary text |
+| `--sl-text-base` | `1rem` (16px) | Body text |
+| `--sl-text-lg` | `1.125rem` (18px) | Emphasized body |
+| `--sl-text-xl` | `1.25rem` (20px) | Subheadings |
+| `--sl-text-2xl` | `1.5rem` (24px) | Section titles |
+| `--sl-text-3xl` | `2rem` (32px) | Page titles |
+| `--sl-text-4xl` | `2.5rem` (40px) | Hero titles |
 
 ### Font Weights
-
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--font-normal` | `400` | Body text |
-| `--font-medium` | `500` | Emphasized text |
-| `--font-semibold` | `600` | Subheadings, labels |
-| `--font-bold` | `700` | Headings, strong emphasis |
-
-### Line Heights
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--leading-tight` | `1.25` | Headings |
-| `--leading-normal` | `1.5` | UI text |
-| `--leading-relaxed` | `1.75` | Body paragraphs |
+| `--sl-font-normal` | `400` | Body text |
+| `--sl-font-medium` | `500` | Emphasized text |
+| `--sl-font-semibold` | `600` | Subheadings |
+| `--sl-font-bold` | `700` | Headings |
 
 ---
 
-## Spacing Tokens (4px Grid)
+## 11. Spacing Tokens (4px Grid)
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--space-1` | `4px` | Micro spacing, icon gaps |
-| `--space-2` | `8px` | Related element gaps |
-| `--space-3` | `12px` | Small internal padding |
-| `--space-4` | `16px` | Standard padding |
-| `--space-5` | `20px` | Card internal padding |
-| `--space-6` | `24px` | Section padding |
-| `--space-8` | `32px` | Large gaps |
-| `--space-10` | `40px` | Major separations |
-| `--space-12` | `48px` | Section margins |
-| `--space-16` | `64px` | Major separations |
-| `--space-20` | `80px` | Hero spacing |
-| `--space-24` | `96px` | Page sections |
+| `--sl-space-1` | `4px` | Micro spacing |
+| `--sl-space-2` | `8px` | Related elements |
+| `--sl-space-3` | `12px` | Small padding |
+| `--sl-space-4` | `16px` | Standard padding |
+| `--sl-space-5` | `20px` | Card padding |
+| `--sl-space-6` | `24px` | Section padding |
+| `--sl-space-8` | `32px` | Large gaps |
+| `--sl-space-10` | `40px` | Major separations |
+| `--sl-space-12` | `48px` | Section margins |
+| `--sl-space-16` | `64px` | Major separations |
 
 ---
 
-## Animation Tokens
+## 12. Animation Tokens
 
 ### Duration
-
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--duration-fast` | `150ms` | Micro-interactions, hovers |
-| `--duration-base` | `300ms` | Standard transitions |
-| `--duration-slow` | `500ms` | Complex animations, page transitions |
+| `--sl-duration-fast` | `150ms` | Micro-interactions |
+| `--sl-duration-base` | `300ms` | Standard transitions |
+| `--sl-duration-slow` | `500ms` | Complex animations |
 
 ### Easing
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--ease-default` | `cubic-bezier(0.4, 0, 0.2, 1)` | All transitions |
-
----
-
-## Breakpoint Tokens
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--breakpoint-sm` | `640px` | Small tablets |
-| `--breakpoint-md` | `768px` | Tablets |
-| `--breakpoint-lg` | `1024px` | Laptops |
-| `--breakpoint-xl` | `1280px` | Desktops |
-| `--breakpoint-2xl` | `1536px` | Large screens |
+| Token | Value |
+|-------|-------|
+| `--sl-ease-default` | `cubic-bezier(0.4, 0, 0.2, 1)` |
+| `--sl-ease-in` | `cubic-bezier(0.4, 0, 1, 1)` |
+| `--sl-ease-out` | `cubic-bezier(0, 0, 0.2, 1)` |
 
 ---
 
-## Container Max Widths
+## 13. Focus & Interactive Tokens
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--container-xs` | `480px` | Narrow forms |
-| `--container-sm` | `640px` | Articles |
-| `--container-md` | `768px` | Standard forms |
-| `--container-lg` | `1024px` | Wider layouts |
-| `--container-xl` | `1280px` | Default main content |
-| `--container-2xl` | `1440px` | Wide screens |
-
----
-
-## Z-Index Scale
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--z-dropdown` | `50` | Dropdowns, select menus |
-| `--z-sticky` | `60` | Sticky headers |
-| `--z-fixed` | `70` | Fixed elements |
-| `--z-modal-backdrop` | `80` | Modal backdrop |
-| `--z-modal` | `90` | Modal content |
-| `--z-popover` | `100` | Popovers, tooltips |
-| `--z-toast` | `110` | Toast notifications |
+| `--sl-focus-ring-width` | `2px` | Focus outline width |
+| `--sl-focus-ring-offset` | `2px` | Focus outline offset |
+| `--sl-focus-ring-color` | `var(--sl-on-expressive)` | Focus ring color |
 
 ---
 
@@ -204,54 +250,231 @@ Section (32px)
 
 ```css
 :root {
-  /* Standard Colors */
-  --color-ink: #1A1A1A;
-  --color-ink-soft: #4A4A4A;
-  --color-ink-muted: #9E9E9E;
+  /* ============================================
+     STANDARD COLOR (Primary - 90% of UI)
+     ============================================ */
+  --sl-standard: #000000;
+  --sl-standard-soft: #4D4D4D;
+  --sl-standard-muted: #9E9E9E;
   
-  /* Expressive Colors */
-  --color-accent: #3373CC;
-  --color-accent-light: #E8F0FA;
-  --color-accent-dark: #264D99;
+  /* ============================================
+     EXPRESSIVE COLOR (Accent - 10% of UI)
+     ============================================ */
+  --sl-expressive: #3373CC;
+  --sl-expressive-soft: #5C9FFF;
+  --sl-expressive-muted: #BBDEFB;
   
-  /* Base */
-  --color-base: #FFFFFF;
+  /* ============================================
+     CONTAINER TOKENS (Background/Surface)
+     ============================================ */
+  --sl-container-muted: #EBEBEB;
+  --sl-container-calm: #F5F5F5;
+  --sl-container-vibrant: #FFFFFF;
   
-  /* Surfaces */
-  --surface-muted: #FFFFFF;
-  --surface-calm: #FAFAFA;
-  --surface-vibrant: #F0F0F0;
+  /* ============================================
+     ON TOKENS (Content ON surfaces)
+     ============================================ */
+  --sl-on-standard: #000000;
+  --sl-on-expressive: #3373CC;
+  --sl-on-error: #D32F2F;
+  --sl-on-success: #388E3C;
+  --sl-on-warning: #F57C00;
+  --sl-on-info: #1976D2;
   
-  /* Outlines */
-  --outline-muted: #F2F2F2;
-  --outline-calm: #E0E0E0;
-  --outline-vibrant: #1A1A1A;
+  /* ============================================
+     ON/CONTAINER TOKENS (Secondary content)
+     ============================================ */
+  --sl-on-container-muted: #666666;
+  --sl-on-container-calm: #4D4D4D;
+  --sl-on-container-vibrant: #1A1A1A;
+  --sl-on-container-error: #B71C1C;
+  --sl-on-container-success: #1B5E20;
+  --sl-on-container-warning: #E65100;
+  --sl-on-container-info: #0D47A1;
   
-  /* Shadows */
-  --shadow-muted: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-calm: 0 4px 8px rgba(0,0,0,0.08);
-  --shadow-vibrant: 0 8px 24px rgba(0,0,0,0.12);
+  /* ============================================
+     OUTLINE TOKENS (Borders)
+     ============================================ */
+  --sl-outline-standard: #000000;
+  --sl-outline-muted: #E0E0E0;
+  --sl-outline-calm: #BDBDBD;
+  --sl-outline-vibrant: #1A1A1A;
+  --sl-outline-expressive: #5C9FFF;
+  --sl-outline-error: #EF9A9A;
+  --sl-outline-success: #A5D6A7;
+  --sl-outline-warning: #FFE082;
+  --sl-outline-info: #90CAF9;
   
-  /* Radius */
-  --radius-section: 32px;
-  --radius-container: 24px;
-  --radius-card: 16px;
-  --radius-input: 16px;
-  --radius-badge: 8px;
-  --radius-button: 9999px;
+  /* ============================================
+     SCRIM & OVERLAY TOKENS
+     ============================================ */
+  --sl-scrim: rgba(0,0,0,0.3);
+  --sl-scrim-modal: rgba(77,77,77,0.7);
+  --sl-shadow: rgba(0,0,0,1);
+  --sl-transparent: rgba(255,255,255,0);
+  --sl-on-standard-transparent: rgba(255,255,255,0.3);
   
-  /* Typography */
-  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-mono: 'SF Mono', Monaco, monospace;
+  /* ============================================
+     SHADOW TOKENS
+     ============================================ */
+  --sl-shadow-muted: 0 1px 2px rgba(0,0,0,0.04);
+  --sl-shadow-calm: 0 4px 8px rgba(0,0,0,0.08);
+  --sl-shadow-vibrant: 0 8px 24px rgba(0,0,0,0.12);
   
-  /* Animation */
-  --duration-fast: 150ms;
-  --duration-base: 300ms;
-  --duration-slow: 500ms;
-  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  /* ============================================
+     RADIUS TOKENS
+     ============================================ */
+  --sl-radius-section: 32px;
+  --sl-radius-container: 24px;
+  --sl-radius-card: 16px;
+  --sl-radius-input: 16px;
+  --sl-radius-badge: 8px;
+  --sl-radius-button: 9999px;
+  
+  /* ============================================
+     TYPOGRAPHY TOKENS
+     ============================================ */
+  --sl-font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --sl-font-mono: 'SF Mono', Monaco, monospace;
+  
+  --sl-text-xs: 0.75rem;
+  --sl-text-sm: 0.875rem;
+  --sl-text-base: 1rem;
+  --sl-text-lg: 1.125rem;
+  --sl-text-xl: 1.25rem;
+  --sl-text-2xl: 1.5rem;
+  --sl-text-3xl: 2rem;
+  --sl-text-4xl: 2.5rem;
+  
+  --sl-font-normal: 400;
+  --sl-font-medium: 500;
+  --sl-font-semibold: 600;
+  --sl-font-bold: 700;
+  
+  /* ============================================
+     SPACING TOKENS
+     ============================================ */
+  --sl-space-1: 4px;
+  --sl-space-2: 8px;
+  --sl-space-3: 12px;
+  --sl-space-4: 16px;
+  --sl-space-5: 20px;
+  --sl-space-6: 24px;
+  --sl-space-8: 32px;
+  --sl-space-10: 40px;
+  --sl-space-12: 48px;
+  --sl-space-16: 64px;
+  
+  /* ============================================
+     ANIMATION TOKENS
+     ============================================ */
+  --sl-duration-fast: 150ms;
+  --sl-duration-base: 300ms;
+  --sl-duration-slow: 500ms;
+  --sl-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ============================================
+     FOCUS TOKENS
+     ============================================ */
+  --sl-focus-ring-width: 2px;
+  --sl-focus-ring-offset: 2px;
+  --sl-focus-ring-color: var(--sl-on-expressive);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Standard */
+    --sl-standard: #FFFFFF;
+    --sl-standard-soft: #CCCCCC;
+    --sl-standard-muted: #6A6A6A;
+    
+    /* Expressive */
+    --sl-expressive: #5C9FFF;
+    --sl-expressive-soft: #7EB8FF;
+    --sl-expressive-muted: #1E3A5F;
+    
+    /* Container */
+    --sl-container-muted: #333333;
+    --sl-container-calm: #292929;
+    --sl-container-vibrant: #1A1A1A;
+    
+    /* On */
+    --sl-on-standard: #FFFFFF;
+    --sl-on-expressive: #7EB8FF;
+    --sl-on-error: #FF8A80;
+    --sl-on-success: #81C784;
+    --sl-on-warning: #FFB74D;
+    --sl-on-info: #64B5F6;
+    
+    /* On/Container */
+    --sl-on-container-muted: #808080;
+    --sl-on-container-calm: #CCCCCC;
+    --sl-on-container-vibrant: #F5F5F5;
+    --sl-on-container-error: #FFCDD2;
+    --sl-on-container-success: #C8E6C9;
+    --sl-on-container-warning: #FFECB3;
+    --sl-on-container-info: #BBDEFB;
+    
+    /* Outline */
+    --sl-outline-standard: #FFFFFF;
+    --sl-outline-muted: #424242;
+    --sl-outline-calm: #616161;
+    --sl-outline-vibrant: #FAFAFA;
+    --sl-outline-expressive: #BBDEFB;
+    --sl-outline-error: #D32F2F;
+    --sl-outline-success: #388E3C;
+    --sl-outline-warning: #F57C00;
+    --sl-outline-info: #1976D2;
+  }
 }
 ```
 
 ---
 
-*Staylook Design Tokens — Complete Reference*
+## Token Reference Quick Guide
+
+### When to use which token:
+
+| I want to... | Use this token |
+|--------------|---------------|
+| Set a background/surface color | `--sl-container-*` |
+| Color text or icons | `--sl-on-*` |
+| Color secondary text on a surface | `--sl-on-container-*` |
+| Add a border | `--sl-outline-*` |
+| Add a backdrop/overlay | `--sl-scrim*` |
+| Add elevation/depth | `--sl-shadow-*` |
+
+### Common Patterns
+
+```css
+/* Card on page background */
+.card {
+  background: var(--sl-container-vibrant);
+  border: 1px solid var(--sl-outline-muted);
+  color: var(--sl-on-standard);
+}
+
+/* Secondary text in card */
+.card-description {
+  color: var(--sl-on-container-vibrant);
+}
+
+/* Expressive button (THE highlight) */
+.button-expressive {
+  background: var(--sl-on-expressive);
+  color: var(--sl-container-vibrant);
+}
+
+/* Error state */
+.error-message {
+  color: var(--sl-on-error);
+  border: 1px solid var(--sl-outline-error);
+}
+```
+
+---
+
+*Staylook Design Tokens — Hierarchical Semantic System*
