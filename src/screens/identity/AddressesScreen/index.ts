@@ -1,1 +1,0 @@
-export { AddressesScreen } from './AddressesScreen';

@@ -1,1 +1,0 @@
-export { OrderDetailScreen } from './OrderDetailScreen';
