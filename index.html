@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staylook Design System — Developer Portal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      /* Import Staylook Tokens */
+      :root {
+        /* STANDARD COLOR (Primary - 90% of UI) */
+        --sl-standard: #000000;
+        --sl-standard-soft: #4D4D4D;
+        --sl-standard-muted: #9E9E9E;
+
+        /* EXPRESSIVE COLOR (Accent - 10% of UI) */
+        --sl-expressive: #3373CC;
+        --sl-expressive-soft: #5C9FFF;
+        --sl-expressive-muted: #BBDEFB;
+
+        /* CONTAINER TOKENS */
+        --sl-container-muted: #EBEBEB;
+        --sl-container-calm: #F5F5F5;
+        --sl-container-vibrant: #FFFFFF;
+
+        /* ON TOKENS */
+        --sl-on-standard: #000000;
+        --sl-on-expressive: #3373CC;
+        --sl-on-error: #D32F2F;
+        --sl-on-success: #388E3C;
+        --sl-on-warning: #F57C00;
+        --sl-on-info: #1976D2;
+
+        /* OUTLINE TOKENS */
+        --sl-outline-muted: #E0E0E0;
+        --sl-outline-calm: #BDBDBD;
+        --sl-outline-vibrant: #1A1A1A;
+        --sl-outline-expressive: #5C9FFF;
+
+        /* RADIUS TOKENS */
+        --sl-radius-section: 32px;
+        --sl-radius-container: 24px;
+        --sl-radius-card: 16px;
+        --sl-radius-input: 16px;
+        --sl-radius-badge: 8px;
+        --sl-radius-button: 9999px;
+
+        /* TYPOGRAPHY TOKENS */
+        --sl-font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+        --sl-font-mono: 'JetBrains Mono', monospace;
+        --sl-text-xs: 0.75rem;
+        --sl-text-sm: 0.875rem;
+        --sl-text-base: 1rem;
+        --sl-text-lg: 1.125rem;
+        --sl-text-xl: 1.25rem;
+        --sl-text-2xl: 1.5rem;
+        --sl-text-3xl: 2rem;
+
+        /* SPACING TOKENS */
+        --sl-space-1: 4px;
+        --sl-space-2: 8px;
+        --sl-space-3: 12px;
+        --sl-space-4: 16px;
+        --sl-space-6: 24px;
+        --sl-space-8: 32px;
+
+        /* ANIMATION TOKENS */
+        --sl-duration-fast: 150ms;
+        --sl-duration-base: 300ms;
+        --sl-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Portal Layout */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--sl-font-sans);
+        background: var(--sl-container-vibrant);
+        color: var(--sl-on-standard);
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Sidebar */
+      aside {
+        width: 280px;
+        border-right: 1px solid var(--sl-outline-muted);
+        background: var(--sl-container-calm);
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+      }
+
+      .sidebar-header {
+        padding: var(--sl-space-6);
+        border-bottom: 1px solid var(--sl-outline-muted);
+      }
+
+      .sidebar-brand {
+        font-weight: 700;
+        font-size: var(--sl-text-lg);
+        color: var(--sl-on-standard);
+        display: flex;
+        align-items: center;
+        gap: var(--sl-space-2);
+      }
+
+      .sidebar-nav {
+        flex: 1;
+        overflow-y: auto;
+        padding: var(--sl-space-4);
+      }
+
+      .nav-group {
+        margin-bottom: var(--sl-space-6);
+      }
+
+      .nav-group-title {
+        font-size: var(--sl-text-xs);
+        font-weight: 700;
+        color: var(--sl-standard-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: var(--sl-space-2);
+        padding-left: var(--sl-space-2);
+      }
+
+      .nav-item {
+        display: block;
+        padding: var(--sl-space-2) var(--sl-space-3);
+        color: var(--sl-on-standard);
+        text-decoration: none;
+        border-radius: var(--sl-radius-badge);
+        font-size: var(--sl-text-sm);
+        font-weight: 500;
+        transition: all var(--sl-duration-fast) var(--sl-ease-default);
+        cursor: pointer;
+      }
+
+      .nav-item:hover {
+        background: var(--sl-container-muted);
+      }
+
+      .nav-item.active {
+        background: var(--sl-on-standard);
+        color: var(--sl-container-vibrant);
+      }
+
+      /* Main Content */
+      main {
+        flex: 1;
+        overflow-y: auto;
+        background: var(--sl-container-vibrant);
+      }
+
+      .portal-header {
+        padding: var(--sl-space-6) var(--sl-space-8);
+        border-bottom: 1px solid var(--sl-outline-muted);
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .component-title {
+        font-size: var(--sl-text-2xl);
+        font-weight: 700;
+      }
+
+      .portal-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: var(--sl-space-8);
+      }
+
+      /* Showcase Elements */
+      .showcase-section {
+        margin-bottom: var(--sl-space-12);
+        display: none;
+      }
+
+      .showcase-section.active {
+        display: block;
+      }
+
+      .section-desc {
+        color: var(--sl-standard-soft);
+        font-size: var(--sl-text-lg);
+        margin-bottom: var(--sl-space-6);
+        line-height: 1.6;
+      }
+
+      .tabs {
+        display: flex;
+        gap: var(--sl-space-4);
+        border-bottom: 1px solid var(--sl-outline-muted);
+        margin-bottom: var(--sl-space-6);
+      }
+
+      .tab {
+        padding: var(--sl-space-2) var(--sl-space-1);
+        font-size: var(--sl-text-sm);
+        font-weight: 600;
+        color: var(--sl-standard-muted);
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: all var(--sl-duration-fast) var(--sl-ease-default);
+      }
+
+      .tab.active {
+        color: var(--sl-on-standard);
+        border-bottom-color: var(--sl-on-standard);
+      }
+
+      .preview-card {
+        border: 1px solid var(--sl-outline-muted);
+        border-radius: var(--sl-radius-card);
+        padding: var(--sl-space-8);
+        background: var(--sl-container-calm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+        margin-bottom: var(--sl-space-6);
+      }
+
+      .code-block {
+        background: #1a1a1a;
+        color: #f8f8f2;
+        padding: var(--sl-space-6);
+        border-radius: var(--sl-radius-card);
+        font-family: var(--sl-font-mono);
+        font-size: var(--sl-text-sm);
+        line-height: 1.6;
+        overflow-x: auto;
+        position: relative;
+      }
+
+      .copy-btn {
+        position: absolute;
+        top: var(--sl-space-4);
+        right: var(--sl-space-4);
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        padding: var(--sl-space-2);
+        border-radius: var(--sl-radius-badge);
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .copy-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Component Styles (Same as before but cleaned up) */
+      .btn {
+        font-family: var(--sl-font-sans);
+        font-weight: 600;
+        border-radius: var(--sl-radius-button);
+        padding: 0 var(--sl-space-4);
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--sl-space-2);
+        cursor: pointer;
+        border: none;
+        transition: all var(--sl-duration-base) var(--sl-ease-default);
+      }
+
+      .btn-standard {
+        background: var(--sl-on-standard);
+        color: var(--sl-container-vibrant);
+      }
+
+      .btn-standard:hover {
+        background: var(--sl-standard-soft);
+      }
+
+      .btn-expressive {
+        background: var(--sl-on-expressive);
+        color: var(--sl-container-vibrant);
+        box-shadow: var(--sl-shadow-calm);
+      }
+
+      .btn-expressive:hover {
+        background: var(--sl-expressive-soft);
+      }
+
+      .input {
+        font-family: var(--sl-font-sans);
+        width: 100%;
+        height: 44px;
+        padding: 0 var(--sl-space-4);
+        border-radius: var(--sl-radius-input);
+        border: 1px solid var(--sl-outline-calm);
+        background: var(--sl-container-vibrant);
+        color: var(--sl-on-standard);
+        transition: all var(--sl-duration-base) var(--sl-ease-default);
+      }
+
+      .input:focus {
+        outline: none;
+        border-color: var(--sl-outline-vibrant);
+        box-shadow: 0 0 0 2px var(--sl-outline-muted);
+      }
+
+      /* Checkbox & Radio & Switch */
+      .radio {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid var(--sl-outline-calm);
+        position: relative;
+        cursor: pointer;
+      }
+
+      .radio:checked {
+        border-color: var(--sl-on-standard);
+      }
+
+      .radio:checked::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        background: var(--sl-on-standard);
+        border-radius: 50%;
+      }
+
+      .switch {
+        width: 44px;
+        height: 24px;
+        background: var(--sl-outline-calm);
+        border-radius: 9999px;
+        position: relative;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .switch.active {
+        background: var(--sl-on-standard);
+      }
+
+      .switch-handle {
+        width: 18px;
+        height: 18px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        transition: 0.3s;
+      }
+
+      .switch.active .switch-handle {
+        left: 23px;
+      }
+
+      /* Guidelines Cards */
+      .guideline-card {
+        background: var(--sl-container-calm);
+        border-radius: var(--sl-radius-card);
+        padding: var(--sl-space-6);
+        margin-top: var(--sl-space-4);
+        border-left: 4px solid var(--sl-on-standard);
+      }
+
+      .guideline-card.expressive {
+        border-left-color: var(--sl-on-expressive);
+        background: var(--sl-expressive-muted);
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Sidebar -->
+    <aside>
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <i data-lucide="layers"></i>
+          Staylook DS
+        </div>
+      </div>
+      <div class="sidebar-nav">
+        <div class="nav-group">
+          <div class="nav-group-title">Getting Started</div>
+          <a class="nav-item active" data-target="intro">Introduction</a>
+          <a class="nav-item" data-target="tokens">Design Tokens</a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Atomic Components</div>
+          <a class="nav-item" data-target="button">Button</a>
+          <a class="nav-item" data-target="input">Input</a>
+          <a class="nav-item" data-target="select">Select</a>
+          <a class="nav-item" data-target="checkbox">Checkbox</a>
+          <a class="nav-item" data-target="radio">Radio</a>
+          <a class="nav-item" data-target="switch">Switch</a>
+          <a class="nav-item" data-target="slider">Slider</a>
+          <a class="nav-item" data-target="badge">Badge</a>
+          <a class="nav-item" data-target="avatar">Avatar</a>
+          <a class="nav-item" data-target="label">Label</a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Layout & Structure</div>
+          <a class="nav-item" data-target="card">Card</a>
+          <a class="nav-item" data-target="container">Container</a>
+          <a class="nav-item" data-target="stack">Stack</a>
+          <a class="nav-item" data-target="divider">Divider</a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Typography</div>
+          <a class="nav-item" data-target="heading">Heading</a>
+          <a class="nav-item" data-target="text">Text</a>
+          <a class="nav-item" data-target="link">Link</a>
+          <a class="nav-item" data-target="kbd">Kbd</a>
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Feedback</div>
+          <a class="nav-item" data-target="alert">Alert</a>
+          <a class="nav-item" data-target="progress">Progress</a>
+          <a class="nav-item" data-target="skeleton">Skeleton</a>
+          <a class="nav-item" data-target="spinner">Spinner</a>
+          <a class="nav-item" data-target="ping">Ping</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <header class="portal-header">
+        <div class="component-title" id="page-title">Introduction</div>
+        <div class="header-actions">
+          <button class="btn btn-outline" style="border: 1px solid var(--sl-outline-calm)">v1.0.0</button>
+        </div>
+      </header>
+
+      <div class="portal-container">
+
+        <!-- Intro Section -->
+        <div id="intro" class="showcase-section active">
+          <p class="section-desc">Staylook is a design system focused on being <strong>Curved, Editorial, Minimal, and
+              Selective Expressive</strong>. Built for developers who value clean implementation and aesthetic
+            excellence.</p>
+
+          <div class="guideline-card">
+            <h4 style="margin-bottom: 8px;">Design Principles</h4>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+              <li><strong>Curved:</strong> Soft, rounded edges throughout. No sharp corners.</li>
+              <li><strong>Editorial:</strong> Clean layouts with strong typographic hierarchy.</li>
+              <li><strong>Minimal:</strong> Every element serves a purpose.</li>
+              <li><strong>Expressive:</strong> Selective color usage to guide attention.</li>
+            </ul>
+          </div>
+
+          <div class="guideline-card expressive" style="margin-top: 24px;">
+            <h4 style="margin-bottom: 8px; color: var(--sl-on-expressive)">The Expressive Usage Rule</h4>
+            <p>Expressive styling is NOT required on every page. Most of your UI should use <strong>Standard</strong>
+              tokens. Only use Expressive for explicitly marked "Special Moments".</p>
+          </div>
+        </div>
+
+        <!-- Tokens Section -->
+        <div id="tokens" class="showcase-section">
+          <p class="section-desc">Design tokens are the foundation of Staylook. They ensure consistency across all
+            components.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+            <div class="guideline-card">
+              <h4 style="margin-bottom: 12px;">Colors</h4>
+              <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                <div style="width: 40px; height: 40px; background: #000; border-radius: 8px;" title="Standard"></div>
+                <div style="width: 40px; height: 40px; background: #3373CC; border-radius: 8px;" title="Expressive">
+                </div>
+                <div style="width: 40px; height: 40px; background: #F5F5F5; border-radius: 8px; border: 1px solid #ddd;"
+                  title="Container"></div>
+              </div>
+              <code style="font-size: 12px; opacity: 0.7;">--sl-standard: #000000;</code><br>
+              <code style="font-size: 12px; opacity: 0.7;">--sl-expressive: #3373CC;</code>
+            </div>
+
+            <div class="guideline-card">
+              <h4 style="margin-bottom: 12px;">Radius Hierarchy</h4>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div
+                  style="background: white; border: 1px solid #ddd; padding: 12px; border-radius: var(--sl-radius-container);">
+                  Container (24px)
+                  <div
+                    style="background: #f5f5f5; padding: 8px; border-radius: var(--sl-radius-card); margin-top: 8px;">
+                    Card (16px)
+                    <div
+                      style="background: black; width: 10px; height: 10px; border-radius: var(--sl-radius-badge); margin-top: 4px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button Section -->
+        <div id="button" class="showcase-section">
+          <p class="section-desc">Buttons are used to trigger actions. In Staylook, ALL buttons must be pill-shaped.</p>
+
+          <div class="tabs">
+            <div class="tab active" data-pane="preview">Preview</div>
+            <div class="tab" data-pane="usage">Usage</div>
+            <div class="tab" data-pane="code">Implementation</div>
+          </div>
+
+          <div class="pane pane-preview active">
+            <div class="preview-card" style="gap: 16px;">
+              <button class="btn btn-standard">Continue</button>
+              <button class="btn btn-expressive">Start Free Trial</button>
+              <button class="btn" style="border: 1px solid #ddd; background: white;">Cancel</button>
+            </div>
+
+            <h4 style="margin: 24px 0 12px;">Variants</h4>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <button class="btn btn-standard">Standard</button>
+              <button class="btn btn-expressive">Expressive</button>
+              <button class="btn" style="background: transparent; color: #000;">Ghost</button>
+              <button class="btn btn-standard" style="background: var(--sl-on-error);">Destructive</button>
+            </div>
+          </div>
+
+          <div class="pane pane-usage" style="display: none;">
+            <div class="code-block">
+              <pre>import { Button } from '@/staylook/components/button';
+
+export function Example() {
+  return (
+    &lt;div className="flex gap-4"&gt;
+      &lt;Button variant="standard"&gt;Continue&lt;/Button&gt;
+      &lt;Button variant="expressive"&gt;Subscribe Now&lt;/Button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+            </div>
+          </div>
+
+          <div class="pane pane-code" style="display: none;">
+            <div class="code-block" style="max-height: 400px; overflow-y: auto;">
+              <pre>// Fragment from button.tsx
+const buttonVariants = cva(
+  'rounded-[var(--sl-radius-button)]', // Pill-shaped
+  {
+    variants: {
+      variant: {
+        standard: 'bg-[var(--sl-on-standard)] text-[var(--sl-container-vibrant)]',
+        expressive: 'bg-[var(--sl-on-expressive)] text-[var(--sl-container-vibrant)]'
+      }
+    }
+  }
+)</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Section -->
+        <div id="input" class="showcase-section">
+          <p class="section-desc">Inputs allow users to enter text data. They follow the 16px radius rule.</p>
+          <div class="preview-card"
+            style="flex-direction: column; align-items: stretch; gap: 16px; max-width: 400px; margin: 0 auto;">
+            <input type="text" class="input" placeholder="Full Name">
+            <input type="email" class="input" placeholder="Email Address">
+            <input type="password" class="input" value="password123">
+          </div>
+        </div>
+
+        <!-- Checkbox & Radio & Switch Section -->
+        <div id="checkbox" class="showcase-section">
+          <p class="section-desc">Selection components for individual or group choices.</p>
+          <div class="grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+            <div class="guideline-card">
+              <h4>Checkboxes</h4>
+              <div style="display: flex; gap: 8px; margin-top: 12px; align-items: center;">
+                <input type="checkbox" style="width: 20px; height: 20px;" checked>
+                <span>Item Selected</span>
+              </div>
+            </div>
+            <div class="guideline-card">
+              <h4>Radios</h4>
+              <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+                <label style="display: flex; align-items: center; gap: 8px;">
+                  <input type="radio" name="r1" class="radio" checked>
+                  Option A
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px;">
+                  <input type="radio" name="r1" class="radio">
+                  Option B
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Switch Section -->
+        <div id="switch" class="showcase-section">
+          <p class="section-desc">Switches are used for binary settings.</p>
+          <div class="preview-card">
+            <div class="switch" id="demo-switch">
+              <div class="switch-handle"></div>
+            </div>
+            <span style="margin-left: 12px;">Enable Notifications</span>
+          </div>
+        </div>
+
+        <!-- Spinner Section -->
+        <div id="spinner" class="showcase-section">
+          <p class="section-desc">Spinners indicate a processing or loading state.</p>
+          <div class="preview-card">
+            <style>
+              .spinner {
+                width: 32px;
+                height: 32px;
+                border: 3px solid var(--sl-outline-muted);
+                border-top-color: var(--sl-on-standard);
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+              }
+
+              @keyframes spin {
+                to {
+                  transform: rotate(360deg);
+                }
+              }
+            </style>
+            <div class="spinner"></div>
+          </div>
+        </div>
+
+        <!-- Badge Section -->
+        <div id="badge" class="showcase-section">
+          <p class="section-desc">Badges are used for status, labels, or counting.</p>
+          <div class="preview-card" style="gap: 8px;">
+            <span
+              style="background: var(--sl-on-standard); color: white; padding: 2px 8px; border-radius: var(--sl-radius-badge); font-size: 12px; font-weight: 600;">Standard</span>
+            <span
+              style="background: var(--sl-on-expressive); color: white; padding: 2px 8px; border-radius: var(--sl-radius-badge); font-size: 12px; font-weight: 600;">Expressive</span>
+            <span
+              style="background: var(--sl-container-muted); color: var(--sl-on-standard); padding: 2px 8px; border-radius: var(--sl-radius-badge); font-size: 12px; font-weight: 600;">Muted</span>
+          </div>
+        </div>
+
+        <!-- Label Section -->
+        <div id="label" class="showcase-section">
+          <p class="section-desc">Labels provide meaning to form elements.</p>
+          <div class="preview-card"
+            style="display: block; max-width: 300px; margin: 0 auto; background: transparent; border: none;">
+            <label style="font-weight: 600; font-size: 14px; margin-bottom: 4px; display: block;">Email Address <span
+                style="color: red;">*</span></label>
+            <input type="text" class="input" placeholder="you@example.com">
+            <span style="font-size: 12px; color: var(--sl-standard-muted); display: block; margin-top: 4px;">We'll never
+              share your email.</span>
+          </div>
+        </div>
+
+        <!-- Card Section -->
+        <div id="card" class="showcase-section">
+          <p class="section-desc">Cards group related content and actions.</p>
+          <div class="preview-card">
+            <div
+              style="background: white; border: 1px solid var(--sl-outline-muted); border-radius: var(--sl-radius-card); padding: 24px; box-shadow: var(--sl-shadow-calm); max-width: 350px;">
+              <h3 style="margin-bottom: 8px;">Staylook Pro</h3>
+              <p style="font-size: 14px; color: var(--sl-standard-soft); margin-bottom: 20px;">Unlock all premium
+                components and design assets for your next project.</p>
+              <button class="btn btn-expressive" style="width: 100%;">Upgrade Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Container Section -->
+        <div id="container" class="showcase-section">
+          <p class="section-desc">Containers provide structure and max-width constraints.</p>
+          <div class="preview-card" style="align-items: stretch;">
+            <div
+              style="background: white; border: 1px dashed var(--sl-on-standard); border-radius: var(--sl-radius-container); padding: 40px; text-align: center; width: 100%;">
+              Container (Radius 24px)
+            </div>
+          </div>
+        </div>
+
+        <!-- Stack Section -->
+        <div id="stack" class="showcase-section">
+          <p class="section-desc">Stack components manage layout spacing between children.</p>
+          <div class="preview-card" style="flex-direction: column; gap: 12px;">
+            <div style="background: white; border: 1px solid #ddd; padding: 12px; border-radius: 8px;">Item 1</div>
+            <div style="background: white; border: 1px solid #ddd; padding: 12px; border-radius: 8px;">Stack Gap (12px)
+            </div>
+            <div style="background: white; border: 1px solid #ddd; padding: 12px; border-radius: 8px;">Item 3</div>
+          </div>
+        </div>
+
+        <!-- Divider Section -->
+        <div id="divider" class="showcase-section">
+          <p class="section-desc">Visual separators for content.</p>
+          <div class="preview-card" style="flex-direction: column; gap: 24px; align-items: stretch; width: 100%;">
+            <hr style="border: 0; border-top: 1px solid var(--sl-outline-muted);">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <hr style="flex: 1; border: 0; border-top: 1px solid var(--sl-outline-muted);">
+              <span style="font-size: 12px; color: var(--sl-standard-muted);">OR</span>
+              <hr style="flex: 1; border: 0; border-top: 1px solid var(--sl-outline-muted);">
+            </div>
+          </div>
+        </div>
+
+        <!-- Heading Section -->
+        <div id="heading" class="showcase-section">
+          <p class="section-desc">Editorial typography for clear hierarchy.</p>
+          <div class="preview-card" style="flex-direction: column; align-items: flex-start; gap: 16px;">
+            <h1 style="font-size: var(--sl-text-5xl); font-weight: 700;">Heading 1</h1>
+            <h2 style="font-size: var(--sl-text-3xl); font-weight: 700;">Heading 2</h2>
+            <h3 style="font-size: var(--sl-text-xl); font-weight: 600;">Heading 3</h3>
+          </div>
+        </div>
+
+        <!-- Text Section -->
+        <div id="text" class="showcase-section">
+          <p class="section-desc">Body text components with sizes and variants.</p>
+          <div class="pane pane-preview active">
+            <p style="font-size: var(--sl-text-lg); margin-bottom: 8px;">Large body text for lead paragraphs.</p>
+            <p style="font-size: var(--sl-text-base); margin-bottom: 8px;">Base body text for standard content.</p>
+            <p style="font-size: var(--sl-text-sm); color: var(--sl-standard-soft);">Small text for captions and
+              secondary
+              info.</p>
+          </div>
+        </div>
+
+        <!-- Link Section -->
+        <div id="link" class="showcase-section">
+          <p class="section-desc">Inline links for navigation.</p>
+          <div class="preview-card">
+            <a href="#"
+              style="color: var(--sl-on-expressive); font-weight: 600; text-decoration: underline; text-underline-offset: 4px;">Learn
+              more about Staylook</a>
+          </div>
+        </div>
+
+        <!-- Alert Section -->
+        <div id="alert" class="showcase-section">
+          <p class="section-desc">Contextual feedback for user actions.</p>
+          <div class="preview-card" style="flex-direction: column; gap: 12px; align-items: stretch; width: 100%;">
+            <div
+              style="background: var(--sl-container-calm); border: 1px solid var(--sl-outline-info); padding: 12px; border-radius: var(--sl-radius-card); display: flex; gap: 12px;">
+              <i data-lucide="info" style="color: var(--sl-on-info); width: 20px;"></i>
+              <div>
+                <strong>Information</strong>
+                <p style="font-size: 14px;">This is a helpful tip.</p>
+              </div>
+            </div>
+            <div
+              style="background: #fef2f2; border: 1px solid var(--sl-outline-error); padding: 12px; border-radius: var(--sl-radius-card); display: flex; gap: 12px;">
+              <i data-lucide="alert-circle" style="color: var(--sl-on-error); width: 20px;"></i>
+              <div>
+                <strong>Error</strong>
+                <p style="font-size: 14px;">Something went wrong.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Select Section -->
+        <div id="select" class="showcase-section">
+          <p class="section-desc">Dropdown selection for picking options from a list.</p>
+          <div class="preview-card" style="flex-direction: column; max-width: 400px; margin: 0 auto; gap: 16px;">
+            <div style="width: 100%;">
+              <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px;">Notification
+                Frequency</label>
+              <select class="input">
+                <option>Daily Digest</option>
+                <option>Weekly Summary</option>
+                <option>Real-time</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avatar Section -->
+        <div id="avatar" class="showcase-section">
+          <p class="section-desc">Visual representation of a user or entity.</p>
+          <div class="preview-card" style="gap: 16px;">
+            <div style="position: relative;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: #eee; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
+                  style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <span
+                style="position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; background: var(--sl-on-success); border: 2px solid white; border-radius: 50%;"></span>
+            </div>
+            <div
+              style="width: 48px; height: 48px; border-radius: 12px; background: var(--sl-on-expressive); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">
+              JD
+            </div>
+            <div
+              style="width: 32px; height: 32px; border-radius: 50%; background: var(--sl-container-muted); display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="user" style="width: 16px; opacity: 0.5;"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Section -->
+        <div id="slider" class="showcase-section">
+          <p class="section-desc">Range selection for numeric values.</p>
+          <div class="preview-card"
+            style="flex-direction: column; width: 100%; max-width: 400px; margin: 0 auto; gap: 24px;">
+            <div style="width: 100%;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <label style="font-size: 14px; font-weight: 600;">Volume</label>
+                <span style="font-size: 14px; opacity: 0.7;">75%</span>
+              </div>
+              <div style="height: 6px; background: var(--sl-container-muted); border-radius: 3px; position: relative;">
+                <div style="width: 75%; height: 100%; background: var(--sl-on-standard); border-radius: 3px;"></div>
+                <div
+                  style="position: absolute; left: 75%; top: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: white; border: 2px solid var(--sl-on-standard); border-radius: 50%; box-shadow: var(--sl-shadow-muted);">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kbd Section -->
+        <div id="kbd" class="showcase-section">
+          <p class="section-desc">Visual indicators for keyboard shortcuts.</p>
+          <div class="preview-card" style="gap: 12px;">
+            <div
+              style="display: flex; align-items: center; gap: 8px; background: white; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--sl-outline-muted);">
+              <span style="font-size: 14px;">Search</span>
+              <div style="display: flex; gap: 4px;">
+                <kbd
+                  style="font-family: var(--sl-font-mono); font-size: 11px; padding: 2px 6px; background: var(--sl-container-calm); border: 1px solid var(--sl-outline-muted); border-radius: 6px; color: var(--sl-standard-muted);">⌘</kbd>
+                <kbd
+                  style="font-family: var(--sl-font-mono); font-size: 11px; padding: 2px 6px; background: var(--sl-container-calm); border: 1px solid var(--sl-outline-muted); border-radius: 6px; color: var(--sl-standard-muted);">K</kbd>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Section -->
+        <div id="progress" class="showcase-section">
+          <p class="section-desc">Indicators for task completion.</p>
+          <div class="preview-card" style="flex-direction: column; width: 100%; gap: 16px;">
+            <div
+              style="width: 100%; height: 8px; background: var(--sl-container-calm); border-radius: 4px; overflow: hidden;">
+              <div style="width: 65%; height: 100%; background: var(--sl-on-expressive); border-radius: 4px;"></div>
+            </div>
+            <div
+              style="width: 100%; height: 8px; background: var(--sl-container-calm); border-radius: 4px; overflow: hidden;">
+              <div style="width: 100%; height: 100%; background: var(--sl-on-success); border-radius: 4px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton Section -->
+        <div id="skeleton" class="showcase-section">
+          <p class="section-desc">Placeholder for loading content states.</p>
+          <div class="preview-card"
+            style="flex-direction: column; width: 100%; gap: 20px; max-width: 400px; margin: 0 auto;">
+            <div style="display: flex; gap: 12px; align-items: center; width: 100%;">
+              <div
+                style="width: 48px; height: 48px; border-radius: 50%; background: var(--sl-container-muted); opacity: 0.5; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                <div
+                  style="height: 12px; width: 60%; background: var(--sl-container-muted); border-radius: 6px; opacity: 0.5; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+                </div>
+                <div
+                  style="height: 12px; width: 40%; background: var(--sl-container-muted); border-radius: 6px; opacity: 0.5; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+                </div>
+              </div>
+            </div>
+            <div
+              style="height: 120px; width: 100%; background: var(--sl-container-muted); border-radius: var(--sl-radius-card); opacity: 0.5; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+            </div>
+            <style>
+              @keyframes pulse {
+
+                0%,
+                100% {
+                  opacity: 0.5;
+                }
+
+                50% {
+                  opacity: 0.2;
+                }
+              }
+            </style>
+          </div>
+        </div>
+
+        <!-- Ping Section -->
+        <div id="ping" class="showcase-section">
+          <p class="section-desc">Animated dots for status feedback.</p>
+          <div class="preview-card" style="gap: 32px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="position: relative; display: flex; height: 10px; width: 10px;">
+                <span
+                  style="position: absolute; display: inline-flex; height: 100%; width: 100%; border-radius: 50%; background: var(--sl-on-success); opacity: 0.75; animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></span>
+                <span
+                  style="position: relative; display: inline-flex; height: 10px; width: 10px; border-radius: 50%; background: var(--sl-on-success);"></span>
+              </span>
+              <span style="font-size: 14px; font-weight: 500;">Systems Normal</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="position: relative; display: flex; height: 10px; width: 10px;">
+                <span
+                  style="position: absolute; display: inline-flex; height: 100%; width: 100%; border-radius: 50%; background: var(--sl-on-error); opacity: 0.75; animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></span>
+                <span
+                  style="position: relative; display: inline-flex; height: 10px; width: 10px; border-radius: 50%; background: var(--sl-on-error);"></span>
+              </span>
+              <span style="font-size: 14px; font-weight: 500;">Live Event</span>
+            </div>
+            <style>
+              @keyframes ping-slow {
+
+                75%,
+                100% {
+                  transform: scale(2.5);
+                  opacity: 0;
+                }
+              }
+            </style>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script>
+      // Navigation Logic
+      const navItems = document.querySelectorAll('.nav-item');
+      const sections = document.querySelectorAll('.showcase-section');
+      const pageTitle = document.getElementById('page-title');
+
+      // Setup initial navigation from URL hash if exists
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        const item = document.querySelector(`.nav-item[data-target="${hash}"]`);
+        if (item) {
+          setTimeout(() => item.click(), 100);
+        }
+      }
+
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const target = item.getAttribute('data-target');
+
+          // Update URL
+          window.location.hash = target;
+
+          // Update nav UI
+          navItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+
+          // Update sections UI
+          sections.forEach(s => s.classList.remove('active'));
+          const targetSection = document.getElementById(target);
+          if (targetSection) {
+            targetSection.classList.add('active');
+            // Update Header
+            pageTitle.innerText = item.innerText;
+          }
+        });
+      });
+
+      // Tabs Logic
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const pane = tab.getAttribute('data-pane');
+          const parent = tab.closest('.showcase-section');
+
+          // Update tabs
+          parent.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+
+          // Update panes
+          parent.querySelectorAll('.pane').forEach(p => p.style.display = 'none');
+          parent.querySelector(`.pane-${pane}`).style.display = 'block';
+        });
+      });
+
+      // Interactive Demo
+      const demoSwitch = document.getElementById('demo-switch');
+      if (demoSwitch) {
+        demoSwitch.addEventListener('click', () => {
+          demoSwitch.classList.toggle('active');
+        });
+      }
+
+      // Initialize Lucide
+      lucide.createIcons();
+    </script>
+
+  </body>
+
+</html>

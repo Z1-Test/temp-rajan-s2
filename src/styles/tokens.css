@@ -1,0 +1,285 @@
+/**
+ * Staylook Design System - Design Tokens
+ * Curved, Editorial, Minimal, Expressive
+ * 
+ * Token Hierarchy:
+ * - Standard (Primary - 90% of UI)
+ * - Expressive (Accent - 10% of UI, max 1 per screen)
+ * - Container (Surfaces/Backgrounds)
+ * - On (Content on surfaces)
+ * - Outline (Borders)
+ */
+
+:root {
+  /* ============================================
+     STANDARD COLOR (Primary - 90% of UI)
+     ============================================ */
+  --sl-standard: #000000;
+  --sl-standard-soft: #4D4D4D;
+  --sl-standard-muted: #9E9E9E;
+  
+  /* ============================================
+     EXPRESSIVE COLOR (Accent - 10% of UI)
+     THE HIGHLIGHT - Max 1 per screen
+     ============================================ */
+  --sl-expressive: #3373CC;
+  --sl-expressive-soft: #5C9FFF;
+  --sl-expressive-muted: #BBDEFB;
+  
+  /* ============================================
+     CONTAINER TOKENS (Background/Surface)
+     Intensity Scale: Muted → Calm → Vibrant
+     ============================================ */
+  --sl-container-muted: #EBEBEB;
+  --sl-container-calm: #F5F5F5;
+  --sl-container-vibrant: #FFFFFF;
+  
+  /* ============================================
+     ON TOKENS (Content ON surfaces)
+     ============================================ */
+  --sl-on-standard: #000000;
+  --sl-on-expressive: #3373CC;
+  --sl-on-error: #D32F2F;
+  --sl-on-success: #388E3C;
+  --sl-on-warning: #F57C00;
+  --sl-on-info: #1976D2;
+  
+  /* ============================================
+     ON/CONTAINER TOKENS (Secondary content)
+     ============================================ */
+  --sl-on-container-muted: #666666;
+  --sl-on-container-calm: #4D4D4D;
+  --sl-on-container-vibrant: #1A1A1A;
+  --sl-on-container-error: #B71C1C;
+  --sl-on-container-success: #1B5E20;
+  --sl-on-container-warning: #E65100;
+  --sl-on-container-info: #0D47A1;
+  
+  /* ============================================
+     OUTLINE TOKENS (Borders)
+     ============================================ */
+  --sl-outline-standard: #000000;
+  --sl-outline-muted: #E0E0E0;
+  --sl-outline-calm: #BDBDBD;
+  --sl-outline-vibrant: #1A1A1A;
+  --sl-outline-expressive: #5C9FFF;
+  --sl-outline-error: #EF9A9A;
+  --sl-outline-success: #A5D6A7;
+  --sl-outline-warning: #FFE082;
+  --sl-outline-info: #90CAF9;
+  
+  /* ============================================
+     SCRIM & OVERLAY TOKENS
+     ============================================ */
+  --sl-scrim: rgba(0, 0, 0, 0.3);
+  --sl-scrim-modal: rgba(77, 77, 77, 0.7);
+  --sl-shadow: rgba(0, 0, 0, 1);
+  --sl-transparent: rgba(255, 255, 255, 0);
+  --sl-on-standard-transparent: rgba(255, 255, 255, 0.3);
+  
+  /* ============================================
+     SHADOW TOKENS (Elevation)
+     ============================================ */
+  --sl-shadow-muted: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --sl-shadow-calm: 0 4px 8px rgba(0, 0, 0, 0.08);
+  --sl-shadow-vibrant: 0 8px 24px rgba(0, 0, 0, 0.12);
+  
+  /* ============================================
+     RADIUS TOKENS (Strict Nesting Hierarchy)
+     Section (32px) > Container (24px) > Card (16px) > Input (16px) > Badge (8px) > Button (pill)
+     ============================================ */
+  --sl-radius-section: 32px;
+  --sl-radius-container: 24px;
+  --sl-radius-card: 16px;
+  --sl-radius-input: 16px;
+  --sl-radius-badge: 8px;
+  --sl-radius-button: 9999px; /* ALL buttons MUST be pill-shaped */
+  
+  /* ============================================
+     TYPOGRAPHY TOKENS
+     ============================================ */
+  --sl-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sl-font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
+  
+  /* Type Scale (rem) */
+  --sl-text-xs: 0.75rem;    /* 12px */
+  --sl-text-sm: 0.875rem;   /* 14px */
+  --sl-text-base: 1rem;     /* 16px */
+  --sl-text-lg: 1.125rem;   /* 18px */
+  --sl-text-xl: 1.25rem;    /* 20px */
+  --sl-text-2xl: 1.5rem;    /* 24px */
+  --sl-text-3xl: 2rem;      /* 32px */
+  --sl-text-4xl: 2.5rem;    /* 40px */
+  --sl-text-5xl: 3rem;      /* 48px */
+  
+  /* Font Weights */
+  --sl-font-normal: 400;
+  --sl-font-medium: 500;
+  --sl-font-semibold: 600;
+  --sl-font-bold: 700;
+  
+  /* Line Heights */
+  --sl-leading-tight: 1.25;
+  --sl-leading-normal: 1.5;
+  --sl-leading-relaxed: 1.75;
+  
+  /* ============================================
+     SPACING TOKENS (4px Grid)
+     ============================================ */
+  --sl-space-0: 0;
+  --sl-space-1: 4px;
+  --sl-space-2: 8px;
+  --sl-space-3: 12px;
+  --sl-space-4: 16px;
+  --sl-space-5: 20px;
+  --sl-space-6: 24px;
+  --sl-space-8: 32px;
+  --sl-space-10: 40px;
+  --sl-space-12: 48px;
+  --sl-space-16: 64px;
+  --sl-space-20: 80px;
+  --sl-space-24: 96px;
+  
+  /* ============================================
+     ANIMATION TOKENS
+     ============================================ */
+  --sl-duration-fast: 150ms;
+  --sl-duration-base: 300ms;
+  --sl-duration-slow: 500ms;
+  
+  /* Easing Functions */
+  --sl-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --sl-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --sl-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --sl-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ============================================
+     FOCUS & INTERACTIVE TOKENS
+     ============================================ */
+  --sl-focus-ring-width: 2px;
+  --sl-focus-ring-offset: 2px;
+  --sl-focus-ring-color: var(--sl-on-expressive);
+  
+  /* ============================================
+     Z-INDEX SCALE
+     ============================================ */
+  --sl-z-base: 0;
+  --sl-z-dropdown: 1000;
+  --sl-z-sticky: 1100;
+  --sl-z-fixed: 1200;
+  --sl-z-modal-backdrop: 1300;
+  --sl-z-modal: 1400;
+  --sl-z-popover: 1500;
+  --sl-z-tooltip: 1600;
+}
+
+/* ============================================
+   DARK MODE
+   Inversion Principle: Muted ↔ Vibrant
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Standard */
+    --sl-standard: #FFFFFF;
+    --sl-standard-soft: #CCCCCC;
+    --sl-standard-muted: #6A6A6A;
+    
+    /* Expressive */
+    --sl-expressive: #5C9FFF;
+    --sl-expressive-soft: #7EB8FF;
+    --sl-expressive-muted: #1E3A5F;
+    
+    /* Container (Inverted) */
+    --sl-container-muted: #333333;
+    --sl-container-calm: #292929;
+    --sl-container-vibrant: #1A1A1A;
+    
+    /* On */
+    --sl-on-standard: #FFFFFF;
+    --sl-on-expressive: #7EB8FF;
+    --sl-on-error: #FF8A80;
+    --sl-on-success: #81C784;
+    --sl-on-warning: #FFB74D;
+    --sl-on-info: #64B5F6;
+    
+    /* On/Container */
+    --sl-on-container-muted: #808080;
+    --sl-on-container-calm: #CCCCCC;
+    --sl-on-container-vibrant: #F5F5F5;
+    --sl-on-container-error: #FFCDD2;
+    --sl-on-container-success: #C8E6C9;
+    --sl-on-container-warning: #FFECB3;
+    --sl-on-container-info: #BBDEFB;
+    
+    /* Outline */
+    --sl-outline-standard: #FFFFFF;
+    --sl-outline-muted: #424242;
+    --sl-outline-calm: #616161;
+    --sl-outline-vibrant: #FAFAFA;
+    --sl-outline-expressive: #BBDEFB;
+    --sl-outline-error: #D32F2F;
+    --sl-outline-success: #388E3C;
+    --sl-outline-warning: #F57C00;
+    --sl-outline-info: #1976D2;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Typography Utilities */
+.sl-text-xs { font-size: var(--sl-text-xs); }
+.sl-text-sm { font-size: var(--sl-text-sm); }
+.sl-text-base { font-size: var(--sl-text-base); }
+.sl-text-lg { font-size: var(--sl-text-lg); }
+.sl-text-xl { font-size: var(--sl-text-xl); }
+.sl-text-2xl { font-size: var(--sl-text-2xl); }
+.sl-text-3xl { font-size: var(--sl-text-3xl); }
+.sl-text-4xl { font-size: var(--sl-text-4xl); }
+.sl-text-5xl { font-size: var(--sl-text-5xl); }
+
+/* Font Weight Utilities */
+.sl-font-normal { font-weight: var(--sl-font-normal); }
+.sl-font-medium { font-weight: var(--sl-font-medium); }
+.sl-font-semibold { font-weight: var(--sl-font-semibold); }
+.sl-font-bold { font-weight: var(--sl-font-bold); }
+
+/* Color Utilities */
+.sl-text-standard { color: var(--sl-on-standard); }
+.sl-text-standard-soft { color: var(--sl-standard-soft); }
+.sl-text-standard-muted { color: var(--sl-standard-muted); }
+.sl-text-expressive { color: var(--sl-on-expressive); }
+.sl-text-error { color: var(--sl-on-error); }
+.sl-text-success { color: var(--sl-on-success); }
+.sl-text-warning { color: var(--sl-on-warning); }
+.sl-text-info { color: var(--sl-on-info); }
+
+/* Background Utilities */
+.sl-bg-container-muted { background-color: var(--sl-container-muted); }
+.sl-bg-container-calm { background-color: var(--sl-container-calm); }
+.sl-bg-container-vibrant { background-color: var(--sl-container-vibrant); }
+
+/* Border Utilities */
+.sl-border-muted { border-color: var(--sl-outline-muted); }
+.sl-border-calm { border-color: var(--sl-outline-calm); }
+.sl-border-vibrant { border-color: var(--sl-outline-vibrant); }
+
+/* Radius Utilities */
+.sl-rounded-section { border-radius: var(--sl-radius-section); }
+.sl-rounded-container { border-radius: var(--sl-radius-container); }
+.sl-rounded-card { border-radius: var(--sl-radius-card); }
+.sl-rounded-input { border-radius: var(--sl-radius-input); }
+.sl-rounded-badge { border-radius: var(--sl-radius-badge); }
+.sl-rounded-button { border-radius: var(--sl-radius-button); }
+
+/* Shadow Utilities */
+.sl-shadow-muted { box-shadow: var(--sl-shadow-muted); }
+.sl-shadow-calm { box-shadow: var(--sl-shadow-calm); }
+.sl-shadow-vibrant { box-shadow: var(--sl-shadow-vibrant); }
+
+/* Transition Utilities */
+.sl-transition-fast { transition-duration: var(--sl-duration-fast); }
+.sl-transition-base { transition-duration: var(--sl-duration-base); }
+.sl-transition-slow { transition-duration: var(--sl-duration-slow); }
+.sl-ease-default { transition-timing-function: var(--sl-ease-default); }
