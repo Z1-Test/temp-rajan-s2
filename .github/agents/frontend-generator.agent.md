@@ -108,17 +108,401 @@ The **Frontend Generator Agent** is a **universal, platform-agnostic** agent tha
 
 ```
 Input Sources
-├── docs/product/PRD.md           # Product requirements (WATCHED for changes)
-├── docs/product/roadmap.md       # Feature roadmap
-├── docs/features/**/*.md         # Feature specifications
-├── .github/skills/design-*/      # Staylook design skills (6 skills)
-│   ├── design-foundation/        # Semantic tokens, curved aesthetic
-│   ├── design-ui-development/    # Component patterns
-│   ├── design-user-experience/   # User journeys, feedback
-│   ├── design-ux-laws/           # Psychological principles
-│   ├── design-quality-assurance/ # Token compliance, accessibility
-│   └── design-visual-testing/    # 5-second, preference, A/B tests
-└── src/components/ui/            # shadcn/ui primitives
+├── docs/product/PRD.md              # Product requirements (WATCHED for changes)
+├── docs/product/roadmap.md          # Feature roadmap
+├── docs/features/**/*.md            # Feature specifications
+├── .github/skills/SKILL-MATRIX.md   # Master skill reference
+├── .github/skills/design-*/         # Staylook design skills (7 skills)
+│   ├── design-foundation/           # Tokens, colors, radius, intensity scale
+│   ├── design-component-development/# Buttons, cards, inputs, modals
+│   ├── design-platform-building/    # Pages, layouts, grids, navigation
+│   ├── design-user-experience/      # User journeys, CRUD, feedback
+│   ├── design-ux-laws/              # Psychological principles
+│   ├── design-quality-assurance/    # Audit, accessibility, compliance
+│   └── design-visual-testing/       # 5-second, preference, A/B tests
+└── src/components/ui/               # shadcn/ui primitives
+```
+
+---
+
+## 💪 FULL SKILL POWER INTEGRATION
+
+### Skill 1: design-foundation (MUST APPLY FIRST)
+
+**Purpose**: Establish the design language before ANY component creation
+
+**MANDATORY Application**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  DESIGN-FOUNDATION: THE STAYLOOK DNA                                │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  🎨 COLOR SYSTEM (Apply to EVERY element):                          │
+│  ├── Standard (--sl-standard): 90% of UI - TEXT, ICONS, BORDERS    │
+│  ├── Expressive (--sl-expressive): 10% of UI - ONE HIGHLIGHT ONLY  │
+│  └── Base surfaces: Muted → Calm → Vibrant (intensity scale)       │
+│                                                                      │
+│  📐 RADIUS HIERARCHY (STRICT - No exceptions):                      │
+│  ├── Section: 32px (outermost containers)                          │
+│  ├── Container: 24px (major wrappers)                               │
+│  ├── Card: 16px (content cards)                                     │
+│  ├── Input: 16px (form fields)                                      │
+│  └── Button: 9999px (ALWAYS PILL - NO EXCEPTIONS)                   │
+│                                                                      │
+│  📝 TYPOGRAPHY:                                                      │
+│  ├── Font: Plus Jakarta Sans                                        │
+│  ├── Headings: --sl-standard (dark)                                 │
+│  ├── Body: --sl-standard-soft (medium)                              │
+│  └── Captions: --sl-standard-muted (light)                          │
+│                                                                      │
+│  📏 SPACING: 4px grid (4, 8, 12, 16, 24, 32, 48, 64, 96px)         │
+│                                                                      │
+│  ⭐ ONE HIGHLIGHT RULE: Maximum 1 Expressive element per screen!    │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Skill 2: design-component-development (ATOMIC BUILDING BLOCKS)
+
+**Purpose**: Create individual UI components with correct tokens and states
+
+**MANDATORY Application**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  COMPONENT-DEVELOPMENT: BUILDING BLOCKS                              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  🔘 BUTTONS (Always pill-shaped):                                   │
+│  ├── Expressive: THE main action (max 1 per screen)                 │
+│  │   └── Background: --sl-expressive, Text: white                   │
+│  ├── Standard: Secondary actions (unlimited)                        │
+│  │   └── Border: --sl-standard, Background: transparent             │
+│  └── Ghost: Tertiary/dismissive (unlimited)                         │
+│      └── Text: --sl-standard-soft, Background: transparent          │
+│                                                                      │
+│  🃏 CARDS:                                                          │
+│  ├── 16px radius, Muted surface (#FFFFFF)                          │
+│  ├── Place on Calm background (#FAFAFA)                             │
+│  ├── Interactive: Hover → Calm border + shadow lift                 │
+│  └── Expressive card: Max 1 per screen                              │
+│                                                                      │
+│  📝 INPUTS:                                                          │
+│  ├── 16px radius, Vibrant background (#F0F0F0)                      │
+│  ├── Focus: Invert to Muted background + blue glow                  │
+│  ├── Error: Red border + light red background                       │
+│  └── Min height: 48px (touch-friendly)                              │
+│                                                                      │
+│  📦 MODALS:                                                          │
+│  ├── 24px radius (container level)                                  │
+│  ├── Backdrop: 50% black + 4px blur                                 │
+│  └── Buttons: Cancel (Standard) | Action (Expressive)               │
+│                                                                      │
+│  🏷️ BADGES:                                                         │
+│  └── 8px radius, Muted/Calm/Vibrant intensity levels               │
+│                                                                      │
+│  🔄 STATE PROGRESSION (ALL interactive elements):                   │
+│  └── Resting (Muted) → Hover (Calm) → Active (Vibrant)             │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Skill 3: design-platform-building (PAGES & LAYOUTS)
+
+**Purpose**: Assemble components into complete pages and navigation
+
+**MANDATORY Application**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  PLATFORM-BUILDING: COMPLETE PAGES                                   │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  📄 PAGE TEMPLATES (Use the right template):                        │
+│  ├── Dashboard: Stat cards + charts + data tables                   │
+│  ├── List/Table: Filters + search + pagination                      │
+│  ├── Detail: Breadcrumb + content + sidebar                         │
+│  ├── Form: Sections + validation + action bar                       │
+│  └── Landing: Hero + features + CTA + footer                        │
+│                                                                      │
+│  📐 CONTAINER HIERARCHY:                                             │
+│  ├── Page Wrapper: Calm background, min-height 100vh                │
+│  ├── Section Container: 32px radius, Muted surface                  │
+│  ├── Content Container: 24px radius, max-width centered             │
+│  └── Cards: 16px radius, inside containers                          │
+│                                                                      │
+│  🧭 NAVIGATION PATTERNS:                                             │
+│  ├── Header: 64px height, sticky, logo + nav + actions              │
+│  ├── Sidebar: 280px expanded, 64px collapsed, 16px item radius      │
+│  ├── Bottom Nav: 64px + safe-area, max 5 items, mobile only         │
+│  ├── Tabs: 2px underline indicator, Standard active color           │
+│  └── Breadcrumbs: text-sm, "/" separator, non-link current          │
+│                                                                      │
+│  📱 RESPONSIVE BREAKPOINTS:                                          │
+│  ├── Mobile (<640px): 1 column, stacked                             │
+│  ├── Tablet (768px+): 2 columns                                     │
+│  ├── Desktop (1024px+): 3-4 columns                                 │
+│  └── Large (1280px+): Full layouts                                  │
+│                                                                      │
+│  📊 GRID SYSTEMS:                                                    │
+│  ├── Auto-fit: minmax(280px, 1fr) for card grids                   │
+│  └── Gap: 16px (space-4), 24px on large screens                     │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Skill 4: design-user-experience (FLOWS & FEEDBACK)
+
+**Purpose**: Design complete user journeys with proper feedback
+
+**MANDATORY Application**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  USER-EXPERIENCE: FLOWS & FEEDBACK                                   │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  👁️ VISUAL ATTENTION HIERARCHY:                                     │
+│  ├── Level 1: THE ONE HIGHLIGHT (Expressive) - eyes go here first  │
+│  ├── Level 2: SUPPORTING ACTIONS (Standard) - secondary focus       │
+│  └── Level 3: TERTIARY ACTIONS (Ghost) - optional, dismissive       │
+│                                                                      │
+│  🔄 ACTION LIFECYCLE (Every action must have):                      │
+│  ├── Idle: Waiting for user                                         │
+│  ├── Processing: Loading spinner, disabled button                   │
+│  ├── Success: Green confirmation, toast message                     │
+│  ├── Error: Red message, retry option                               │
+│  └── Disabled: 70% opacity, not-allowed cursor                      │
+│                                                                      │
+│  📝 FORM STATES (All forms must handle):                            │
+│  ├── Pristine: Just opened, submit disabled                         │
+│  ├── Dirty: User entered data                                       │
+│  ├── Validating: Checking data                                      │
+│  ├── Invalid: Error borders, inline messages                        │
+│  ├── Submitting: All inputs disabled, loading                       │
+│  └── Success/Error: Toast + redirect or retry                       │
+│                                                                      │
+│  📂 CRUD FLOWS (Complete implementation):                           │
+│  ├── CREATE: Expressive "+" button → Modal/Page → Toast "Created"  │
+│  ├── READ: List/Detail views with loading/empty states              │
+│  ├── UPDATE: Standard "Edit" → Pre-filled form → Toast "Updated"   │
+│  └── DELETE: Ghost "Delete" → Confirm modal → Toast "Deleted"      │
+│                                                                      │
+│  🧙 WIZARD PATTERNS (Multi-step flows):                             │
+│  ├── Progress indicator: Completed=Expressive, Current=Outline      │
+│  ├── Navigation: Back=Standard, Next=Expressive                     │
+│  ├── Data persistence: Save as user progresses                      │
+│  └── Final step: "Complete" button, success confirmation            │
+│                                                                      │
+│  📦 STATE PATTERNS:                                                  │
+│  ├── LOADING: Skeleton screens or spinners                          │
+│  ├── EMPTY: Icon + title + description + CTA                        │
+│  └── ERROR: Icon + message + retry button                           │
+│                                                                      │
+│  🔔 FEEDBACK PATTERNS:                                               │
+│  ├── Toast: 3-5 seconds, bottom-center or top-right                 │
+│  ├── Inline Alert: Muted/Calm/Warning/Error variants                │
+│  └── Confirmation Modal: For destructive actions                    │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Skill 5: design-ux-laws (PSYCHOLOGICAL PRINCIPLES)
+
+**Purpose**: Apply cognitive science for intuitive interfaces
+
+**MANDATORY Application**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  UX-LAWS: PSYCHOLOGICAL PRINCIPLES                                   │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  🎯 VON RESTORFF EFFECT (Isolation Effect):                         │
+│  └── "Different items are remembered" → ONE HIGHLIGHT RULE          │
+│      ├── Use Expressive for exactly 1 element per screen            │
+│      └── All other elements use Standard color                      │
+│                                                                      │
+│  ⏱️ HICK'S LAW (Choice Overload):                                   │
+│  └── "More choices = slower decisions"                              │
+│      ├── ONE Expressive button = obvious primary choice             │
+│      ├── Standard for secondary options                             │
+│      └── Ghost for "maybe later" actions                            │
+│                                                                      │
+│  👆 FITTS'S LAW (Target Acquisition):                               │
+│  └── "Bigger + closer = faster to hit"                              │
+│      ├── ALL buttons are pill-shaped (maximizes clickable area)    │
+│      ├── Min touch target: 44px on mobile                           │
+│      └── FAB buttons leverage corner advantage                      │
+│                                                                      │
+│  👁️ GESTALT - PROXIMITY:                                            │
+│  └── "Near elements are related"                                    │
+│      ├── 8px between related items (label-input)                    │
+│      ├── 16px between group members                                 │
+│      └── 32px+ between groups                                       │
+│                                                                      │
+│  📦 GESTALT - COMMON REGION:                                         │
+│  └── "Bounded elements are grouped"                                 │
+│      ├── Cards group related content                                │
+│      └── Radius hierarchy creates visual containers                 │
+│                                                                      │
+│  ⚡ DOHERTY THRESHOLD:                                               │
+│  └── "Feedback within 400ms keeps flow"                             │
+│      ├── 150ms: Micro-interactions, hovers                          │
+│      ├── 300ms: Standard transitions                                │
+│      └── 500ms+: Show loading indicator                             │
+│                                                                      │
+│  🏁 PEAK-END RULE:                                                   │
+│  └── "Experiences judged by peak + end moments"                     │
+│      ├── Success states should be delightful                        │
+│      └── End flows with positive confirmation                       │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Skill 6: design-quality-assurance (COMPLIANCE & AUDIT)
+
+**Purpose**: Verify design system compliance and accessibility
+
+**MANDATORY Application**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  QUALITY-ASSURANCE: COMPLIANCE CHECKS                                │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  🎨 TOKEN COMPLIANCE (Auto-check):                                  │
+│  ├── NO hardcoded hex colors (all use tokens)                       │
+│  ├── Standard/Expressive terminology (not primary/secondary)        │
+│  ├── Intensity scale used (Muted/Calm/Vibrant)                      │
+│  └── All spacing from 4px grid                                      │
+│                                                                      │
+│  📐 RADIUS COMPLIANCE (Auto-check):                                  │
+│  ├── Section: 32px ✓                                                │
+│  ├── Container: 24px ✓                                              │
+│  ├── Card: 16px ✓                                                   │
+│  ├── Input: 16px ✓                                                  │
+│  ├── Badge: 8px ✓                                                   │
+│  └── Button: 9999px (PILL) ✓                                        │
+│                                                                      │
+│  ⭐ ONE HIGHLIGHT RULE (Auto-enforce):                              │
+│  ├── Count Expressive elements per screen                           │
+│  ├── FAIL if > 1 Expressive per screen                              │
+│  └── AUTO-FIX: Convert excess to Standard                           │
+│                                                                      │
+│  ♿ ACCESSIBILITY (WCAG 2.1 AA):                                     │
+│  ├── Text contrast: 4.5:1 minimum                                   │
+│  ├── UI elements: 3:1 minimum                                       │
+│  ├── Focus indicators: 2px outline + 2px offset                     │
+│  ├── Keyboard navigation: All elements reachable                    │
+│  └── ARIA: Proper labels and roles                                  │
+│                                                                      │
+│  🔧 AUTO-FIX CAPABILITIES:                                           │
+│  ├── Missing auth guards → Generate AuthGuard                       │
+│  ├── Dead-end navigation → Add navigation links                     │
+│  ├── Missing loading states → Add skeleton screens                  │
+│  ├── Missing error states → Add error boundaries                    │
+│  └── Multiple Expressive → Convert to Standard                      │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Skill 7: design-visual-testing (DESIGN VALIDATION)
+
+**Purpose**: Test visual design effectiveness
+
+**MANDATORY Application**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  VISUAL-TESTING: DESIGN VALIDATION                                   │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  👁️ 5-SECOND TEST:                                                  │
+│  ├── Show design for exactly 5 seconds                              │
+│  ├── Ask: "What stood out?" → Should be THE Expressive element      │
+│  └── If wrong element noticed → Adjust visual hierarchy             │
+│                                                                      │
+│  ⚖️ PREFERENCE TEST:                                                 │
+│  ├── Compare 2-3 design variations                                  │
+│  ├── Ask: "Which do you prefer? Why?"                               │
+│  └── Differences must be obvious to non-designers                   │
+│                                                                      │
+│  💬 DESIRABILITY TEST (Word Choice):                                │
+│  ├── Show design, ask to select words that describe it              │
+│  ├── Target words: "Premium", "Clean", "Modern", "Friendly"         │
+│  └── Verify Staylook aesthetic is perceived                         │
+│                                                                      │
+│  📊 A/B TESTING:                                                     │
+│  ├── Test one major element change at a time                        │
+│  ├── Measure: CTR, conversion, time on page                         │
+│  └── Sample size: 100s-1000s for statistical significance           │
+│                                                                      │
+│  📸 VISUAL REGRESSION:                                               │
+│  ├── Capture screenshots at all breakpoints                         │
+│  ├── Compare against baseline images                                │
+│  └── Flag if > 1% pixel difference                                  │
+│                                                                      │
+│  🎯 STAYLOOK-SPECIFIC TESTS:                                        │
+│  ├── "Is THE Expressive element noticed first?" → 5-second test    │
+│  ├── "Does curved aesthetic feel warm?" → Desirability test        │
+│  └── "Is 90/10 Standard/Expressive balanced?" → Preference test    │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🔥 SKILL POWER ACTIVATION CHECKLIST
+
+Before generating ANY UI, the agent MUST:
+
+```
+✓ PHASE 0: PRE-GENERATION VALIDATION
+  ☐ Load SKILL-MATRIX.md (master reference)
+  ☐ Load all 7 skill SKILL.md files
+  ☐ Verify design tokens exist
+  ☐ Parse PRD and extract requirements
+
+✓ DESIGN-FOUNDATION POWER:
+  ☐ Apply Standard color (90% of UI)
+  ☐ Apply Expressive color (max 1 per screen)
+  ☐ Apply intensity scale (Muted → Calm → Vibrant)
+  ☐ Apply radius hierarchy (32 → 24 → 16 → pill)
+  ☐ Apply 4px spacing grid
+  ☐ Enforce ONE HIGHLIGHT RULE
+
+✓ COMPONENT-DEVELOPMENT POWER:
+  ☐ Create pill-shaped buttons (Expressive/Standard/Ghost)
+  ☐ Create cards with 16px radius
+  ☐ Create inputs with Vibrant background
+  ☐ Apply state progression to all interactive elements
+
+✓ PLATFORM-BUILDING POWER:
+  ☐ Use correct page template
+  ☐ Apply container hierarchy
+  ☐ Implement navigation patterns
+  ☐ Make fully responsive
+
+✓ USER-EXPERIENCE POWER:
+  ☐ Define clear visual hierarchy (3 levels)
+  ☐ Implement action lifecycle (idle → success/error)
+  ☐ Handle form states completely
+  ☐ Include loading/empty/error states
+  ☐ Complete CRUD flows
+
+✓ UX-LAWS POWER:
+  ☐ Von Restorff: ONE element stands out
+  ☐ Hick's Law: Clear primary action
+  ☐ Fitts's Law: Large, pill-shaped buttons
+  ☐ Gestalt: Proper grouping via proximity/region
+  ☐ Doherty: Feedback within 400ms
+
+✓ QUALITY-ASSURANCE POWER:
+  ☐ Token compliance verified
+  ☐ Radius hierarchy verified
+  ☐ One Highlight rule verified
+  ☐ Accessibility (WCAG AA) verified
+  ☐ Auto-fix applied where needed
+
+✓ VISUAL-TESTING POWER:
+  ☐ 5-second test documented
+  ☐ Visual regression baseline created
+  ☐ Design validation complete
 ```
 
 ---
@@ -143,10 +527,14 @@ Input Sources
 │  │  Feature Missing ──► "Generate Missing Features" (auto)     │   │
 │  │                              │                               │   │
 │  │  ┌─────────────────────────────────────────────────────┐    │   │
-│  │  │  🎨 ALL 6 STAYLOOK SKILLS AUTO-APPLIED:             │    │   │
-│  │  │  • design-foundation     • design-ux-laws           │    │   │
-│  │  │  • design-ui-development • design-quality-assurance │    │   │
-│  │  │  • design-user-experience• design-visual-testing    │    │   │
+│  │  │  🎨 ALL 7 STAYLOOK SKILLS AUTO-APPLIED:             │    │   │
+│  │  │  TIER 1: design-foundation (tokens, colors, radius) │    │   │
+│  │  │  TIER 2: design-component-development (components)  │    │   │
+│  │  │  TIER 3: design-platform-building (pages, layouts)  │    │   │
+│  │  │  TIER 4: design-user-experience (flows, feedback)   │    │   │
+│  │  │  TIER 4: design-ux-laws (cognitive principles)      │    │   │
+│  │  │  TIER 5: design-quality-assurance (compliance)      │    │   │
+│  │  │  TIER 5: design-visual-testing (validation)         │    │   │
 │  │  └─────────────────────────────────────────────────────┘    │   │
 │  └──────────────────────────────┬──────────────────────────────┘   │
 │                                 │                                   │
@@ -188,7 +576,7 @@ Input Sources
 
 | # | Handoff | Trigger | Action | Auto? |
 |---|---------|---------|--------|-------|
-| 1 | **Generate Complete UI** | New project / First run | Generate all screens using 6 skills | ✅ |
+| 1 | **Generate Complete UI** | New project / First run | Generate all screens using **ALL 7 skills** | ✅ |
 | 2 | **Generate Missing Features** | PRD has features not in UI | Auto-detect & generate end-to-end | ✅ |
 | 3 | **PRD Sync & Update** | PRD file changed | Detect delta, update/add screens | ✅ |
 | 4 | **Unified Checkpoint & Audit** | After any generation | Check + Report + Auto-fix | ✅ |
@@ -196,7 +584,7 @@ Input Sources
 | 6 | **Auto Review & Merge** | Checkpoint passed | Run quality gates, auto-approve | ✅ |
 | 7 | **Approve and Merge** | All gates passed | Final merge | ✅ |
 
-> **Note**: All 6 Staylook design skills are **automatically applied** during UI generation. No separate handoffs needed.
+> **Note**: All **7 Staylook design skills** are **automatically applied** during UI generation. No separate handoffs needed.
 
 ---
 
