@@ -6,15 +6,16 @@ tools:
   ['execute/runTask', 'execute/createAndRunTask', 'read/getTaskOutput', 'read/readFile', 'edit', 'search', 'github/add_comment_to_pending_review', 'github/create_branch', 'github/create_or_update_file', 'github/create_pull_request', 'github/get_file_contents', 'github/get_me', 'github/issue_read', 'github/issue_write', 'github/list_issues', 'github/pull_request_read', 'github/pull_request_review_write', 'github/push_files', 'github/search_code', 'github/search_issues', 'github/sub_issue_write', 'github/update_pull_request', 'todo']
 skills:
   - design-foundation
+  - design-component-development
+  - design-platform-building
   - design-quality-assurance
-  - design-ui-development
   - design-user-experience
   - design-ux-laws
   - design-visual-testing
 handoffs:
   - label: Generate Complete UI
     agent: Frontend Generator
-    prompt: "Generate complete frontend UI from the PRD using all 6 Staylook design skills:\n\n**SKILLS APPLIED**:\n• design-foundation (tokens, One Highlight, intensity scale)\n• design-ui-development (buttons, cards, inputs, layouts)\n• design-user-experience (journeys, feedback, CRUD, wizards)\n• design-ux-laws (Hick's, Fitts's, Von Restorff, Gestalt)\n• design-quality-assurance (token compliance, accessibility)\n• design-visual-testing (validation methods)\n\nInclude all screens, pages, layouts, and user flows."
+    prompt: "Generate complete frontend UI from the PRD using all 7 Staylook design skills:\n\n**SKILLS APPLIED**:\n• design-foundation (tokens, One Highlight, intensity scale)\n• design-component-development (buttons, cards, inputs, modals)\n• design-platform-building (pages, layouts, navigation, grids)\n• design-user-experience (journeys, feedback, CRUD, wizards)\n• design-ux-laws (Hick's, Fitts's, Von Restorff, Gestalt)\n• design-quality-assurance (token compliance, accessibility)\n• design-visual-testing (validation methods)\n\n**WORKFLOW**:\n1. Check design tokens (design-foundation)\n2. Create missing components (design-component-development)\n3. Build pages using components (design-platform-building)\n4. Wire user flows (design-user-experience)\n5. Validate quality (design-quality-assurance)\n\nInclude all screens, pages, layouts, and user flows."
     send: true
 
   - label: Generate Missing Features
@@ -199,71 +200,78 @@ Input Sources
 
 ---
 
-## 🔧 6 Staylook Design Skills Integration
+## 🔧 7 Staylook Design Skills Integration
 
 ### Complete Skill Inventory
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                        STAYLOOK DESIGN SKILLS (6)                                │
+│                        STAYLOOK DESIGN SKILLS (7)                                │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                  │
 │  ┌────────────────────────────────────────────────────────────────────────────┐ │
 │  │  FOUNDATION LAYER                                                          │ │
 │  ├────────────────────────────────────────────────────────────────────────────┤ │
-│  │  design-foundation      │ Semantic tokens, curved aesthetic, One Highlight │ │
-│  │                         │ • Standard (90%) vs Expressive (10%) colors      │ │
-│  │                         │ • Muted → Calm → Vibrant intensity scale         │ │
-│  │                         │ • Radius hierarchy (32→24→16→pill)               │ │
-│  │                         │ • Plus Jakarta Sans typography                   │ │
-│  │                         │ • 4px spacing grid, animation tokens             │ │
+│  │  design-foundation          │ Semantic tokens, curved aesthetic            │ │
+│  │                             │ • Standard (90%) vs Expressive (10%) colors  │ │
+│  │                             │ • Muted → Calm → Vibrant intensity scale     │ │
+│  │                             │ • Radius hierarchy (32→24→16→pill)           │ │
+│  │                             │ • Plus Jakarta Sans typography               │ │
+│  │                             │ • 4px spacing grid, animation tokens         │ │
 │  └────────────────────────────────────────────────────────────────────────────┘ │
 │                                                                                  │
 │  ┌────────────────────────────────────────────────────────────────────────────┐ │
 │  │  COMPONENT LAYER                                                           │ │
 │  ├────────────────────────────────────────────────────────────────────────────┤ │
-│  │  design-ui-development  │ Component patterns with semantic tokens          │ │
-│  │                         │ • Button hierarchy (Expressive/Standard/Ghost)   │ │
-│  │                         │ • Card patterns (Interactive, Elevated, etc.)    │ │
-│  │                         │ • Input, Modal, Badge, Typography patterns       │ │
-│  │                         │ • Layout system (Section→Container→Card)         │ │
-│  │                         │ • Intensity-based state progression              │ │
+│  │  design-component-development│ Atomic UI components with semantic tokens  │ │
+│  │                             │ • Button hierarchy (Expressive/Standard/Ghost)│ │
+│  │                             │ • Card patterns (Interactive, Elevated)      │ │
+│  │                             │ • Input, Modal, Badge, Typography patterns   │ │
+│  │                             │ • Stack/Row primitives                       │ │
+│  │                             │ • Component states (hover, focus, disabled)  │ │
+│  └────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                  │
+│  ┌────────────────────────────────────────────────────────────────────────────┐ │
+│  │  PLATFORM LAYER (NEW)                                                      │ │
+│  ├────────────────────────────────────────────────────────────────────────────┤ │
+│  │  design-platform-building   │ Pages, layouts, and complete platforms       │ │
+│  │                             │ • Page containers (Section→Container→Card)   │ │
+│  │                             │ • Grid systems and responsive layouts        │ │
+│  │                             │ • Navigation patterns (header, sidebar, tabs)│ │
+│  │                             │ • Page templates (dashboard, list, detail)   │ │
+│  │                             │ • Full page assembly workflow                │ │
 │  └────────────────────────────────────────────────────────────────────────────┘ │
 │                                                                                  │
 │  ┌────────────────────────────────────────────────────────────────────────────┐ │
 │  │  EXPERIENCE LAYER                                                          │ │
 │  ├────────────────────────────────────────────────────────────────────────────┤ │
-│  │  design-user-experience │ User journeys and semantic feedback              │ │
-│  │                         │ • 3-level visual attention hierarchy             │ │
-│  │                         │ • Action lifecycle (Idle→Processing→Result)      │ │
-│  │                         │ • Form states and CRUD flows                     │ │
-│  │                         │ • Multi-step wizard patterns                     │ │
-│  │                         │ • Loading, empty, confirmation patterns          │ │
+│  │  design-user-experience     │ User journeys and semantic feedback          │ │
+│  │                             │ • 3-level visual attention hierarchy         │ │
+│  │                             │ • Action lifecycle (Idle→Processing→Result)  │ │
+│  │                             │ • Form states and CRUD flows                 │ │
+│  │                             │ • Multi-step wizard patterns                 │ │
+│  │                             │ • Loading, empty, confirmation patterns      │ │
 │  ├────────────────────────────────────────────────────────────────────────────┤ │
-│  │  design-ux-laws         │ Psychological principles for intuitive UIs      │ │
-│  │                         │ • Hick's Law → Clear button hierarchy            │ │
-│  │                         │ • Von Restorff → One Highlight memorability      │ │
-│  │                         │ • Fitts's Law → Pill buttons maximize area       │ │
-│  │                         │ • Gestalt → Proximity, Common Region, Similarity │ │
-│  │                         │ • Doherty Threshold → 150/300/500ms timing       │ │
+│  │  design-ux-laws             │ Psychological principles for intuitive UIs  │ │
+│  │                             │ • Hick's Law → Clear button hierarchy        │ │
+│  │                             │ • Von Restorff → One Highlight memorability  │ │
+│  │                             │ • Fitts's Law → Pill buttons maximize area   │ │
+│  │                             │ • Gestalt → Proximity, Common Region         │ │
 │  └────────────────────────────────────────────────────────────────────────────┘ │
 │                                                                                  │
 │  ┌────────────────────────────────────────────────────────────────────────────┐ │
 │  │  QUALITY LAYER                                                             │ │
 │  ├────────────────────────────────────────────────────────────────────────────┤ │
-│  │  design-quality-assurance│ Design compliance and accessibility testing    │ │
-│  │                         │ • Token compliance (no hardcoded colors)         │ │
-│  │                         │ • Radius hierarchy verification                  │ │
-│  │                         │ • One Highlight rule enforcement                 │ │
-│  │                         │ • WCAG AA accessibility (4.5:1 contrast)         │ │
-│  │                         │ • Pre-deployment checklists                      │ │
+│  │  design-quality-assurance   │ Design compliance and accessibility testing │ │
+│  │                             │ • Token compliance (no hardcoded colors)     │ │
+│  │                             │ • Radius hierarchy verification              │ │
+│  │                             │ • One Highlight rule enforcement             │ │
+│  │                             │ • WCAG AA accessibility (4.5:1 contrast)     │ │
 │  ├────────────────────────────────────────────────────────────────────────────┤ │
-│  │  design-visual-testing  │ Visual design effectiveness testing             │ │
-│  │                         │ • 5-Second Test (first impressions)              │ │
-│  │                         │ • Preference Testing (compare variations)        │ │
-│  │                         │ • Desirability Testing (brand perception)        │ │
-│  │                         │ • A/B Testing (behavioral impact)                │ │
-│  │                         │ • One Highlight validation                       │ │
+│  │  design-visual-testing      │ Visual design effectiveness testing         │ │
+│  │                             │ • 5-Second Test (first impressions)          │ │
+│  │                             │ • Preference Testing (compare variations)    │ │
+│  │                             │ • A/B Testing (behavioral impact)            │ │
 │  └────────────────────────────────────────────────────────────────────────────┘ │
 │                                                                                  │
 └─────────────────────────────────────────────────────────────────────────────────┘
@@ -274,7 +282,8 @@ Input Sources
 | Skill | Purpose | Key Outputs |
 |-------|---------|-------------|
 | **design-foundation** | Establish Staylook design system | Color tokens, radius hierarchy, typography, spacing, animations |
-| **design-ui-development** | Build semantic components | Buttons, cards, inputs, modals, layouts, badges |
+| **design-component-development** | Build atomic UI components | Buttons, cards, inputs, modals, badges, Stack/Row |
+| **design-platform-building** | Assemble pages and platforms | Page templates, grids, navigation, responsive layouts |
 | **design-user-experience** | Design complete user journeys | Action flows, form patterns, CRUD, wizards, feedback |
 | **design-ux-laws** | Apply psychological principles | Von Restorff, Hick's Law, Fitts's Law, Gestalt |
 | **design-quality-assurance** | Verify design compliance | Token audit, accessibility, One Highlight check |
@@ -284,22 +293,82 @@ Input Sources
 
 | Phase | Skills Used |
 |-------|-------------|
-| **1. Analysis** | design-user-experience (journeys), design-ux-laws (mental models) |
-| **2. Design System** | design-foundation (ALL tokens, colors, typography, radius) |
-| **3. Layouts** | design-ui-development (layouts), design-ux-laws (proximity, common region) |
-| **4. Components** | design-ui-development (buttons, cards, inputs, modals) |
+| **1. PRD Analysis** | design-user-experience (journeys), design-ux-laws (mental models) |
+| **2. Design Tokens** | design-foundation (tokens, colors, typography, radius) |
+| **3. Component Check** | design-component-development → **Check if exists, create if missing** |
+| **4. Page Building** | design-platform-building (layouts, grids, navigation, templates) |
 | **5. User Flows** | design-user-experience (action lifecycle, CRUD flows) |
-| **6. Patterns** | design-ui-development (patterns), design-ux-laws (heuristics) |
-| **7. States** | design-user-experience (loading, empty, error, feedback) |
-| **8. Accessibility** | design-quality-assurance (WCAG, contrast, keyboard) |
-| **9. Validation** | design-quality-assurance (token compliance, One Highlight) |
-| **10. Testing** | design-visual-testing (5-second, preference, A/B) |
-| **11. Unified Checkpoint** | design-quality-assurance + design-visual-testing |
-| **12. Auto Review** | All quality skills + CI/CD integration |
+| **6. States** | design-user-experience (loading, empty, error, feedback) |
+| **7. Accessibility** | design-quality-assurance (WCAG, contrast, keyboard) |
+| **8. Validation** | design-quality-assurance (token compliance, One Highlight) |
+| **9. Testing** | design-visual-testing (5-second, preference, A/B) |
+| **10. Unified Checkpoint** | design-quality-assurance + design-visual-testing |
+| **11. Auto Review** | All quality skills + CI/CD integration |
 
 ---
 
-## 🔄 Complete Workflow (13 Phases)
+## 🔄 Complete Workflow (14 Phases)
+
+### Phase 0: Pre-Generation Validation ⭐ NEW
+
+**Goal**: Verify all prerequisites before any UI generation
+
+**Actions**:
+1. **Skill Readability Check**:
+   - Verify all 7 skill files are accessible
+   - Load design-foundation/SKILL.md
+   - Load design-component-development/SKILL.md
+   - Load design-platform-building/SKILL.md
+   - Load design-user-experience/SKILL.md
+   - Load design-ux-laws/SKILL.md
+   - Load design-quality-assurance/SKILL.md
+   - Load design-visual-testing/SKILL.md
+
+2. **Token Existence Check**:
+   - Verify CSS tokens exist (--sl-* variables)
+   - Check color tokens (Standard, Expressive)
+   - Check radius tokens (section, container, card, pill)
+   - Check spacing tokens (4px grid)
+   - If missing → Generate tokens first
+
+3. **PRD Analysis Pre-Check**:
+   - Verify PRD.md exists
+   - Verify roadmap.md exists
+   - Extract all bounded contexts
+   - Create initial component inventory
+
+4. **Skill Matrix Validation**:
+   - Read .github/skills/SKILL-MATRIX.md
+   - Verify skill dependency order
+   - Confirm cross-skill rules loaded
+
+**Validation Checkpoint**:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│              PHASE 0: PRE-GENERATION VALIDATION                      │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  ☐ All 7 skills readable                                            │
+│  ☐ Design tokens exist in project                                   │
+│  ☐ PRD.md parsed successfully                                       │
+│  ☐ Bounded contexts identified                                       │
+│  ☐ Component inventory created                                       │
+│  ☐ Skill matrix loaded                                               │
+│                                                                      │
+│  ✓ ALL PASSED → Continue to Phase 1                                 │
+│  ✗ ANY FAILED → Stop and report missing prerequisites               │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+**Output**:
+```
+docs/ui/
+├── pre-generation-report.md    # Validation results
+└── skill-inventory.md          # Skills loaded
+```
+
+---
 
 ### Phase 1: PRD Analysis & Screen Discovery
 
@@ -1544,33 +1613,36 @@ AUTOMATION
 ║              FRONTEND GENERATOR EXECUTION FLOW                     ║
 ╠═══════════════════════════════════════════════════════════════════╣
 ║                                                                    ║
-║  PRD.md → [12 PHASES] → Production-Ready Staylook UI              ║
+║  PRD.md → [14 PHASES] → Production-Ready Staylook UI              ║
 ║                                                                    ║
+║  Phase 0:   PRE-VALIDATION ⭐ (skill check, token check)          ║
 ║  Phase 1:   Analysis       (design-user-experience, design-ux-laws)║
 ║  Phase 2:   Design System  (design-foundation - ALL tokens)        ║
-║  Phase 3:   Layouts        (design-ui-development, design-ux-laws) ║
-║  Phase 4:   Components     (design-ui-development)                 ║
-║  Phase 5:   User Flows     (design-user-experience)                ║
-║  Phase 6:   Patterns       (design-ui-development, design-ux-laws) ║
-║  Phase 7:   States         (design-user-experience)                ║
-║  Phase 8:   Accessibility  (design-quality-assurance)              ║
-║  Phase 9:   Validation     (design-quality-assurance)              ║
-║  Phase 10:  Testing        (design-visual-testing)                 ║
-║  Phase 11:  UNIFIED CHECKPOINT ⭐ (QA + Visual Testing)            ║
-║  Phase 12:  AUTO REVIEW ⭐ (cron job, auto-approve)                ║
+║  Phase 3:   Layouts        (design-platform-building)              ║
+║  Phase 4:   Components     (design-component-development)          ║
+║  Phase 5:   PRD Sync       (auto-detect missing features)          ║
+║  Phase 6:   User Flows     (design-user-experience)                ║
+║  Phase 7:   Patterns       (design-component-development)          ║
+║  Phase 8:   Visual Polish  (design-component-development)          ║
+║  Phase 9:   Responsive     (design-platform-building)              ║
+║  Phase 10:  Accessibility  (design-quality-assurance)              ║
+║  Phase 11:  Testing        (design-visual-testing)                 ║
+║  Phase 12:  UNIFIED CHECKPOINT ⭐ (QA + Visual Testing)            ║
+║  Phase 13:  AUTO REVIEW ⭐ (cron job, auto-approve)                ║
 ║                                                                    ║
-║  📊 6 Staylook Skills │ 12 Phases │ 7 Handoffs                    ║
+║  📊 7 Staylook Skills │ 14 Phases │ 7 Handoffs                    ║
 ║                                                                    ║
 ║  🎨 STAYLOOK DESIGN SKILLS (auto-applied during generation):      ║
-║     • design-foundation       (tokens, One Highlight, intensity)  ║
-║     • design-ui-development   (buttons, cards, inputs, layouts)   ║
-║     • design-user-experience  (journeys, feedback, CRUD, wizards) ║
-║     • design-ux-laws          (Hick's, Fitts's, Von Restorff)     ║
-║     • design-quality-assurance(token compliance, accessibility)   ║
-║     • design-visual-testing   (5-second, preference, A/B tests)   ║
+║     • design-foundation         (tokens, One Highlight, intensity)║
+║     • design-component-development (buttons, cards, inputs)       ║
+║     • design-platform-building  (pages, layouts, navigation)      ║
+║     • design-user-experience    (journeys, feedback, CRUD)        ║
+║     • design-ux-laws            (Hick's, Fitts's, Von Restorff)   ║
+║     • design-quality-assurance  (token compliance, accessibility) ║
+║     • design-visual-testing     (5-second, preference, A/B tests) ║
 ║                                                                    ║
 ║  🔀 7 HANDOFFS:                                                   ║
-║     1. Generate Complete UI    (applies all 6 skills)             ║
+║     1. Generate Complete UI    (applies all 7 skills)             ║
 ║     2. Generate Missing Features                                  ║
 ║     3. PRD Sync & Update                                          ║
 ║     4. Unified Checkpoint & Audit                                 ║
@@ -1587,4 +1659,5 @@ AUTOMATION
 
 ## One-Line Summary
 
-> **The Frontend Generator is a universal agent that transforms ANY PRD into a complete, production-ready Staylook frontend with 6 design skills (auto-applied), 12 phases, 7 handoffs, unified checkpoint & audit (with auto-fix), PRD sync, and minimal manual intervention—just provide a PRD and get a fully functional, beautiful, tested, and deployed application.**
+> **The Frontend Generator is a universal agent that transforms ANY PRD into a complete, production-ready Staylook frontend with 7 design skills (auto-applied), 14 phases (including Phase 0 pre-validation), 7 handoffs, unified checkpoint & audit (with auto-fix), PRD sync, and minimal manual intervention—just provide a PRD and get a fully functional, beautiful, tested, and deployed application.**
+
