@@ -47,7 +47,7 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
                     <div className={cn(
                         'absolute z-[var(--sl-z-tooltip,100)] px-2 py-1',
                         'bg-[var(--sl-on-standard)] text-[var(--sl-container-vibrant)]',
-                        'text-[var(--sl-text-xs)] font-medium whitespace-nowrap',
+                        'text-[length:var(--sl-text-xs)] font-medium whitespace-nowrap',
                         'rounded-[var(--sl-radius-badge)] shadow-[var(--sl-shadow-calm)]',
                         'transition-all duration-[var(--sl-duration-fast)] ease-out animate-in fade-in zoom-in-95',
                         positionClasses[position],

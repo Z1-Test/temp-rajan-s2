@@ -25,7 +25,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                     // Base styles
                     'flex min-h-[80px] w-full',
                     'px-[var(--sl-space-4)] py-[var(--sl-space-3)]',
-                    'text-[var(--sl-text-base)] font-[var(--sl-font-normal)]',
+                    'text-[length:var(--sl-text-base)] font-[var(--sl-font-normal)]',
                     'rounded-[var(--sl-radius-input)]',
 
                     // Colors

@@ -72,16 +72,16 @@ export function LandingTemplate({
                                 </p>
                             </div>
                             <div className="space-y-4">
-                                <h4 className="font-bold uppercase tracking-widest text-[var(--sl-text-xs)] text-[var(--sl-standard-muted)]">Product</h4>
-                                <ul className="space-y-2 text-[var(--sl-text-sm)]">
+                                <h4 className="font-bold uppercase tracking-widest text-[length:var(--sl-text-xs)] text-[var(--sl-standard-muted)]">Product</h4>
+                                <ul className="space-y-2 text-[length:var(--sl-text-sm)]">
                                     <li><a href="#" className="hover:text-[var(--sl-on-expressive)] transition-colors">Features</a></li>
                                     <li><a href="#" className="hover:text-[var(--sl-on-expressive)] transition-colors">Components</a></li>
                                     <li><a href="#" className="hover:text-[var(--sl-on-expressive)] transition-colors">Pricing</a></li>
                                 </ul>
                             </div>
                             <div className="space-y-4">
-                                <h4 className="font-bold uppercase tracking-widest text-[var(--sl-text-xs)] text-[var(--sl-standard-muted)]">Company</h4>
-                                <ul className="space-y-2 text-[var(--sl-text-sm)]">
+                                <h4 className="font-bold uppercase tracking-widest text-[length:var(--sl-text-xs)] text-[var(--sl-standard-muted)]">Company</h4>
+                                <ul className="space-y-2 text-[length:var(--sl-text-sm)]">
                                     <li><a href="#" className="hover:text-[var(--sl-on-expressive)] transition-colors">About</a></li>
                                     <li><a href="#" className="hover:text-[var(--sl-on-expressive)] transition-colors">Blog</a></li>
                                     <li><a href="#" className="hover:text-[var(--sl-on-expressive)] transition-colors">Careers</a></li>
@@ -90,7 +90,7 @@ export function LandingTemplate({
                         </div>
                     )}
                     <Divider className="my-12" />
-                    <p className="text-[var(--sl-text-xs)] text-[var(--sl-standard-muted)]">
+                    <p className="text-[length:var(--sl-text-xs)] text-[var(--sl-standard-muted)]">
                         © {new Date().getFullYear()} Staylook Design System. All rights reserved.
                     </p>
                 </Container>

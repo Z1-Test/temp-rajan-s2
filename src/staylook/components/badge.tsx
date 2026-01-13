@@ -16,7 +16,7 @@ const badgeVariants = cva(
         'inline-flex items-center gap-1',
         'rounded-[var(--sl-radius-badge)]',
         'px-[var(--sl-space-2)] py-[var(--sl-space-1)]',
-        'text-[var(--sl-text-xs)] font-[var(--sl-font-medium)]',
+        'text-[length:var(--sl-text-xs)] font-[var(--sl-font-medium)]',
         'transition-all duration-[var(--sl-duration-fast)] ease-[var(--sl-ease-default)]',
         'whitespace-nowrap',
     ].join(' '),
@@ -25,7 +25,7 @@ const badgeVariants = cva(
             variant: {
                 standard: [
                     'bg-[var(--sl-on-standard)]',
-                    'text-[var(--sl-container-vibrant)]',
+                    'text-white',
                 ].join(' '),
 
                 expressive: [
@@ -42,22 +42,22 @@ const badgeVariants = cva(
 
                 error: [
                     'bg-[var(--sl-on-error)]',
-                    'text-[var(--sl-container-vibrant)]',
+                    'text-white',
                 ].join(' '),
 
                 success: [
                     'bg-[var(--sl-on-success)]',
-                    'text-[var(--sl-container-vibrant)]',
+                    'text-white',
                 ].join(' '),
 
                 warning: [
                     'bg-[var(--sl-on-warning)]',
-                    'text-[var(--sl-container-vibrant)]',
+                    'text-white',
                 ].join(' '),
 
                 info: [
                     'bg-[var(--sl-on-info)]',
-                    'text-[var(--sl-container-vibrant)]',
+                    'text-white',
                 ].join(' '),
 
                 muted: [

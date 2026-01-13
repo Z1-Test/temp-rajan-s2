@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 
 const selectVariants = cva(
     [
-        'flex h-11 w-full items-center justify-between rounded-[var(--sl-radius-input)] border border-[var(--sl-outline-calm)] bg-[var(--sl-container-vibrant)] px-4 py-2 text-[var(--sl-text-base)]',
+        'flex h-11 w-full items-center justify-between rounded-[var(--sl-radius-input)] border border-[var(--sl-outline-calm)] bg-[var(--sl-container-vibrant)] px-4 py-2 text-[length:var(--sl-text-base)]',
         'ring-offset-[var(--sl-focus-ring-offset)] placeholder:text-[var(--sl-standard-muted)]',
         'focus:outline-none focus:ring-2 focus:ring-[var(--sl-on-standard)] focus:ring-offset-2',
         'disabled:cursor-not-allowed disabled:opacity-50',
@@ -49,7 +49,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                 {label && (
                     <label
                         className={cn(
-                            "text-[var(--sl-text-sm)] font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+                            "text-[length:var(--sl-text-sm)] font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
                             error ? "text-[var(--sl-on-error)]" : "text-[var(--sl-on-standard)]"
                         )}
                     >
@@ -72,7 +72,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                 </div>
                 {helperText && (
                     <p className={cn(
-                        "text-[var(--sl-text-xs)]",
+                        "text-[length:var(--sl-text-xs)]",
                         error ? "text-[var(--sl-on-error)]" : "text-[var(--sl-standard-muted)]"
                     )}>
                         {helperText}

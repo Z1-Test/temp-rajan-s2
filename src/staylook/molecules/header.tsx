@@ -45,7 +45,7 @@ const Header = React.forwardRef<HTMLElement, HeaderProps>(
                                     <Link
                                         key={item.label}
                                         href={item.href}
-                                        className="text-[var(--sl-text-sm)] font-medium text-[var(--sl-standard-soft)] hover:text-[var(--sl-on-standard)] transition-colors"
+                                        className="text-[length:var(--sl-text-sm)] font-medium text-[var(--sl-standard-soft)] hover:text-[var(--sl-on-standard)] transition-colors"
                                     >
                                         {item.label}
                                     </Link>

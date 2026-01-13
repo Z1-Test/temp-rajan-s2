@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from '../PLATFORM-SHOWCASE'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom/client'
+import App from './App'
 import './styles/tokens.css'
 import './index.css'
 

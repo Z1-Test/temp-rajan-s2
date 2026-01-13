@@ -9,8 +9,6 @@
 
 import * as React from 'react';
 import { cn } from '@/lib/utils';
-import { Text } from '../components/text';
-import { Heading } from '../components/heading';
 
 export interface StatProps extends React.HTMLAttributes<HTMLDivElement> {
     label: string;
@@ -35,24 +33,24 @@ const Stat = React.forwardRef<HTMLDivElement, StatProps>(
             <div
                 ref={ref}
                 className={cn(
-                    'flex flex-col gap-1 p-4 rounded-[var(--sl-radius-card)] bg-[var(--sl-container-vibrant)] border border-[var(--sl-outline-muted)]',
+                    'flex flex-col gap-2 p-5 rounded-[var(--sl-radius-card)] bg-[var(--sl-container-vibrant)] border border-[var(--sl-outline-muted)]',
                     className
                 )}
                 {...props}
             >
                 <div className="flex items-center justify-between">
-                    <Text variant="muted" size="sm" className="font-medium uppercase tracking-wider">
+                    <span className="text-[length:var(--sl-text-xs)] font-medium uppercase tracking-wider text-[var(--sl-standard-muted)]">
                         {label}
-                    </Text>
+                    </span>
                     {icon && <div className="text-[var(--sl-standard-muted)]">{icon}</div>}
                 </div>
 
                 <div className="flex items-baseline gap-2">
-                    <Heading level={2} className="text-[var(--sl-on-standard)]">
+                    <span className="text-[length:var(--sl-text-3xl)] font-bold text-[var(--sl-on-standard)] leading-tight">
                         {value}
-                    </Heading>
+                    </span>
                     {trend && (
-                        <span className={cn('text-[var(--sl-text-xs)] font-bold', trendColor)}>
+                        <span className={cn('text-[length:var(--sl-text-sm)] font-semibold', trendColor)}>
                             {trend.type === 'positive' && '+'}
                             {trend.value}
                         </span>
@@ -60,9 +58,9 @@ const Stat = React.forwardRef<HTMLDivElement, StatProps>(
                 </div>
 
                 {description && (
-                    <Text size="xs" variant="muted">
+                    <span className="text-[length:var(--sl-text-xs)] text-[var(--sl-standard-muted)]">
                         {description}
-                    </Text>
+                    </span>
                 )}
             </div>
         );

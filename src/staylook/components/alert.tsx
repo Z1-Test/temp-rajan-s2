@@ -86,7 +86,7 @@ const AlertTitle = React.forwardRef<
         ref={ref}
         className={cn(
             'mb-[var(--sl-space-1)]',
-            'text-[var(--sl-text-base)]',
+            'text-[length:var(--sl-text-base)]',
             'font-[var(--sl-font-semibold)]',
             'leading-[var(--sl-leading-tight)]',
             className
@@ -103,7 +103,7 @@ const AlertDescription = React.forwardRef<
     <div
         ref={ref}
         className={cn(
-            'text-[var(--sl-text-sm)]',
+            'text-[length:var(--sl-text-sm)]',
             'leading-[var(--sl-leading-normal)]',
             'opacity-90',
             className

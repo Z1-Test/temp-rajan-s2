@@ -40,8 +40,8 @@ export function ProductTemplate({
                     <div className="flex items-center gap-3">
                         <Avatar src={user.avatar} fallback={user.name.substring(0, 2)} size="sm" />
                         <div className="flex-1 min-w-0">
-                            <p className="text-[var(--sl-text-sm)] font-bold truncate">{user.name}</p>
-                            <p className="text-[var(--sl-text-xs)] text-[var(--sl-standard-muted)] truncate">{user.email}</p>
+                            <p className="text-[length:var(--sl-text-sm)] font-bold truncate">{user.name}</p>
+                            <p className="text-[length:var(--sl-text-xs)] text-[var(--sl-standard-muted)] truncate">{user.email}</p>
                         </div>
                         <Button variant="ghost" size="icon-sm">
                             <Icon icon={Settings} size="sm" />
@@ -53,7 +53,7 @@ export function ProductTemplate({
             <main className="flex-1 flex flex-col min-w-0 bg-[var(--sl-container-vibrant)] overflow-hidden">
                 {/* Product Header */}
                 <header className="flex h-16 items-center justify-between px-8 border-b border-[var(--sl-outline-muted)] bg-[var(--sl-container-vibrant)]">
-                    <h1 className="text-[var(--sl-text-xl)] font-bold tracking-tight">
+                    <h1 className="text-[length:var(--sl-text-xl)] font-bold tracking-tight">
                         {title || 'Dashboard'}
                     </h1>
 
@@ -63,7 +63,7 @@ export function ProductTemplate({
                             <input
                                 type="text"
                                 placeholder="Search..."
-                                className="h-9 w-64 rounded-[var(--sl-radius-input)] border border-[var(--sl-outline-muted)] bg-[var(--sl-container-calm)] pl-9 pr-4 text-[var(--sl-text-sm)] focus:outline-none focus:border-[var(--sl-outline-vibrant)] transition-all"
+                                className="h-9 w-64 rounded-[var(--sl-radius-input)] border border-[var(--sl-outline-muted)] bg-[var(--sl-container-calm)] pl-9 pr-4 text-[length:var(--sl-text-sm)] focus:outline-none focus:border-[var(--sl-outline-vibrant)] transition-all"
                             />
                         </div>
                         <Button variant="ghost" size="icon">

@@ -10,25 +10,24 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '../components/card';
-import { Heading } from '../components/heading';
-import { Text } from '../components/text';
-import { Icon } from '../components/icon';
 
 export interface FeatureProps extends React.HTMLAttributes<HTMLDivElement> {
     title: string;
     description: string;
-    icon?: React.ElementType;
-    expressive?: boolean;
+    icon?: React.ReactNode;
+    variant?: 'standard' | 'expressive';
 }
 
 const Feature = React.forwardRef<HTMLDivElement, FeatureProps>(
-    ({ className, title, description, icon, expressive, ...props }, ref) => {
+    ({ className, title, description, icon, variant = 'standard', ...props }, ref) => {
+        const isExpressive = variant === 'expressive';
+
         return (
             <Card
                 ref={ref}
                 className={cn(
                     'transition-all hover:border-[var(--sl-outline-vibrant)] group',
-                    expressive && 'bg-[var(--sl-expressive-muted)] border-active',
+                    isExpressive && 'bg-[var(--sl-expressive-muted)] border-[var(--sl-outline-expressive)]',
                     className
                 )}
                 {...props}
@@ -36,19 +35,21 @@ const Feature = React.forwardRef<HTMLDivElement, FeatureProps>(
                 <CardContent className="pt-6 flex flex-col gap-4">
                     {icon && (
                         <div className={cn(
-                            'size-10 rounded-[var(--sl-radius-badge)] flex items-center justify-center transition-transform group-hover:scale-110',
-                            expressive ? 'bg-[var(--sl-on-expressive)] text-white' : 'bg-[var(--sl-container-calm)] text-[var(--sl-on-standard)]'
+                            'size-12 rounded-[var(--sl-radius-badge)] flex items-center justify-center transition-transform group-hover:scale-110',
+                            isExpressive
+                                ? 'bg-[var(--sl-on-expressive)] text-white'
+                                : 'bg-[var(--sl-container-muted)] text-[var(--sl-on-standard)]'
                         )}>
-                            <Icon icon={icon} size="md" variant={expressive ? 'vibrant' : 'standard'} />
+                            {icon}
                         </div>
                     )}
                     <div className="space-y-2">
-                        <Heading level={3} className="text-[var(--sl-text-lg)]">
+                        <h3 className="text-[length:var(--sl-text-lg)] font-semibold text-[var(--sl-on-standard)] leading-tight">
                             {title}
-                        </Heading>
-                        <Text variant="muted" size="sm" className="leading-relaxed">
+                        </h3>
+                        <p className="text-[length:var(--sl-text-sm)] text-[var(--sl-standard-muted)] leading-relaxed">
                             {description}
-                        </Text>
+                        </p>
                     </div>
                 </CardContent>
             </Card>

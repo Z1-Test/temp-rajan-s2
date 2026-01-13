@@ -32,7 +32,7 @@ const buttonVariants = cva(
             variant: {
                 // Standard variant (DEFAULT - 90% of buttons)
                 standard: [
-                    'bg-[var(--sl-on-standard)] text-[var(--sl-container-vibrant)]',
+                    'bg-[var(--sl-on-standard)] text-white',
                     'hover:bg-[var(--sl-standard-soft)]',
                     'active:bg-[var(--sl-standard)]',
                     'focus-visible:ring-[var(--sl-on-standard)]',
@@ -40,7 +40,7 @@ const buttonVariants = cva(
 
                 // Expressive variant (THE HIGHLIGHT - max 1 per screen)
                 expressive: [
-                    'bg-[var(--sl-on-expressive)] text-[var(--sl-container-vibrant)]',
+                    'bg-[var(--sl-on-expressive)] text-white',
                     'hover:bg-[var(--sl-expressive-soft)]',
                     'active:bg-[var(--sl-expressive)]',
                     'focus-visible:ring-[var(--sl-on-expressive)]',
@@ -82,9 +82,9 @@ const buttonVariants = cva(
                 ].join(' '),
             },
             size: {
-                sm: 'h-8 px-3 text-[var(--sl-text-sm)] gap-1.5',
-                default: 'h-10 px-4 text-[var(--sl-text-base)] gap-2',
-                lg: 'h-12 px-6 text-[var(--sl-text-lg)] gap-2',
+                sm: 'h-8 px-3 text-[length:var(--sl-text-sm)] gap-1.5',
+                default: 'h-10 px-4 text-[length:var(--sl-text-base)] gap-2',
+                lg: 'h-12 px-6 text-[length:var(--sl-text-lg)] gap-2',
                 icon: 'size-10',
                 'icon-sm': 'size-8',
                 'icon-lg': 'size-12',

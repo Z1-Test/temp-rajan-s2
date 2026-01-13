@@ -8,13 +8,13 @@
 export { Button, buttonVariants, type ButtonProps } from './components/button';
 export { Input, type InputProps } from './components/input';
 export { Textarea, type TextareaProps } from './components/textarea';
-export { Checkbox, type CheckboxProps } from './components/checkbox';
+export { Checkbox } from './components/checkbox';
 export { Badge, badgeVariants, type BadgeProps } from './components/badge';
 export { Label, type LabelProps } from './components/label';
 export { Radio, RadioGroup, type RadioProps, type RadioGroupProps } from './components/radio';
 export { Switch, type SwitchProps } from './components/switch';
 export { Select, type SelectProps } from './components/select';
-export { Slider, type SliderProps } from './components/slider';
+export { Slider } from './components/slider';
 
 // Typography Components
 export { Text, type TextProps } from './components/text';
@@ -48,23 +48,43 @@ export { Progress } from './components/progress';
 export { Ping } from './components/ping';
 export { Tooltip, type TooltipProps } from './components/tooltip';
 
+// Interactive Components (NEW)
+export { Modal, ModalFooter, type ModalProps } from './components/modal';
+export { Tabs, TabPanel, type TabsProps, type TabItem, type TabPanelProps } from './components/tabs';
+export { Accordion, type AccordionProps, type AccordionItem } from './components/accordion';
+export { Toast, ToastContainer, type ToastProps, type ToastContainerProps } from './components/toast';
+export { Breadcrumb, type BreadcrumbProps, type BreadcrumbItem } from './components/breadcrumb';
+export { Dropdown, DropdownButton, type DropdownProps, type DropdownItem } from './components/dropdown';
+
 // Media & Icons
 export { Avatar } from './components/avatar';
 export { Icon, iconVariants, type IconProps } from './components/icon';
 export { Image, imageVariants, type ImageProps } from './components/image';
-
-// Specialized
-export { Stat, type StatProps } from './molecules/stat';
 
 // Molecules
 export { Header, type HeaderProps } from './molecules/header';
 export { Feature, type FeatureProps } from './molecules/feature';
 export { Sidebar, type SidebarProps, type SidebarItem } from './molecules/sidebar';
 export { Hero, type HeroProps } from './molecules/hero';
+export { Stat, type StatProps } from './molecules/stat';
+
+// Molecules (NEW)
+export { PricingCard, type PricingCardProps, type PricingFeature } from './molecules/pricing-card';
+export { Testimonial, type TestimonialProps } from './molecules/testimonial';
+export { CTASection, type CTASectionProps } from './molecules/cta-section';
+export { Footer, type FooterProps, type FooterSection, type FooterLink } from './molecules/footer';
+export { NavBar, type NavBarProps, type NavItem } from './molecules/navbar';
+export { TeamMember, type TeamMemberProps } from './molecules/team-member';
 
 // Templates
 export { LandingTemplate, type LandingTemplateProps } from './templates/landing-template';
 export { ProductTemplate, type ProductTemplateProps } from './templates/product-template';
 
+// Templates (NEW)
+export { AuthTemplate, type AuthTemplateProps } from './templates/auth-template';
+export { DashboardTemplate, type DashboardTemplateProps } from './templates/dashboard-template';
+export { PricingTemplate, type PricingTemplateProps, type PricingPlan } from './templates/pricing-template';
+
 // Tokens
 export * from './tokens';
+
