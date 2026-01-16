@@ -19,7 +19,7 @@ const Card = React.forwardRef<
         ref={ref}
         className={cn(
             'rounded-[var(--sl-radius-card)]',
-            'bg-[var(--sl-container-vibrant)]',
+            'bg-[var(--sl-container-muted)]',
             'border border-[var(--sl-outline-muted)]',
             'shadow-[var(--sl-shadow-calm)]',
             'text-[var(--sl-on-standard)]',

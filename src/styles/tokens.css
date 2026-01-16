@@ -12,33 +12,55 @@
 
 :root {
   /* ============================================
+     BASE PALETTE (Reference)
+     ============================================ */
+  --palette-standard-0: #000000;
+  --palette-standard-10: #1A1A1A;
+  --palette-standard-16: #292929;
+  --palette-standard-20: #333333;
+  --palette-standard-30: #4D4D4D;
+  --palette-standard-40: #666666;
+  --palette-standard-50: #808080;
+  --palette-standard-80: #CCCCCC;
+  --palette-standard-92: #EBEBEB;
+  --palette-standard-96: #F5F5F5;
+  --palette-standard-98: #FAFAFA;
+  --palette-standard-100: #FFFFFF;
+  
+  /* Expressive Palette */
+  --palette-expressive-30: #7EB8FF;
+  --palette-expressive-40: #5C9FFF;
+  --palette-expressive-80: #BBDEFB;
+  --palette-expressive-100: #3373CC;
+  
+  /* ============================================
      STANDARD COLOR (Primary - 90% of UI)
      ============================================ */
-  --sl-standard: #000000;
-  --sl-standard-soft: #4D4D4D;
-  --sl-standard-muted: #9E9E9E;
+  --sl-standard: var(--palette-standard-0);
+  --sl-standard-soft: var(--palette-standard-30);
+  --sl-standard-muted: var(--palette-standard-50);
   
   /* ============================================
      EXPRESSIVE COLOR (Accent - 10% of UI)
      THE HIGHLIGHT - Max 1 per screen
      ============================================ */
-  --sl-expressive: #3373CC;
-  --sl-expressive-soft: #5C9FFF;
-  --sl-expressive-muted: #BBDEFB;
+  --sl-expressive: var(--palette-expressive-100);
+  --sl-expressive-soft: var(--palette-expressive-40);
+  --sl-expressive-muted: var(--palette-expressive-80);
   
   /* ============================================
-     CONTAINER TOKENS (Background/Surface)
-     Intensity Scale: Muted → Calm → Vibrant
+     CONTAINER TOKENS (Surfaces)
+     Intensity Scale: Muted (Lightest) → Calm → Vibrant (Darkest)
      ============================================ */
-  --sl-container-muted: #EBEBEB;
-  --sl-container-calm: #F5F5F5;
-  --sl-container-vibrant: #FFFFFF;
+  --sl-container-muted: var(--palette-standard-100);   /* #FFFFFF - Cards, elevated */
+  --sl-container-calm: var(--palette-standard-98);    /* #FAFAFA - Page background */
+  --sl-container-vibrant: var(--palette-standard-96); /* #F5F5F5 - Inputs, active */
   
   /* ============================================
      ON TOKENS (Content ON surfaces)
      ============================================ */
-  --sl-on-standard: #000000;
-  --sl-on-expressive: #3373CC;
+  --sl-on-standard: var(--palette-standard-0);
+  --sl-on-expressive: var(--palette-expressive-100);
   --sl-on-error: #D32F2F;
   --sl-on-success: #388E3C;
   --sl-on-warning: #F57C00;
@@ -47,9 +69,9 @@
   /* ============================================
      ON/CONTAINER TOKENS (Secondary content)
      ============================================ */
-  --sl-on-container-muted: #666666;
-  --sl-on-container-calm: #4D4D4D;
-  --sl-on-container-vibrant: #1A1A1A;
+  --sl-on-container-muted: var(--palette-standard-40);
+  --sl-on-container-calm: var(--palette-standard-30);
+  --sl-on-container-vibrant: var(--palette-standard-10);
   --sl-on-container-error: #B71C1C;
   --sl-on-container-success: #1B5E20;
   --sl-on-container-warning: #E65100;
@@ -58,11 +80,11 @@
   /* ============================================
      OUTLINE TOKENS (Borders)
      ============================================ */
-  --sl-outline-standard: #000000;
-  --sl-outline-muted: #E0E0E0;
-  --sl-outline-calm: #BDBDBD;
-  --sl-outline-vibrant: #1A1A1A;
-  --sl-outline-expressive: #5C9FFF;
+  --sl-outline-standard: var(--palette-standard-0);
+  --sl-outline-muted: #F2F2F2;    /* Exact match from skill */
+  --sl-outline-calm: #E0E0E0;    /* Exact match from skill */
+  --sl-outline-vibrant: #1A1A1A; /* Exact match from skill */
+  --sl-outline-expressive: var(--palette-expressive-40);
   --sl-outline-error: #EF9A9A;
   --sl-outline-success: #A5D6A7;
   --sl-outline-warning: #FFE082;
@@ -180,39 +202,39 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* Standard */
-    --sl-standard: #FFFFFF;
-    --sl-standard-soft: #CCCCCC;
-    --sl-standard-muted: #6A6A6A;
+    --sl-standard: var(--palette-standard-100);
+    --sl-standard-soft: var(--palette-standard-80);
+    --sl-standard-muted: var(--palette-standard-50);
     
     /* Expressive */
-    --sl-expressive: #5C9FFF;
-    --sl-expressive-soft: #7EB8FF;
+    --sl-expressive: var(--palette-expressive-30);
+    --sl-expressive-soft: var(--palette-expressive-40);
     --sl-expressive-muted: #1E3A5F;
     
     /* Container (Inverted) */
-    --sl-container-muted: #333333;
-    --sl-container-calm: #292929;
-    --sl-container-vibrant: #1A1A1A;
+    --sl-container-muted: var(--palette-standard-10);   /* #1A1A1A - Darkest in dark mode */
+    --sl-container-calm: var(--palette-standard-16);    /* #292929 - Middle in dark mode */
+    --sl-container-vibrant: var(--palette-standard-20); /* #333333 - Lightest in dark mode */
     
     /* On */
-    --sl-on-standard: #FFFFFF;
-    --sl-on-expressive: #7EB8FF;
+    --sl-on-standard: var(--palette-standard-100);
+    --sl-on-expressive: var(--palette-expressive-30);
     --sl-on-error: #FF8A80;
     --sl-on-success: #81C784;
     --sl-on-warning: #FFB74D;
     --sl-on-info: #64B5F6;
     
     /* On/Container */
-    --sl-on-container-muted: #808080;
-    --sl-on-container-calm: #CCCCCC;
-    --sl-on-container-vibrant: #F5F5F5;
+    --sl-on-container-muted: var(--palette-standard-50);
+    --sl-on-container-calm: var(--palette-standard-80);
+    --sl-on-container-vibrant: var(--palette-standard-96);
     --sl-on-container-error: #FFCDD2;
     --sl-on-container-success: #C8E6C9;
     --sl-on-container-warning: #FFECB3;
     --sl-on-container-info: #BBDEFB;
     
     /* Outline */
-    --sl-outline-standard: #FFFFFF;
+    --sl-outline-standard: var(--palette-standard-100);
     --sl-outline-muted: #424242;
     --sl-outline-calm: #616161;
     --sl-outline-vibrant: #FAFAFA;

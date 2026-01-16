@@ -73,7 +73,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                     className={cn(
                         'absolute top-full mt-2 z-[var(--sl-z-dropdown)]',
                         'min-w-[180px] py-1',
-                        'bg-[var(--sl-container-vibrant)]',
+                        'bg-[var(--sl-container-muted)]',
                         'border border-[var(--sl-outline-muted)]',
                         'rounded-[var(--sl-radius-card)]',
                         'shadow-[var(--sl-shadow-vibrant)]',

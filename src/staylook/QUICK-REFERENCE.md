@@ -4,28 +4,29 @@
 
 ### Standard (90% of UI)
 ```css
-var(--sl-standard)        /* #000 - Primary text/icons */
+var(--sl-standard)        /* #000000 - Primary text/icons */
 var(--sl-standard-soft)   /* #4D4D4D - Secondary text */
-var(--sl-standard-muted)  /* #9E9E9E - Muted/disabled */
+var(--sl-standard-muted)  /* #808080 - Muted/disabled */
 ```
 
-### Expressive (Use Selectively - Only When Explicitly Needed)
+### Expressive (Use Selectively - THE HIGHLIGHT)
 ```css
 var(--sl-expressive)       /* #3373CC - Special moments only */
 var(--sl-expressive-soft)  /* #5C9FFF - Hover state */
 var(--sl-expressive-muted) /* #BBDEFB - Background tint */
 ```
 
-### Container (Backgrounds)
+### Container (Surfaces)
+**Intensity Scale: Muted (Lightest) → Calm → Vibrant (Darkest)**
 ```css
-var(--sl-container-muted)   /* #EBEBEB - Secondary surfaces */
-var(--sl-container-calm)    /* #F5F5F5 - Page backgrounds */
-var(--sl-container-vibrant) /* #FFFFFF - Primary surfaces */
+var(--sl-container-muted)   /* #FFFFFF - Elevated surfaces (Cards, Modals) */
+var(--sl-container-calm)    /* #FAFAFA - Page backgrounds, Sidebars */
+var(--sl-container-vibrant) /* #F5F5F5 - Recessed surfaces (Inputs, Active states) */
 ```
 
 ### On (Content Colors)
 ```css
-var(--sl-on-standard)   /* #000 - Primary text */
+var(--sl-on-standard)   /* #000000 - Primary text */
 var(--sl-on-expressive) /* #3373CC - Accent text */
 var(--sl-on-error)      /* #D32F2F - Error text */
 var(--sl-on-success)    /* #388E3C - Success text */
@@ -35,16 +36,16 @@ var(--sl-on-info)       /* #1976D2 - Info text */
 
 ### Outline (Borders)
 ```css
-var(--sl-outline-muted)   /* #E0E0E0 - Subtle dividers */
-var(--sl-outline-calm)    /* #BDBDBD - Card borders */
-var(--sl-outline-vibrant) /* #1A1A1A - Focus states */
+var(--sl-outline-muted)   /* #F2F2F2 - Subtle dividers */
+var(--sl-outline-calm)    /* #E0E0E0 - Card borders */
+var(--sl-outline-vibrant) /* #1A1A1A - Focus states, Active borders */
 ```
 
 ## 📐 Radius Tokens
 
 ```css
 var(--sl-radius-section)   /* 32px - Outermost areas */
-var(--sl-radius-container) /* 24px - Major wrappers */
+var(--sl-radius-container) /* 24px - Major wrappers (Modals, Sheets) */
 var(--sl-radius-card)      /* 16px - Cards */
 var(--sl-radius-input)     /* 16px - Form fields */
 var(--sl-radius-badge)     /* 8px - Small indicators */
@@ -77,13 +78,13 @@ var(--sl-font-mono) /* SF Mono */
 ### Font Sizes
 ```css
 var(--sl-text-xs)   /* 0.75rem (12px) - Captions */
-var(--sl-text-sm)   /* 0.875rem (14px) - Secondary */
-var(--sl-text-base) /* 1rem (16px) - Body */
-var(--sl-text-lg)   /* 1.125rem (18px) - Emphasized */
-var(--sl-text-xl)   /* 1.25rem (20px) - Subheadings */
-var(--sl-text-2xl)  /* 1.5rem (24px) - Section titles */
-var(--sl-text-3xl)  /* 2rem (32px) - Page titles */
-var(--sl-text-4xl)  /* 2.5rem (40px) - Hero titles */
+var(--sl-text-sm)   /* 0.875rem (14px) - Secondary Body */
+var(--sl-text-base) /* 1rem (16px) - Primary Body */
+var(--sl-text-lg)   /* 1.125rem (18px) - Emphasized Body */
+var(--sl-text-xl)   /* 1.25rem (20px) - Large Headings (h3) */
+var(--sl-text-2xl)  /* 1.5rem (24px) - Section Titles (h2) */
+var(--sl-text-3xl)  /* 2rem (32px) - Page Titles (h1) */
+var(--sl-text-4xl)  /* 2.5rem (40px) - Hero Titles */
 ```
 
 ### Font Weights
@@ -98,7 +99,7 @@ var(--sl-font-bold)     /* 700 - Headings */
 
 ```css
 var(--sl-shadow-muted)   /* 0 1px 2px - Subtle lift */
-var(--sl-shadow-calm)    /* 0 4px 8px - Standard elevation */
+var(--sl-shadow-calm)    /* 0 4px 8px - Card elevation */
 var(--sl-shadow-vibrant) /* 0 8px 24px - Modal elevation */
 ```
 
@@ -107,181 +108,69 @@ var(--sl-shadow-vibrant) /* 0 8px 24px - Modal elevation */
 ```css
 var(--sl-duration-fast) /* 150ms - Micro-interactions */
 var(--sl-duration-base) /* 300ms - Standard transitions */
-var(--sl-duration-slow) /* 500ms - Complex animations */
+var(--sl-duration-slow) /* 500ms - Layout/complex animations */
 
 var(--sl-ease-default) /* cubic-bezier(0.4, 0, 0.2, 1) */
 ```
 
-## 🎯 Focus Tokens
+## 📦 Component Overview
 
-```css
-var(--sl-focus-ring-width)  /* 2px */
-var(--sl-focus-ring-offset) /* 2px */
-var(--sl-focus-ring-color)  /* var(--sl-on-expressive) */
-```
+### Core Elements
+- **Button**: ALL buttons must be pill-shaped. `Standard` for 90% of UI, `Expressive` for the main CTA.
+- **Input/Textarea/Select**: Use `container-vibrant` as base, `container-calm` on hover, and `container-muted` (white) on focus.
+- **Card**: Uses `container-muted` (#FFFFFF) and `sl-radius-card` (16px).
+- **Modal/Sheet**: Uses `container-muted` (#FFFFFF) and `sl-radius-container` (24px).
+- **Table**: Uses `container-muted` with `container-calm` for header and hover states.
 
-## 📦 Component Examples
+### Interactive Components
+- **Accordion**: Curved sections with smooth height transitions.
+- **Tabs**: Pill-shaped active states or minimal underlines.
+- **Command Palette**: Search-first interface with `container-muted` background.
+- **Popover/Tooltip**: Floating content with `card` radius and `vibrant` shadow.
 
-### Button
+## ⚡ Common Implementation Patterns
+
+### Standard Button
 ```tsx
-<Button>Continue</Button>                    {/* Standard */}
-<Button variant="expressive">Get Started</Button>  {/* THE highlight */}
-<Button variant="outline">Cancel</Button>
-<Button variant="ghost">Close</Button>
-<Button variant="destructive">Delete</Button>
+<Button>Continue</Button>
 ```
 
-### Input
+### Expressive Highlight (Max 1 per screen)
 ```tsx
-<Input placeholder="Enter text..." />
-<Input error placeholder="Invalid" />
-<Input success placeholder="Valid" />
+<Button variant="expressive">Get Started</Button>
 ```
 
-### Card
+### Card with Header and Footer
 ```tsx
 <Card>
   <CardHeader>
-    <CardTitle>Title</CardTitle>
-    <CardDescription>Description</CardDescription>
+    <CardTitle>Settings</CardTitle>
+    <CardDescription>Manage your preferences</CardDescription>
   </CardHeader>
-  <CardContent>Content</CardContent>
-  <CardFooter>Footer</CardFooter>
+  <CardContent>...</CardContent>
+  <CardFooter>
+    <Button variant="ghost">Cancel</Button>
+    <Button>Save Changes</Button>
+  </CardFooter>
 </Card>
 ```
 
-### Badge
-```tsx
-<Badge>Default</Badge>
-<Badge variant="expressive">Featured</Badge>
-<Badge variant="success">Active</Badge>
-<Badge variant="error">Error</Badge>
-```
+## 🚫 Common Mistakes to Avoid
 
-### Alert
-```tsx
-<Alert variant="success">
-  <AlertTitle>Success!</AlertTitle>
-  <AlertDescription>Changes saved.</AlertDescription>
-</Alert>
-```
+1. **Radius Mismatch**: Using `8px` or `4px` for cards. Always use `var(--sl-radius-card)`.
+2. **Button Shapes**: Creating rectangular buttons. ALL buttons must be `var(--sl-radius-button)` (pill).
+3. **Overusing Expressive**: Using blue for every button. 90% of buttons should be `Standard` (Black/White).
+4. **Hardcoded Colors**: Using `#F5F5F5` instead of `var(--sl-container-vibrant)`.
+5. **Wrong Nesting**: Putting a `radius-container` inside a `radius-card`. Larger radius must be outside.
 
-### Stack
-```tsx
-<VStack gap={4}>
-  <div>Item 1</div>
-  <div>Item 2</div>
-</VStack>
+## 📋 Pre-Submission Checklist
 
-<HStack gap={2} align="center">
-  <div>Item 1</div>
-  <div>Item 2</div>
-</HStack>
-```
-
-## ⚡ Common Patterns
-
-### Card on Page
-```css
-.card {
-  background: var(--sl-container-vibrant);
-  border: 1px solid var(--sl-outline-muted);
-  border-radius: var(--sl-radius-card);
-  padding: var(--sl-space-6);
-  box-shadow: var(--sl-shadow-calm);
-}
-```
-
-### Button States
-```css
-.button {
-  background: var(--sl-on-standard);
-  color: var(--sl-container-vibrant);
-  border-radius: var(--sl-radius-button);
-  padding: var(--sl-space-3) var(--sl-space-6);
-  transition: all var(--sl-duration-base) var(--sl-ease-default);
-}
-
-.button:hover {
-  background: var(--sl-standard-soft);
-}
-```
-
-### Input Field
-```css
-.input {
-  background: var(--sl-container-vibrant);
-  border: 1px solid var(--sl-outline-calm);
-  border-radius: var(--sl-radius-input);
-  padding: var(--sl-space-3) var(--sl-space-4);
-  color: var(--sl-on-standard);
-}
-
-.input:hover {
-  border-color: var(--sl-outline-vibrant);
-  background: var(--sl-container-calm);
-}
-
-.input:focus {
-  border-color: var(--sl-outline-vibrant);
-  ring: var(--sl-focus-ring-width) var(--sl-focus-ring-color);
-}
-```
-
-## 🚫 Common Mistakes
-
-### ❌ Don't
-```tsx
-// Using Expressive for regular actions
-<Button variant="expressive">Save</Button>
-<Button variant="expressive">Continue</Button>
-
-// Hardcoded values
-<div style={{ color: '#000', padding: '15px' }} />
-
-// Wrong radius
-<button style={{ borderRadius: '8px' }} />
-
-// Breaking nesting hierarchy
-<div style={{ borderRadius: '16px' }}>
-  <div style={{ borderRadius: '24px' }} />
-</div>
-```
-
-### ✅ Do
-```tsx
-// Use Standard for regular actions, Expressive only when explicitly needed
-<Button>Save</Button>
-<Button>Continue</Button>
-<Button variant="expressive">Start Free Trial</Button>  {/* Special moment */}
-
-// Use tokens
-<div style={{ 
-  color: 'var(--sl-on-standard)', 
-  padding: 'var(--sl-space-4)' 
-}} />
-
-// ALL buttons are pill-shaped
-<button style={{ borderRadius: 'var(--sl-radius-button)' }} />
-
-// Proper nesting
-<div style={{ borderRadius: 'var(--sl-radius-container)' }}>
-  <div style={{ borderRadius: 'var(--sl-radius-card)' }} />
-</div>
-```
-
-## 📋 Quick Checklist
-
-- [ ] Import `@/styles/tokens.css`
-- [ ] Use semantic tokens (no hardcoded values)
-- [ ] Follow 4px grid for spacing
-- [ ] ALL buttons are pill-shaped (9999px)
-- [ ] Use Expressive only when explicitly needed (not by default)
-- [ ] Follow radius nesting hierarchy
-- [ ] Use intensity scale for states
-- [ ] Include proper focus states
-- [ ] Support dark mode
-- [ ] Meet WCAG AA contrast
+- [ ] Does it support **Dark Mode**?
+- [ ] Are ALL buttons **Pill-shaped**?
+- [ ] Is **Expressive** used ONLY for the main highlight?
+- [ ] Does the **Radius Hierarchy** follow Section > Container > Card > Input?
+- [ ] Are **Intensity Scales** used correctly for background/hover/active?
+- [ ] Is it responsive for **Mobile and Desktop**?
 
 ---
 

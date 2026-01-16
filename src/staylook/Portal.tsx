@@ -17,30 +17,16 @@ import {
     CardContent,
     CardFooter,
     Container,
-    Stack,
     VStack,
     HStack,
     Divider,
     Heading,
     Text,
-    Link,
-    Kbd,
-    Alert,
-    AlertTitle,
-    AlertDescription,
-    Progress,
-    Skeleton,
-    Spinner,
-    Ping,
-    Icon,
-    Image,
     Avatar,
-    Tooltip,
     Stat,
     Header,
     Hero,
     Feature,
-    Sidebar as StaylookSidebar,
     // New Components
     Modal,
     ModalFooter,
@@ -48,7 +34,6 @@ import {
     TabPanel,
     Accordion,
     Toast,
-    ToastContainer,
     Breadcrumb,
     Dropdown,
     DropdownButton,
@@ -59,6 +44,17 @@ import {
     Footer,
     NavBar,
     TeamMember,
+    // Latest Components
+    Table,
+    TableHeader,
+    TableBody,
+    TableRow,
+    TableCell,
+    TableHead,
+    Sheet,
+    SheetFooter,
+    Popover,
+    Command,
 } from './index';
 import {
     Layers,
@@ -75,9 +71,6 @@ import {
     ChevronRight,
     Code,
     ExternalLink,
-    Moon,
-    Sun,
-    Monitor,
     CreditCard,
     Quote,
     MessageSquare,
@@ -85,7 +78,6 @@ import {
     Settings,
     Trash,
     Edit,
-    Star,
     Twitter,
     Github,
 } from 'lucide-react';
@@ -112,6 +104,7 @@ const SECTIONS = [
             { id: 'slider', label: 'Slider', icon: Activity },
             { id: 'badge', label: 'Badge', icon: CheckCircle2 },
             { id: 'avatar', label: 'Avatar', icon: User },
+            { id: 'table', label: 'Table', icon: Layout },
             { id: 'label', label: 'Label', icon: Type },
         ]
     },
@@ -125,6 +118,9 @@ const SECTIONS = [
             { id: 'dropdown', label: 'Dropdown', icon: Menu },
             { id: 'toast', label: 'Toast', icon: AlertCircle },
             { id: 'breadcrumb', label: 'Breadcrumb', icon: ChevronRight },
+            { id: 'sheet', label: 'Sheet (Drawer)', icon: Layout },
+            { id: 'popover', label: 'Popover', icon: MessageSquare },
+            { id: 'command', label: 'Command Palette', icon: Search },
         ]
     },
     {
@@ -157,6 +153,18 @@ const SECTIONS = [
 
 export default function Portal() {
     const [activeTab, setActiveTab] = React.useState('introduction');
+    const [commandOpen, setCommandOpen] = React.useState(false);
+
+    React.useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+                e.preventDefault();
+                setCommandOpen(true);
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, []);
 
     const renderPreview = (id: string) => {
         switch (id) {
@@ -365,9 +373,9 @@ export default function Portal() {
                 return (
                     <Hero
                         title="Design at the speed of thought"
-                        description="The Staylook design system provides everything you need to build stunning interfaces."
-                        ctaPrimary={<Button variant="expressive" size="lg">Get Started</Button>}
-                        ctaSecondary={<Button variant="outline" size="lg">Docs</Button>}
+                        subtitle="The Staylook design system provides everything you need to build stunning interfaces."
+                        primaryAction={{ label: 'Get Started', onClick: () => { } }}
+                        secondaryAction={{ label: 'Docs', onClick: () => { } }}
                     />
                 );
             case 'header-molecule':
@@ -447,6 +455,60 @@ export default function Portal() {
                             { label: 'Current Page' },
                         ]}
                     />
+                );
+            case 'table':
+                return (
+                    <div className="w-full">
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Client</TableHead>
+                                    <TableHead>Project</TableHead>
+                                    <TableHead>Status</TableHead>
+                                    <TableHead className="text-right">Amount</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {[
+                                    { client: 'Acme Corp', project: 'Design System', status: 'Active', amount: '$4,500.00' },
+                                    { client: 'Vercel', project: 'Analytics Dashboard', status: 'Completed', amount: '$12,200.00' },
+                                    { client: 'Stripe', project: 'Payment Flow', status: 'Pending', amount: '$8,900.00' },
+                                ].map((row, i) => (
+                                    <TableRow key={i}>
+                                        <TableCell className="font-medium">{row.client}</TableCell>
+                                        <TableCell>{row.project}</TableCell>
+                                        <TableCell>
+                                            <Badge variant={row.status === 'Completed' ? 'success' : row.status === 'Active' ? 'expressive' : 'standard'}>
+                                                {row.status}
+                                            </Badge>
+                                        </TableCell>
+                                        <TableCell className="text-right">{row.amount}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
+                );
+            case 'sheet':
+                return (
+                    <VStack gap={6}>
+                        <Text variant="muted">Side drawers for complex navigation or task-based sub-flows.</Text>
+                        <SheetDemo />
+                    </VStack>
+                );
+            case 'popover':
+                return (
+                    <VStack gap={6} align="center">
+                        <Text variant="muted">Floating content triggered by interaction.</Text>
+                        <PopoverDemo />
+                    </VStack>
+                );
+            case 'command':
+                return (
+                    <VStack gap={6} align="center">
+                        <Text variant="muted">Search-first command palette interface (Press Cmd+K to demo interaction in production).</Text>
+                        <CommandDemo />
+                    </VStack>
                 );
             // New Molecules
             case 'pricing-card':
@@ -673,6 +735,16 @@ export default function Portal() {
                     </div>
                 </div>
             </main>
+
+            <Command
+                open={commandOpen}
+                onClose={() => setCommandOpen(false)}
+                items={[
+                    { id: '1', label: 'Search Components', description: 'Find atomic and interactive elements', icon: <Search size={20} />, onClick: () => setActiveTab('button') },
+                    { id: '2', label: 'Design Tokens', description: 'View colors, radius, and spacing', icon: <Layers size={20} />, onClick: () => setActiveTab('tokens') },
+                    { id: '3', label: 'View Dashboard', description: 'Go to the platform showcase demo', icon: <Layout size={20} />, onClick: () => window.location.reload() },
+                ]}
+            />
         </div>
     );
 }
@@ -733,5 +805,83 @@ function TabsDemo() {
                 </Card>
             </TabPanel>
         </VStack>
+    );
+}
+
+function SheetDemo() {
+    const [open, setOpen] = React.useState(false);
+    return (
+        <HStack gap={4}>
+            <Button onClick={() => setOpen(true)} variant="outline">Open Right Sheet</Button>
+            <Sheet
+                open={open}
+                onClose={() => setOpen(false)}
+                title="Project Settings"
+                description="Manage your project preferences and team access."
+            >
+                <VStack gap={6}>
+                    <VStack gap={4}>
+                        <VStack gap={2}>
+                            <Label>Project Name</Label>
+                            <Input defaultValue="Staylook Design System" />
+                        </VStack>
+                        <VStack gap={2}>
+                            <Label>Visibility</Label>
+                            <Select>
+                                <option>Public</option>
+                                <option>Private</option>
+                                <option>Internal</option>
+                            </Select>
+                        </VStack>
+                    </VStack>
+                    <SheetFooter>
+                        <Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
+                        <Button variant="expressive" onClick={() => setOpen(false)}>Save Changes</Button>
+                    </SheetFooter>
+                </VStack>
+            </Sheet>
+        </HStack>
+    );
+}
+
+function PopoverDemo() {
+    return (
+        <Popover
+            trigger={<Button variant="outline">View Profile Info</Button>}
+        >
+            <VStack gap={4} className="w-64">
+                <HStack gap={3} align="center">
+                    <Avatar size="sm" fallback="SC" />
+                    <div>
+                        <Text className="font-bold">Sarah Chen</Text>
+                        <Text size="xs" variant="muted">Product Designer</Text>
+                    </div>
+                </HStack>
+                <Divider />
+                <VStack gap={1}>
+                    <Button variant="ghost" size="sm" className="justify-start">View Profile</Button>
+                    <Button variant="ghost" size="sm" className="justify-start">Account Settings</Button>
+                </VStack>
+            </VStack>
+        </Popover>
+    );
+}
+
+function CommandDemo() {
+    const [open, setOpen] = React.useState(false);
+    return (
+        <>
+            <Button onClick={() => setOpen(true)} variant="standard">Open Command Palette</Button>
+            <Command
+                open={open}
+                onClose={() => setOpen(false)}
+                items={[
+                    { id: '1', label: 'Search Projects', description: 'Find existing design files', icon: <Search size={20} />, shortcut: '⌘P' },
+                    { id: '2', label: 'Create New Page', description: 'Add a new layout to your project', icon: <Layout size={20} />, shortcut: '⌘N' },
+                    { id: '3', label: 'System Settings', description: 'Manage your global preferences', icon: <Settings size={20} />, shortcut: '⌘,' },
+                    { id: '4', label: 'Profile Settings', description: 'Update your personal information', icon: <User size={20} /> },
+                ]}
+            />
+        </>
     );
 }

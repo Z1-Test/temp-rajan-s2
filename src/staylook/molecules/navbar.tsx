@@ -50,7 +50,7 @@ const NavBar = React.forwardRef<HTMLElement, NavBarProps>(
                     sticky && 'sticky top-0',
                     transparent
                         ? 'bg-transparent'
-                        : 'bg-[var(--sl-container-vibrant)]/95 backdrop-blur-md border-b border-[var(--sl-outline-muted)]',
+                        : 'bg-[var(--sl-container-muted)]/95 backdrop-blur-md border-b border-[var(--sl-outline-muted)]',
                     className
                 )}
                 {...props}
@@ -143,7 +143,7 @@ const NavItemComponent: React.FC<NavItemComponentProps> = ({ item }) => {
                 </button>
                 {isOpen && (
                     <div className="absolute top-full left-0 pt-2 z-50">
-                        <div className="bg-[var(--sl-container-vibrant)] border border-[var(--sl-outline-muted)] rounded-[var(--sl-radius-card)] shadow-[var(--sl-shadow-vibrant)] py-2 min-w-[180px] animate-in fade-in zoom-in-95 duration-150">
+                        <div className="bg-[var(--sl-container-muted)] border border-[var(--sl-outline-muted)] rounded-[var(--sl-radius-card)] shadow-[var(--sl-shadow-vibrant)] py-2 min-w-[180px] animate-in fade-in zoom-in-95 duration-150">
                             {item.children.map((child, index) => (
                                 <a
                                     key={index}

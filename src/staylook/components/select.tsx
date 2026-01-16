@@ -16,8 +16,9 @@ const selectVariants = cva(
     [
         'flex h-11 w-full items-center justify-between rounded-[var(--sl-radius-input)] border border-[var(--sl-outline-calm)] bg-[var(--sl-container-vibrant)] px-4 py-2 text-[length:var(--sl-text-base)]',
         'ring-offset-[var(--sl-focus-ring-offset)] placeholder:text-[var(--sl-standard-muted)]',
-        'focus:outline-none focus:ring-2 focus:ring-[var(--sl-on-standard)] focus:ring-offset-2',
-        'disabled:cursor-not-allowed disabled:opacity-50',
+        'hover:bg-[var(--sl-container-calm)] hover:border-[var(--sl-outline-vibrant)]',
+        'focus:outline-none focus:ring-2 focus:ring-[var(--sl-on-standard)] focus:ring-offset-2 focus:bg-[var(--sl-container-muted)]',
+        'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-[var(--sl-container-vibrant)] disabled:border-[var(--sl-outline-muted)]',
         'transition-all duration-[var(--sl-duration-base)] ease-[var(--sl-ease-default)]',
         'appearance-none cursor-pointer',
     ].join(' '),

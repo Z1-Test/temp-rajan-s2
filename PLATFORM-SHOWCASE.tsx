@@ -16,10 +16,15 @@ import {
     Icon,
     Badge,
     Text,
-    Heading,
     HStack,
     VStack,
-    Avatar
+    Avatar,
+    Table,
+    TableHeader,
+    TableBody,
+    TableRow,
+    TableCell,
+    TableHead
 } from './src/staylook';
 import {
     LayoutDashboard,
@@ -28,8 +33,7 @@ import {
     Globe,
     Zap,
     TrendingUp,
-    MoreHorizontal,
-    Plus
+    Plus,
 } from 'lucide-react';
 
 const sidebarItems = [
@@ -105,28 +109,44 @@ export default function PlatformShowcase() {
                         <CardTitle>Recent Sales</CardTitle>
                         <Text variant="muted" size="sm">You made 265 sales this month.</Text>
                     </CardHeader>
-                    <CardContent className="space-y-6">
-                        {[
-                            { name: 'Olivia Martin', email: 'olivia.m@email.com', amount: '+$1,999.00', initial: 'OM' },
-                            { name: 'Jackson Lee', email: 'jackson.l@email.com', amount: '+$39.00', initial: 'JL' },
-                            { name: 'Isabella Nguyen', email: 'isabella.n@email.com', amount: '+$299.00', initial: 'IN' },
-                            { name: 'William Chen', email: 'will@email.com', amount: '+$99.00', initial: 'WC' },
-                            { name: 'Sofia Davis', email: 'sofia.d@email.com', amount: '+$39.00', initial: 'SD' },
-                        ].map((sale) => (
-                            <HStack key={sale.email} justify="between" align="center">
-                                <HStack gap={3}>
-                                    <Avatar fallback={sale.initial} size="sm" />
-                                    <VStack gap={0}>
-                                        <Text size="sm" className="font-bold">{sale.name}</Text>
-                                        <Text size="xs" variant="muted">{sale.email}</Text>
-                                    </VStack>
-                                </HStack>
-                                <Text size="sm" className="font-bold text-[var(--sl-on-success)]">{sale.amount}</Text>
-                            </HStack>
-                        ))}
-                        <Button variant="ghost" className="w-full text-[var(--sl-text-sm)]">
-                            View all transactions
-                        </Button>
+                    <CardContent className="p-0">
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead className="pl-6">Customer</TableHead>
+                                    <TableHead className="text-right pr-6">Amount</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {[
+                                    { name: 'Olivia Martin', email: 'olivia.m@email.com', amount: '+$1,999.00', initial: 'OM' },
+                                    { name: 'Jackson Lee', email: 'jackson.l@email.com', amount: '+$39.00', initial: 'JL' },
+                                    { name: 'Isabella Nguyen', email: 'isabella.n@email.com', amount: '+$299.00', initial: 'IN' },
+                                    { name: 'William Chen', email: 'will@email.com', amount: '+$99.00', initial: 'WC' },
+                                    { name: 'Sofia Davis', email: 'sofia.d@email.com', amount: '+$39.00', initial: 'SD' },
+                                ].map((sale) => (
+                                    <TableRow key={sale.email} className="hover:bg-[var(--sl-container-calm)]/50 transition-colors">
+                                        <TableCell className="pl-6 py-4">
+                                            <HStack gap={3}>
+                                                <Avatar fallback={sale.initial} size="sm" />
+                                                <VStack gap={0}>
+                                                    <Text size="sm" className="font-bold">{sale.name}</Text>
+                                                    <Text size="xs" variant="muted">{sale.email}</Text>
+                                                </VStack>
+                                            </HStack>
+                                        </TableCell>
+                                        <TableCell className="text-right pr-6 font-bold text-[var(--sl-on-success)]">
+                                            {sale.amount}
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                        <div className="p-4 border-t border-[var(--sl-outline-muted)]">
+                            <Button variant="ghost" className="w-full text-[var(--sl-text-sm)]">
+                                View all transactions
+                            </Button>
+                        </div>
                     </CardContent>
                 </Card>
             </div>

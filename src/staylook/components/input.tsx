@@ -43,6 +43,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
                     'focus:outline-none',
                     'focus:border-[var(--sl-outline-vibrant)]',
+                    'focus:bg-[var(--sl-container-muted)]',
                     'focus:ring-[var(--sl-focus-ring-width)]',
                     'focus:ring-[var(--sl-focus-ring-color)]',
                     'focus:ring-offset-[var(--sl-focus-ring-offset)]',
@@ -50,7 +51,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     // Disabled state
                     'disabled:cursor-not-allowed',
                     'disabled:opacity-50',
-                    'disabled:bg-[var(--sl-container-muted)]',
+                    'disabled:bg-[var(--sl-container-vibrant)]',
+                    'disabled:border-[var(--sl-outline-muted)]',
 
                     // Transitions
                     'transition-all duration-[var(--sl-duration-base)] ease-[var(--sl-ease-default)]',
