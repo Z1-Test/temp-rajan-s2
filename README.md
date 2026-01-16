@@ -1,12 +1,5 @@
 # itsme.fashion - Premium Beauty Ecommerce Platform
 
-<p align="center">
-  <strong>A modern, scalable ecommerce platform for ethical beauty products</strong>
-</p>
-
-<p align="center">
-  Built with Domain-Driven Design (DDD) | CQRS | Event Sourcing | Microservices
-</p>
 
 ---
 
