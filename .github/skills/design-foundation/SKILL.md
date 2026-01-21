@@ -17,7 +17,9 @@ name: design-foundation
 
 ## What is it?
 
-This skill establishes the Staylook design foundation—a semantic, aesthetic design system with curved elements, editorial layouts, and a strict color hierarchy.
+This skill establishes the Staylook design foundation—the **design tokens, principles, and rules** that define the visual language. It covers colors, spacing, typography, radius hierarchy, and the "One Highlight" rule.
+
+**Note**: This skill teaches the design system itself. For building individual components, see **Component Development**. For building complete pages and platforms, see **Platform Building**.
 
 ## Why use it?
 

@@ -1,6 +1,6 @@
 ---
-title: UI Development
-description: Staylook component patterns with semantic tokens, curved aesthetics, and editorial layouts
+title: Component Development
+description: Building individual Staylook UI components with semantic tokens, curved aesthetics, and proper states
 tags:
   - frontend
   - ui
@@ -8,16 +8,19 @@ tags:
   - staylook
   - semantic-design
   - button-patterns
-name: ui-development
+  - component-development
+name: component-development
 ---
 
-# UI Development Skill
+# Component Development Skill
 
 > **Staylook Components**: Curved, Semantic, and Hierarchical
 
 ## What is it?
 
-This skill covers Staylook UI component patterns—from building buttons and cards to creating responsive layouts with proper semantic tokens, radius hierarchy, and the "One Highlight" rule.
+This skill covers building **individual Staylook UI components**—buttons, cards, inputs, badges, modals, and typography. It focuses on creating reusable, atomic components that follow the design system's semantic tokens, radius hierarchy, and state progressions.
+
+**Note**: For assembling components into complete pages and platforms, see the **Platform Building** skill.
 
 ## Why use it?
 
@@ -26,6 +29,7 @@ This skill covers Staylook UI component patterns—from building buttons and car
 - **Intensity Progression**: Muted → Calm → Vibrant for all states
 - **Premium Aesthetic**: Curved, pill-shaped buttons and editorial spacing
 - **Accessibility**: WCAG AA compliant with proper contrast
+- **Reusability**: Create atomic components for use across the platform
 
 ---
 
@@ -231,56 +235,7 @@ Provide guidance with:
 
 ---
 
-# Part 4: Layout Component System
-
-## Section Container (Outermost)
-
-The largest content wrapper:
-
-- Border radius: 32px (--radius-section)
-- Background: Muted surface
-- Padding: 32px (space-8)
-- Margin bottom: 32px (space-8) between sections
-- Use for major page sections
-
-## Content Container (Major Wrapper)
-
-Standard content wrapper:
-
-- Border radius: 24px (--radius-container)
-- Max widths available:
-  - xs: 480px (narrow forms)
-  - sm: 640px (articles)
-  - md: 768px (standard forms)
-  - lg: 1024px (wider layouts)
-  - xl: 1280px (default main content)
-  - 2xl: 1440px (wide screens)
-- Padding: 24px (space-6)
-- Center with auto margins
-
-## Page Wrapper
-
-The outermost page container:
-
-- Background: Calm surface (#FAFAFA)
-- Minimum height: 100vh
-- Padding: 24px (space-6)
-- No border radius (full bleed)
-
-## Grid System
-
-Create responsive grids:
-
-**Basic Grid**:
-- Use CSS Grid
-- Gap: 16px (space-4)
-- Define columns: 2, 3, or 4 based on content
-
-**Auto-fit Grid**:
-- Columns auto-calculate based on minimum width
-- Minimum: 280px per column
-- Maximum: 1fr (equal distribution)
-- Automatically responsive
+# Part 4: Stack & Row Components
 
 ## Stack Component (Vertical)
 
@@ -303,7 +258,7 @@ Arrange elements horizontally:
 - Gap sizes: same as Stack
 - Responsive: convert to stack on mobile
 
----
+**Note**: For page-level containers, grids, and layouts, see the **Platform Building** skill.
 
 # Part 5: Badge & Tag Components
 
@@ -487,50 +442,28 @@ Apply intensity progression to ALL interactive components:
 
 ---
 
-# Part 9: Responsive Design Patterns
+# Part 9: Component Responsiveness
 
-## Breakpoint System
+## Component-Level Adaptations
 
-Define standard breakpoints:
+Build components that adapt to their container:
 
-- **sm**: 640px - Small tablets
-- **md**: 768px - Tablets
-- **lg**: 1024px - Laptops
-- **xl**: 1280px - Desktops
-- **2xl**: 1536px - Large screens
+**Touch-Friendly Sizing**:
+- Minimum touch target: 44px × 44px
+- Buttons: At least 44px height
+- Inputs: At least 48px height
 
-## Mobile-First Approach
+**Adaptive Padding**:
+- Reduce internal padding on smaller screens
+- Cards: 16px (mobile) → 24px (tablet) → 32px (desktop)
+- Buttons: Maintain consistent padding ratio
 
-Design mobile first, enhance for larger screens:
+**Font Size Adjustments**:
+- Use responsive typography when needed
+- Headings may reduce size on mobile
+- Body text should remain readable (min 14px)
 
-- Start with single column layouts
-- Stack elements vertically on mobile
-- Convert to rows/grids on larger screens
-- Hide/show elements based on screen size
-- Adjust spacing for different viewports
-
-## Common Responsive Patterns
-
-**Navigation**:
-- Mobile: Hamburger menu or bottom tabs
-- Desktop: Horizontal inline navigation
-
-**Sidebar**:
-- Mobile: Hidden or drawer
-- Tablet: Collapsible
-- Desktop: Fixed expanded
-
-**Grid Columns**:
-- Mobile: 1 column
-- Tablet: 2 columns
-- Desktop: 3-4 columns
-
-**Card Padding**:
-- Mobile: 16px (space-4)
-- Tablet: 24px (space-6)
-- Desktop: 32px (space-8)
-
----
+**Note**: For full page layouts, grids, and navigation responsiveness, see the **Platform Building** skill.
 
 # Part 10: Implementation Guidelines
 
